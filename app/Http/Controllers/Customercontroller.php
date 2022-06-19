@@ -421,7 +421,7 @@ class Customercontroller extends Controller
 								->get();*/
 		}
 		
-		return view('customer.view',compact('customer','new_customer','viewid'));
+		return view('customer.view',compact('new_customer'));
 	}
 	
 	// free service modal
