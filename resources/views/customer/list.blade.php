@@ -51,25 +51,23 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>{{ trans('app.Image')}}</th>
 								<th>{{ trans('app.First Name') }}</th>
-								<th>{{ trans('app.Last Name') }}</th>
-								<th>{{ trans('app.Email') }}</th>
+								<th>{{ trans('app.address') }}</th>
 								<th>{{ trans('app.Mobile Number') }}</th>
+								<th>{{ trans('app.Email') }}</th>
 								<th>{{ trans('app.Action')}}</th>
 							</tr>
 						</thead>
 						<tbody>
 						<?php $i=1;?>
-						@if(!empty($customer))
-							@foreach($customer as $customers)
+						@if(!empty($new_customer))
+							@foreach($new_customer as $customers)
 								<tr>
 									<td>{{ $i }}</td>
-									<td><img src="{{ url('public/customer/'.$customers->image) }}"  width="50px" height="50px" class="img-circle" ></td>
 									<td>{{ $customers -> name }}</td>
-									<td>{{ $customers -> lastname}}</td>
-									<td>{{ $customers -> email }}</td>
-									<td>{{ $customers -> mobile_no }}</td>
+									<td>{{ $customers -> address}}</td>
+									<td>{{ $customers -> phone }}</td>
+									<td>{{ $customers -> mail }}</td>
 									<td> 
 										@can('customer_view')
 											<a href="{!! url('/customer/list/'.$customers->id) !!}"><button type="button" class="btn btn-round btn-info">{{ trans('app.View')}}</button></a>
