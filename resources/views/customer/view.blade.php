@@ -118,10 +118,7 @@
 						<div class="x_panel">
 							<section class="content invoice">
 								  <!-- title row -->
-								<!--<div class="col-md-6 col-sm-12 col-xs-12 left_side">
-									<img src="{{ URL::asset('public/customer/'.$customer->image) }}" class="cimg" >
-                                   
-								</div>-->
+								
 								<div class="col-md-6 col-sm-12 col-xs-12 right_side">
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
