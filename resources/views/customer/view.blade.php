@@ -127,7 +127,6 @@
 										</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											    <!--{{ $new_customer->name }}-->
 											</span>
 										</div>
 									</div>
