@@ -52,7 +52,7 @@
 							<tr>
 								<th>#</th>
 								<th>{{ trans('app.First Name') }}</th>
-								<th>{{ trans('app.address') }}</th>
+								<th>{{ trans('app.Address') }}</th>
 								<th>{{ trans('app.Mobile Number') }}</th>
 								<th>{{ trans('app.Email') }}</th>
 								<th>{{ trans('app.Action')}}</th>
