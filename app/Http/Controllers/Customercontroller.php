@@ -304,7 +304,7 @@ class Customercontroller extends Controller
 				$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();				
 				
 				
-				$new_customer = Customer::where('id','=',$id)
+				$new_customer = Customer::where('customers.id','=',$id)
 				->join('cars','cars.customer_id' ,'customers.id')
 				->first();
 				$freeservice = Service::
@@ -331,7 +331,7 @@ class Customercontroller extends Controller
 			elseif (getUsersRole(Auth::user()->role_id) == 'Employee') 
 			{			
 				$customer = DB::table('users')->where('id','=',$id)->first();
-				$new_customer = Customer::where('id','=',$id)
+				$new_customer = Customer::where('customers.id','=',$id)
 				->join('cars','cars.customer_id' ,'customers.id')
 				->first();
 		
@@ -364,7 +364,7 @@ class Customercontroller extends Controller
 			elseif (getUsersRole(Auth::user()->role_id) == 'Support Staff' || getUsersRole(Auth::user()->role_id) == 'Accountant' || getUsersRole(Auth::user()->role_id) == 'Branch Admin') {
 				
 				$customer = User::where('id','=',$id)->first();
-				$new_customer = Customer::where('id','=',$id)
+				$new_customer = Customer::where('customers.id','=',$id)
 				->join('cars','cars.customer_id' ,'customers.id')
 				->first();
 				$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
@@ -396,7 +396,7 @@ class Customercontroller extends Controller
 			$customer = User::where('id','=',$id)->first();
 		
 			$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
-			$new_customer = Customer::where('id','=',$id)
+			$new_customer = Customer::where('customers.id','=',$id)
 			->join('cars','cars.customer_id' ,'customers.id')
 			->first();
 			$freeservice = Service::
