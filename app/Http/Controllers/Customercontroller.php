@@ -852,6 +852,6 @@ class Customercontroller extends Controller
 		$phone = $request->phone;
 		$mail = $request->mail;
 		$address = $request->address;
-		$
+		
 	}
 }
