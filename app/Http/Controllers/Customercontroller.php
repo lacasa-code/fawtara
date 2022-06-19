@@ -301,13 +301,13 @@ class Customercontroller extends Controller
 			{
 				$customer = User::where('id','=',$id)->first();
 				
-				$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();				
+				//$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();				
 				
 				
 				$new_customer = Customer::where('customers.id','=',$id)
 				->join('cars','cars.customer_id' ,'customers.id')
 				->first();
-				$freeservice = Service::
+				/*$freeservice = Service::
 			                            where([['tbl_services.done_status','!=',2],['tbl_services.service_type','=','free']])
 										->where('tbl_services.customer_id','=',$id)
 										->orderBy('tbl_services.id','desc')->take(5)
@@ -326,7 +326,7 @@ class Customercontroller extends Controller
 										->where('tbl_services.customer_id','=',$id)
 									   ->orderBy('tbl_services.id','desc')->take(5)
 										->select('tbl_services.*')
-										->get();
+										->get();*/
 			}
 			elseif (getUsersRole(Auth::user()->role_id) == 'Employee') 
 			{			
@@ -335,9 +335,9 @@ class Customercontroller extends Controller
 				->join('cars','cars.customer_id' ,'customers.id')
 				->first();
 		
-				$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();
+				//$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();
 			
-				$freeservice = Service::
+				/*$freeservice = Service::
 		                            where([['tbl_services.done_status','!=',2],['tbl_services.service_type','=','free']])
 									->where('tbl_services.assign_to','=',$userid)
 									->where('tbl_services.customer_id','=',$id)
@@ -359,7 +359,7 @@ class Customercontroller extends Controller
 									->where('tbl_services.customer_id','=',$id)
 								   ->orderBy('tbl_services.id','desc')->take(5)
 									->select('tbl_services.*')
-									->get();
+									->get();*/
 			}
 			elseif (getUsersRole(Auth::user()->role_id) == 'Support Staff' || getUsersRole(Auth::user()->role_id) == 'Accountant' || getUsersRole(Auth::user()->role_id) == 'Branch Admin') {
 				
@@ -367,9 +367,9 @@ class Customercontroller extends Controller
 				$new_customer = Customer::where('customers.id','=',$id)
 				->join('cars','cars.customer_id' ,'customers.id')
 				->first();
-				$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
+				//$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
 
-				$freeservice = Service::
+				/*$freeservice = Service::
 										where([['tbl_services.done_status','!=',2],['tbl_services.service_type','=','free']])
 										->where('tbl_services.customer_id','=',$id)
 										->orderBy('tbl_services.id','desc')->take(5)
@@ -388,18 +388,18 @@ class Customercontroller extends Controller
 									->where('tbl_services.customer_id','=',$id)
 								   ->orderBy('tbl_services.id','desc')->take(5)
 									->select('tbl_services.*')
-									->get();
+									->get();*/
 			}
 		}
 		else
 		{
 			$customer = User::where('id','=',$id)->first();
 		
-			$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
+			//$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
 			$new_customer = Customer::where('customers.id','=',$id)
 			->join('cars','cars.customer_id' ,'customers.id')
 			->first();
-			$freeservice = Service::
+			/*$freeservice = Service::
 										where([['tbl_services.done_status','!=',2],['tbl_services.service_type','=','free']])
 										->where('tbl_services.customer_id','=',$id)
 										->orderBy('tbl_services.id','desc')->take(5)
@@ -418,10 +418,10 @@ class Customercontroller extends Controller
 								->where('tbl_services.customer_id','=',$id)
 								->orderBy('tbl_services.id','desc')->take(5)
 								->select('tbl_services.*')
-								->get();
+								->get();*/
 		}
 		
-		return view('customer.view',compact('customer','new_customer','viewid','freeservice','paidservice','repeatjob','tbl_custom_fields'));
+		return view('customer.view',compact('customer','new_customer','viewid'));
 	}
 	
 	// free service modal
