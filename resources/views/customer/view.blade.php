@@ -127,7 +127,7 @@
 										</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											{{ $new_customer->name }}
+											    <!--{{ $new_customer->name }}-->
 											</span>
 										</div>
 									</div>
@@ -182,8 +182,6 @@
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											<span class="txt_color">{{ $new_customer->address }}</span>
-											 <!-- 	<?php echo (getCityName($customer->city_id) != null) ? getCityName($customer->city_id) .",<br>" : "";?>
-											  {{ getStateName($customer->state_id)}}, {{ getCountryName($customer->country_id)}}.-->
 											</span>
 										</div>
 									</div>
