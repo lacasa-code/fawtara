@@ -72,14 +72,14 @@ class Customercontroller extends Controller
 			 'company_name.regex' => 'Enter only alphabets, space and dot',
 		]);*/
 		
-		$firstname = $request->firstname;
+		$name = $request->name;
 		$lastname = $request->lastname;
 		$displayname = $request->displayname;
 		$password = $request->password;
 		$gender = $request->gender;
 		$birthdate = $request->dob;
 		$email = $request->email;
-		$mobile = $request->mobile;
+		$phone = $request->phone;
 		$landlineno = $request->landlineno;
 		$address = $request->address;
 		$country_id = $request->country_id;
@@ -844,5 +844,14 @@ class Customercontroller extends Controller
 		}
 		
 		return redirect('/customer/list')->with('message','Successfully Updated');
-	}		
+	}
+	
+	public function update($id , Request $request)
+	{
+		$name = $request->name;
+		$phone = $request->phone;
+		$mail = $request->mail;
+		$address = $request->address;
+		$
+	}
 }
