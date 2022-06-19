@@ -576,7 +576,7 @@ class Customercontroller extends Controller
 		  
 		//$customer = DB::table('users')->where('id','=',$id)->delete();
 	 	$customer = User::where('id','=',$id)->update(['soft_delete' => 1]);
-
+        $customer = Customer::where('id','=',$id)->firstorfail()->delete();
 		/*$tbl_incomes = DB::table('tbl_incomes')->where('customer_id','=',$id)->delete();
 		$tbl_invoices = DB::table('tbl_invoices')->where('customer_id','=',$id)->delete();
 		$tbl_jobcard_details = DB::table('tbl_jobcard_details')->where('customer_id','=',$id)->delete();
