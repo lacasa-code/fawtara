@@ -26,6 +26,7 @@ use App\CustomField;
 use App\Role;
 use App\Role_user;
 use App\Branch;
+use App\Customer;
 use App\Http\Requests\CustomerAddEditFormRequest;
 
 class Customercontroller extends Controller
@@ -71,14 +72,14 @@ class Customercontroller extends Controller
 			 'company_name.regex' => 'Enter only alphabets, space and dot',
 		]);*/
 		
-		$firstname = $request->firstname;
+		$name = $request->name;
 		$lastname = $request->lastname;
 		$displayname = $request->displayname;
 		$password = $request->password;
 		$gender = $request->gender;
 		$birthdate = $request->dob;
 		$email = $request->email;
-		$mobile = $request->mobile;
+		$phone = $request->phone;
 		$landlineno = $request->landlineno;
 		$address = $request->address;
 		$country_id = $request->country_id;
@@ -262,22 +263,30 @@ class Customercontroller extends Controller
 			elseif (getUsersRole(Auth::user()->role_id) == 'Employee')
 			{
 				$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
+				$new_customer=Customer::get();
+
 			}
 			elseif (getUsersRole(Auth::user()->role_id) == 'Support Staff' || getUsersRole(Auth::user()->role_id) == 'Accountant' || getUsersRole(Auth::user()->role_id) == 'Branch Admin') {
 				
 				$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
+				$new_customer=Customer::get();
+
 			}
 			else
 			{
 				$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
+				$new_customer=Customer::get();
+
 			}
 		}
 		else
 		{
 			$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
+			$new_customer=Customer::get();
+  
 		}
 
-		return view('customer.list',compact('customer'));
+		return view('customer.list',compact('customer','new_customer'));
 	}
 	
 	//customer show
@@ -293,7 +302,11 @@ class Customercontroller extends Controller
 				$customer = User::where('id','=',$id)->first();
 				
 				$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();				
-										
+				
+				
+				$new_customer = Customer::where('id','=',$id)
+				->join('cars','cars.customer_id' ,'customers.id')
+				->first();
 				$freeservice = Service::
 			                            where([['tbl_services.done_status','!=',2],['tbl_services.service_type','=','free']])
 										->where('tbl_services.customer_id','=',$id)
@@ -318,7 +331,10 @@ class Customercontroller extends Controller
 			elseif (getUsersRole(Auth::user()->role_id) == 'Employee') 
 			{			
 				$customer = DB::table('users')->where('id','=',$id)->first();
-						
+				$new_customer = Customer::where('id','=',$id)
+				->join('cars','cars.customer_id' ,'customers.id')
+				->first();
+		
 				$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();
 			
 				$freeservice = Service::
@@ -348,7 +364,9 @@ class Customercontroller extends Controller
 			elseif (getUsersRole(Auth::user()->role_id) == 'Support Staff' || getUsersRole(Auth::user()->role_id) == 'Accountant' || getUsersRole(Auth::user()->role_id) == 'Branch Admin') {
 				
 				$customer = User::where('id','=',$id)->first();
-			
+				$new_customer = Customer::where('id','=',$id)
+				->join('cars','cars.customer_id' ,'customers.id')
+				->first();
 				$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
 
 				$freeservice = Service::
@@ -378,7 +396,9 @@ class Customercontroller extends Controller
 			$customer = User::where('id','=',$id)->first();
 		
 			$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
-
+			$new_customer = Customer::where('id','=',$id)
+			->join('cars','cars.customer_id' ,'customers.id')
+			->first();
 			$freeservice = Service::
 										where([['tbl_services.done_status','!=',2],['tbl_services.service_type','=','free']])
 										->where('tbl_services.customer_id','=',$id)
@@ -401,7 +421,7 @@ class Customercontroller extends Controller
 								->get();
 		}
 		
-		return view('customer.view',compact('customer','viewid','freeservice','paidservice','repeatjob','tbl_custom_fields'));
+		return view('customer.view',compact('customer','new_customer','viewid','freeservice','paidservice','repeatjob','tbl_custom_fields'));
 	}
 	
 	// free service modal
@@ -664,9 +684,7 @@ class Customercontroller extends Controller
 			'company_name.regex' => 'Enter only alphabets, space and dot',
 		]);*/
 
-		$firstname = $request->firstname;
-		$lastname = $request->lastname;
-		$displayname = $request->displayname;
+		$firstname = $request->name;
 		$gender = $request->gender;
 		$password = $request->password;
 		$mobile = $request->mobile;
@@ -826,5 +844,14 @@ class Customercontroller extends Controller
 		}
 		
 		return redirect('/customer/list')->with('message','Successfully Updated');
-	}		
+	}
+	
+	public function update($id , Request $request)
+	{
+		$name = $request->name;
+		$phone = $request->phone;
+		$mail = $request->mail;
+		$address = $request->address;
+		$
+	}
 }

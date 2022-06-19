@@ -235,6 +235,10 @@
 			                  		<li><a href="{!! url('/invoice/electronic/invoice') !!}" ><i class="fa fa-file-text-o"></i>
 			                  		Electronic Invoices </a></li>
 								@endcan -->
+								@can('customer_view')
+								    <li><a href="{!! url('/customer/list')!!}" ><i class="fa fa-file-text-o"></i>
+			                  		Customers</a></li>
+								@endcan
 
 								@can('invoice_view')
 			                  		<li><a href="{!! url('/invoice/manual/invoice') !!}" ><i class="fa fa-file-text-o"></i>
