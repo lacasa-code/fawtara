@@ -440,41 +440,8 @@ class Customercontroller extends Controller
 	 {   
 	    $editid = $id;
 
-	    if (!isAdmin(Auth::User()->role_id)) 
-	    {
-			if (Gate::allows('customer_owndata'))
-			{					
-				if (Auth::User()->id == $id)
-				{
-					//dd(Gate::allows('customer_owndata'), 1);
-					 return view('customer.update',compact('editid'));
-				}
-				else if (Gate::allows('customer_edit')) 
-				{
-					//dd(Gate::allows('customer_edit'), 2);
-					
-					 return view('customer.update',compact('editid'));
-				}
-				else 
-				{
-					return abort('403', 'This action is unauthorized.');
-				}			
-			}
-			else if (Gate::allows('customer_edit'))
-			{
-				
-				 return view('customer.update',compact('editid'));
-			}
-			else 
-			{
-				return abort('403', 'This action is unauthorized.');
-			}
-		}
-		else
-		{
-			
-			 return view('customer.update',compact('editid'));
-		}		
+		return view('customer.update',compact('editid'));
+	
 	 }	
 
 	// customer update
