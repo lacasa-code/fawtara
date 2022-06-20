@@ -91,49 +91,6 @@ class Customercontroller extends Controller
 			
 		return redirect('/customer/list')->with('message','Successfully Submitted');
 	}
-	//customer store
-	public function storecustomer(CustomerAddEditFormRequest $request)
-	{
-		
-		$name = $request->name;
-		$address = $request->address;
-		$phone = $request->phone;
-		$mail = $request->mail;
-		/*$manufacturing = $request->manufacturing;
-		$registration = $request->registration;
-		$manufacturing_date = $request->manufacturing_date;
-		$chassis = $request->chassis;
-		$model = $request->model;
-		$kilometers = $request->kilometers;*/
-
-
-
-		if(!empty($mail))
-		{
-			$mail = $mail;
-		}else{
-			$mail = null;
-		}
-		
-		$customer = new Customer();
-		$customer->name = $name;
-		$customer->phone = $phone;
-		$customer->mail = $mail;
-		$customer->address = $address;
-        
-		$customer->save();
-/*
-		$car = new Car();
-		$car->manufacturing = $manufacturing;
-		$car->registration = $registration;
-		$car->manufacturing_date = $manufacturing_date;
-		$car->chassis = $chassis;
-		$car->model = $model;
-		$car->kilometers = $kilometers;*/
-			
-		return redirect('/customer/list')->with('message','Successfully Submitted');
-	}
-	
 
 	//customer list
 	public function index()
@@ -490,28 +447,13 @@ class Customercontroller extends Controller
 				if (Auth::User()->id == $id)
 				{
 					//dd(Gate::allows('customer_owndata'), 1);
-					$customer = DB::table('users')->where('id','=',$id)->first();
-
-					$country = DB::table('tbl_countries')->get()->toArray();
-					$state = DB::table('tbl_states')->where('country_id', $customer->country_id)->get()->toArray();
-					$city = DB::table('tbl_cities')->where('state_id', $customer->state_id)->get()->toArray();
-
-					$tbl_custom_fields = DB::table('tbl_custom_fields')->where([['form_name','=','customer'],['always_visable','=','yes'],['soft_delete','=',0]])->get()->toArray();		
-					
-					 return view('customer.update',compact('country','customer','state','city','editid','tbl_custom_fields'));
+					 return view('customer.update',compact('editid'));
 				}
 				else if (Gate::allows('customer_edit')) 
 				{
 					//dd(Gate::allows('customer_edit'), 2);
-					$customer = DB::table('users')->where('id','=',$id)->first();
-
-					$country = DB::table('tbl_countries')->get()->toArray();
-					$state = DB::table('tbl_states')->where('country_id', $customer->country_id)->get()->toArray();
-					$city = DB::table('tbl_cities')->where('state_id', $customer->state_id)->get()->toArray();
-
-					$tbl_custom_fields = DB::table('tbl_custom_fields')->where([['form_name','=','customer'],['always_visable','=','yes'],['soft_delete','=',0]])->get()->toArray();		
 					
-					 return view('customer.update',compact('country','customer','state','city','editid','tbl_custom_fields'));
+					 return view('customer.update',compact('editid'));
 				}
 				else 
 				{
@@ -520,15 +462,8 @@ class Customercontroller extends Controller
 			}
 			else if (Gate::allows('customer_edit'))
 			{
-				$customer = DB::table('users')->where('id','=',$id)->first();
-
-				$country = DB::table('tbl_countries')->get()->toArray();
-				$state = DB::table('tbl_states')->where('country_id', $customer->country_id)->get()->toArray();
-				$city = DB::table('tbl_cities')->where('state_id', $customer->state_id)->get()->toArray();
-
-				$tbl_custom_fields = DB::table('tbl_custom_fields')->where([['form_name','=','customer'],['always_visable','=','yes'],['soft_delete','=',0]])->get()->toArray();		
 				
-				 return view('customer.update',compact('country','customer','state','city','editid','tbl_custom_fields'));
+				 return view('customer.update',compact('editid'));
 			}
 			else 
 			{
@@ -537,15 +472,8 @@ class Customercontroller extends Controller
 		}
 		else
 		{
-			$customer = DB::table('users')->where('id','=',$id)->first();
-
-			$country = DB::table('tbl_countries')->get()->toArray();
-			$state = DB::table('tbl_states')->where('country_id', $customer->country_id)->get()->toArray();
-			$city = DB::table('tbl_cities')->where('state_id', $customer->state_id)->get()->toArray();
-
-			$tbl_custom_fields = DB::table('tbl_custom_fields')->where([['form_name','=','customer'],['always_visable','=','yes'],['soft_delete','=',0]])->get()->toArray();		
 			
-			 return view('customer.update',compact('country','customer','state','city','editid','tbl_custom_fields'));
+			 return view('customer.update',compact('editid'));
 		}		
 	 }	
 
