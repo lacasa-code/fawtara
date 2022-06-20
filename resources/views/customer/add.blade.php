@@ -366,6 +366,7 @@
 <script src="{{ URL::asset('vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 <script src="{{ URL::asset('vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
+<!--
 <script>
 $(document).ready(function(){
 		
@@ -748,23 +749,8 @@ $(document).ready(function(){
         }
     }
 </script>
+-->
 
 
-<!-- Form field validation -->
-{!! JsValidator::formRequest('App\Http\Requests\CustomerAddEditFormRequest', '#demo-form2'); !!}
-<script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js') }}"></script>
 
-<!-- Form submit at a time only one -->
-<script type="text/javascript">
-    /*$(document).ready(function () {
-        $('.customerAddSubmitButton').removeAttr('disabled'); //re-enable on document ready
-    });
-    $('.customerAddForm').submit(function () {
-        $('.customerAddSubmitButton').attr('disabled', 'disabled'); //disable on any form submit
-    });
-
-    $('.customerAddForm').bind('invalid-form.validate', function () {
-      $('.customerAddSubmitButton').removeAttr('disabled'); //re-enable on form invalidation
-    });*/
-</script>
 @endsection
