@@ -49,7 +49,7 @@ Route::group(['prefix'=>'purchase'],function()
 	Route::get('/add',['as'=>'purchase/add','uses'=>'Purchasecontroller@index'])->middleware('can:purchase_add');
 	Route::post('/store',['as'=>'purchase/store','uses'=>'Purchasecontroller@store'])->middleware('can:purchase_add');
 	Route::get('/list',['as'=>'purchase/list','uses'=>'Purchasecontroller@listview'])->middleware('can:purchase_view');
-	Route::get('/list/pview/{id}',['as'=>'purchase/list','uses'=>'Purchasecontroller@listview1'])->middleware('can:purchase_view');
+	Route::get('/list/pview/{id}',['as'=>'purchase/list/pview','uses'=>'Purchasecontroller@listview1'])->middleware('can:purchase_view');
 	Route::get('/list/edit/{id}',['as'=>'purchase/list/edit','uses'=>'Purchasecontroller@editview'])->middleware('can:purchase_edit');
 	Route::post('/list/edit/update/{id}',['as'=>'list/edit/update/{id}','uses'=>'Purchasecontroller@update'])->middleware('can:purchase_edit');
 
