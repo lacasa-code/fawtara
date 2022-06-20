@@ -41,6 +41,20 @@
 								<h4><b>{{ trans('app.Personal Information')}}</b></h4>
 								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
 							</div>
+
+							<div class="col-md-12 col-sm-6 col-xs-12">  
+							    <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
+									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="firstname">{{ trans('app.First Name') }} <label class="color-danger">*</label> </label>
+									<div class="col-md-8 col-sm-8 col-xs-12">
+									  <input type="text" id="name" name="name" class="name form-control"  placeholder="{{ trans('app.Enter First Name')}}" maxlength="50">
+									  @if ($errors->has('name'))
+									   <span class="help-block">
+										   <strong>{{ $errors->first('name') }}</strong>
+									   </span>
+									 @endif
+									</div>
+								</div>
+							</div>
 						</form>
 					</div>
 				</div>
