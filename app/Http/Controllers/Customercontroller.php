@@ -71,7 +71,7 @@ class Customercontroller extends Controller
 			$mail = null;
 		}
 		
-		$customer = new Customer();
+		$customer = new Customer;
 		$customer->name = $name;
 		$customer->phone = $phone;
 		$customer->mail = $mail;
