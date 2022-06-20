@@ -25,7 +25,7 @@ class CustomerAddEditFormRequest extends FormRequest
     {
         return [
             'name' => 'required|regex:/^[(a-zA-Z\s)\p{L}]+$/u|max:50',
-            'mail' => 'required|email|unique:users,mail,'.$this->id,
+            'mail' => 'required|email|unique:customers,mail,'.$this->id,
             'phone' => 'required|min:9|max:14|regex:/^[- +()]*[0-9][- +()0-9]*$/',
             'address' => 'required',            
         ];
