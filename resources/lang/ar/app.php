@@ -1474,6 +1474,8 @@ return[
 	"Edit Branch Admin" => "تحرير مدير الفرع",
 
 	'Enter Customer Name'=> "ادخل اسم العميل ",
+	'customer name is required.' =>'اسم العميل مطلوب '
+
  ];
 
 ?>
