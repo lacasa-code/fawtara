@@ -55,12 +55,12 @@ class Customercontroller extends Controller
 		$address = $request->address;
 		$phone = $request->phone;
 		$mail = $request->mail;
-		/*$manufacturing = $request->manufacturing;
+		$manufacturing = $request->manufacturing;
 		$registration = $request->registration;
 		$manufacturing_date = $request->manufacturing_date;
 		$chassis = $request->chassis;
 		$model = $request->model;
-		$kilometers = $request->kilometers;*/
+		$kilometers = $request->kilometers;
 
 
 
@@ -78,14 +78,16 @@ class Customercontroller extends Controller
 		$customer->address = $address;
         
 		$customer->save();
-/*
-		$car = new Car();
+
+		$car = new Car;
 		$car->manufacturing = $manufacturing;
 		$car->registration = $registration;
 		$car->manufacturing_date = $manufacturing_date;
 		$car->chassis = $chassis;
 		$car->model = $model;
-		$car->kilometers = $kilometers;*/
+		$car->kilometers = $kilometers;
+		$car->customer_id=$customer->id;
+		$car->save();
 			
 		return redirect('/customer/list')->with('message','Successfully Submitted');
 	}

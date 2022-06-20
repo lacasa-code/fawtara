@@ -942,7 +942,8 @@ return[
 	"Manufacturing Name"=>"Manufacturing Name",
 	"Company Name"=>"Company Name",
 	"Add Stock"=>"Add Stock",
-	"Select Manufacturing Name"=>"Select Manufacturer Name",
+	"Enter Manufacturing Name"=>"Enter Manufacturer Name",
+	"Enter Manufacturing Date"=>"Enter Manufacturing Date",
 	"Manufacturer Name"=>"Manufacturer Name",
 	"Number of Services"=>"Number of Services",
 	"Date Gap"=>"Date Gap",
@@ -1499,8 +1500,15 @@ return[
     'service_no'=>'Service No',
 
 	"Enter Customer Name"=> "Enter Customer Name",
-    'customer name is required.' =>'customer name is required.'
-
+    'customer name is required.' =>'customer name is required.',
+    'manufacturing field is required'=>'manufacturing field is required',
+	'registration field is required'=>'registration field is required',
+    'manufacturing_date field is required.'=>'manufacturing_date field is required.',
+    'chassis field is required.'=>'chassis field is required.',
+    'model field is required.'=>'model field is required.',
+    'kilometers field is required.'=>'kilometers field is required.',
+    'kilometers:'=>'kilometers:',
+    'Enter kilometers number'=>'Enter kilometers number',
 ];
 
 ?>
