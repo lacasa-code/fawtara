@@ -439,8 +439,8 @@ class Customercontroller extends Controller
      public function customeredit($id)
 	 {   
 	    $editid = $id;
-
-		return view('customer.update',compact('editid'));
+        $customer =Customer::where('id','=',$id)->first();
+		return view('customer.update',compact('editid','customer'));
 	
 	 }	
 
