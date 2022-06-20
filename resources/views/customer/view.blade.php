@@ -127,6 +127,7 @@
 										</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
+											    {{ $new_customer -> name }}
 											</span>
 										</div>
 									</div>
@@ -136,14 +137,14 @@
 											<b>{{ trans('app.Email')}}</b> 	
 										</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
-											<span class="txt_color">{{ $new_customer->email }}</span>
+											<span class="txt_color">{{ $new_customer -> email }}</span>
 										</div>
 									</div>
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td"><i class="fa fa-phone"></i> <b>{{ trans('app.Mobile No')}}</b> </div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-												<span class="txt_color">{{ $new_customer->phone }} </span>
+												<span class="txt_color">{{ $new_customer -> phone }} </span>
 											</span>
 										</div>
 									</div>
@@ -180,7 +181,7 @@
 											<i class="fa fa-map-marker"></i> <b>{{ trans('app.Address')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											<span class="txt_color">{{ $new_customer->address }}</span>
+											<span class="txt_color">{{ $new_customer -> address }}</span>
 											</span>
 										</div>
 									</div>
@@ -190,7 +191,7 @@
 											<i class="fa fa-map-marker"></i> <b>{{ trans('app.manufacturing')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											    <span class="txt_color">{{ $new_customer->manufacturing }}</span>
+											    <span class="txt_color">{{ $new_customer -> manufacturing }}</span>
 											</span>
 										</div>
 									</div>
@@ -200,7 +201,7 @@
 											<i class="fa fa-map-marker"></i> <b>{{ trans('app.registration')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											    <span class="txt_color">{{ $new_customer->registration }}</span>
+											    <span class="txt_color">{{ $new_customer -> registration }}</span>
 											</span>
 										</div>
 									</div>
@@ -210,7 +211,7 @@
 											<i class="fa fa-map-marker"></i> <b>{{ trans('app.manufacturing_date')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											    <span class="txt_color">{{ $new_customer->manufacturing_date }}</span>
+											    <span class="txt_color">{{ $new_customer -> manufacturing_date }}</span>
 											</span>
 										</div>
 									</div>
@@ -220,7 +221,7 @@
 											<i class="fa fa-map-marker"></i> <b>{{ trans('app.chassis')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											    <span class="txt_color">{{ $new_customer->chassis }}</span>
+											    <span class="txt_color">{{ $new_customer -> chassis }}</span>
 											</span>
 										</div>
 									</div>
@@ -230,7 +231,7 @@
 											<i class="fa fa-map-marker"></i> <b>{{ trans('app.model')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											    <span class="txt_color">{{ $new_customer->model }}</span>
+											    <span class="txt_color">{{ $new_customer -> model }}</span>
 											</span>
 										</div>
 									</div>
@@ -240,7 +241,7 @@
 											<i class="fa fa-map-marker"></i> <b>{{ trans('app.kilometers')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											    <span class="txt_color">{{ $new_customer->kilometers }}</span>
+											    <span class="txt_color">{{ $new_customer -> kilometers }}</span>
 											</span>
 										</div>
 									</div>
