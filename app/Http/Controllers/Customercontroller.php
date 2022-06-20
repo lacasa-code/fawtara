@@ -40,12 +40,12 @@ class Customercontroller extends Controller
 	//customer addform
 	public function customeradd()
 	{	
-		$country = DB::table('tbl_countries')->get()->toArray();
-		$onlycustomer = DB::table('users')->where([['role','=','Customer'],['id','=',Auth::User()->id]])->first();
+		//$country = DB::table('tbl_countries')->get()->toArray();
+		//$onlycustomer = DB::table('users')->where([['role','=','Customer'],['id','=',Auth::User()->id]])->first();
 
-		$tbl_custom_fields = DB::table('tbl_custom_fields')->where([['form_name','=','customer'],['always_visable','=','yes'],['soft_delete','=',0]])->get()->toArray();
+		//$tbl_custom_fields = DB::table('tbl_custom_fields')->where([['form_name','=','customer'],['always_visable','=','yes'],['soft_delete','=',0]])->get()->toArray();
 
-	   return view('customer.add',compact('country','onlycustomer','tbl_custom_fields'));
+	   return view('customer.add');
 	}
 	//customer store
 	public function storecustomer(CustomerAddEditFormRequest $request)
