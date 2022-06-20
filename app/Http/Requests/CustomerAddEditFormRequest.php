@@ -27,7 +27,14 @@ class CustomerAddEditFormRequest extends FormRequest
             'name' => 'required|regex:/^[(a-zA-Z\s)\p{L}]+$/u|max:50',
             'mail' => 'required|email|unique:customers,mail,'.$this->id,
             'phone' => 'required|min:9|max:14|regex:/^[- +()]*[0-9][- +()0-9]*$/',
-            'address' => 'required',            
+            'address' => 'required',  
+            'manufacturing' => 'required',            
+            'registration' => 'required',            
+            'manufacturing_date' => 'required',            
+            'chassis' => 'required',            
+            'model' => 'required',            
+            'kilometers' => 'required',            
+
         ];
     }
 
@@ -49,7 +56,14 @@ class CustomerAddEditFormRequest extends FormRequest
             'phone.max' => trans('app.Contact number maximum 14 digits.'),
             'phone.regex' => trans('app.Contact number must be number, plus, minus and space only.'),
 
-            'address.required'  => trans('app.Address field is required.'),            
+            'address.required'  => trans('app.Address field is required.'), 
+            'manufacturing.required' => trans('app.manufacturing field is required.'),
+            'registration.required' => trans('app.registration field is required.'),
+            'manufacturing_date.required' => trans('app.manufacturing_date field is required.'),
+            'chassis.required' => trans('app.chassis field is required.'),
+            'model.required' => trans('app.model field is required.'),
+            'kilometers.required' => trans('app.kilometers field is required.'),
+
         ];
 
     }
