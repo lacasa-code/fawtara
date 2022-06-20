@@ -26,6 +26,7 @@ use App\CustomField;
 use App\Role;
 use App\Role_user;
 use App\Branch;
+use App\Car;
 use App\Customer;
 use App\Http\Requests\CustomerAddEditFormRequest;
 
@@ -50,195 +51,42 @@ class Customercontroller extends Controller
 	//customer store
 	public function storecustomer(CustomerAddEditFormRequest $request)
 	{
-		//dd($request->all());
-		/*$this->validate($request, [  
-         'firstname' => 'regex:/^[(a-zA-Z\s)]+$/u',
-		 'lastname'=>'regex:/^[(a-zA-Z\s)]+$/u',
-		 'displayname'=>'regex:/^[(a-zA-Z\s)]+$/u',
-		 //'mobile'=>'required|max:12|min:6|regex:/^[- +()]*[0-9][- +()0-9]*$/',
-		 'mobile'=>'required|max:12|min:6|regex:/^[0-9]*$/',
-		 //Solved by Mukesh [Bug list row number: 625 (New Add time also)]
-         //'landlineno'=>'nullable|max:12|min:6|regex:/^[- +()]*[0-9][- +()0-9]*$/',
-         'landlineno'=>'nullable|max:12|min:6|regex:/^[0-9]*$/',
-		 'image' => 'image|mimes:jpg,png,jpeg',
-		 'password'=>'required|min:6',
-		 'password_confirmation' => 'required|same:password',
-		 'company_name' => 'nullable|regex:/^[a-zA-Z][a-zA-Z\s\.]*$/',
-		 ],[
-			 'displayname.regex' => 'Enter valid display name',
-			 'firstname.regex' => 'Enter valid first name',
-			 'lastname.regex' => 'Enter valid last name',
-			 'landlineno.regex' => 'Enter valid landline no',
-			 'company_name.regex' => 'Enter only alphabets, space and dot',
-		]);*/
 		
 		$name = $request->name;
-		$lastname = $request->lastname;
-		$displayname = $request->displayname;
-		$password = $request->password;
-		$gender = $request->gender;
-		$birthdate = $request->dob;
-		$email = $request->email;
-		$phone = $request->phone;
-		$landlineno = $request->landlineno;
 		$address = $request->address;
-		$country_id = $request->country_id;
-		$state_id = $request->state_id;
-		$city = $request->city;
-		$company_name = $request->company_name;
-		$image = $request->image;
-		
-		$dob = null;
-		if(!empty($birthdate))
-		{
-			if(getDateFormat() == 'm-d-Y')
-			{
-				$dob = date('Y-m-d',strtotime(str_replace('-','/',$birthdate)));
-			}
-			else
-			{
-				$dob = date('Y-m-d',strtotime($birthdate));
-			}
-		}
+		$phone = $request->phone;
+		$mail = $request->mail;
+		$manufacturing = $request->manufacturing;
+		$registration = $request->registration;
+		$manufacturing_date = $request->manufacturing_date;
+		$chassis = $request->chassis;
+		$model = $request->model;
+		$kilometers = $request->kilometers;
 
-		if(!empty($email))
+
+
+		if(!empty($mail))
 		{
-			$email = $email;
+			$mail = $mail;
 		}else{
-			$email = null;
+			$mail = null;
 		}
-
-		//Get user role id from Role table
-		$getRoleId = Role::where('role_name', '=', 'Customer')->first();
 		
-		$customer = new User;
-		$customer->name = $firstname;
-		$customer->lastname = $lastname;
-		$customer->display_name = $displayname;
-		$customer->gender = $gender;
-		$customer->birth_date = $dob;
-		$customer->email = $email;
-		$customer->password = bcrypt($password);
-		$customer->mobile_no = $mobile;
-		$customer->landline_no = $landlineno;
+		$customer = new Customer();
+		$customer->name = $name;
+		$customer->phone = $phone;
+		$customer->mail = $mail;
 		$customer->address = $address;
-		$customer->country_id = $country_id;
-		$customer->state_id = $state_id;
-		$customer->city_id = $city;
-		$customer->company_name = $company_name;
-		
-		if(!empty($image))
-		{
-			$file = $image;
-			$filename = $file->getClientOriginalName();
-			$file->move(public_path().'/customer/', $file->getClientOriginalName());
-			$customer->image = $filename;
-		}
-		else{
-			$customer->image='avtar.png';
-		}
-		
-		$customer->role = "Customer";
-		$customer->role_id = $getRoleId->id; /*Store Role table User Role Id*/			
-		$customer->language = "en";
-		$customer->timezone = "UTC";
-		
-		//custom field	
-		$custom = $request->custom;
-		$custom_fileld_value = array();	
-		$custom_fileld_value_jason_array = array();
-
-		if(!empty($custom))
-		{
-			foreach($custom as $key=>$value)
-			{
-				if (is_array($value)) 
-				{
-					$add_one_in = implode(",",$value);
-					$custom_fileld_value[] = array("id" => "$key", "value" => "$add_one_in");					
-				}
-				else
-				{
-					$custom_fileld_value[] = array("id" => "$key", "value" => "$value");	
-				}				
-			}	
-		   
-			$custom_fileld_value_jason_array['custom_fileld_value'] = json_encode($custom_fileld_value); 
-
-			foreach($custom_fileld_value_jason_array as $key1 => $val1)
-			{
-				$customerdata = $val1;
-			}	
-			$customer->custom_field = $customerdata;
-		}
+        
 		$customer->save();
 
-		/*For data store inside Role_user table*/
-		if ( $customer->save() ) 
-		{
-			$currentUserId = $customer->id;
-
-			$role_user_table = new Role_user;
-			$role_user_table->user_id = $currentUserId;
-			$role_user_table->role_id  = $getRoleId->id;
-			$role_user_table->save();
-		}
-
-
-		if(!is_null($email ))
-		{
-			//email format
-			$logo = DB::table('tbl_settings')->first();
-			$systemname = $logo->system_name;
-		
-			$emailformats = DB::table('tbl_mail_notifications')->where('notification_for','=','User_registration')->first();
-			if($emailformats->is_send == 0)
-			{
-				if($customer -> save())
-				{
-					$emailformat = DB::table('tbl_mail_notifications')->where('notification_for','=','User_registration')->first();
-					$mail_format = $emailformat->notification_text;		
-					$mail_subjects = $emailformat->subject;		
-					$mail_send_from = $emailformat->send_from;
-					$search1 = array('{ system_name }');
-					$replace1 = array($systemname);
-					$mail_sub = str_replace($search1, $replace1, $mail_subjects);
-					
-					$systemlink = URL::to('/');
-					$search = array('{ system_name }','{ user_name }', '{ email }', '{ Password }', '{ system_link }' );
-					$replace = array($systemname, $firstname, $email, $password, $systemlink);
-					
-					$email_content = str_replace($search, $replace, $mail_format);
-					
-					$actual_link = $_SERVER['HTTP_HOST'];
-					$startip='0.0.0.0';
-					$endip='255.255.255.255';
-					if(($actual_link == 'localhost' || $actual_link == 'localhost:8080') || ($actual_link >= $startip && $actual_link <=$endip ))
-					{
-						//local format email					
-						$data=array(
-						'email'=>$email,
-						'mail_sub1' => $mail_sub,
-						'email_content1' => $email_content,
-						'emailsend' =>$mail_send_from, 
-						);
-							$data1 = Mail::send('customer.customermail',$data, function ($message) use ($data){
-
-							$message->from($data['emailsend'],'noreply');
-							$message->to($data['email'])->subject($data['mail_sub1']);
-						});
-					}
-					else
-					{
-						//Live format email					
-						$headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-						$headers .= 'From:'. $mail_send_from . "\r\n";
-				
-						$data = mail($email,$mail_sub,$email_content,$headers);
-					}
-				}
-		 	}	
-		}
+		$car = new Car();
+		$car->manufacturing = $manufacturing;
+		$car->registration = $registration;
+		$car->manufacturing_date = $manufacturing_date;
+		$car->chassis = $chassis;
+		$car->model = $model;
+		$car->kilometers = $kilometers;
 			
 		return redirect('/customer/list')->with('message','Successfully Submitted');
 	}
