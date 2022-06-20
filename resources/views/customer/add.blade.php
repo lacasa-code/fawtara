@@ -94,6 +94,14 @@
 									</div>
 								</div>	
 							</div>
+
+							<input type="hidden" name="_token" value="{{csrf_token()}}">
+							<div class="form-group col-md-12 col-sm-12 col-xs-12">
+								<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+									<a class="btn btn-primary" href="{{ URL::previous() }}">{{ trans('app.Cancel')}}</a>
+									<button type="submit" class="btn btn-success customerAddSubmitButton">{{ trans('app.Submit')}}</button>
+								</div>
+							</div>
 						</form>
 					</div>
 				</div>
