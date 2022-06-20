@@ -1498,8 +1498,8 @@ return[
     "process_quotation"=>"Process quotation",
     'service_no'=>'Service No',
 
-	'Enter Customer Name'=> "Enter Customer Name",
-
+	"Enter Customer Name"=> "Enter Customer Name",
+    'customer name is required.' =>'customer name is required.'
 
 ];
 
