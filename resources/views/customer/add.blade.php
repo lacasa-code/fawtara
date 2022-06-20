@@ -41,7 +41,8 @@
 								<h4><b>{{ trans('app.Personal Information')}}</b></h4>
 								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
 							</div>
-						
+							
+<!--						
 							<div class="col-md-12 col-sm-6 col-xs-12">  
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('firstname') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="firstname">{{ trans('app.First Name') }} <label class="color-danger">*</label> </label>
@@ -113,7 +114,7 @@
 										<span class="help-block">
 												<strong style="margin-left:27%;">{{ $errors->first('dob') }}</strong>
 										</span>
-									@endif -->
+									@endif 
 								</div>
 							</div>
 
@@ -192,7 +193,7 @@
 											<span class="help-block">
 												<strong>{{ $errors->first('image') }}</strong>
 											</span>
-										@endif -->
+										@endif 
 
 										<img src="#" id="imagePreview" alt="User Image" class="imageHideShow" style="width: 20%; display: none; padding-top: 8px;">
 									</div>
@@ -254,7 +255,7 @@
 								</div>
 							</div>
 
-						<!-- Custom field data  -->
+						
 							@if(!empty($tbl_custom_fields))
 								<div class="col-md-12 col-xs-12 col-sm-12 space">
 									<h4><b>{{ trans('app.Custom Fields')}}</b></h4>
@@ -342,7 +343,6 @@
 									}
 								?>			
 							@endif
-						<!-- Custom field data -->
 						
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
@@ -350,7 +350,7 @@
 									<a class="btn btn-primary" href="{{ URL::previous() }}">{{ trans('app.Cancel')}}</a>
 									<button type="submit" class="btn btn-success customerAddSubmitButton">{{ trans('app.Submit')}}</button>
 								</div>
-							</div>
+							</div>-->
 						</form>
 					</div>
 				</div>
@@ -359,7 +359,7 @@
 	</div>
 <!-- Page content end -->
 
-
+								
 <!-- Scripts starting -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{ URL::asset('vendors/moment/min/moment.min.js') }}"></script>
