@@ -1472,6 +1472,8 @@ return[
 	"Add Branch Admin" => "إضافة مدير الفرع",
 	"View Branch Admin" => "عرض مدير الفرع",
 	"Edit Branch Admin" => "تحرير مدير الفرع",
+
+	'Enter Customer Name'=> "ادخل اسم العميل ",
  ];
 
 ?>
