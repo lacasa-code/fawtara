@@ -16,7 +16,7 @@
     width: 100%;
 }
 fieldset {
-border 1px solid #ddd;
+border: 1px solid #ddd;
 border-radius: 6px;
 }
 </style>
@@ -225,7 +225,7 @@ border-radius: 6px;
 											</span>
 										</div>
 									</div>
-                                </fieldset>
+								</fieldset>
 
 								@endforeach
 
