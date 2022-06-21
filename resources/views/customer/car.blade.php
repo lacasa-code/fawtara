@@ -41,6 +41,18 @@
 						<form id="demo-form2" action="{!! url('/customer/store')!!}" method="post" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left input_mask customerAddForm">
 
 	
+                               <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
+									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="customer_id">{{ trans('Customers')}} <label class="color-danger">*</label></label>
+									<div class="col-md-8 col-sm-8 col-xs-12">
+									  <select class="form-control  select_customer" name="customer" ">
+										<option value="">{{ trans('Select Customer :')}}</option>
+											@foreach ($customer as $customers)
+											<option value="{{ $customers->id }}">{{$customers->name }}</option>
+											@endforeach
+									  </select>
+									  	
+									</div>
+								</div>
 							<div class="col-md-12 col-sm-6 col-xs-12">  
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
