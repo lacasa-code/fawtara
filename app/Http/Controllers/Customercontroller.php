@@ -78,7 +78,7 @@ class Customercontroller extends Controller
 		return redirect('/customer/list')->with('message','Successfully Submitted');
 	}
 
-	public function car( CustomerAddEditFormRequest $request)
+	public function car(CarAddEditFormRequest $request)
 	{
 		
 		$manufacturing = $request->manufacturing;
