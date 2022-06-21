@@ -172,7 +172,7 @@ border-radius: 6px;
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('Manufacturing')}}</b>		</div>
+											 <b>{{ trans('Manufacturing')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> manufacturing }}</span>
@@ -182,7 +182,7 @@ border-radius: 6px;
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('Registration')}}</b>		</div>
+											 <b>{{ trans('Registration')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> registration }}</span>
@@ -192,7 +192,7 @@ border-radius: 6px;
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('Date Of Manufacturing')}}</b>		</div>
+											 <b>{{ trans('Date Of Manufacturing')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> manufacturing_date }}</span>
@@ -202,7 +202,7 @@ border-radius: 6px;
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('app.Chassis')}}</b>		</div>
+											 <b>{{ trans('app.Chassis')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> chassis }}</span>
@@ -212,7 +212,7 @@ border-radius: 6px;
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('Model No')}}</b>		</div>
+											 <b>{{ trans('Model No')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> model }}</span>
@@ -222,7 +222,7 @@ border-radius: 6px;
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('kilometers')}}</b>		</div>
+											 <b>{{ trans('kilometers')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> kilometers }}</span>
@@ -234,10 +234,12 @@ border-radius: 6px;
                                 <br>
 								@endforeach
 
+								<?php $n=1;?>
+
 								@foreach($invoice as $invices)
-								<div class="table_row">
+								    <div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('Invoice No.')}}</b>		</div>
+											<b>{{ trans('Invoice')}}{{$n}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											
@@ -245,6 +247,8 @@ border-radius: 6px;
 											</span>
 										</div>
 									</div>
+									<?php $i++; ?>
+
                                 @endforeach
 
 									
