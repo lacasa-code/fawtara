@@ -241,7 +241,7 @@ border-radius: 6px;
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											
-											<a class="txt_color" href="{!! url('/invoice/show/electronic/'.{{ $invices ->id }})!!}">{{ $invices -> 	Invoice_Number }}</a>
+											<a class="txt_color" href="{!! url('/invoice/show/electronic/'.$invices ->id)!!}">{{ $invices -> 	Invoice_Number }}</a>
 											</span>
 										</div>
 									</div>
