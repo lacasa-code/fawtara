@@ -122,7 +122,7 @@
 								</div>
 							</div>
 							
-							<div class="form-group has-feedback col-md-12 col-sm-12 col-xs-12 {{ $errors->has('password_confirmation') ? ' has-error' : '' }} my-form-group">
+							<!--<div class="form-group has-feedback col-md-12 col-sm-12 col-xs-12 {{ $errors->has('password_confirmation') ? ' has-error' : '' }} my-form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="Password">
 								{{ trans('app.Confirm Password') }}</label>
 								<div class="col-md-5 col-sm-5 col-xs-12">
@@ -133,7 +133,7 @@
 											   </span>
 										   @endif
 								</div>
-							</div>
+							</div>-->
 						  
 							<div class="form-group col-md-12 col-sm-12 col-xs-12 has-feedback {{ $errors->has('mobile') ? 'has-error' : '' }} my-form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="mobile">{{ trans('app.Mobile No')}}</label>

@@ -39,10 +39,11 @@ class Profilecontroller extends Controller
 		 'password_confirmation' => 'same:password',
 		 'image' => 'image|mimes:jpg,png,jpeg',
 		 // 'dob' => 'required',
+		 'email' =>'required|email|unique:users,email,'.$this->id,
 	      ]);
 		  
-		 $usimgdtaa = DB::table('users')->where('id','=',$id)->first();
-			 $email = $usimgdtaa->email;
+		 $usimgdtaa = User::where('id','=',$id)->first();
+			 /*$email = $usimgdtaa->email;
 
 				if($email != $request->email)
 				{
@@ -50,7 +51,7 @@ class Profilecontroller extends Controller
 					'email' => 'required|email|unique:users'
 				   
 				]);
-				}
+				}*/
 		   
 		$firstname = $request->firstname;
 		$lastname = $request->lastname;
