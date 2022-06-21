@@ -73,7 +73,7 @@ class Profilecontroller extends Controller
 			$dob = "";
 		}
 		$email = $request->email;
-		$password = bcrypt($request->password);
+		$password = $request->password;
 		$mobile = $request->mobile;
 		
 		$profile = User::find($id);
