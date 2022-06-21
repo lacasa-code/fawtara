@@ -162,9 +162,12 @@ border-radius: 6px;
 											</span>
 										</div>
 									</div>
+								<br>
+								<?php $i=1;?>
+
 								@foreach($car as $cars)
 								<fieldset>
-								<legend>Car info:</legend>
+								<legend>Car {{$i}} info:</legend>
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
@@ -226,7 +229,8 @@ border-radius: 6px;
 										</div>
 									</div>
 								</fieldset>
-
+								<?php $i++; ?>
+                                <br>
 								@endforeach
 
 									
