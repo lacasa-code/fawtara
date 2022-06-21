@@ -15,6 +15,7 @@ use App\Car;
 use App\Customer;
 use App\Electronicinvoice;
 use App\Http\Requests\CustomerAddEditFormRequest;
+use App\Http\Requests\CarAddEditFormRequest;
 
 class Customercontroller extends Controller
 {
