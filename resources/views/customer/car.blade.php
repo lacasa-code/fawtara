@@ -67,16 +67,14 @@
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
-                                    <div class="col-md-8 col-sm-8 col-xs-12 input-group date datepicker" >
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-									    <input type="text"  name="manufacturing_date" autocomplete="off" id="manufacturing_date" class="form-control invoiceDate" placeholder="<?php echo getDatepicker();?>" onkeypress="return false;" required >
-										@if ($errors->has('manufacturing_date'))
-									        <span class="help-block">
-										        <strong>{{ $errors->first('manufacturing_date') }}</strong>
-									        </span>
-									    @endif
-												
-                                    </div>
+									<div class="col-md-8 col-sm-8 col-xs-12">
+									<input type="text"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}"  class="form-control" >
+									  @if ($errors->has('manufacturing_date'))
+									   <span class="help-block">
+										   <strong>{{ $errors->first('manufacturing_date') }}</strong>
+									   </span>
+									  @endif
+                                      
 									</div>
 								</div>	
 							</div>
@@ -146,16 +144,7 @@
 	</div>
 	
 
-	<script>
-        $(document).ready(function()
-        {
-
-            $('.datepicker').datetimepicker({
-            format: "<?php echo getDatepicker(); ?>",
-		    autoclose: 1,
-		    minView: 2,});
-        }
-    </script>							
+								
  
 
 
