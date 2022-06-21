@@ -465,7 +465,7 @@ class Customercontroller extends Controller
 		$customer->mail = $mail;
 		$customer->address = $address;			
 		$customer->save();	
-		$car = DB::table('cars')->where('customer_id','=',$id)->first();
+		$car = Car::where('customer_id','=',$id)->first();
         $car->manufacturing = $manufacturing;
 		$car->registration = $registration;
 		$car->manufacturing_date = $manufacturing_date;
