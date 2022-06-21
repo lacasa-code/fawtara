@@ -32,14 +32,14 @@ class Profilecontroller extends Controller
 	public function update($id, Request $request)
 	{
 		$this->validate($request, [  
-         'firstname' => 'regex:/^[(a-zA-Z\s)]+$/u',
-		 'lastname'=>'regex:/^[(a-zA-Z\s)]+$/u',
+         'firstname' => 'regex:/^[(A-Za-z0-9)]+$/u',
+		 'lastname'=>'regex:/^[(A-Za-z0-9)]+$/u',
 		 'password'=>'nullable|min:6|max:12|regex:/(^[A-Za-z0-9]+$)+/',
          'mobile'=>'nullable|max:15|min:10|regex:/^[- +()]*[0-9][- +()0-9]*$/',
 		 'password_confirmation' => 'same:password',
 		 'image' => 'image|mimes:jpg,png,jpeg',
 		 // 'dob' => 'required',
-		 'email' =>'required|email|unique:users,email,'.$this->id,
+		 'email' =>'required|email',
 	      ]);
 		  
 		 $usimgdtaa = User::where('id','=',$id)->first();
