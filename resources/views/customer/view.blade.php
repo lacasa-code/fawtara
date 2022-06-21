@@ -137,7 +137,7 @@
 											<b>{{ trans('app.Email')}}</b> 	
 										</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
-											<span class="txt_color">{{ $new_customer -> email }}</span>
+											<span class="txt_color">{{ $new_customer -> mail }}</span>
 										</div>
 									</div>
 									<div class="table_row">
@@ -162,7 +162,7 @@
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('app.Manufacturing Name')}}</b>		</div>
+											<i class="fa fa-map-marker"></i> <b>{{ trans('Manufacturing')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> manufacturing }}</span>
@@ -172,7 +172,7 @@
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('app.Registration No.')}}</b>		</div>
+											<i class="fa fa-map-marker"></i> <b>{{ trans('Registration')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> registration }}</span>
@@ -182,7 +182,7 @@
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('app.Date Of Manufacturing:')}}</b>		</div>
+											<i class="fa fa-map-marker"></i> <b>{{ trans('Date Of Manufacturing')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> manufacturing_date }}</span>
@@ -202,7 +202,7 @@
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('app.Model No')}}</b>		</div>
+											<i class="fa fa-map-marker"></i> <b>{{ trans('Model No')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> model }}</span>
@@ -212,7 +212,7 @@
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-map-marker"></i> <b>{{ trans('app.kilometers:')}}</b>		</div>
+											<i class="fa fa-map-marker"></i> <b>{{ trans('kilometers')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											    <span class="txt_color">{{ $cars -> kilometers }}</span>
