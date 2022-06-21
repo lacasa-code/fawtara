@@ -425,7 +425,7 @@ class Customercontroller extends Controller
 	 {   
 	    $editid = $id;
         $customer =Customer::where('id','=',$id)->first();
-		$cars =Car::where('customers_id','=',$id)->get();
+		$cars =Car::where('customer_id','=',$id)->get();
 
 		return view('customer.update',compact('editid','customer','cars'));
 	
