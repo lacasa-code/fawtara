@@ -36,10 +36,9 @@ class Profilecontroller extends Controller
 		 //'lastname'=>'regex:/(^[A-Za-z0-9]+$)+/',
 		 'password'=>'nullable|min:6|max:12',
          'mobile'=>'nullable|max:15|min:10|regex:/^[- +()]*[0-9][- +()0-9]*$/',
-		 'password_confirmation' => 'same:password',
 		 'image' => 'image|mimes:jpg,png,jpeg',
 		 // 'dob' => 'required',
-		 'email' =>'required|email',
+		 'email' =>'email|unique:users,email,'.$this->id,
 	      ]);
 		  
 		 $usimgdtaa = User::where('id','=',$id)->first();
