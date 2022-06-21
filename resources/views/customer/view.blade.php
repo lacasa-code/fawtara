@@ -15,6 +15,10 @@
     font-size: 20px;
     width: 100%;
 }
+fieldset {
+border 1px solid #ddd;
+border-radius: 6px;
+}
 </style>
 
 <!-- page content -->
