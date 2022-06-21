@@ -30,7 +30,7 @@
 				@can('customer_add')
 					<li role="presentation" class="active"><a href="{!! url('/customer/add')!!}"><span class="visible-xs"></span><i class="fa fa-plus-circle fa-lg">&nbsp;</i> <b>{{ trans('app.Add Customer') }}</b></a></li>
 				@endcan
-				<li role="presentation" class=""><a href="{!! url('/customer/add/car')!!}"><span class="visible-xs"></span><i class="fa fa-list fa-lg">&nbsp;</i> {{ trans('Add Car') }}</a></li>
+				<li role="presentation" class=""><a href="{!! url('/customer/list')!!}"><span class="visible-xs"></span><i class="fa fa-list fa-lg">&nbsp;</i> {{ trans('Add Car') }}</a></li>
 
             </ul>
 		</div>
@@ -39,65 +39,8 @@
                 <div class="x_panel">
                     <div class="x_content">
 						<form id="demo-form2" action="{!! url('/customer/store')!!}" method="post" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left input_mask customerAddForm">
-							<div class="col-md-12 col-xs-12 col-sm-12 space">
-								<h4><b>{{ trans('app.Personal Information')}}</b></h4>
-								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
-							</div>
 
-							<div class="col-md-12 col-sm-6 col-xs-12">  
-							    <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="firstname">{{ trans('app.Name:') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-									  <input type="text" id="name" name="name" class="name form-control"  placeholder="{{ trans('app.Enter Customer Name')}}" maxlength="50">
-									  @if ($errors->has('name'))
-									   <span class="help-block">
-										   <strong>{{ $errors->first('name') }}</strong>
-									   </span>
-									 @endif
-									</div>
-								</div>
-
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('mail') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="email">{{ trans('app.Email') }} <label class="color-danger">*</label></label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text" id="mail" name="mail" placeholder="{{ trans('app.Enter Email')}}"  maxlength="50"
-										class="form-control mail">
-										@if ($errors->has('mail'))
-										<span class="help-block">
-											<strong>{{ $errors->first('mail') }}</strong>
-										</span>
-										@endif
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-12 col-sm-6 col-xs-12">  
-							    <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('address') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="address">{{ trans('app.Address') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-									   <textarea class="form-control addressTextarea" id="address" name="address" placeholder="{{ trans('Enter Customer Address')}}" ></textarea>
-									  @if ($errors->has('address'))
-									   <span class="help-block">
-										   <strong>{{ $errors->first('address') }}</strong>
-									   </span>
-									 @endif
-									</div>
-								</div>
-
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('phone') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="phone">{{ trans('app.Mobile No') }} <label class="color-danger" >*</label></label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="phone" placeholder="{{ trans('app.Enter Mobile No')}}"  class="form-control" >
-										@if ($errors->has('phone'))
-											<span class="help-block">
-												<strong>{{ $errors->first('phone') }}</strong>
-									   		</span>
-										@endif
-									</div>
-								</div>	
-							</div>
-
-							
+	
 							<div class="col-md-12 col-sm-6 col-xs-12">  
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
