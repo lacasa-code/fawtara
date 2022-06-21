@@ -105,6 +105,11 @@
 									</div>
 							</div>
 						
+							<div class="col-md-12 col-xs-12 col-sm-12 space">
+								<h4><b>{{ trans('Car Information')}}</b></h4>
+								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
+							</div>
+
 
 
 
