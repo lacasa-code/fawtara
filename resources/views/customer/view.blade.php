@@ -148,34 +148,7 @@
 											</span>
 										</div>
 									</div>
-									<!--<div class="table_row">
-										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-calendar"></i><b> {{ trans('app.Date Of Birth')}}</b>	
-										</div>
-										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
-											<span class="txt_color">
-											@if(!empty($customer->birth_date))
-												{{ date(getDateFormat(),strtotime($customer->birth_date)) }}
-											@else
-												{{ trans('app.Not Added') }}
-											@endif
-											</span>
-										</div>
-									</div>
-									<div class="table_row">
-										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-mars"></i> <b>{{ trans('app.Gender')}} </b>
-										</div>
-										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
-											<span class="txt_color">
-											@if($customer->gender =='0')
-											  <?php echo"male ";?>
-											  @else
-												<?php echo"female";?>
-											@endif
-														 </span>
-										</div>
-									</div> -->
+									
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
 											<i class="fa fa-map-marker"></i> <b>{{ trans('app.Address')}}</b>		</div>
