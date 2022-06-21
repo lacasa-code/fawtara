@@ -158,6 +158,7 @@
 											</span>
 										</div>
 									</div>
+								@foreach($car as $cars)
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
@@ -218,6 +219,7 @@
 											</span>
 										</div>
 									</div>
+								@endforeach
 
 									
 								</div>

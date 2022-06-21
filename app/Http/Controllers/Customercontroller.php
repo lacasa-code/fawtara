@@ -132,7 +132,7 @@ class Customercontroller extends Controller
 
 		$new_customer = Customer::where('customers.id','=',$id)->first();
 				
-        $cars = Car::where('customer_id','=',$id)->get();
+        $car = Car::where('customer_id','=',$id)->get();
 		$invoice=Electronicinvoice::where('customer_id','=',$id)->get();
 		/*if (!isAdmin(Auth::User()->role_id))
 		{
@@ -243,7 +243,7 @@ class Customercontroller extends Controller
 		}*/
 
 		
-		return view('customer.view',compact('cars','new_customer','viewid','invoice'));
+		return view('customer.view',compact('car','new_customer','viewid','invoice'));
 	}
 	
 	// free service modal
