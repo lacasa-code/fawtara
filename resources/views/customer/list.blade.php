@@ -43,7 +43,8 @@
 						@can('customer_add')
 						 	<li role="presentation" class=""><a href="{!! url('/customer/add')!!}"><span class="visible-xs"></span><i class="fa fa-plus-circle fa-lg">&nbsp;</i> {{ trans('app.Add Customer') }}</a></li>
 						@endcan
-					
+						<li role="presentation" class=""><a href="{!! url('/customer/add/car')!!}"><span class="visible-xs"></span><i class="fa fa-list fa-lg">&nbsp;</i> {{ trans('Add Car') }}</a></li>
+
 					</ul>
 				</div>
 				<div class="x_panel bgr">
