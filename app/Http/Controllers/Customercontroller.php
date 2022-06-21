@@ -448,7 +448,7 @@ class Customercontroller extends Controller
 		$kilometers = $request->kilometers;
 
 		$user = DB::table('customers')->where('id','=',$id)->first();
-		$email = $user->mail;
+		/*$email = $user->mail;
 		if(!empty($email))
 		{
 			if($email != $mail)
@@ -457,7 +457,7 @@ class Customercontroller extends Controller
 					'email' => 'required|email|unique:customers'
 				]);
 			}
-		}
+		}*/
 		  
 		$customer = Customer::find($id);
 		$customer->name = $name;
