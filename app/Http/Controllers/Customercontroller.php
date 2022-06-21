@@ -78,6 +78,57 @@ class Customercontroller extends Controller
 		return redirect('/customer/list')->with('message','Successfully Submitted');
 	}
 
+	public function car($id)
+	{
+		
+		$name = $request->name;
+		$address = $request->address;
+		$phone = $request->phone;
+		$mail = $request->mail;
+		$manufacturing = $request->manufacturing;
+		$registration = $request->registration;
+		$manufacturing_date = $request->manufacturing_date;
+		$chassis = $request->chassis;
+		$model = $request->model;
+		$kilometers = $request->kilometers;
+
+
+
+		if(!empty($mail))
+		{
+			$mail = $mail;
+		}else{
+			$mail = null;
+		}
+		
+		$customer = new Customer;
+		$customer->name = $name;
+		$customer->phone = $phone;
+		$customer->mail = $mail;
+		$customer->address = $address;
+        
+		$customer->save();
+
+		$car = new Car;
+		$car->manufacturing = $manufacturing;
+		$car->registration = $registration;
+		$car->manufacturing_date = $manufacturing_date;
+		$car->chassis = $chassis;
+		$car->model = $model;
+		$car->kilometers = $kilometers;
+		$car->customer_id=$customer->id;
+		$car->save();
+			
+		return redirect('/customer/list')->with('message','Successfully Submitted');
+	}
+
+	public function addCar()
+	{
+		$car= Car::get();
+		return view('customer.car');
+
+	}
+
 	//customer list
 	public function index()
 	{    
