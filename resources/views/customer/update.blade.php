@@ -57,7 +57,11 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12"  for="name">{{ trans('app.Name:')}} <label class="color-danger">*</label> </label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
 									  		<input type="text" id="name" name="name" placeholder="{{ trans('app.Enter Customer Name')}}" value="{{$customer->name}}" class="form-control" maxlength="50">
-
+											@if ($errors->has('name'))
+									            <span class="help-block">
+										            <strong>{{ $errors->first('name') }}</strong>
+									            </span>
+									        @endif
 										</div>
 									</div>
 
@@ -65,7 +69,11 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="mail">{{ trans('app.Email')}} <label class="color-danger lastname">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
 											<input type="text" id="mail"  name="mail" placeholder="{{ trans('app.Enter Email')}}" value="{{$customer->mail}}"class="form-control" maxlength="50">
-
+											@if ($errors->has('mail'))
+										        <span class="help-block">
+											        <strong>{{ $errors->first('mail') }}</strong>
+										        </span>
+										@endif
 										</div>
 									</div>
 							</div>
