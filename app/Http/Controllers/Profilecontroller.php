@@ -32,8 +32,8 @@ class Profilecontroller extends Controller
 	public function update($id, Request $request)
 	{
 		$this->validate($request, [  
-         'firstname' => 'regex:/(^[A-Za-z0-9]+$)+/',
-		 'lastname'=>'regex:/(^[A-Za-z0-9]+$)+/',
+         'firstname' => 'required',
+		 //'lastname'=>'regex:/(^[A-Za-z0-9]+$)+/',
 		 'password'=>'nullable|min:6|max:12',
          'mobile'=>'nullable|max:15|min:10|regex:/^[- +()]*[0-9][- +()0-9]*$/',
 		 'password_confirmation' => 'same:password',
@@ -74,7 +74,7 @@ class Profilecontroller extends Controller
 			$dob = "";
 		}
 		$email = $request->email;
-		$password = ($request->password);
+		$password = bcrypt($request->password);
 		$mobile = $request->mobile;
 		
 		$profile = User::find($id);
