@@ -159,6 +159,8 @@
 										</div>
 									</div>
 								@foreach($car as $cars)
+								<fieldset>
+								<legend>Car info:</legend>
 
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
@@ -219,6 +221,8 @@
 											</span>
 										</div>
 									</div>
+                                </fieldset>
+
 								@endforeach
 
 									
