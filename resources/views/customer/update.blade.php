@@ -51,6 +51,24 @@
 								<h4><b>{{ trans('app.Personal Information')}}</b></h4>
 								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
 							</div>
+
+							<div class="col-md-12 col-sm-6 col-xs-12">  
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
+										<label class="control-label col-md-4 col-sm-4 col-xs-12"  for="name">{{ trans('app.Name:')}} <label class="color-danger">*</label> </label>
+										<div class="col-md-8 col-sm-8 col-xs-12">
+									  		<input type="text" id="name" name="name" placeholder="{{ trans('app.Enter Customer Name')}}" value="{{$customer->name}}" class="form-control" maxlength="50">
+
+										</div>
+									</div>
+
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('mail') ? ' has-error' : '' }}">
+										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="mail">{{ trans('app.Email')}} <label class="color-danger lastname">*</label></label>
+										<div class="col-md-8 col-sm-8 col-xs-12">
+											<input type="text" id="mail"  name="mail" placeholder="{{ trans('app.Enter Email')}}" value="{{$customer->mail}}"class="form-control" maxlength="50">
+
+										</div>
+									</div>
+							</div>
 						
 
 
