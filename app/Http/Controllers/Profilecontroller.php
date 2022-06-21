@@ -38,7 +38,7 @@ class Profilecontroller extends Controller
          'mobile'=>'nullable|max:15|min:10|regex:/^[- +()]*[0-9][- +()0-9]*$/',
 		 'image' => 'image|mimes:jpg,png,jpeg',
 		 // 'dob' => 'required',
-		 'email' =>'email|unique:users,email,'.$this->id,
+		 'email' =>'email',
 	      ]);
 		  
 		 $usimgdtaa = User::where('id','=',$id)->first();
