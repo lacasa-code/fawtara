@@ -33,7 +33,8 @@ class CustomerAddEditFormRequest extends FormRequest
             'manufacturing_date' => 'required',            
             'chassis' => 'required',            
             'model' => 'required',            
-            'kilometers' => 'required',            
+            'kilometers' => 'required',
+            'customer_id',            
 
         ];
     }
@@ -57,8 +58,8 @@ class CustomerAddEditFormRequest extends FormRequest
             'phone.regex' => trans('app.Contact number must be number, plus, minus and space only.'),
 
             'address.required'  => trans('app.Address field is required.'), 
-            'manufacturing.required' => trans('app.manufacturing field is required.'),
-            'registration.required' => trans('app.registration field is required.'),
+            'manufacturing.required' => trans('manufacturing field is required.'),
+            'registration.required' => trans('registration field is required.'),
             'manufacturing_date.required' => trans('app.manufacturing_date field is required.'),
             'chassis.required' => trans('app.chassis field is required.'),
             'model.required' => trans('app.model field is required.'),
