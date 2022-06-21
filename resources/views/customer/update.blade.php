@@ -77,6 +77,33 @@
 										</div>
 									</div>
 							</div>
+						    
+							<div class="col-md-12 col-sm-6 col-xs-12">  
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('address') ? ' has-error' : '' }}">
+										<label class="control-label col-md-4 col-sm-4 col-xs-12"  for="address">{{ trans('app.Address')}} <label class="color-danger">*</label> </label>
+										<div class="col-md-8 col-sm-8 col-xs-12">
+											  <textarea class="form-control addressTextarea" id="address" name="address" placeholder="{{ trans('Enter Customer Address')}}"  value="{{$customer->address}}"></textarea>
+
+											    @if ($errors->has('address'))
+									                <span class="help-block">
+										                <strong>{{ $errors->first('address') }}</strong>
+									                </span>
+									            @endif
+										</div>
+									</div>
+
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('phone') ? ' has-error' : '' }}">
+										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="phone">{{ trans('app.Mobile No')}} <label class="color-danger lastname">*</label></label>
+										<div class="col-md-8 col-sm-8 col-xs-12">
+											<input type="text" id="phone"  name="phone" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{$customer->phone}}"class="form-control" maxlength="50">
+											@if ($errors->has('phone'))
+											<span class="help-block">
+												<strong>{{ $errors->first('phone') }}</strong>
+									   		</span>
+										    @endif
+										</div>
+									</div>
+							</div>
 						
 
 
