@@ -28,13 +28,13 @@ class CustomerAddEditFormRequest extends FormRequest
             'mail' => 'required|email|unique:customers,mail,'.$this->id,
             'phone' => 'required|min:9|max:14|regex:/^[- +()]*[0-9][- +()0-9]*$/',
             'address' => 'required',  
-            'manufacturing' => 'required',            
-            'registration' => 'required',            
-            'manufacturing_date' => 'required',            
-            'chassis' => 'required',            
-            'model' => 'required',            
-            'kilometers' => 'required',
-            'customer_id',            
+            //'manufacturing' => 'required',            
+            //'registration' => 'required',            
+            //'manufacturing_date' => 'required',            
+            //'chassis' => 'required',            
+            //'model' => 'required',            
+            //'kilometers' => 'required',
+            //'customer_id',            
 
         ];
     }
@@ -58,12 +58,12 @@ class CustomerAddEditFormRequest extends FormRequest
             'phone.regex' => trans('app.Contact number must be number, plus, minus and space only.'),
 
             'address.required'  => trans('app.Address field is required.'), 
-            'manufacturing.required' => trans('manufacturing field is required.'),
-            'registration.required' => trans('registration field is required.'),
-            'manufacturing_date.required' => trans('app.manufacturing_date field is required.'),
-            'chassis.required' => trans('app.chassis field is required.'),
-            'model.required' => trans('app.model field is required.'),
-            'kilometers.required' => trans('app.kilometers field is required.'),
+            //'manufacturing.required' => trans('manufacturing field is required.'),
+            //'registration.required' => trans('registration field is required.'),
+            //'manufacturing_date.required' => trans('app.manufacturing_date field is required.'),
+            //'chassis.required' => trans('app.chassis field is required.'),
+            //'model.required' => trans('app.model field is required.'),
+            //'kilometers.required' => trans('app.kilometers field is required.'),
 
         ];
 
