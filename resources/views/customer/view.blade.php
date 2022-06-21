@@ -239,7 +239,7 @@ border-radius: 6px;
 								@foreach($invoice as $invices)
 								    <div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<b>{{ trans('Invoice')}}{{$n}}</b>		</div>
+											<b>{{ trans('Invoice')}} {{$n}} :</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
 											
@@ -247,7 +247,7 @@ border-radius: 6px;
 											</span>
 										</div>
 									</div>
-									<?php $i++; ?>
+									<?php $n++; ?>
 
                                 @endforeach
 
