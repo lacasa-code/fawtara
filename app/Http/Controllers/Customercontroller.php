@@ -243,7 +243,7 @@ class Customercontroller extends Controller
 		}*/
 
 		
-		return view('customer.view',compact('cars','new_customer','viewid','invoice','$user_id'));
+		return view('customer.view',compact('cars','new_customer','viewid','invoice','$userid'));
 	}
 	
 	// free service modal
