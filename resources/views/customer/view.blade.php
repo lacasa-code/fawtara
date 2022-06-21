@@ -166,6 +166,7 @@ border-radius: 6px;
 								<?php $i=1;?>
 
 								@foreach($car as $cars)
+								<br>
 								<fieldset>
 								<legend>Car {{$i}} info:</legend>
 
@@ -232,6 +233,19 @@ border-radius: 6px;
 								<?php $i++; ?>
                                 <br>
 								@endforeach
+
+								@foreach($invoice as $invices)
+								<div class="table_row">
+										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
+											<i class="fa fa-map-marker"></i> <b>{{ trans('Invoice No.')}}</b>		</div>
+										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
+											<span class="txt_color">
+											
+											<span class="txt_color" href="{!! url('/invoice/show/electronic/'.{{ $invices ->id }})!!}">{{ $invices -> 	Invoice_Number }}</span>
+											</span>
+										</div>
+									</div>
+                                @endforeach
 
 									
 								</div>
