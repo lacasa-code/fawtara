@@ -125,7 +125,8 @@ class Customercontroller extends Controller
 	public function addCar()
 	{
 		$car= Car::get();
-		return view('customer.car');
+		$customer=Customer::get();
+		return view('customer.car',compact('car','customer'));
 
 	}
 
