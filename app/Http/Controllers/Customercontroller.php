@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Gate;
 use App\User;
 use App\Car;
 use App\Customer;
+use App\Electronicinvoice;
 use App\Http\Requests\CustomerAddEditFormRequest;
 
 class Customercontroller extends Controller
@@ -118,6 +119,7 @@ class Customercontroller extends Controller
 			$new_customer=Customer::get();
   
 		}
+		$new_customer=Customer::get();
 
 		return view('customer.list',compact('customer','new_customer'));
 	}
@@ -128,38 +130,24 @@ class Customercontroller extends Controller
 		$viewid = $id;
 		$userid = Auth::User()->id;
 
-		if (!isAdmin(Auth::User()->role_id))
+		$new_customer = Customer::where('customers.id','=',$id)->first();
+				
+        $cars = Car::where('customer_id','=',$id)->get();
+		$invoice=Electronicinvoice::where('customer_id','=',$id)->get();
+		/*if (!isAdmin(Auth::User()->role_id))
 		{
 			if (getUsersRole(Auth::user()->role_id) == 'Customer')
 			{
 				$customer = User::where('id','=',$id)->first();
 				
-				//$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();				
 				
 				
 				$new_customer = Customer::where('customers.id','=',$id)
 				->join('cars','cars.customer_id' ,'customers.id')
 				->first();
-				/*$freeservice = Service::
-			                            where([['tbl_services.done_status','!=',2],['tbl_services.service_type','=','free']])
-										->where('tbl_services.customer_id','=',$id)
-										->orderBy('tbl_services.id','desc')->take(5)
-										->select('tbl_services.*')
-										->get();
 
-				$paidservice = Service::
-			                            where([['tbl_services.done_status','!=',2],['tbl_services.service_type','=','paid']])
-										->where('tbl_services.customer_id','=',$id)
-										->orderBy('tbl_services.id','desc')->take(5)
-										->select('tbl_services.*')
-										->get();								
+				$invoice=Electronicinvoice::where('customer_id','=',$id)->get();
 			
-				$repeatjob = Service::
-									where([['tbl_services.done_status','!=',2],['tbl_services.service_category','=','repeat job']])
-										->where('tbl_services.customer_id','=',$id)
-									   ->orderBy('tbl_services.id','desc')->take(5)
-										->select('tbl_services.*')
-										->get();*/
 			}
 			elseif (getUsersRole(Auth::user()->role_id) == 'Employee') 
 			{			
@@ -192,7 +180,7 @@ class Customercontroller extends Controller
 									->where('tbl_services.customer_id','=',$id)
 								   ->orderBy('tbl_services.id','desc')->take(5)
 									->select('tbl_services.*')
-									->get();*/
+									->get();
 			}
 			elseif (getUsersRole(Auth::user()->role_id) == 'Support Staff' || getUsersRole(Auth::user()->role_id) == 'Accountant' || getUsersRole(Auth::user()->role_id) == 'Branch Admin') {
 				
@@ -221,18 +209,18 @@ class Customercontroller extends Controller
 									->where('tbl_services.customer_id','=',$id)
 								   ->orderBy('tbl_services.id','desc')->take(5)
 									->select('tbl_services.*')
-									->get();*/
+									->get();
 			}
 		}
 		else
 		{
 			$customer = User::where('id','=',$id)->first();
 		
-			//$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
+			$tbl_custom_fields = CustomField::where([['form_name','=','customer'],['always_visable','=','yes']])->get();												
 			$new_customer = Customer::where('customers.id','=',$id)
 			->join('cars','cars.customer_id' ,'customers.id')
 			->first();
-			/*$freeservice = Service::
+			$freeservice = Service::
 										where([['tbl_services.done_status','!=',2],['tbl_services.service_type','=','free']])
 										->where('tbl_services.customer_id','=',$id)
 										->orderBy('tbl_services.id','desc')->take(5)
@@ -251,10 +239,11 @@ class Customercontroller extends Controller
 								->where('tbl_services.customer_id','=',$id)
 								->orderBy('tbl_services.id','desc')->take(5)
 								->select('tbl_services.*')
-								->get();*/
-		}
+								->get();
+		}*/
+
 		
-		return view('customer.view',compact('customer','new_customer','viewid'));
+		return view('customer.view',compact('cars','new_customer','viewid','invoice','$user_id'));
 	}
 	
 	// free service modal
@@ -447,17 +436,6 @@ class Customercontroller extends Controller
 		$model = $request->model;
 		$kilometers = $request->kilometers;
 
-		$user = DB::table('customers')->where('id','=',$id)->first();
-		/*$email = $user->mail;
-		if(!empty($email))
-		{
-			if($email != $mail)
-			{
-				$this->validate($request, [
-					'email' => 'required|email|unique:customers'
-				]);
-			}
-		}*/
 		  
 		$customer = Customer::find($id);
 		$customer->name = $name;
