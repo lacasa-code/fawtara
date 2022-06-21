@@ -78,36 +78,16 @@ class Customercontroller extends Controller
 		return redirect('/customer/list')->with('message','Successfully Submitted');
 	}
 
-	public function car($id)
+	public function car($id, CustomerAddEditFormRequest $request)
 	{
 		
-		$name = $request->name;
-		$address = $request->address;
-		$phone = $request->phone;
-		$mail = $request->mail;
 		$manufacturing = $request->manufacturing;
 		$registration = $request->registration;
 		$manufacturing_date = $request->manufacturing_date;
 		$chassis = $request->chassis;
 		$model = $request->model;
 		$kilometers = $request->kilometers;
-
-
-
-		if(!empty($mail))
-		{
-			$mail = $mail;
-		}else{
-			$mail = null;
-		}
-		
-		$customer = new Customer;
-		$customer->name = $name;
-		$customer->phone = $phone;
-		$customer->mail = $mail;
-		$customer->address = $address;
-        
-		$customer->save();
+        $customer_id=$request->customer_id;
 
 		$car = new Car;
 		$car->manufacturing = $manufacturing;
@@ -116,7 +96,7 @@ class Customercontroller extends Controller
 		$car->chassis = $chassis;
 		$car->model = $model;
 		$car->kilometers = $kilometers;
-		$car->customer_id=$customer->id;
+		$car->customer_id=$customer_id;
 		$car->save();
 			
 		return redirect('/customer/list')->with('message','Successfully Submitted');
