@@ -62,9 +62,9 @@ class StoreProfileSettingEditFormRequest extends FormRequest
 
             //'mobile.required' => trans('app.Contact number is required.'),
             //'mobile.numeric'  => trans('app.Contact number only numbers are allowed.'),
-            'mobile.min' => trans('app.Contact number minimum 6 digits.'),
-            'mobile.max' => trans('app.Contact number maximum 16 digits.'),
-            'mobile.regex' => trans('app.Contact number must be number, plus, minus and space only.'),
+            'mobile.min' => trans('Contact number must be  9 digits.'),
+            'mobile.max' => trans('Contact number must be 9 digits.'),
+            'mobile.regex' => trans('Contact number must be number.'),
 
             'image.mimes' => trans('app.Image must be a file of type: Jpg, Jpeg and Png.'),
             //'image.mimes' => trans('app.Image must be a file of type: Jpg, Jpeg and Png.'),
