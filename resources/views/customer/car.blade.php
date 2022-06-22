@@ -51,9 +51,9 @@ input[type=number] {
 						<form id="demo-form2" action="{!! url('/customer/car')!!}" method="post" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left input_mask customerAddForm">
 
 	
-                               <div class="col-md-12 col-sm-6 col-xs-12 form-group my-form-group has-feedback text-center">
-									<label class="control-label col-md-6 col-sm-4 col-xs-12" for="customer_id">{{ trans('Customers')}} <label class="color-danger">*</label></label>
-									<div class="col-md-6 col-sm-8 col-xs-12">
+                               <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
+									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="customer_id">{{ trans('Customers')}} <label class="color-danger">*</label></label>
+									<div class="col-md-8 col-sm-8 col-xs-12">
 									  <select class="form-control  select_customer" name="customer_id" required">
 										<option value="customer_id">{{ trans('Select Customer ')}}</option>
 											@foreach ($customer as $customers)
@@ -63,7 +63,7 @@ input[type=number] {
 									  	
 									</div>
 								</div>
-							<div class="col-md-12 col-sm-6 col-xs-12">  
+						
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
@@ -89,9 +89,7 @@ input[type=number] {
                                       
 									</div>
 								</div>	
-							</div>
-
-							<div class="col-md-12 col-sm-6 col-xs-12">  
+							
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('registration') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
 									
@@ -127,9 +125,8 @@ input[type=number] {
 									  @endif
 									</div>
 								</div>	
-							</div>
+							
 
-							<div class="col-md-12 col-sm-6 col-xs-12">  
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
@@ -152,7 +149,7 @@ input[type=number] {
 									  @endif
 									</div>
 								</div>	
-							</div>
+							
 
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
