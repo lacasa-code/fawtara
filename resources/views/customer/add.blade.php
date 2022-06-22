@@ -57,7 +57,7 @@ input[type=number] {
 							    <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('name') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="firstname">{{ trans('app.Name:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									  <input type="text" id="name" name="name" class="name form-control" value="{{old('name')}}" placeholder="{{ trans('app.Enter Customer Name')}}" maxlength="50">
+									  <input type="text" id="name" autocomplete="off" name="name" class="name form-control" value="{{old('name')}}" placeholder="{{ trans('app.Enter Customer Name')}}" maxlength="50">
 									  @if ($errors->has('name'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('name') }}</strong>
@@ -69,7 +69,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('mail') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="email">{{ trans('app.Email') }} <label class="color-danger">*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text" id="mail" name="mail" value="{{old('mail')}}" placeholder="{{ trans('app.Enter Email')}}"  maxlength="50"
+										<input type="text" id="mail" autocomplete="off" name="mail" value="{{old('mail')}}" placeholder="{{ trans('app.Enter Email')}}"  maxlength="50"
 										class="form-control mail">
 										@if ($errors->has('mail'))
 										<span class="help-block">
@@ -84,7 +84,7 @@ input[type=number] {
 							    <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('address') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="address">{{ trans('app.Address') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									   <textarea class="form-control addressTextarea" id="address" name="address"  placeholder="{{ trans('Enter Customer Address')}}" >{{old('address')}}</textarea>
+									   <textarea class="form-control addressTextarea" autocomplete="off" id="address" name="address"  placeholder="{{ trans('Enter Customer Address')}}" >{{old('address')}}</textarea>
 									  @if ($errors->has('address'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('address') }}</strong>
@@ -96,7 +96,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('phone') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="phone">{{ trans('app.Mobile No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="number"  name="phone" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{old('phone')}}" class="form-control" >
+										<input type="number"  name="phone" autocomplete="off" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{old('phone')}}" class="form-control" >
 										@if ($errors->has('phone'))
 											<span class="help-block">
 												<strong>{{ $errors->first('phone') }}</strong>
