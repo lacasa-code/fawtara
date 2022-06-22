@@ -162,7 +162,7 @@ input[type=number] {
 <script>
 $(document).ready(function() {
     $('.datetimepicker').datetimepicker();
-    format: "<?php echo getDatepicker(); ?>";
+    format: 'DD/MM/YYYY';
 	autoclose: 1;
 	minView: 2;
 });	
