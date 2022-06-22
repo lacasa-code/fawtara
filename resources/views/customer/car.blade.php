@@ -77,7 +77,7 @@ input[type=number] {
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}" id='datetimepicker'>
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12 date datepicker">
+									<div class="col-md-8 col-sm-8 col-xs-12 date datepicker glyphicon glyphicon-time">
 									
                                     <input type="text"  name="manufacturing_date" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="form-control datetimepicker" onkeypress="return false;" required >
 									
