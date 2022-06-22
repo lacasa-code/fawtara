@@ -152,7 +152,9 @@
 <script>
 $(document).ready(function() {
     $('.datetimepicker').datetimepicker();
-
+    format: "<?php echo getDatepicker(); ?>";
+	autoclose: 1;
+	minView: 2;
 });	
 </script>
 						

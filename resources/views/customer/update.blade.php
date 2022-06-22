@@ -104,7 +104,9 @@
 										</div>
 									</div>
 							</div>
-						
+							if(!empty(cars))
+							{
+							@foreach($cars as $cars)
 							<div class="col-md-12 col-xs-12 col-sm-12 space">
 								<h4><b>{{ trans('Car Information')}}</b></h4>
 								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
@@ -184,7 +186,8 @@
 									</div>
 								</div>	
 							</div>
-
+							@endforeach
+							}
 
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
