@@ -29,7 +29,7 @@ class StoreProfileSettingEditFormRequest extends FormRequest
             'email' => 'required|email|unique:users,email,'.$this->id,
             'password'=> ($this->id)?'nullable|min:6|max:12|regex:/^(?=.*[a-zA-Z\p{L}])(?=.*\d).+$/u':'min:6|max:12|regex:/^(?=.*[a-zA-Z\p{L}])(?=.*\d).+$/u',
             'password_confirmation' => ($this->id)?'same:password':'same:password',
-            'mobile' => 'nullable|min:6|max:16|regex:/^[- +()]*[0-9][- +()0-9]*$/',
+            'mobile' => 'nullable|min:9|max:9|regex:/^[- +()]*[0-9][- +()0-9]*$/',
             'image' => 'nullable|mimes:jpg,png,jpeg',
         ];
     }
