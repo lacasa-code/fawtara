@@ -104,7 +104,7 @@
 										</div>
 									</div>
 							</div>
-							if(!empty(cars))
+							if(!empty($cars))
 							{
 							@foreach($cars as $car)
 							<div class="col-md-12 col-xs-12 col-sm-12 space">
