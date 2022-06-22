@@ -166,6 +166,7 @@ $(document).ready(function() {
 	autoclose: 1;
 	minView: 2;
     pickTime: false;
+      timepicker: false;
 });	
 </script>
 						
