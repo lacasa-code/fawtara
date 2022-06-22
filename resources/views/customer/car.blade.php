@@ -93,16 +93,16 @@ input[type=number] {
 
 							<div class="col-md-12 col-sm-6 col-xs-12">  
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('registration') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="registration">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
+									<label class="control-label col-md-2 col-sm-4 col-xs-12" for="registration">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
 									
-                                    <div class="col-md-3 col-sm-8 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
+                                    <div class="col-md-2 col-sm-8 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
 											<input type="text" name="reg_chars" class="form-control" placeholder="a b c" value="{{old('reg_chars')}}">
 											@if($errors->has('reg_chars'))
                                                 <span class="help-block" style="color:red;">{{$errors->first('reg_chars')}}</span>
                                             @endif
 									</div>
                                     
-									<div class="col-md-3 col-sm-8 col-xs-12 {{$errors->has('registeration') ? ' has-error' : ''}}">
+									<div class="col-md-2 col-sm-8 col-xs-12 {{$errors->has('registeration') ? ' has-error' : ''}}">
 										<input type="number" name="registeration" placeholder="1 2 3" class="form-control" value="{{old('registeration')}}">
 										@if($errors->has('registeration'))
                                             <span class="help-block" style="color:red;">{{$errors->first('registeration')}}</span>
