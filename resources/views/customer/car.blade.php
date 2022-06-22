@@ -98,17 +98,21 @@ input[type=number] {
                                     <div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
 											<input type="text" name="reg_chars" class="form-control" placeholder="a b c" value="{{old('reg_chars')}}">
 											@if($errors->has('reg_chars'))
-                                                <span class="help-block" style="color:red;">{{$errors->first('reg_chars')}}</span>
+                                                <span class="help-block">
+										               <strong>{{$errors->first('reg_chars')}}</strong>
+									            </span>
                                             @endif
 									</div>
                                     
-									<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registeration') ? ' has-error' : ''}}">
-										<input type="number" name="registeration" placeholder="1 2 3" class="form-control" value="{{old('registeration')}}">
-										@if($errors->has('registeration'))
-                                            <span class="help-block" style="color:red;">{{$errors->first('registeration')}}</span>
+									<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
+										<input type="number" name="registration" placeholder="1 2 3" class="form-control" value="{{old('registration')}}">
+										@if($errors->has('registration'))
+                                        <span class="help-block">
+										               <strong>{{$errors->first('registration')}}</strong>
+									    </span>                                        
                                         @endif
-										</div>
 									</div>
+								</div>
 
 								</div>
                                 
