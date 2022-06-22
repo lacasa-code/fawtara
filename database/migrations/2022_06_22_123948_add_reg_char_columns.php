@@ -13,7 +13,7 @@ class AddRegCharColumns extends Migration
      */
     public function up()
     {
-        Schema::table('customers', function (Blueprint $table) {
+        Schema::table('cars', function (Blueprint $table) {
             $table->string('reg_chars')->nullable();
         });
     }
