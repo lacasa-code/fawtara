@@ -35,7 +35,7 @@ class Profilecontroller extends Controller
          //'firstname' => 'required',
 		 //'lastname'=>'regex:/(^[A-Za-z0-9]+$)+/',
 		 'password'=>'nullable|min:6|max:12',
-         'mobile'=>'nullable|max:15|min:10|regex:/^[- +()]*[0-9][- +()0-9]*$/',
+         'mobile'=>'nullable|max:9|min:9|regex:/^[- +()]*[0-9][- +()0-9]*$/',
 		 'image' => 'image|mimes:jpg,png,jpeg',
 		 // 'dob' => 'required',
 		 'email' =>'email',
