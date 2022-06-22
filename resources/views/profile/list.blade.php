@@ -138,7 +138,7 @@
 							<div class="form-group col-md-12 col-sm-12 col-xs-12 has-feedback {{ $errors->has('mobile') ? 'has-error' : '' }} my-form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="mobile">{{ trans('app.Mobile No')}}</label>
 								<div class="col-md-5 col-sm-5 col-xs-12">
-								  <input type="text"  name="mobile" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{$profile->mobile_no}}" min="6" max="16"  class="form-control">
+								  <input type="text"  name="mobile" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{$profile->mobile_no}}" min="9" max="9"  class="form-control">
 								   @if ($errors->has('mobile'))
 								   <span class="help-block">
 									   <strong>{{ $errors->first('mobile') }}</strong>
