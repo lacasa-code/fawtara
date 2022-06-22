@@ -57,7 +57,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="manufacturing" value="{{old('manufacturing')}} placeholder="{{ trans('app.Enter Manufacturing Name')}}"  class="form-control" >
+										<input type="text"  name="manufacturing" value="{{old('manufacturing')}}" placeholder="{{ trans('app.Enter Manufacturing Name')}}"  class="form-control" >
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
 												<strong>{{ $errors->first('manufacturing') }}</strong>
@@ -69,7 +69,7 @@
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 									
-                                    <input type="text"  name="manufacturing_date" value="{{old('manufacturing_date')}} placeholder="{{ trans('app.Enter Manufacturing Date')}}"  class="form-control datetimepicker" >
+                                    <input type="text"  name="manufacturing_date" value="{{old('manufacturing_date')}}" placeholder="{{ trans('app.Enter Manufacturing Date')}}"  class="form-control datetimepicker" >
 									
                                     @if ($errors->has('manufacturing_date'))
 									   <span class="help-block">
@@ -85,7 +85,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('registration') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="registration">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="registration" value="{{old('registration')}} placeholder="{{ trans('app.Enter Registration Number')}}"  class="form-control" >
+										<input type="text"  name="registration" value="{{old('registration')}}" placeholder="{{ trans('app.Enter Registration Number')}}"  class="form-control" >
 										@if ($errors->has('registration'))
 											<span class="help-block">
 												<strong>{{ $errors->first('registration') }}</strong>
@@ -96,7 +96,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('chassis') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="chassis">{{ trans('app.Chassis') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text"  name="chassis" value="{{old('chassis')}} placeholder="{{ trans('app.Enter Chassis No.')}}"  class="form-control" >
+									<input type="text"  name="chassis" value="{{old('chassis')}}" placeholder="{{ trans('app.Enter Chassis No.')}}"  class="form-control" >
 									  @if ($errors->has('chassis'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('chassis') }}</strong>
@@ -110,7 +110,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="model" value="{{old('model')}} placeholder="{{ trans('app.Enter Model No')}}"  class="form-control">
+										<input type="text"  name="model" value="{{old('model')}}" placeholder="{{ trans('app.Enter Model No')}}"  class="form-control">
 										@if ($errors->has('model'))
 											<span class="help-block">
 												<strong>{{ $errors->first('model') }}</strong>
@@ -121,7 +121,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('kilometers') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="kilometers">{{ trans('app.kilometers:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="number"  name="kilometers" value="{{old('kilometers')}} placeholder="{{ trans('app.Enter kilometers number')}}"  class="form-control" >
+									<input type="number"  name="kilometers" value="{{old('kilometers')}}" placeholder="{{ trans('app.Enter kilometers number')}}"  class="form-control" >
 									  @if ($errors->has('kilometers'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('kilometers') }}</strong>
@@ -152,7 +152,6 @@
 <script>
 $(document).ready(function() {
     $('.datetimepicker').datetimepicker();
-    $(".datetimepicker").attr("disabled","disabled");
 
 });	
 </script>
