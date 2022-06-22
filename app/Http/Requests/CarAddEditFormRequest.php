@@ -31,7 +31,8 @@ class CarAddEditFormRequest extends FormRequest
             'chassis' => 'required|min:17|max:17',            
             'model' => 'required',            
             'kilometers' => 'required',
-            'customer_id',            
+            'customer_id',    
+            'reg_chars'=>'required'        
 
         ];
     }

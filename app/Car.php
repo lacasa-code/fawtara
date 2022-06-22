@@ -16,7 +16,8 @@ class Car extends Model
         'manufacturing_date',
         'chassis',
         'model', 
-        'kilometers'
+        'kilometers',
+        'reg_chars',
     ];
 
     public function customer()
