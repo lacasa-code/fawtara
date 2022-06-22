@@ -51,7 +51,7 @@ input[type=number] {
 						<form id="demo-form2" action="{!! url('/customer/car')!!}" method="post" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left input_mask customerAddForm">
 
 	
-                               <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
+                               <div class="col-md-12 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="customer_id">{{ trans('Customers')}} <label class="color-danger">*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 									  <select class="form-control  select_customer" name="customer_id" required">
