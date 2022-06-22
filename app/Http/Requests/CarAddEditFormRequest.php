@@ -50,6 +50,7 @@ class CarAddEditFormRequest extends FormRequest
             'kilometers.required' => trans('app.kilometers field is required.'),
             'chassis.min' => trans('chassis number must be 17 digits.'),
             'chassis.max' => trans('chassis number must be 17 digits.'),
+            'reg_chars.required' => trans('registration field is required.'),
 
         ];
 
