@@ -69,10 +69,8 @@
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 									
-                                    <input type="text"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}"  class="form-control" >
-									<span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
+                                    <input type="text"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}"  class="form-control datetimepicker" >
+									
                                     @if ($errors->has('manufacturing_date'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('manufacturing_date') }}</strong>
@@ -146,13 +144,18 @@
 			</div>
 		</div>
 	</div>
-	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 
-	<script type="text/javascript">
-        $(function() {
-           $('#datetimepicker').datetimepicker();
-        });
-    </script>							
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+<script>
+$(function () {
+    $('.datetimepicker').datetimepicker();
+});	
+</script>
+						
  
 
 
