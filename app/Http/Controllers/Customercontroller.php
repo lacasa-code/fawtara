@@ -89,7 +89,7 @@ class Customercontroller extends Controller
 		$model = $request->model;
 		$kilometers = $request->kilometers;
         $customer_id=$request->customer_id;
-
+        $reg_chars=$request->reg_chars;
 		$car = new Car;
 		$car->manufacturing = $manufacturing;
 		$car->registration = $registration;
@@ -98,6 +98,8 @@ class Customercontroller extends Controller
 		$car->model = $model;
 		$car->kilometers = $kilometers;
 		$car->customer_id=$customer_id;
+		$car->reg_chars=$reg_chars;
+
 		$car->save();
 			
 		return redirect('/customer/list')->with('message','Successfully Submitted');
