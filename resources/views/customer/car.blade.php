@@ -79,7 +79,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12 date datepicker ">
 									
-                                    <input type="text"  name="manufacturing_date" autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="form-control datetimepicker" onkeypress="return false;" required >
+                                    <input type="text" data-format="yyyy-MM-dd" name="manufacturing_date" autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="form-control datetimepicker" onkeypress="return false;" required >
 									
                                     @if ($errors->has('manufacturing_date'))
 									   <span class="help-block">
