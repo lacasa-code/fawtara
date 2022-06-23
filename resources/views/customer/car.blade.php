@@ -54,7 +54,7 @@ input[type=number] {
                                <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="customer_id">{{ trans('Customers')}} <label class="color-danger">*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									  <select class="form-control  select_customer" name="customer_id" id="customer" required onchange="enableButton()"">
+									  <select class="form-control  select_customer" name="customer_id" id="customer" required onchange="ValidateDropDwon(this)">
 										<option value="customer_id">{{ trans('Select Customer ')}}</option>
 											@foreach ($customer as $customers)
 											<option value="{{ $customers->id }}">{{$customers->name }}</option>
@@ -155,7 +155,7 @@ input[type=number] {
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
 								<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 									<a class="btn btn-primary" href="{{ URL::previous() }}">{{ trans('app.Cancel')}}</a>
-									<button type="submit" id="car" disabled class="btn btn-success customerAddSubmitButton">{{ trans('app.Submit')}}</button>
+									<button type="submit" id="car"  class="btn btn-success customerAddSubmitButton">{{ trans('app.Submit')}}</button>
 								</div>
 							</div>
 						</form>
@@ -177,20 +177,9 @@ $(document).ready(function() {
 	minView: 2;
     pickTime: false;
 });
-function enableButton()
-{
-    var selectelem = document.getElementById('customer');
-    var btnelem = document.getElementById('car');
-    //btnelem.disabled = !selectelem.value;
-    if(!selectelem.value)
-    {
-        btnelem.disabled;
-    }
-    else {
-    btnelem.enabled;
-    }
-
-
+function ValidateDropDwon(dd){
+  var input = document.getElementById('car')
+  if(dd.value == '') input.disabled = true; else input.disabled = false;
 }	
 </script>
 						
