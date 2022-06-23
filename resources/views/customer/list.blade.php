@@ -52,6 +52,7 @@
 						<thead>
 							<tr>
 								<th>#</th>
+								<th>{{ trans('ID') }}</th>
 								<th>{{ trans('app.First Name') }}</th>
 								<th>{{ trans('app.Address') }}</th>
 								<th>{{ trans('app.Mobile Number') }}</th>
@@ -64,6 +65,7 @@
 						@if(!empty($new_customer))
 							@foreach($new_customer as $customers)
 								<tr>
+								    <td>{{ $i }}</td>
 									<td>{{ $customers -> id }}</td>
 									<td>{{ $customers -> name }}</td>
 									<td>{{ $customers -> address}}</td>
