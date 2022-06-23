@@ -103,7 +103,7 @@ input[type=number] {
 									</div>
                                     
 									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
-										<input type="number" name="registration" placeholder="1 2 3" id="car" class="form-control" value="{{old('registration')}}">
+										<input type="number" name="registration" pattern="[A-Za-z]" placeholder="1 2 3" id="registration" class="form-control" value="{{old('registration')}}">
 										@if($errors->has('registration'))
                                         <span class="help-block">
 										               <strong>{{$errors->first('registration')}}</strong>
@@ -177,20 +177,15 @@ $(document).ready(function() {
 	minView: 2;
     pickTime: false;
 });
-    let input = document.querySelector(".select");
-let button = document.querySelector(".button");
-
-button.disabled = true; //setting button state to disabled
-
-input.addEventListener("change", stateHandle);
-
-function stateHandle() {
-    if (document.querySelector(".input").value === "") {
-        button.disabled = true; //button remains disabled
-    } else {
-        button.disabled = false; //button is enabled
-    }
-}
+ $( document ).ready(function() {
+                        $( "#registration" ).keypress(function(e) {
+                            var key = e.keyCode;
+                            if (key >= 48 && key <= 57) {
+                                e.preventDefault();
+                            }
+                        });
+                        
+    });
 </script>
 						
  

@@ -25,8 +25,8 @@ class CarAddEditFormRequest extends FormRequest
     {
         return [
               
-            'manufacturing' => 'required',            
-            'registration' => 'required',            
+            'manufacturing' => 'required|regex:/^[A-Za-z]+$/',            
+            'registration' => 'required|regex:/^[A-Za-z]+$/',            
             'manufacturing_date' => 'required',            
             'chassis' => 'required|min:17|max:17',            
             'model' => 'required',            
@@ -51,6 +51,8 @@ class CarAddEditFormRequest extends FormRequest
             'chassis.min' => trans('chassis number must be 17 digits.'),
             'chassis.max' => trans('chassis number must be 17 digits.'),
             'reg_chars.required' => trans('registration field is required.'),
+            'registration.regex' => trans('registration field must be only alphabets '),
+            'manufacturing name.regex' => trans('manufacturing name must be only alphabets '),
 
         ];
 
