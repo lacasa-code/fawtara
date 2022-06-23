@@ -26,7 +26,7 @@ class CustomerAddEditFormRequest extends FormRequest
         return [
             'name' => 'required|regex:/^[(a-zA-Z\s)\p{L}]+$/u|max:50',
             'mail' => 'required|email|unique:customers,mail,'.$this->id,
-            'phone' => 'required|min:9|max:9|regex:/^[- +()]*[0-9][- +()0-9]*$/',
+            'phone' => 'required|min:9|max:9|digits:9|regex:/^[- +()]*[0-9][- +()0-9]*$/',
             'phone' => 'unique:customers,phone,'.$this->id,
             'address' => 'required',  
             //'manufacturing' => 'required',            
@@ -58,6 +58,7 @@ class CustomerAddEditFormRequest extends FormRequest
             'phone.max' => trans('Contact number must be 9 digits.'),
             'phone.regex' => trans('Contact number must be number'),
             'phone.unique' => trans('Phone you entered is already registered.'),
+            'phone.digits' => trans('Contact number must be 9 digits.'),
 
             'address.required'  => trans('app.Address field is required.'), 
             //'manufacturing.required' => trans('manufacturing field is required.'),
