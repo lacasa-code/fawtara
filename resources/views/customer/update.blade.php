@@ -117,8 +117,9 @@ input[type=number] {
 							</div>
 							
 							@isset($cars)
-
-							@foreach($cars as $car)
+if(isset($cars))
+							{
+								@foreach($cars as $car)
 							<div class="col-md-12 col-xs-12 col-sm-12 space">
 								<h4><b>{{ trans('Car Information')}}</b></h4>
 								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
@@ -199,6 +200,7 @@ input[type=number] {
 								</div>	
 							</div>
 							@endforeach
+						}
 							@endisset
 
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
