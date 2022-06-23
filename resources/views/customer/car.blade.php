@@ -177,7 +177,7 @@ $(document).ready(function() {
 	minView: 2;
     pickTime: false;
 
-    $( "#registration" ).keypress(function(e) {
+    $( ".registration" ).keypress(function(e) {
                             var key = e.keyCode;
                             if (key >= 48 && key <= 57) {
                                 e.preventDefault();
