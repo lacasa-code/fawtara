@@ -76,7 +76,7 @@ class Customercontroller extends Controller
 		$car->customer_id=$customer->id;
 		$car->save();*/
 			
-		return redirect('/customer/car')->with('message','Successfully Submitted');
+		return redirect('/customer/add/car')->with('message','Successfully Submitted');
 	}
 
 	public function car(CarAddEditFormRequest $request)
