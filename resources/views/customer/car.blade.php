@@ -103,7 +103,7 @@ input[type=number] {
 									</div>
                                     
 									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
-										<input type="number" name="registration" pattern="[A-Za-z]" placeholder="1 2 3" id="registration" class="form-control" value="{{old('registration')}}">
+										<input type="number" name="registration"  placeholder="1 2 3" id="registration" class="form-control" value="{{old('registration')}}">
 										@if($errors->has('registration'))
                                         <span class="help-block">
 										               <strong>{{$errors->first('registration')}}</strong>
