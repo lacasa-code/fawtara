@@ -247,7 +247,8 @@ $('#mob').keyup( function(e){
 });  
 
 $('.date').datepicker({  
-       format: 'mm-dd-yyyy'
+	changeMonth: true,
+      changeYear: true
      });  
 </script>
 @endsection
