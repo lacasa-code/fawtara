@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <style>
 	input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -138,7 +142,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text" id="datepicker"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}" value="{{$cars->manufacturing}}" class="form-control" >
+									<input type="text" id="datepicker"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}" value="{{$cars->manufacturing}}" class="form-control datepicker" >
 									  @if ($errors->has('manufacturing_date'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('manufacturing_date') }}</strong>
@@ -213,10 +217,7 @@ input[type=number] {
 <script src="{{ URL::asset('vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
 <script src="{{ URL::asset('vendors/jquery/dist/jquery.min.js') }}"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
 <!-- For form validation -->
 {!! JsValidator::formRequest('App\Http\Requests\CustomerAddEditFormRequest', '#demo-form2'); !!}
 <script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js') }}"></script>
@@ -238,10 +239,7 @@ $('#mob').keyup( function(e){
 });  
 
 $( function() {
-    $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true
-    });
+    $( "#datepicker" ).datepicker();
   } );
 });  
 
