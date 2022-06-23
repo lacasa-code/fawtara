@@ -95,6 +95,8 @@
 										<th>{{ trans('app.Invoice For')}}</th>
 				                        <th>{{ trans('app.Number Plate')}}</th>
 				                        <th>{{ trans('app.Status')}}</th>
+										<th>{{ trans('app.Chasis No')}}</th>
+
 										<th>{{ trans('app.Total Amount')}} ({{getCurrencySymbols()}})</th>
 										<th>{{ trans('app.Paid Amount')}} ({{getCurrencySymbols()}})</th> 
 				                        <th>{{ trans('app.Date')}}</th>
@@ -114,6 +116,7 @@
 									{{ $invoices->registeration }} {{ ucwords($format) }}  </td>
 									
 									<td>{{ $invoices->Status }} </td>
+									<td>{{ $invoices->chassis_no }} </td>
 									<td>{{ number_format($invoices->total_amount, 2) }}</td>
 									<td>{{ number_format($invoices->paid_amount, 2) }}</td>
 									<td>{{ date(getDateFormat(),strtotime($invoices->Date)) }}</td>
