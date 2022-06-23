@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
+<head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+  </head>
 <!-- page content -->
 <style>
 .theTooltip {
@@ -80,7 +85,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-4 col-sm-8 col-xs-12 date datepicker ">
 									
-                                    <input type="text" data-format="yyyy-MM-dd" name="manufacturing_date" id="car" autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="form-control datetimepicker" onkeypress="return false;" required >
+                                    <input type="text"  name="manufacturing_date" id="car" autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="date form-control " onkeypress="return false;" required >
 									
                                     @if ($errors->has('manufacturing_date'))
 									   <span class="help-block">
@@ -162,6 +167,10 @@ input[type=number] {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <script>
+$('.date').datepicker({  
+	changeMonth: true,
+      changeYear: true
+     });
 $(document).ready(function() {
     $('.datetimepicker').datetimepicker();
     format: 'DD/MM/YYYY';
@@ -183,7 +192,6 @@ $(document).ready(function() {
                             }
                         });                    
 });
- 
 </script>
 						
  
