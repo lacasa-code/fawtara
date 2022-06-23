@@ -181,7 +181,16 @@ function enableButton()
 {
     var selectelem = document.getElementById('customer');
     var btnelem = document.getElementById('car');
-    btnelem.disabled = !selectelem.value;
+    //btnelem.disabled = !selectelem.value;
+    if(!selectelem.value)
+    {
+        btnelem.disabled;
+    }
+    else {
+    btnelem.enabled;
+    }
+
+
 }	
 </script>
 						
