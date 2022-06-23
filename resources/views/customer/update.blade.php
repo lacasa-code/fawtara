@@ -117,9 +117,7 @@ input[type=number] {
 							</div>
 							
 							@isset($cars)
-if(isset($cars))
-							{
-								@foreach($cars as $car)
+
 							<div class="col-md-12 col-xs-12 col-sm-12 space">
 								<h4><b>{{ trans('Car Information')}}</b></h4>
 								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
@@ -129,7 +127,7 @@ if(isset($cars))
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$car->manufacturing}}" class="form-control" >
+										<input type="text"  name="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$cars->manufacturing}}" class="form-control" >
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
 												<strong>{{ $errors->first('manufacturing') }}</strong>
@@ -140,7 +138,7 @@ if(isset($cars))
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}" value="{{$car->manufacturing}}" class="form-control" >
+									<input type="text"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}" value="{{$cars->manufacturing}}" class="form-control" >
 									  @if ($errors->has('manufacturing_date'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('manufacturing_date') }}</strong>
@@ -154,7 +152,7 @@ if(isset($cars))
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('registration') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="registration">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="registration" placeholder="{{ trans('app.Enter Registration Number')}}" value="{{$car->registration}}" class="form-control" >
+										<input type="text"  name="registration" placeholder="{{ trans('app.Enter Registration Number')}}" value="{{$cars->registration}}" class="form-control" >
 										@if ($errors->has('registration'))
 											<span class="help-block">
 												<strong>{{ $errors->first('registration') }}</strong>
@@ -165,7 +163,7 @@ if(isset($cars))
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('chassis') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="chassis">{{ trans('app.Chassis') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text"  name="chassis" placeholder="{{ trans('app.Enter Chassis No.')}}" value="{{$car->chassis}}" class="form-control" >
+									<input type="text"  name="chassis" placeholder="{{ trans('app.Enter Chassis No.')}}" value="{{$cars->chassis}}" class="form-control" >
 									  @if ($errors->has('chassis'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('chassis') }}</strong>
@@ -179,7 +177,7 @@ if(isset($cars))
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="model" placeholder="{{ trans('app.Enter Model No')}}" value="{{$car->model}}"  class="form-control">
+										<input type="text"  name="model" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}"  class="form-control">
 										@if ($errors->has('model'))
 											<span class="help-block">
 												<strong>{{ $errors->first('model') }}</strong>
@@ -190,7 +188,7 @@ if(isset($cars))
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('kilometers') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="kilometers">{{ trans('app.kilometers:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text"  name="kilometers" placeholder="{{ trans('app.Enter kilometers number')}}" value="{{$car->kilometers}}"  class="form-control" >
+									<input type="text"  name="kilometers" placeholder="{{ trans('app.Enter kilometers number')}}" value="{{$cars->kilometers}}"  class="form-control" >
 									  @if ($errors->has('kilometers'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('kilometers') }}</strong>
@@ -199,8 +197,7 @@ if(isset($cars))
 									</div>
 								</div>	
 							</div>
-							@endforeach
-						}
+						
 							@endisset
 
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
