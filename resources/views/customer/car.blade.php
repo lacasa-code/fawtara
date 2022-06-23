@@ -51,7 +51,7 @@ input[type=number] {
 						<form id="demo-form2" action="{!! url('/customer/car')!!}" method="post" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left input_mask customerAddForm">
 
 	
-                               <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
+                               <div class=" form-group my-form-group has-feedback ">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="customer_id">{{ trans('Customers')}} <label class="color-danger">*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 									  <select class="form-control  select_customer" name="customer_id" id="customer" required >
@@ -64,7 +64,7 @@ input[type=number] {
 									</div>
 								</div>
 						
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
+								<div class=" form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 										<input type="text"  name="manufacturing" autocomplete="off" id="manufacturing" value="{{old('manufacturing')}}" placeholder="{{ trans('app.Enter Manufacturing Name')}}"  class="form-control" >
@@ -75,7 +75,7 @@ input[type=number] {
 										@endif
 									</div>
 								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}" id='datetimepicker'>
+								<div class=" form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}" id='datetimepicker'>
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12 date datepicker ">
 									
@@ -90,7 +90,7 @@ input[type=number] {
 									</div>
 								</div>	
 							
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('registration') ? ' has-error' : '' }}">
+								<div class=" form-group my-form-group has-feedback {{ $errors->has('registration') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
 									
                                     <div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
@@ -114,7 +114,7 @@ input[type=number] {
 
 								</div>
                                 
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('chassis') ? ' has-error' : '' }}">
+								<div class=" form-group my-form-group has-feedback {{ $errors->has('chassis') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="chassis">{{ trans('app.Chassis') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 									<input type="text"  name="chassis" autocomplete="off" id="car" value="{{old('chassis')}}" placeholder="{{ trans('app.Enter Chassis No.')}}"  class="form-control" >
@@ -127,7 +127,7 @@ input[type=number] {
 								</div>	
 							
 
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
+								<div class=" form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 										<input type="text"  name="model" autocomplete="off" id="car" value="{{old('model')}}" placeholder="{{ trans('app.Enter Model No')}}"  class="form-control">
@@ -138,7 +138,7 @@ input[type=number] {
 										@endif
 									</div>
 								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('kilometers') ? ' has-error' : '' }}">
+								<div class=" form-group my-form-group has-feedback {{ $errors->has('kilometers') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="kilometers">{{ trans('app.kilometers:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 									<input type="number"  name="kilometers" autocomplete="off" id="car" value="{{old('kilometers')}}" placeholder="{{ trans('app.Enter kilometers number')}}"  class="form-control" >
