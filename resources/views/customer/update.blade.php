@@ -1,8 +1,12 @@
 @extends('layouts.app')
 @section('content')
+<head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+  </head>
 <style>
 	input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -140,7 +144,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text" id="datepicker"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}" value="{{$cars->manufacturing}}" class="form-control datepicker" >
+									<input type="text"   name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}" value="{{$cars->manufacturing}}" class="date form-control " >
 									
 
   
@@ -243,8 +247,8 @@ $('#mob').keyup( function(e){
 
 });  
 
-$(function() {
-    $( "#datepicker" ).datepicker();
-  });
+$('.date').datepicker({  
+       format: 'mm-dd-yyyy'
+     });  
 </script>
 @endsection
