@@ -106,7 +106,7 @@ input[type=number] {
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('phone') ? ' has-error' : '' }}">
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="phone">{{ trans('app.Mobile No')}} <label class="color-danger lastname">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" id="phone"  name="phone" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{$customer->phone}}"class="form-control" maxlength="9" minlength="9">
+											<input type="text" id="phone" class="phone" name="phone" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{$customer->phone}}"class="form-control" maxlength="9" minlength="9">
 											@if ($errors->has('phone'))
 											<span class="help-block">
 												<strong>{{ $errors->first('phone') }}</strong>
@@ -228,5 +228,18 @@ input[type=number] {
 <!-- For form validation -->
 {!! JsValidator::formRequest('App\Http\Requests\CustomerAddEditFormRequest', '#demo-form2'); !!}
 <script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js') }}"></script>
-
+<script>
+	$(document).ready(function() {
+	$('.phone').on('keydown keyup change', function(e){
+    if ($(this).val() > 9 
+        && e.keyCode !== 46 // keycode for delete
+        && e.keyCode !== 8 // keycode for backspace
+       ) {
+       e.preventDefault();
+       $(this).val(9);
+    }
+});
+                   
+});	
+</script>
 @endsection
