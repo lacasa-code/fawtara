@@ -83,9 +83,9 @@ input[type=number] {
 
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}" id='datetimepicker'>
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-4 col-sm-8 col-xs-12 date datepicker ">
+									<div class="col-md-4 col-sm-8 col-xs-12 ">
 									
-                                    <input type="text"  name="manufacturing_date" id="car" autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="date form-control " onkeypress="return false;" required >
+                                    <input type="text"  name="manufacturing_date"  autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="{{ trans('app.Enter Manufacturing Date')}}"  class="date form-control " onkeypress="return false;" required >
 									
                                     @if ($errors->has('manufacturing_date'))
 									   <span class="help-block">
@@ -172,12 +172,7 @@ $('.date').datepicker({
       changeYear: true
      });
 $(document).ready(function() {
-    $('.datetimepicker').datetimepicker();
-    format: 'DD/MM/YYYY';
-	autoclose: 1;
-	minView: 2;
-    pickTime: false;
-
+    
     $( "#reg_chars" ).keypress(function(e) {
                             var key = e.keyCode;
                             if (key >= 48 && key <= 57) {
