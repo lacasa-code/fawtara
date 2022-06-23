@@ -127,7 +127,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$cars->manufacturing}}" class="form-control" >
+										<input type="text" id="datepicker" name="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$cars->manufacturing}}" class="form-control" >
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
 												<strong>{{ $errors->first('manufacturing') }}</strong>
@@ -185,17 +185,7 @@ input[type=number] {
 										@endif
 									</div>
 								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('kilometers') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="kilometers">{{ trans('app.kilometers:') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text"  name="kilometers" placeholder="{{ trans('app.Enter kilometers number')}}" value="{{$cars->kilometers}}"  class="form-control" >
-									  @if ($errors->has('kilometers'))
-									   <span class="help-block">
-										   <strong>{{ $errors->first('kilometers') }}</strong>
-									   </span>
-									  @endif
-									</div>
-								</div>	
+									
 							</div>
 						
 							@endisset
@@ -223,7 +213,10 @@ input[type=number] {
 <script src="{{ URL::asset('vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
 <script src="{{ URL::asset('vendors/jquery/dist/jquery.min.js') }}"></script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <!-- For form validation -->
 {!! JsValidator::formRequest('App\Http\Requests\CustomerAddEditFormRequest', '#demo-form2'); !!}
 <script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js') }}"></script>
@@ -243,6 +236,13 @@ $('#mob').keyup( function(e){
         $(this).val($(this).val().substr(0, max_chars));
     }
 });   
-});   
+});  
+
+$( function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
 </script>
 @endsection
