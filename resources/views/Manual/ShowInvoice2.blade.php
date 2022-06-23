@@ -118,10 +118,10 @@
                                                    </span> </td>
                                                 <td style="text-align: center;" width="20%"> 
                                                       <?php 
-                                    $path_one = strstr(URL::current(), 'invoice',true); 
-                                    $path_two = $path_one.'invoice/scan/'; 
+                                   /* $path_one = strstr(URL::current(), 'invoice',true); 
+                                   // $path_two = $path_one.'invoice/scan/'; 
                                     $path_three = $path_one.'invoice/scan/'.$invoice->id; 
-                                    $path_four = $path_one.'invoice/scan/pdf/'.$invoice->id; 
+                                    $path_four = $path_one.'invoice/scan/pdf/'.$invoice->id; */
                               ?>         
 
               <?php 
@@ -154,9 +154,9 @@
                                                 <td style="text-align: left;">SERVICE/SALES </td>
                                                 <td style="text-align: center;"> خدمات   </td>
                                                 <td style="text-align: right;"> بيع  /خدمات</td>
-                                                <td style="text-align: left;">INVOICE NO: </td> 
+                                                <td style="text-align: left;">Show price NO: </td> 
                                                 <td colspan="2" style="text-align: center;"> {{ $invoice->Invoice_Number }}   </td> 
-                                                <td style="text-align: right;">رقم الفاتوره  </td>
+                                                <td style="text-align: right;">رقم عرض السعر  </td>
                                                 <td style="text-align: left; border-right: none;">Date  </td>
                                                 <td style="text-align: center;">{{ $invoice->Date}} 
                                                       {{ $invoice->created_at->format('H:i:s A') }}</td>

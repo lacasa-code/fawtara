@@ -138,7 +138,6 @@
 
 											<a href="{{ route('ManualInvoiced', ['id' => $invoices->id]) }}" type="button" class="btn btn-success btn-round"> Invoiced </a>	
 
-											<a href="{{ route('preview', ['id' => $invoices->id]) }}" type="button" class="btn btn-warning btn-round"> preview </a>	
 	
 											
 										@endif
