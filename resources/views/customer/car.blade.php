@@ -154,7 +154,7 @@ input[type=number] {
 								</div>	
 							     
                                  <br>
-                                 
+                                 <br>
 
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
