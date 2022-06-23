@@ -96,7 +96,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('phone') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="phone">{{ trans('app.Mobile No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="number"  name="phone" class="mob" autocomplete="off" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{old('phone')}}" class="form-control" minlength="9" maxlength="9" >
+										<input type="number"  name="phone" id="input" class="input" autocomplete="off" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{old('phone')}}" class="form-control" minlength="9" maxlength="9" >
 										@if ($errors->has('phone'))
 											<span class="help-block">
 												<strong>{{ $errors->first('phone') }}</strong>
@@ -124,7 +124,25 @@ input[type=number] {
 	</div>
 	
 <script>
-               
+
+
+
+
+var max_chars = 9;
+$(document).ready(function() {
+
+$('#input').keydown( function(e){
+    if ($(this).val().length >= max_chars) { 
+        $(this).val($(this).val().substr(0, max_chars));
+    }
+});
+
+$('#input').keyup( function(e){
+    if ($(this).val().length >= max_chars) { 
+        $(this).val($(this).val().substr(0, max_chars));
+    }
+});   
+});           
 </script>
 								
  

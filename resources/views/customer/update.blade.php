@@ -229,17 +229,7 @@ input[type=number] {
 {!! JsValidator::formRequest('App\Http\Requests\CustomerAddEditFormRequest', '#demo-form2'); !!}
 <script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js') }}"></script>
 <script>
-	$(document).ready(function() {
-	$('.phone').on('keydown keyup change', function(e){
-    if ($(this).val() > 9 
-        && e.keyCode !== 46 // keycode for delete
-        && e.keyCode !== 8 // keycode for backspace
-       ) {
-       e.preventDefault();
-       $(this).val(9);
-    }
-});
-                   
-});	
+	
+
 </script>
 @endsection
