@@ -50,7 +50,8 @@ class ManualInvoiceController extends Controller
 	    // return $last_order;
 
 		if(!empty($last_order)){
-			$new_number = str_pad($last_order->Invoice_Number + 1, 8, 0, STR_PAD_LEFT); 
+			$new_number1 = str_pad($last_order->Invoice_Number + 1, 8, 0, STR_PAD_LEFT);
+			$new_number='#'.Auth::user().'-'.$new_number1;
 		}else{
 			$new_number = '00000001';
 		}
