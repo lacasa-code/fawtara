@@ -126,7 +126,6 @@ input[type=number] {
 									</div>
 								</div>	
 							    
-                                <br>
 
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
@@ -140,7 +139,6 @@ input[type=number] {
 									</div>
 								</div>
                                 
-                                <br>
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('kilometers') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="kilometers">{{ trans('app.kilometers:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-4 col-sm-8 col-xs-12">
@@ -153,7 +151,6 @@ input[type=number] {
 									</div>
 								</div>	
 							     
-                                 <br>
                                  <br>
 
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
