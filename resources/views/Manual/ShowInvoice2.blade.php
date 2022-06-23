@@ -118,10 +118,10 @@
                                                    </span> </td>
                                                 <td style="text-align: center;" width="20%"> 
                                                       <?php 
-                                   /* $path_one = strstr(URL::current(), 'invoice',true); 
-                                   // $path_two = $path_one.'invoice/scan/'; 
+                                   $path_one = strstr(URL::current(), 'invoice',true); 
+                                   $path_two = $path_one.'invoice/scan/'; 
                                     $path_three = $path_one.'invoice/scan/'.$invoice->id; 
-                                    $path_four = $path_one.'invoice/scan/pdf/'.$invoice->id; */
+                                    $path_four = $path_one.'invoice/scan/pdf/'.$invoice->id; 
                               ?>         
 
               <?php 
@@ -139,7 +139,7 @@
               $result.= chr(5) . chr( strlen($invoice_tax_amount) ) . $invoice_tax_amount;
               $ahmed = base64_encode($result); 
 ?>
-                {!! QrCode::size(200)->generate($ahmed); !!} 
+             <!--   {!! QrCode::size(200)->generate($ahmed); !!} -->
 
        </td>
                                           </tr>    
