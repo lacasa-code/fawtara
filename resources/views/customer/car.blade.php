@@ -67,7 +67,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="manufacturing" autocomplete="off" id="car" value="{{old('manufacturing')}}" placeholder="{{ trans('app.Enter Manufacturing Name')}}"  class="form-control" >
+										<input type="text"  name="manufacturing" autocomplete="off" id="manufacturing" value="{{old('manufacturing')}}" placeholder="{{ trans('app.Enter Manufacturing Name')}}"  class="form-control" >
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
 												<strong>{{ $errors->first('manufacturing') }}</strong>
@@ -94,7 +94,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
 									
                                     <div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
-											<input type="text" name="reg_chars" class="form-control" id="car" placeholder="a b c" value="{{old('reg_chars')}}">
+											<input type="text" name="reg_chars" class="form-control" id="reg_chars" placeholder="a b c" value="{{old('reg_chars')}}">
 											@if($errors->has('reg_chars'))
                                                 <span class="help-block">
 										               <strong>{{$errors->first('reg_chars')}}</strong>
@@ -177,12 +177,19 @@ $(document).ready(function() {
 	minView: 2;
     pickTime: false;
 
-    $( ".registration" ).keypress(function(e) {
+    $( "#reg_chars" ).keypress(function(e) {
                             var key = e.keyCode;
                             if (key >= 48 && key <= 57) {
                                 e.preventDefault();
                             }
                         });
+
+        $( "#manufacturing" ).keypress(function(e) {
+                            var key = e.keyCode;
+                            if (key >= 48 && key <= 57) {
+                                e.preventDefault();
+                            }
+                        });                    
 });
  
 </script>
