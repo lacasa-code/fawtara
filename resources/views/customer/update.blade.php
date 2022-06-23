@@ -127,7 +127,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text" id="datepicker" name="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$cars->manufacturing}}" class="form-control" >
+										<input type="text"  name="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$cars->manufacturing}}" class="form-control" >
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
 												<strong>{{ $errors->first('manufacturing') }}</strong>
@@ -138,7 +138,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}" value="{{$cars->manufacturing}}" class="form-control" >
+									<input type="text" id="datepicker"  name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}" value="{{$cars->manufacturing}}" class="form-control" >
 									  @if ($errors->has('manufacturing_date'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('manufacturing_date') }}</strong>
@@ -235,7 +235,6 @@ $('#mob').keyup( function(e){
     if ($(this).val().length >= max_chars) { 
         $(this).val($(this).val().substr(0, max_chars));
     }
-});   
 });  
 
 $( function() {
@@ -244,5 +243,8 @@ $( function() {
       changeYear: true
     });
   } );
+});  
+
+
 </script>
 @endsection
