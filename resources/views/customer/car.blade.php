@@ -54,7 +54,7 @@ input[type=number] {
                                <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="customer_id">{{ trans('Customers')}} <label class="color-danger">*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									  <select class="form-control  select_customer" name="customer_id" required">
+									  <select class="form-control  select_customer" name="customer_id" id="customer" required onchange="enableButton()"">
 										<option value="customer_id">{{ trans('Select Customer ')}}</option>
 											@foreach ($customer as $customers)
 											<option value="{{ $customers->id }}">{{$customers->name }}</option>
@@ -67,7 +67,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="manufacturing" autocomplete="off" value="{{old('manufacturing')}}" placeholder="{{ trans('app.Enter Manufacturing Name')}}"  class="form-control" >
+										<input type="text"  name="manufacturing" autocomplete="off" id="car" value="{{old('manufacturing')}}" placeholder="{{ trans('app.Enter Manufacturing Name')}}"  class="form-control" >
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
 												<strong>{{ $errors->first('manufacturing') }}</strong>
@@ -79,7 +79,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12 date datepicker ">
 									
-                                    <input type="text" data-format="yyyy-MM-dd" name="manufacturing_date" autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="form-control datetimepicker" onkeypress="return false;" required >
+                                    <input type="text" data-format="yyyy-MM-dd" name="manufacturing_date" id="car" autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="form-control datetimepicker" onkeypress="return false;" required >
 									
                                     @if ($errors->has('manufacturing_date'))
 									   <span class="help-block">
@@ -94,7 +94,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
 									
                                     <div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
-											<input type="text" name="reg_chars" class="form-control" placeholder="a b c" value="{{old('reg_chars')}}">
+											<input type="text" name="reg_chars" class="form-control" id="car" placeholder="a b c" value="{{old('reg_chars')}}">
 											@if($errors->has('reg_chars'))
                                                 <span class="help-block">
 										               <strong>{{$errors->first('reg_chars')}}</strong>
@@ -103,7 +103,7 @@ input[type=number] {
 									</div>
                                     
 									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
-										<input type="number" name="registration" placeholder="1 2 3" class="form-control" value="{{old('registration')}}">
+										<input type="number" name="registration" placeholder="1 2 3" id="car" class="form-control" value="{{old('registration')}}">
 										@if($errors->has('registration'))
                                         <span class="help-block">
 										               <strong>{{$errors->first('registration')}}</strong>
@@ -117,7 +117,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('chassis') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="chassis">{{ trans('app.Chassis') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text"  name="chassis" autocomplete="off" value="{{old('chassis')}}" placeholder="{{ trans('app.Enter Chassis No.')}}"  class="form-control" >
+									<input type="text"  name="chassis" autocomplete="off" id="car" value="{{old('chassis')}}" placeholder="{{ trans('app.Enter Chassis No.')}}"  class="form-control" >
 									  @if ($errors->has('chassis'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('chassis') }}</strong>
@@ -130,7 +130,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="model" autocomplete="off" value="{{old('model')}}" placeholder="{{ trans('app.Enter Model No')}}"  class="form-control">
+										<input type="text"  name="model" autocomplete="off" id="car" value="{{old('model')}}" placeholder="{{ trans('app.Enter Model No')}}"  class="form-control">
 										@if ($errors->has('model'))
 											<span class="help-block">
 												<strong>{{ $errors->first('model') }}</strong>
@@ -141,7 +141,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('kilometers') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="kilometers">{{ trans('app.kilometers:') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="number"  name="kilometers" autocomplete="off" value="{{old('kilometers')}}" placeholder="{{ trans('app.Enter kilometers number')}}"  class="form-control" >
+									<input type="number"  name="kilometers" autocomplete="off" id="car" value="{{old('kilometers')}}" placeholder="{{ trans('app.Enter kilometers number')}}"  class="form-control" >
 									  @if ($errors->has('kilometers'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('kilometers') }}</strong>
@@ -155,7 +155,7 @@ input[type=number] {
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
 								<div class="col-md-12 col-sm-12 col-xs-12 text-center">
 									<a class="btn btn-primary" href="{{ URL::previous() }}">{{ trans('app.Cancel')}}</a>
-									<button type="submit" class="btn btn-success customerAddSubmitButton">{{ trans('app.Submit')}}</button>
+									<button type="submit" id="car" disabled class="btn btn-success customerAddSubmitButton">{{ trans('app.Submit')}}</button>
 								</div>
 							</div>
 						</form>
@@ -176,7 +176,13 @@ $(document).ready(function() {
 	autoclose: 1;
 	minView: 2;
     pickTime: false;
-});	
+});
+function enableButton()
+{
+    var selectelem = document.getElementById('customer');
+    var btnelem = document.getElementById('car');
+    btnelem.disabled = !selectelem.value;
+}	
 </script>
 						
  
