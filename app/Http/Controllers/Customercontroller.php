@@ -132,29 +132,30 @@ class Customercontroller extends Controller
 			elseif (getUsersRole(Auth::user()->role_id) == 'Employee')
 			{
 				$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
-				$new_customer=Customer::get();
-
+				$new_customer=Customer::orderBy('id', 'desc')
+				->get();
 			}
 			elseif (getUsersRole(Auth::user()->role_id) == 'Support Staff' || getUsersRole(Auth::user()->role_id) == 'Accountant' || getUsersRole(Auth::user()->role_id) == 'Branch Admin') {
 				
 				$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
-				$new_customer=Customer::get();
-
+				$new_customer=Customer::orderBy('id', 'desc')
+				->get();
 			}
 			else
 			{
 				$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
-				$new_customer=Customer::get();
-
+				$new_customer=Customer::orderBy('id', 'desc')
+				->get();
 			}
 		}
 		else
 		{
 			$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
-			$new_customer=Customer::get();
-  
+			$new_customer=Customer::orderBy('id', 'desc')
+			->get();  
 		}
-		$new_customer=Customer::get();
+		$new_customer=Customer::orderBy('id', 'desc')
+		->get();
 
 		return view('customer.list',compact('customer','new_customer'));
 	}
