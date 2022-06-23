@@ -96,7 +96,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('phone') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="phone">{{ trans('app.Mobile No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="number"  name="phone" autocomplete="off" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{old('phone')}}" class="form-control" >
+										<input type="number"  name="phone" autocomplete="off" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{old('phone')}}" class="form-control" minlength="9" maxlength="9" >
 										@if ($errors->has('phone'))
 											<span class="help-block">
 												<strong>{{ $errors->first('phone') }}</strong>
