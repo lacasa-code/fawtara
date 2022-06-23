@@ -139,17 +139,7 @@ input[type=number] {
 									</div>
 								</div>
                                 
-								<div class=" form-group my-form-group has-feedback {{ $errors->has('kilometers') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="kilometers">{{ trans('app.kilometers:') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-4 col-sm-8 col-xs-12">
-									<input type="number"  name="kilometers" autocomplete="off" id="car" value="{{old('kilometers')}}" placeholder="{{ trans('app.Enter kilometers number')}}"  class="form-control" >
-									  @if ($errors->has('kilometers'))
-									   <span class="help-block">
-										   <strong>{{ $errors->first('kilometers') }}</strong>
-									   </span>
-									  @endif
-									</div>
-								</div>	
+								
 							     
                                  <br>
 
