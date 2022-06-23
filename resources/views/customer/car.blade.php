@@ -77,7 +77,7 @@ input[type=number] {
 								</div>
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}" id='datetimepicker'>
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-4 col-sm-8 col-xs-12 date datepicker ">
+									<div class="col-md-3 col-sm-8 col-xs-12 date datepicker ">
 									
                                     <input type="text" data-format="yyyy-MM-dd" name="manufacturing_date" id="car" autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="form-control datetimepicker" onkeypress="return false;" required >
 									
@@ -116,7 +116,7 @@ input[type=number] {
                                 
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('chassis') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="chassis">{{ trans('app.Chassis') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
+									<div class="col-md-4 col-sm-8 col-xs-12">
 									<input type="text"  name="chassis" autocomplete="off" id="car" value="{{old('chassis')}}" placeholder="{{ trans('app.Enter Chassis No.')}}"  class="form-control" >
 									  @if ($errors->has('chassis'))
 									   <span class="help-block">
@@ -125,11 +125,12 @@ input[type=number] {
 									  @endif
 									</div>
 								</div>	
-							
+							    
+                                <br>
 
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
+									<div class="col-md-3 col-sm-8 col-xs-12">
 										<input type="text"  name="model" autocomplete="off" id="car" value="{{old('model')}}" placeholder="{{ trans('app.Enter Model No')}}"  class="form-control">
 										@if ($errors->has('model'))
 											<span class="help-block">
@@ -138,10 +139,11 @@ input[type=number] {
 										@endif
 									</div>
 								</div>
-
+                                
+                                <br>
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('kilometers') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="kilometers">{{ trans('app.kilometers:') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
+									<div class="col-md-4 col-sm-8 col-xs-12">
 									<input type="number"  name="kilometers" autocomplete="off" id="car" value="{{old('kilometers')}}" placeholder="{{ trans('app.Enter kilometers number')}}"  class="form-control" >
 									  @if ($errors->has('kilometers'))
 									   <span class="help-block">
@@ -150,7 +152,9 @@ input[type=number] {
 									  @endif
 									</div>
 								</div>	
-							
+							     
+                                 <br>
+                                 
 
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
