@@ -99,7 +99,7 @@
 										<th> Invoice Status</th>
 				                        <th>{{ trans('app.Number Plate')}}</th>
 				                        <th>{{ trans('app.Status')}}</th>
-										<th>{{ trans('app.Chasis No.')}}</th>
+										<th>{{ trans('app.Chasis No')}}</th>
 										<th>{{ trans('app.Total Amount')}} ({{getCurrencySymbols()}})</th>
 										<th>{{ trans('app.Paid Amount')}} ({{getCurrencySymbols()}})</th> 
 				                        <th>{{ trans('app.Date')}}</th>

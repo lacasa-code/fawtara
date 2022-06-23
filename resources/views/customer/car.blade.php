@@ -55,7 +55,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="customer_id">{{ trans('Customers')}} <label class="color-danger">*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 									  <select class="form-control  select_customer" name="customer_id" id="customer" required >
-										<option value="customer_id">{{ trans('Select Customer ')}}</option>
+										<option value="{{ $last->id }}">{{$last->name }}</option>
 											@foreach ($customer as $customers)
 											<option value="{{ $customers->id }}">{{$customers->name }}</option>
 											@endforeach
