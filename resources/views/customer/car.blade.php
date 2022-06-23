@@ -176,16 +176,15 @@ $(document).ready(function() {
 	autoclose: 1;
 	minView: 2;
     pickTime: false;
-});
- $( document ).ready(function() {
-                        $( "#registration" ).keypress(function(e) {
+
+    $( "#registration" ).keypress(function(e) {
                             var key = e.keyCode;
                             if (key >= 48 && key <= 57) {
                                 e.preventDefault();
                             }
                         });
-                        
-    });
+});
+ 
 </script>
 						
  
