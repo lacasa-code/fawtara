@@ -66,7 +66,7 @@ input[type=number] {
 						
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
+									<div class="col-md-4 col-sm-8 col-xs-12">
 										<input type="text"  name="manufacturing" autocomplete="off" id="manufacturing" value="{{old('manufacturing')}}" placeholder="{{ trans('app.Enter Manufacturing Name')}}"  class="form-control" >
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
@@ -77,7 +77,7 @@ input[type=number] {
 								</div>
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}" id='datetimepicker'>
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12 date datepicker ">
+									<div class="col-md-4 col-sm-8 col-xs-12 date datepicker ">
 									
                                     <input type="text" data-format="yyyy-MM-dd" name="manufacturing_date" id="car" autocomplete="off" value="{{old('manufacturing_date')}}" placeholder="<?php echo getDatepicker();?>"  class="form-control datetimepicker" onkeypress="return false;" required >
 									
@@ -93,7 +93,7 @@ input[type=number] {
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('registration') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
 									
-                                    <div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
+                                    <div class="col-md-2 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
 											<input type="text" name="reg_chars" class="form-control" id="reg_chars" placeholder="a b c" value="{{old('reg_chars')}}">
 											@if($errors->has('reg_chars'))
                                                 <span class="help-block">
@@ -102,7 +102,7 @@ input[type=number] {
                                             @endif
 									</div>
                                     
-									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
+									<div class="col-md-2 col-sm-4 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
 										<input type="number" name="registration"  placeholder="1 2 3" id="registration" class="form-control" value="{{old('registration')}}">
 										@if($errors->has('registration'))
                                         <span class="help-block">
