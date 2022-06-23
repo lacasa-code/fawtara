@@ -130,7 +130,7 @@ input[type=number] {
 
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
-									<div class="col-md-3 col-sm-8 col-xs-12">
+									<div class="col-md-4 col-sm-8 col-xs-12">
 										<input type="text"  name="model" autocomplete="off" id="car" value="{{old('model')}}" placeholder="{{ trans('app.Enter Model No')}}"  class="form-control">
 										@if ($errors->has('model'))
 											<span class="help-block">
