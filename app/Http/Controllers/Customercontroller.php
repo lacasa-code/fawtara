@@ -108,7 +108,7 @@ class Customercontroller extends Controller
 	public function addCar()
 	{
 		$car= Car::get();
-		$customer=Customer::get();
+		$customer=Customer::orderby('id','desc')->get();
 		$last=Customer::orderby('id','desc')->first();
 		return view('customer.car',compact('car','customer','last'));
 
