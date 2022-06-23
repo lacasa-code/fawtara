@@ -64,7 +64,7 @@
 						@if(!empty($new_customer))
 							@foreach($new_customer as $customers)
 								<tr>
-									<td>{{ $i }}</td>
+									<td>{{ $customers -> id }}</td>
 									<td>{{ $customers -> name }}</td>
 									<td>{{ $customers -> address}}</td>
 									<td>{{ $customers -> phone }}</td>
