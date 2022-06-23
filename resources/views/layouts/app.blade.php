@@ -102,7 +102,7 @@
 
 				 			@if(!empty(Auth::user()->id))
 					 			@if(Auth::user()->role=='admin')
-						  			<a href="{!! url('/setting/profile')!!}"><img src="{{ URL::asset('public/admin/'.Auth::user()->image)}}" alt="..." class="img-circle profile_img"></a>
+						  			<a href="{!! url('/setting/profile')!!}"><img src="{{ URL::asset('public/admin/image.jpg')}}" alt="..." class="img-circle profile_img"></a>
 								@endif
 
 					 			@if(Auth::user()->role=='Customer')
