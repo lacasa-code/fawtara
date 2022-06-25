@@ -65,9 +65,11 @@
 								<div class="col-md-12 col-sm-12 col-xs-12 form-group">
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group">
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Invoice Number') }} <br>{{ trans('رقم الفاتورة')}} <label class="color-danger">*</label></label>
-										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="Invoice_Number" class="form-control" value="{{ $code }}" readonly>
-							
+										<div class="col-md-2 col-sm-2 col-xs-2">
+											<input type="text" class="form-control" value="{{ '#'.$auth_branch_id }}" readonly>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-6">
+                                            <input type="text" name="Invoice_Number" class="form-control" value="{{ $code }}" readonly>
 										</div>
 									</div>
 									
