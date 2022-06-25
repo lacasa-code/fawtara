@@ -108,7 +108,7 @@
 					  			@foreach($invoice as $invoices)
 								<tr class="texr-left">
 									<td>{{ $i }}</td>
-									<td>{{ $invoices->Invoice_Number }}</td>
+									<td>{{ '#'.Auth::user()->branch_id.'-'.$invoices->Invoice_Number }}</td>
 									<td>{{ $invoices->Customer }}</td>
 									<td>{{ $invoices->Invoice_type }}</td>
 									<td>
