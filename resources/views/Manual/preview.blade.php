@@ -91,7 +91,7 @@
 
                                           <tr>
                                                 <td style="text-align: center;">INVOICE NO: </td> 
-                                                <td style="text-align: center;">{{$invoice->Invoice_Number}}</td> 
+                                                <td style="text-align: center;">{{'#'.Auth::user()->branch_id.'-'.$invoice->Invoice_Number}}</td> 
                                                 <td style="text-align: center;">رقم الفاتوره  </td>
                                           </tr>
 

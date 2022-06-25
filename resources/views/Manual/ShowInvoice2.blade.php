@@ -155,7 +155,7 @@
                                                 <td style="text-align: center;"> خدمات   </td>
                                                 <td style="text-align: right;"> بيع  /خدمات</td>
                                                 <td style="text-align: left;">Show price NO: </td> 
-                                                <td colspan="2" style="text-align: center;"> {{ $invoice->Invoice_Number }}   </td> 
+                                                <td colspan="2" style="text-align: center;"> {{ '#'.Auth::user()->branch_id.'-'.$invoice->Invoice_Number }}   </td> 
                                                 <td style="text-align: right;">رقم عرض السعر  </td>
                                                 <td style="text-align: left; border-right: none;">Date  </td>
                                                 <td style="text-align: center;">{{ $invoice->Date}} 

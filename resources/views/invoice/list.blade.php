@@ -115,7 +115,7 @@
 					  			@foreach($invoice as $invoices)
 								<tr class="texr-left">
 									<td>{{ $i }}</td>
-									<td>{{ $invoices->invoice_number }}</td>
+									<td>{{ '#'.Auth::user()->branch_id.'-'.$invoices->invoice_number }}</td>
 									<td>{{ getCustomerName($invoices->customer_id) }}</td>
 									@if($invoices->type == 2)
 										<td>{{ trans('app.Part')}}</td>
