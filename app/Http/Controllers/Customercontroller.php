@@ -523,17 +523,17 @@ class Customercontroller extends Controller
 				)
    			);*/
 
-			$data[] = array(                 
-				'manufacturing'=>$value->manufacturing,
-				'registration'=>$value->registration,    
-				'reg_chars'=>$value->reg_chars,
-				'manufacturing_date'=>$value->manufacturing_date,
-				'chassis'=>$value->chassis, 
-				'model'=>$value->model,               
+			$data = array(                 
+				'manufacturing'=>$request->manufacturing,
+                'registration'=>$request->registration,    
+                'reg_chars'=>$request->reg_chars,
+                'manufacturing_date'=>$request->manufacturing_date,
+                'chassis'=>$request->chassis, 
+                'model'=>$request->model,             
 			); 
 			
 
-			//Car::where('id',$request->id[$key])->update($data); */
+			Car::where('id',$value->id)->update($data);
 
 			/*$car->manufacturing = $manufacturing;
 		   $car->registration = $registration;
@@ -545,9 +545,9 @@ class Customercontroller extends Controller
 		$car->model = $model;*/
 		//}
 		}
-		dd($data);
+		//dd($data);
 
-		Car::insert($data);
+		//Car::insert($data);
 		//Car::insert($data); 
 		//$car->save();
 		return redirect('/customer/list')->with('message','Successfully Updated');
