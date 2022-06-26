@@ -516,12 +516,12 @@ Car::insert($data);*/
 		for($i = 0; $i <= $count; $i++) {
 			foreach($cars as $key => $values)
 			{
-					$values->manufacturing = $input['manufacturing'][$key];
-					$values->registration = $input['registration'][$key];
-					$values->reg_chars = $input['reg_chars'][$key];
-					$values->manufacturing_date = $input['manufacturing_date'][$key];
-					$values->chassis = $input['chassis'][$key];
-					$values->model = $input['model'][$key];
+					$values->manufacturing = $input['manufacturing'][$i];
+					$values->registration = $input['registration'][$i];
+					$values->reg_chars = $input['reg_chars'][$i];
+					$values->manufacturing_date = $input['manufacturing_date'][$i];
+					$values->chassis = $input['chassis'][$i];
+					$values->model = $input['model'][$i];
 					$values->save();
 			}
 		}
