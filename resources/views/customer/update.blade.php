@@ -151,7 +151,7 @@ input[type=number] {
 										<input type="text"  name="manufacturing[]" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$cars->manufacturing}}" class="form-control" >
 										@if ($errors->has('manufacturing[]'))
 											<span class="help-block">
-												<strong>{{ $errors->first('manufacturing') }}</strong>
+												<strong>{{ $errors->first('manufacturing[]') }}</strong>
 									   		</span>
 										@endif
 									</div>
@@ -165,7 +165,7 @@ input[type=number] {
   
 									@if ($errors->has('manufacturing_date[]'))
 									   <span class="help-block">
-										   <strong>{{ $errors->first('manufacturing_date') }}</strong>
+										   <strong>{{ $errors->first('manufacturing_date[]') }}</strong>
 									   </span>
 									  @endif
 									</div>
@@ -180,7 +180,7 @@ input[type=number] {
 											<input type="text" name="reg_chars[]" class="form-control" id="reg_chars" placeholder="a b c" value="{{$cars->reg_chars}}">
 											@if($errors->has('reg_chars[]'))
                                                 <span class="help-block">
-										               <strong>{{$errors->first('reg_chars')}}</strong>
+										               <strong>{{$errors->first('reg_chars[]')}}</strong>
 									            </span>
                                             @endif
 									</div>
@@ -189,7 +189,7 @@ input[type=number] {
 										<input type="text"  name="registration[]"  id="registration" placeholder="1 2 3" value="{{$cars->registration}}" class="form-control" >
 										@if ($errors->has('registration[]'))
 											<span class="help-block">
-												<strong>{{ $errors->first('registration') }}</strong>
+												<strong>{{ $errors->first('registration[]') }}</strong>
 									   		</span>
 										@endif
 									</div>
@@ -200,7 +200,7 @@ input[type=number] {
 									<input type="text"  name="chassis[]" placeholder="{{ trans('app.Enter Chassis No.')}}" value="{{$cars->chassis}}" class="form-control" >
 									  @if ($errors->has('chassis[]'))
 									   <span class="help-block">
-										   <strong>{{ $errors->first('chassis') }}</strong>
+										   <strong>{{ $errors->first('chassis[]') }}</strong>
 									   </span>
 									  @endif
 									</div>
@@ -214,7 +214,7 @@ input[type=number] {
 										<input type="text"  name="model[]" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}"  class="form-control">
 										@if ($errors->has('model[]'))
 											<span class="help-block">
-												<strong>{{ $errors->first('model') }}</strong>
+												<strong>{{ $errors->first('model[]') }}</strong>
 									   		</span>
 										@endif
 									</div>
