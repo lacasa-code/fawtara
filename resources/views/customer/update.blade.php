@@ -222,7 +222,7 @@ input[type=number] {
 									</td>
 									<td>
 									<a  url="{!! url('/customer/car/delete/'.$cars->id)!!}" class="deletecustomers"> <button type="button" class="btn btn-round btn-danger">{{ trans('app.Delete')}}</button></a>
-									<button type="submit" class="btn btn-success">{{ trans('app.Update') }}</button>
+									<button type="submit" class="btn btn-round btn-success">{{ trans('app.Update') }}</button>
 									</td>
 									
 								</tr>	</form>
