@@ -161,7 +161,7 @@ input[type=number] {
 							@foreach($cars as $cars)
 								<tr>
 								    <td>
-									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('manufacturing') ? ' has-error' : ''}}">
+									<div class="{{$errors->has('manufacturing') ? ' has-error' : ''}}">
 										<input type="text"  name="manufacturing"  value="{{$cars->manufacturing}}" class="form-control" >
 											@if ($errors->has('manufacturing'))
 												<span class="help-block">
@@ -171,7 +171,7 @@ input[type=number] {
 										</div>
 									</td>
 									<td>
-										<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('manufacturing_date') ? ' has-error' : ''}}">
+										<div class="{{$errors->has('manufacturing_date') ? ' has-error' : ''}}">
 										<input type="text"   name="manufacturing_date" value="{{$cars->manufacturing_date}}" class="date form-control " onkeypress="return false;" >
 										@if ($errors->has('manufacturing_date'))
 										<span class="help-block">
@@ -199,7 +199,7 @@ input[type=number] {
 									</div>
 									</td>
 									<td>
-										<div class="col-md-8 col-sm-8 col-xs-12">
+										<div class="{{$errors->has('chassis') ? ' has-error' : ''}}">
 										<input type="text"  name="chassis" placeholder="{{ trans('app.Enter Chassis No.')}}" value="{{$cars->chassis}}" class="form-control" >
 										@if ($errors->has('chassis'))
 										<span class="help-block">
@@ -209,7 +209,7 @@ input[type=number] {
 										</div>
 									</td>
 									<td>
-										<div class="col-md-8 col-sm-8 col-xs-12">
+										<div class="{{$errors->has('model') ? ' has-error' : ''}}">
 										<input type="text"  name="model" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}"  class="form-control">
 										@if ($errors->has('model'))
 											<span class="help-block">
