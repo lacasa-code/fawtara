@@ -452,14 +452,15 @@ class Customercontroller extends Controller
 	 {   
 	    $editid = $id;
         $customer =Customer::where('id','=',$id)->first();
-		$cars =Car::where('customer_id','=',$id)->first();
+		$cars =Car::where('customer_id','=',$id)->get();
+		$last=Car::where('customer_id','=',$id)->orderby('id','desc')->first();
 
-		return view('customer.update',compact('editid','customer','cars'));
+		return view('customer.update',compact('editid','customer','cars','last'));
 	
 	 }	
 
 	// customer update
-    public function customerupdate($id, CustomerEditFormRequest $request)
+    public function customerupdate($id , CustomerEditFormRequest $request)
 	{
 
 
@@ -482,15 +483,31 @@ class Customercontroller extends Controller
 		$customer->mail = $mail;
 		$customer->address = $address;			
 		$customer->save();	
-		$car = Car::where('customer_id','=',$id)->first();
-        $car->manufacturing = $manufacturing;
-		$car->registration = $registration;
-		$car->reg_chars = $reg_chars;
+		$car = Car::where('customer_id','=',$id)->get();
+		foreach($car as $key => $value)
+        {
+			$data = array(                 
+				'manufacturing'=>$request->manufacturing[$key],
+				'registration'=>$request->registration[$key],    
+				'reg_chars'=>$request->reg_chars[$key],
+				'manufacturing_date'=>$request->manufacturing_date[$key],
+				'chassis'=>$request->chassis[$key], 
+				'model'=>$request->model[$key],                 
 
+			); 
+			Car::where('id',$request->id[$key])
+			->update($data); 
+
+			/*$car->manufacturing = $manufacturing;
+		   $car->registration = $registration;
+		$car->reg_chars = $reg_chars;
 		$car->manufacturing_date = $manufacturing_date;
 		$car->chassis = $chassis;
 		$car->model = $model;
 		$car->save();
+		$car->model = $model;*/
+	    }
+		//$car->save();
 		return redirect('/customer/list')->with('message','Successfully Updated');
 	}
 	
