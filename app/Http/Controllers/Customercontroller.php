@@ -484,7 +484,7 @@ class Customercontroller extends Controller
 		$customer->save();	
 
 		$car = Car::where('customer_id','=',$id)->get();
-		foreach($request->id as $key => $value)
+		foreach($car as $key => $value)
         {
 			$data = array(                 
 				'manufacturing'=>$request->manufacturing[$key],
@@ -495,8 +495,7 @@ class Customercontroller extends Controller
 				'model'=>$request->model[$key],                 
                 
 			); 
-			Car::where('id',$request->id[$key])
-			->update($data); 
+			$car->update($data); 
 
 			/*$car->manufacturing = $manufacturing;
 		   $car->registration = $registration;
