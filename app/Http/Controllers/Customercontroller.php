@@ -447,6 +447,13 @@ class Customercontroller extends Controller
 		return redirect('/customer/list')->with('message','Successfully Deleted');
 	 }	
 
+
+	 public function car_destroy($id)
+	 {
+			
+        $car = Car::where('id','=',$id)->firstorfail()->delete();	  
+		return with('message','Successfully Deleted');
+	 }
 	 // customer edit
      public function customeredit($id)
 	 {   

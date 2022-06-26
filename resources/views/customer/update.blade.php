@@ -121,6 +121,7 @@ input[type=number] {
 							@foreach($cars as $cars)
 							<div class="col-md-12 col-xs-12 col-sm-12 space">
 								<h4><b>{{ trans('Car Information')}}</b></h4>
+								<a  url="{!! url('/customer/car/delete/'.$cars->id)!!}" class="deletecustomers"> <button type="button" class="btn btn-round btn-danger">{{ trans('app.Delete')}}</button></a>
 								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
 
 							</div>
@@ -266,13 +267,35 @@ $(document).ready(function() {
                             }
                         });
 
-        $( "#manufacturing" ).keypress(function(e) {
+    $( "#manufacturing" ).keypress(function(e) {
                             var key = e.keyCode;
                             if (key >= 48 && key <= 57) {
                                 e.preventDefault();
                             }
                         });    
 
+	$('body').on('click', '.deletecustomers', function() 
+		{		  	
+		  	var url =$(this).attr('url');
+		  	var msg1 = "{{ trans('app.Are You Sure?')}}";
+		    var msg2 = "{{ trans('app.You will not be able to recover this data afterwards!')}}";
+		    var msg3 = "{{ trans('app.Cancel')}}";
+		    var msg4 = "{{ trans('app.Yes, delete!')}}";
+	        
+	        swal({
+	        	title: msg1,
+	            text: msg2,   
+	            type: "warning",   
+	            showCancelButton: true, 
+	            cancelButtonText: msg3, 
+	            cancelButtonColor: "#C1C1C1",
+	            confirmButtonColor: "#297FCA",   
+	            confirmButtonText: msg4,   
+	            closeOnConfirm: false
+	        }, function(){
+				window.location.href = url;	             
+	        });
+	    }); 						
                 
 });
 </script>

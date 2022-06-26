@@ -95,6 +95,7 @@ Route::group(['prefix'=>'customer'],function()
 	Route::get('/list/delete/{id}',['as'=>'customer/list/delete/{id}','uses'=>'Customercontroller@destroy'])->middleware('can:customer_delete');
 	Route::post('/car',['as'=>'car','uses'=>'Customercontroller@car'])->middleware('can:customer_add');
 	Route::get('/add/car',['as'=>'add/car','uses'=>'Customercontroller@addCar'])->middleware('can:customer_add');
+	Route::get('/car/delete/{id}',['as'=>'customer/car/delete/{id}','uses'=>'Customercontroller@car_destroy'])->middleware('can:customer_delete');
 
 	Route::get('/list/edit/{id}',['as'=>'customer/list/edit/{id}','uses'=>'Customercontroller@customeredit']);
 	Route::post('/list/edit/update/{id}',['as'=>'customer/list/edit/update/{id}','uses'=>'Customercontroller@customerupdate']);
