@@ -454,6 +454,14 @@ class Customercontroller extends Controller
         $car = Car::where('id','=',$id)->firstorfail()->delete();	  
 		return redirect()->back()->with('message','Successfully Deleted');
 	 }
+
+	 public function car_update($id,request $request)
+	 {
+        Car::where('id','=',$id)->update($request->all());	  
+		return redirect()->back()->with('message','Successfully Deleted');
+	 }
+
+	 
 	 // customer edit
      public function customeredit($id)
 	 {   
@@ -491,8 +499,8 @@ class Customercontroller extends Controller
 		$customer->address = $address;			
 		$customer->save();
 			
-		$car = Car::where('customer_id','=',$id)->get();
-		$count = Car::where('customer_id','=',$id)->count();
+		//$car = Car::where('customer_id','=',$id)->get();
+		//$count = Car::where('customer_id','=',$id)->count();
 
 	   
 
@@ -513,7 +521,7 @@ class Customercontroller extends Controller
 		dd($data);
 Car::insert($data);*/
 		//$input = request()->all();
-		for($i = 0; $i <= $count; $i++) {
+		/*for($i = 0; $i <= $count; $i++) {
 				$input = [
 					'manufacturing' => $car[$i]['manufacturing'],
 					'registration' => $car[$i]['registration'],
@@ -525,14 +533,8 @@ Car::insert($data);*/
 
 				Car::update($input);
 
-					/*$values->manufacturing = $input['manufacturing'][$i];
-					$values->registration = $input['registration'][$i];
-					$values->reg_chars = $input['reg_chars'][$i];
-					$values->manufacturing_date = $input['manufacturing_date'][$i];
-					$values->chassis = $input['chassis'][$i];
-					$values->model = $input['model'][$i];
-					$values->save();*/
-			}
+					
+			}*/
 		
 
 			/*$input = [
