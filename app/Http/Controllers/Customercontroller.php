@@ -511,9 +511,8 @@ class Customercontroller extends Controller
 			//$data = $request->all();
 		$datas = new Car();
 
-		$carArray = explode(',', $car);
 
-		foreach($carArray as $car_Array){
+		foreach($car as $car_Array){
 			$datas->manufacturing = $car_Array->manufacturing;
 			$datas->registration = $car_Array->registration;
 		}
