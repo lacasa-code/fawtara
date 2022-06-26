@@ -516,7 +516,16 @@ Car::insert($data);*/
 		for($i = 0; $i <= $count; $i++) {
 			foreach($cars as $key => $values)
 			{
-				Car::where('id', $values->id)->update($request->all());
+				$input = [
+					'manufacturing' => $car[$i]['manufacturing'],
+					'registration' => $car[$i]['registration'],
+					'reg_chars' => $car[$i]['reg_chars'],
+					'manufacturing_date' => $car[$i]['manufacturing_date'],
+					'chassis' => $car[$i]['chassis'],
+					'model' => $car[$i]['model'],
+				];
+
+				Car::where('id', $values->id)->update($input);
 
 					/*$values->manufacturing = $input['manufacturing'][$i];
 					$values->registration = $input['registration'][$i];
