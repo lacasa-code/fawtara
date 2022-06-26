@@ -17,6 +17,7 @@ use App\Electronicinvoice;
 use App\Http\Requests\CustomerAddEditFormRequest;
 use App\Http\Requests\CarAddEditFormRequest;
 use App\Http\Requests\CustomerEditFormRequest;
+use Illuminate\Support\Facades\Input;
 
 class Customercontroller extends Controller
 {
