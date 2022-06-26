@@ -467,12 +467,13 @@ class Customercontroller extends Controller
 		$address = $request->address;
 		$phone = $request->phone;
 		$mail = $request->mail;
+
 		$manufacturing = $request->manufacturing;
 		$registration = $request->registration;
+		$reg_chars = $request->reg_chars;
 		$manufacturing_date = $request->manufacturing_date;
 		$chassis = $request->chassis;
 		$model = $request->model;
-		$kilometers = $request->kilometers;
 
 		  
 		$customer = Customer::find($id);
@@ -484,10 +485,11 @@ class Customercontroller extends Controller
 		$car = Car::where('customer_id','=',$id)->first();
         $car->manufacturing = $manufacturing;
 		$car->registration = $registration;
+		$car->reg_chars = $reg_chars;
+
 		$car->manufacturing_date = $manufacturing_date;
 		$car->chassis = $chassis;
 		$car->model = $model;
-		$car->kilometers = $kilometers;
 		$car->save();
 		return redirect('/customer/list')->with('message','Successfully Updated');
 	}
