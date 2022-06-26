@@ -507,7 +507,7 @@ class Customercontroller extends Controller
 	
 		foreach($car as $key => $value)
         {
-			$data = array(                 
+			$data[] = array(                 
 				'manufacturing'=>$request->manufacturing[$key],
 				'registration'=>$request->registration[$key],    
 				'reg_chars'=>$request->reg_chars[$key],
@@ -516,8 +516,10 @@ class Customercontroller extends Controller
 				'model'=>$request->model[$key],                 
 
 			); 
-			Car::where('id',$request->id[$key])
-			->update($data); 
+			
+
+			/*Car::where('id',$request->id[$key])
+			->update($data); */
 
 			/*$car->manufacturing = $manufacturing;
 		   $car->registration = $registration;
@@ -527,7 +529,8 @@ class Customercontroller extends Controller
 		$car->model = $model;
 		$car->save();
 		$car->model = $model;*/
-	    }
+		}
+		Car::insert($data); 
 		//$car->save();
 		return redirect('/customer/list')->with('message','Successfully Updated');
 	}
