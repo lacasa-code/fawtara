@@ -516,7 +516,7 @@ class Customercontroller extends Controller
 			$datas->manufacturing = $car_Array->manufacturing;
 			$datas->registration = $car_Array->registration;
 		}
-		dd($datas);
+		//dd($datas);
 		$datas->save();
 
 
