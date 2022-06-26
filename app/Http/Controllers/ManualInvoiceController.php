@@ -77,6 +77,13 @@ class ManualInvoiceController extends Controller
 		return view('Manual.getInvoiceNov2', compact('code', 'codepay', 'tbl_payments', 'branches', 'currentUser', 'branchDatas', 'customers', 'tax', 'auth_branch_vat_number', 'auth_branch','cars','customers_list'));
 	}
 
+	public function customer_invoice($id)
+	{
+           $customers_list=Customer::where('id',$id)->get();
+		   return response()->json(['success'=>true, 'info'=>$customers_list]);
+
+	}
+
 	public function storeInvoice2(Request $request)
 	{
 		//return strlen($request->registeration);

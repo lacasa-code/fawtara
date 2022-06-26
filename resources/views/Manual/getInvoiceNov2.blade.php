@@ -1570,23 +1570,25 @@ $(document).ready(function()
                 
 });
 
-$('#customer').change(function() {
-         var id = $(this).val();
-         var url = '{{ route("getInvoice2") }}';
-         //url = url.replace(':id', id);
 
-         $.ajax({
-             url: url,
-             type: 'get',
-             dataType: 'json',
-             success: function(response) {
-                 if (response != null) {
-                     $('#address').val(response.address);
-                     $('#phone').val(response.phone);
-                 }
-             }
-         });
-     });
+$("#customer").change(function() {
+  $.ajax({
+    url: '/invoice/manual/invoice/customer/' + $(this).val(),
+    type: 'get',
+    data: {},
+    success: function(data) {
+      if (data.success == true) {
+        $("#address").value = data.address;
+		$("#phone").value = data.phone;
+
+      } else {
+        alert('Cannot find info');
+      }
+
+    },
+    error: function(jqXHR, textStatus, errorThrown) {}
+  });
+});
 </script>
 
 @endsection
