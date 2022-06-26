@@ -492,12 +492,22 @@ class Customercontroller extends Controller
 		$customer->save();
 			
 		$car = Car::where('customer_id','=',$id)->get();
-		
+		$count = Car::where('customer_id','=',$id)->count();
 
 
-		/*for($i = 0; $i <= $car->count(); $i++) {
 
-			$input = [
+		for($i = 0; $i <= $count; $i++) {
+			foreach($cars as $car)
+				$car->manufacturing = $request->manufacturing;
+				$car->registration = $request->registration;
+				$car->reg_chars = $request->reg_chars;
+				$car->manufacturing_date = $request->manufacturing_date;
+				$car->chassis = $request->chassis;
+				$car->model = $request->model;
+				$car->save();
+		}
+
+			/*$input = [
 				'manufacturing' => $car[$i]['manufacturing'],
 				'registration' => $car[$i]['registration'],
 				'reg_chars' => $car[$i]['reg_chars'],
@@ -509,31 +519,30 @@ class Customercontroller extends Controller
 
 			//DB::table('cars')->update($input);
 			//$data = $request->all();
-		$datas = new Car();
-
-
-		for($i = 0; $i <= 2 ; $i++) {
-			foreach($car as $key => $value){
-				$datas->manufacturing = $request->manufacturing[$i];
-				$datas->registration = $request->registration[$i];
-			}
-		}
-		//dd($datas);
-		$datas->save();
+		
 
 
 
 		/*foreach($car as $key => $value)
         {
 
-			$data[] = array(                 
+
+			$car->manufacturing = $manufacturing;
+		   	$car->registration = $registration;
+			$car->reg_chars = $reg_chars;
+			$car->manufacturing_date = $manufacturing_date;
+			$car->chassis = $chassis;
+			$car->model = $model;
+			$car->save();
+
+			/*$data[] = array(                 
 				'manufacturing'=>$request->manufacturing[$key],
                 'registration'=>$request->registration[$key],    
                 'reg_chars'=>$request->reg_chars[$key],
                 'manufacturing_date'=>$request->manufacturing_date[$key],
                 'chassis'=>$request->chassis[$key], 
                 'model'=>$request->model[$key],             
-			); 
+			); */
 			
 			
 			//Car::where('id',$value->id)->update($data);
@@ -546,7 +555,6 @@ class Customercontroller extends Controller
 		$car->model = $model;
 		$car->save();
 		$car->model = $model;*/
-		//}
 		//}
 		//dd($data);
 		//Car::insert($data);
