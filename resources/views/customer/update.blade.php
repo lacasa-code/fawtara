@@ -149,13 +149,11 @@ input[type=number] {
 							<table id="datatable" class="table datatable table-striped jambo_table" style="margin-top:20px; width:100%;">
 								<thead>
 									<tr>
-										<th>{{ trans('app.Enter Manufacturing Name') }}</th>
-										<th>{{ trans('app.Date Of Manufacturing:') }}</th>
-										<th>{{ trans('app.Date Of Manufacturing:') }}</th>
-										
-										<th>{{ trans('app.Registration No.') }}</th>
-										<th>{{ trans('app.Chassis') }}</th>
-										<th>{{ trans('app.Model No')}}</th>
+										<th> Manufacturing Name </th>
+										<th> Date Manufacturing </th>										
+										<th> Registration </th>
+										<th> Chassis </th>
+										<th> Model </th>
 										<th></th>
 									</tr>
 								</thead>
@@ -222,7 +220,7 @@ input[type=number] {
 									</td>
 									<td>
 									<a  url="{!! url('/customer/car/delete/'.$cars->id)!!}" class="deletecustomers"> <button type="button" class="btn btn-round btn-danger">{{ trans('app.Delete')}}</button></a>
-										<a  url="{!! url('/customer/car/update/'.$cars->id)!!}"> <button type="button" class="btn btn-round btn-danger">Update</button></a>
+									<a  url="{!! url('/customer/car/update/'.$cars->id)!!}"> <button type="button" class="btn btn-round btn-primary">Update</button></a>
 									</td>
 									
 								</tr>
