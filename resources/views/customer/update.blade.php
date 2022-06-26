@@ -52,11 +52,7 @@ input[type=number] {
             </ul>
 		</div>
         <div class="clearfix"></div>
-        @if ($errors->any())
-		    @foreach ($errors->all() as $error)
-		        <div>{{$error}}</div>
-		    @endforeach
-		@endif
+       
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -159,7 +155,17 @@ input[type=number] {
 							<div class="col-md-12 col-sm-6 col-xs-12">  
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('registration') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="registration">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
+									
+									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
+											<input type="text" name="reg_chars" class="form-control" id="reg_chars" placeholder="a b c" value="{{old('reg_chars')}}">
+											@if($errors->has('reg_chars'))
+                                                <span class="help-block">
+										               <strong>{{$errors->first('reg_chars')}}</strong>
+									            </span>
+                                            @endif
+									</div>
+									
+									<div class="col-md-4 col-sm-8 col-xs-12">
 										<input type="text"  name="registration" placeholder="{{ trans('app.Enter Registration Number')}}" value="{{$cars->registration}}" class="form-control" >
 										@if ($errors->has('registration'))
 											<span class="help-block">
@@ -250,5 +256,23 @@ $('.date').datepicker({
 	changeMonth: true,
       changeYear: true
      });  
+$(document).ready(function() {
+    
+    $( "#reg_chars" ).keypress(function(e) {
+                            var key = e.keyCode;
+                            if (key >= 48 && key <= 57) {
+                                e.preventDefault();
+                            }
+                        });
+
+        $( "#manufacturing" ).keypress(function(e) {
+                            var key = e.keyCode;
+                            if (key >= 48 && key <= 57) {
+                                e.preventDefault();
+                            }
+                        });    
+
+                
+});
 </script>
 @endsection
