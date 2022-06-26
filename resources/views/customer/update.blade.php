@@ -159,7 +159,7 @@ input[type=number] {
 								</thead>
 								<tbody>
 							@foreach($cars as $cars)
-							<form method="post" action="/customer/car/update/{{ $cars->id }}">
+							<form method="get" action="/customer/car/update/{{ $cars->id }}">
 
 								<tr>
 								    <td>
