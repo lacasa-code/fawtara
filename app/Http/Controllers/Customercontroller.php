@@ -497,7 +497,7 @@ class Customercontroller extends Controller
 	   
 
 		foreach($cars as $key =>$item_id){
-            $data = array(
+            $data []= array(
                             'manufacturing'=>$request->manufacturing [$key],
                             'registration'=>$request->registration [$key],
 							'reg_chars'=>$request->reg_chars [$key],
@@ -508,9 +508,10 @@ class Customercontroller extends Controller
 
 
                 );
-				Car::insert($data);
-        }
-
+				
+		}
+		dd($data);
+Car::insert($data);
 
 		/*for($i = 0; $i <= $count; $i++) {
 			foreach($cars as $key => $car){ 
