@@ -18,7 +18,6 @@ use App\Http\Requests\CustomerAddEditFormRequest;
 use App\Http\Requests\CarAddEditFormRequest;
 use App\Http\Requests\CustomerEditFormRequest;
 use Illuminate\Support\Facades\Input;
-
 class Customercontroller extends Controller
 {
 	
@@ -513,7 +512,7 @@ class Customercontroller extends Controller
 		}
 		dd($data);
 Car::insert($data);*/
-		$input = Input::all();
+		$input = request()->all();
 		for($i = 0; $i <= $count; $i++) {
 				$values = new Car;
                 $values->manufacturing = $input['manufacturing'][$i];
