@@ -496,7 +496,38 @@ class Customercontroller extends Controller
 
 
 
-		for($i = 0; $i <= $count; $i++) {
+        $conts = 0;
+        while($conts < $count){
+			$Car = new Car();
+			$Car->manufacturing=$request->manufacturing[$conts];
+			$Car->registration=$request->registration[$conts];
+			$Car->reg_chars=$request->reg_chars[$conts];
+			$Car->manufacturing_date=$request->manufacturing_date[$conts];
+			$Car->chassis=$request->chassis[$conts];
+			$Car->model=$request->model[$conts];
+
+			$Car->save();
+			$conts=$conts+1;
+	   }
+	   
+
+		/*foreach($cars as $key =>$item_id){
+            $data = array(
+                            'manufacturing'=>$request->manufacturing [$key],
+                            'registration'=>$request->registration [$key],
+							'reg_chars'=>$request->reg_chars [$key],
+							'manufacturing_date'=>$request->manufacturing_date [$key],
+							'chassis'=>$request->chassis [$key],
+							'model'=>$request->model [$key],
+
+
+
+                );
+				Car::insert($data);
+        }
+*/
+
+		/*for($i = 0; $i <= $count; $i++) {
 			foreach($cars as $key => $car){ 
 				$car->manufacturing = $request->manufacturing[$i];
 				$car->registration = $request->registration[$i];
@@ -506,7 +537,7 @@ class Customercontroller extends Controller
 				$car->model = $request->model[$i];
 				$car->save();
 			}
-		}
+		}*/
 
 			/*$input = [
 				'manufacturing' => $car[$i]['manufacturing'],
