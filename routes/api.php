@@ -22,8 +22,8 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 
 
 //auth routes
-Route::middleware([ 'api'])->group(function () {
+Route::middleware(['api'])->group(function () {
 
-    Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
+    Route::post('/login', [App\Http\Controllers\Api\LoginController::class, 'login']);
 
 });
