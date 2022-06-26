@@ -476,12 +476,12 @@ class Customercontroller extends Controller
 		$phone = $request->phone;
 		$mail = $request->mail;
 
-		$manufacturing = $request->manufacturing;
+		/*$manufacturing = $request->manufacturing;
 		$registration = $request->registration;
 		$reg_chars = $request->reg_chars;
 		$manufacturing_date = $request->manufacturing_date;
 		$chassis = $request->chassis;
-		$model = $request->model;
+		$model = $request->model;*/
 
 		  
 		$customer = Customer::find($id);
