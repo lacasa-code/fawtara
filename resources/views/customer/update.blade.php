@@ -159,6 +159,8 @@ input[type=number] {
 								</thead>
 								<tbody>
 							@foreach($cars as $cars)
+							<form method="post" action="/customer/car/update/{{ $cars->id }}">
+
 								<tr>
 								    <td>
 									<div class="{{$errors->has('manufacturing') ? ' has-error' : ''}}">
@@ -220,12 +222,13 @@ input[type=number] {
 									</td>
 									<td>
 									<a  url="{!! url('/customer/car/delete/'.$cars->id)!!}" class="deletecustomers"> <button type="button" class="btn btn-round btn-danger">{{ trans('app.Delete')}}</button></a>
-									<a  href="{!! url('/customer/car/update/'.$cars->id)!!}" class="btn btn-round btn-success"> Update </a>
+									<button type="submit" class="btn btn-success">{{ trans('app.Update') }}</button>
 									</td>
 									
-								</tr>
+								</tr>	</form>
                             @endforeach
-					</div>
+					</div>					
+
                 </div>
             </div>
         </div>
