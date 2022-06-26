@@ -514,8 +514,10 @@ class Customercontroller extends Controller
 		$carArray = explode(',', $car);
 
 		foreach($carArray as $car_Array){
-			$datas->manufacturing = $request->manufacturing;
+			$datas->manufacturing = $car_Array->manufacturing;
+			$datas->registration = $car_Array->registration;
 		}
+		dd($datas);
 		$datas->save();
 
 
