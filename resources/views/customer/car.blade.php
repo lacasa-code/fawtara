@@ -186,7 +186,10 @@ $(document).ready(function() {
                             if (key >= 48 && key <= 57) {
                                 e.preventDefault();
                             }
-                        });                    
+                        });    
+
+        $('.select_customer').select2();
+                
 });
 </script>
 						
