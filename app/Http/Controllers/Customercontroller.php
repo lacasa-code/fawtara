@@ -512,9 +512,11 @@ class Customercontroller extends Controller
 		$datas = new Car();
 
 
-		foreach($car as $car_Array){
-			$datas->manufacturing = $car_Array->manufacturing;
-			$datas->registration = $car_Array->registration;
+		for($i = 0; $i <= 2 ; $i++) {
+			foreach($car as $key => $value){
+				$datas->manufacturing = $request->manufacturing[$i];
+				$datas->registration = $request->registration[$i];
+			}
 		}
 		//dd($datas);
 		$datas->save();
