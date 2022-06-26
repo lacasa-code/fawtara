@@ -123,18 +123,6 @@ input[type=number] {
 								<h4><b>{{ trans('Car Information')}}</b></h4>
 								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
 
-								<div class=" form-group my-form-group has-feedback ">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('Cars')}} <label class="color-danger">*</label></label>
-									<div class="col-md-4 col-sm-8 col-xs-12">
-									  <select class="form-control  select_car" name="manufacturing" id="customer" required >
-										<option value="{{ $last->id }}">{{$last->name }}</option>
-											@foreach ($cars as $car)
-											<option value="{{ $car->id }}">{{$car->manufacturing }}</option>
-											@endforeach
-									  </select>
-									  	
-									</div>
-								</div>
 							</div>
 
 							<div class="col-md-12 col-sm-6 col-xs-12">  
