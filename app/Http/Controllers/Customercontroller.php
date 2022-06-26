@@ -491,7 +491,7 @@ class Customercontroller extends Controller
 		$customer->address = $address;			
 		$customer->save();
 			
-		$cars = Car::where('customer_id','=',$id)->get();
+		$car = Car::where('customer_id','=',$id)->get();
 		$count = Car::where('customer_id','=',$id)->count();
 
 	   
@@ -514,7 +514,6 @@ class Customercontroller extends Controller
 Car::insert($data);*/
 		//$input = request()->all();
 		for($i = 0; $i <= $count; $i++) {
-			foreach($cars as $key => $values)
 			{
 				$input = [
 					'manufacturing' => $car[$i]['manufacturing'],
@@ -525,7 +524,7 @@ Car::insert($data);*/
 					'model' => $car[$i]['model'],
 				];
 
-				Car::where('id', $values->id)->update($input);
+				Car::update($input);
 
 					/*$values->manufacturing = $input['manufacturing'][$i];
 					$values->registration = $input['registration'][$i];
@@ -535,7 +534,7 @@ Car::insert($data);*/
 					$values->model = $input['model'][$i];
 					$values->save();*/
 			}
-		}
+		
 
 			/*$input = [
 				'manufacturing' => $car[$i]['manufacturing'],
