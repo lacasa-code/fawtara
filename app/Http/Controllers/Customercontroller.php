@@ -523,7 +523,7 @@ class Customercontroller extends Controller
 				)
    			);*/
 
-			$data = array(                 
+			$data[] = array(                 
 				'manufacturing'=>$request->manufacturing,
                 'registration'=>$request->registration,    
                 'reg_chars'=>$request->reg_chars,
@@ -532,8 +532,8 @@ class Customercontroller extends Controller
                 'model'=>$request->model,             
 			); 
 			
-
-			Car::where('id',$value->id)->update($data);
+			
+			//Car::where('id',$value->id)->update($data);
 
 			/*$car->manufacturing = $manufacturing;
 		   $car->registration = $registration;
@@ -545,8 +545,8 @@ class Customercontroller extends Controller
 		$car->model = $model;*/
 		//}
 		}
-		//dd($data);
-
+		dd($data);
+		Car::insert($data);
 		//Car::insert($data);
 		//Car::insert($data); 
 		//$car->save();
