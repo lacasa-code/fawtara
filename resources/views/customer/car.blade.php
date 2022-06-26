@@ -171,7 +171,10 @@ input[type=number] {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <script>
 
-     
+          $('.date').datepicker({
+format: "yyyy", viewMode: "years",
+        minViewMode: "years",
+    autoclose:true});   
 $(document).ready(function() {
     
     $( "#reg_chars" ).keypress(function(e) {
@@ -189,10 +192,7 @@ $(document).ready(function() {
                         });    
 
         $('.select_customer').select2();
-        $('.date').datepicker({
-format: "yyyy", viewMode: "years",
-        minViewMode: "years",
-    autoclose:true});
+
                 
 });
 </script>
