@@ -491,7 +491,7 @@ class Customercontroller extends Controller
 		$customer->address = $address;			
 		$customer->save();
 			
-		$car = Car::where('customer_id','=',$id)->get();
+		$cars = Car::where('customer_id','=',$id)->get();
 		$count = Car::where('customer_id','=',$id)->count();
 
 
