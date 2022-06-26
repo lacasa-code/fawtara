@@ -498,12 +498,12 @@ class Customercontroller extends Controller
 
 		for($i = 0; $i <= $count; $i++) {
 			foreach($cars as $key => $car){ 
-				$car->manufacturing = $request->manufacturing[$key];
-				$car->registration = $request->registration[$key];
-				$car->reg_chars = $request->reg_chars[$key];
-				$car->manufacturing_date = $request->manufacturing_date[$key];
-				$car->chassis = $request->chassis[$key];
-				$car->model = $request->model[$key];
+				$car->manufacturing = $request->manufacturing[$i];
+				$car->registration = $request->registration[$i];
+				$car->reg_chars = $request->reg_chars[$i];
+				$car->manufacturing_date = $request->manufacturing_date[$i];
+				$car->chassis = $request->chassis[$i];
+				$car->model = $request->model[$i];
 				$car->save();
 			}
 		}
