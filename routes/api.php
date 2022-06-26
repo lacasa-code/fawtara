@@ -20,5 +20,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], 
 
 
 
-Route::post('/login', [App\Http\Controllers\Api\LoginController::class, 'login']);
+Route::post('/login', [App\Http\Controllers\Api\V1\Admin\LoginController::class, 'login']);
 
