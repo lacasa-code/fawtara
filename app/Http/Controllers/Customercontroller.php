@@ -95,7 +95,7 @@ class Customercontroller extends Controller
 		$car->manufacturing_date = $manufacturing_date;
 		$car->chassis = $chassis;
 		$car->model = $model;
-		$car->kilometers = 0;
+		//$car->kilometers = 0;
 		$car->customer_id=$customer_id;
 		$car->reg_chars=$reg_chars;
 
