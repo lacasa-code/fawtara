@@ -509,17 +509,17 @@ class Customercontroller extends Controller
 
 			//DB::table('cars')->update($input);
 			//$data = $request->all();
-			$finalArray = array();
+		$finalArray = array();
 
 		foreach($car as $key => $value)
         {
 			array_push($finalArray, array(
-                'manufacturing'=>$value['manufacturing'],
-                'registration'=>$value['registration'],
-                'reg_chars'=>$value['reg_chars'],
-                'manufacturing_date'=>$value['manufacturing_date'],
-                'chassis'=>$value['chassis'],
-				'model'=> $value['model'] 
+                'manufacturing'=>$value['smanufacturing'],
+                'registration'=>$value['sregistration'],
+                'reg_chars'=>$value['sreg_chars'],
+                'manufacturing_date'=>$value['smanufacturing_date'],
+                'chassis'=>$value['schassis'],
+				'model'=> $value['smodel'] 
 				)
    			);
 
