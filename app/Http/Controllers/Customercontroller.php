@@ -494,24 +494,9 @@ class Customercontroller extends Controller
 		$cars = Car::where('customer_id','=',$id)->get();
 		$count = Car::where('customer_id','=',$id)->count();
 
-
-
-        $conts = 0;
-        while($conts < $count){
-			$Car = new Car();
-			$Car->manufacturing=$request->manufacturing[$conts];
-			$Car->registration=$request->registration[$conts];
-			$Car->reg_chars=$request->reg_chars[$conts];
-			$Car->manufacturing_date=$request->manufacturing_date[$conts];
-			$Car->chassis=$request->chassis[$conts];
-			$Car->model=$request->model[$conts];
-
-			$Car->save();
-			$conts=$conts+1;
-	   }
 	   
 
-		/*foreach($cars as $key =>$item_id){
+		foreach($cars as $key =>$item_id){
             $data = array(
                             'manufacturing'=>$request->manufacturing [$key],
                             'registration'=>$request->registration [$key],
@@ -525,7 +510,7 @@ class Customercontroller extends Controller
                 );
 				Car::insert($data);
         }
-*/
+
 
 		/*for($i = 0; $i <= $count; $i++) {
 			foreach($cars as $key => $car){ 
