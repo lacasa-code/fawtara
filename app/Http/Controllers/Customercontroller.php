@@ -515,12 +515,12 @@ Car::insert($data);*/
 		$input = request()->all();
 		for($i = 0; $i <= $count; $i++) {
 				$values = new Car;
-                $values->manufacturing = $input['manufacturing'][$i];
-                $values->registration = $input['registration'][$i];
-				$values->reg_chars = $input['reg_chars'][$i];
-				$values->manufacturing_date = $input['manufacturing_date'][$i];
-				$values->chassis = $input['chassis'][$i];
-				$values->model = $input['model'][$i];
+                $values->manufacturing = $input['manufacturing'][$count];
+                $values->registration = $input['registration'][$count];
+				$values->reg_chars = $input['reg_chars'][$count];
+				$values->manufacturing_date = $input['manufacturing_date'][$count];
+				$values->chassis = $input['chassis'][$count];
+				$values->model = $input['model'][$count];
                 $values->save();
 		}
 
