@@ -1572,11 +1572,11 @@ $(document).ready(function()
 
 $('#customer').change(function() {
          var id = $(this).val();
-         //var url = '{{ route("getDetails", ":id") }}';
+         var url = '{{ route("getInvoice2") }}';
          //url = url.replace(':id', id);
 
          $.ajax({
-             //url: url,
+             url: url,
              type: 'get',
              dataType: 'json',
              success: function(response) {
