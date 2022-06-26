@@ -40,9 +40,9 @@
 							    <div class="col-md-2 col-sm-6 col-xs-12 f ">
 				  				    <h4><b>{{ trans('app.Invoice Details')}}</b></h4><hr>
 							    </div>
-								<div class="col-md-8 col-sm-6 col-xs-12 f ">
+								<div class="col-md-4 col-sm-6 col-xs-12 f ">
 								    <select class="form-control  select_customer" name="customer_id" id="customer" required >
-										<option value="">{{ trans('Select customers')}}</option>
+										<option value="0">{{ trans('Select customers')}}</option>
 											@foreach ($customers as $customer)
 											<option value="{{ $customer->id }}">{{$customer->name }}</option>
 											@endforeach
