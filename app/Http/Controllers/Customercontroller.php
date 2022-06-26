@@ -512,17 +512,19 @@ class Customercontroller extends Controller
 		}
 		dd($data);
 Car::insert($data);*/
-		$input = request()->all();
+		//$input = request()->all();
 		for($i = 0; $i <= $count; $i++) {
 			foreach($cars as $key => $values)
 			{
-					$values->manufacturing = $input['manufacturing'][$i];
+				Car::where('id', $values->id)->update($request->all());
+
+					/*$values->manufacturing = $input['manufacturing'][$i];
 					$values->registration = $input['registration'][$i];
 					$values->reg_chars = $input['reg_chars'][$i];
 					$values->manufacturing_date = $input['manufacturing_date'][$i];
 					$values->chassis = $input['chassis'][$i];
 					$values->model = $input['model'][$i];
-					$values->save();
+					$values->save();*/
 			}
 		}
 
