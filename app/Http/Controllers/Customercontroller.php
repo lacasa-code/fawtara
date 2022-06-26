@@ -514,7 +514,7 @@ class Customercontroller extends Controller
 Car::insert($data);*/
 		$input = request()->all();
 		for($i = 0; $i <= $count; $i++) {
-			foreach($cars as $key => $value)
+			foreach($cars as $key => $values)
 			{
 					$values->manufacturing = $input['manufacturing'][$key];
 					$values->registration = $input['registration'][$key];
