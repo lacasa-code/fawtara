@@ -44,7 +44,7 @@
 								    <select class="form-control  select_customer" name="customer_id" id="customer" required >
 										<option value="0">{{ trans('Select customers')}}</option>
 											@foreach ($customers_list as $customer)
-											   <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+											   <option value="{{ $customer->id }}">{{ $customer->name }}/{{$customer->phone }}</option>
 											@endforeach
 									</select>
 								</div>
