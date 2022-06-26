@@ -475,7 +475,7 @@ class Customercontroller extends Controller
 	 }	
 
 	// customer update
-    public function customerupdate($id , CustomerEditFormRequest $request)
+    public function customerupdate($id , request $request)
 	{
 
 

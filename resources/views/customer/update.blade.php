@@ -151,6 +151,8 @@ input[type=number] {
 									<tr>
 										<th>{{ trans('app.Enter Manufacturing Name') }}</th>
 										<th>{{ trans('app.Date Of Manufacturing:') }}</th>
+										<th>{{ trans('app.Date Of Manufacturing:') }}</th>
+										
 										<th>{{ trans('app.Registration No.') }}</th>
 										<th>{{ trans('app.Chassis') }}</th>
 										<th>{{ trans('app.Model No')}}</th>
@@ -189,8 +191,6 @@ input[type=number] {
 									            </span>
                                             @endif
 										</div>
-									</td>
-									<td>
 										<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
 										<input type="text"  name="registration"  id="registration" placeholder="1 2 3" value="{{$cars->registration}}" class="form-control" >
 										@if ($errors->has('registration'))
@@ -211,7 +211,7 @@ input[type=number] {
 										</div>
 									</td>
 									<td>
-									<div class="col-md-8 col-sm-8 col-xs-12">
+										<div class="col-md-8 col-sm-8 col-xs-12">
 										<input type="text"  name="model" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}"  class="form-control">
 										@if ($errors->has('model'))
 											<span class="help-block">
@@ -221,11 +221,10 @@ input[type=number] {
 									</div>
 									</td>
 									<td>
-									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
-										<a  url="{!! url('/customer/car/delete/'.$cars->id)!!}" class="deletecustomers"> <button type="button" class="btn btn-round btn-danger">{{ trans('app.Delete')}}</button></a>
+									<a  url="{!! url('/customer/car/delete/'.$cars->id)!!}" class="deletecustomers"> <button type="button" class="btn btn-round btn-danger">{{ trans('app.Delete')}}</button></a>
 										<a  url="{!! url('/customer/car/update/'.$cars->id)!!}"> <button type="button" class="btn btn-round btn-danger">Update</button></a>
-									</div>
 									</td>
+									
 								</tr>
                             @endforeach
 					</div>
