@@ -169,10 +169,13 @@ input[type=number] {
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!-- Moment Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script>
-$('.date').yearpicker({
-        });
-     
+
+    
 $(document).ready(function() {
     
     $( "#reg_chars" ).keypress(function(e) {
@@ -190,7 +193,7 @@ $(document).ready(function() {
                         });    
 
         $('.select_customer').select2();
-                
+        $('.date').yearpicker();        
 });
 </script>
 						
