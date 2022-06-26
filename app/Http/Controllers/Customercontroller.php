@@ -498,12 +498,12 @@ class Customercontroller extends Controller
 
 		foreach($cars as $key =>$item_id){
             $data []= array(
-                            'manufacturing'=>$request->manufacturing [$item_id],
-                            'registration'=>$request->registration [$item_id],
-							'reg_chars'=>$request->reg_chars [$item_id],
-							'manufacturing_date'=>$request->manufacturing_date [$item_id],
-							'chassis'=>$request->chassis [$item_id],
-							'model'=>$request->model [$item_id],
+				$item_id->manufacturing =>$request->manufacturing,
+				$item_id->registration  =>$request->registration,
+				$item_id->reg_chars =>$request->reg_chars,
+				$item_id->manufacturing_date =>$request->manufacturing_date,
+				$item_id->chassis =>$request->chassis,
+				$item_id->model =>$request->model,
 
 
 
