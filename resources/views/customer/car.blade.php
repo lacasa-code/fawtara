@@ -168,7 +168,9 @@ input[type=number] {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 <script>
-$('.date').datepicker({ dateFormat: 'yy' });
+$('.date').datepicker({ dateFormat: 'yyyy',
+        changeMonth: false,
+        changeYear: true });
      
 $(document).ready(function() {
     
