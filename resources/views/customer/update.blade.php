@@ -133,95 +133,7 @@ input[type=number] {
 							</div>
 							
 							@isset($cars)
-							@foreach($cars as $cars)
-							<div class="col-md-12 col-xs-12 col-sm-12 space">
-							<div class="col-md-2 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
-								<h4><b>{{ trans('Car Information')}}</b></h4>
-							</div>
-							<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
-								<a  url="{!! url('/customer/car/delete/'.$cars->id)!!}" class="deletecustomers"> <button type="button" class="btn btn-round btn-danger">{{ trans('app.Delete')}}</button></a>
-							</div>	
-								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
-							</div>
-
-							<div class="col-md-12 col-sm-6 col-xs-12">  
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$cars->manufacturing}}" class="form-control" >
-										@if ($errors->has('manufacturing'))
-											<span class="help-block">
-												<strong>{{ $errors->first('manufacturing[]') }}</strong>
-									   		</span>
-										@endif
-									</div>
-								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('manufacturing_date') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing_date">{{ trans('app.Date Of Manufacturing:') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text"   name="manufacturing_date" placeholder="{{ trans('app.Enter Manufacturing Date')}}" value="{{$cars->manufacturing_date}}" class="date form-control " onkeypress="return false;" >
-									
-
-  
-									@if ($errors->has('manufacturing_date'))
-									   <span class="help-block">
-										   <strong>{{ $errors->first('manufacturing_date') }}</strong>
-									   </span>
-									  @endif
-									</div>
-								</div>	
-							</div>
-
-							<div class="col-md-12 col-sm-6 col-xs-12">  
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('registration') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="registration">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
-									
-									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
-											<input type="text" name="reg_chars" class="form-control" id="reg_chars" placeholder="a b c" value="{{$cars->reg_chars}}">
-											@if($errors->has('reg_chars'))
-                                                <span class="help-block">
-										               <strong>{{$errors->first('reg_chars')}}</strong>
-									            </span>
-                                            @endif
-									</div>
-									
-									<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
-										<input type="text"  name="registration"  id="registration" placeholder="1 2 3" value="{{$cars->registration}}" class="form-control" >
-										@if ($errors->has('registration'))
-											<span class="help-block">
-												<strong>{{ $errors->first('registration') }}</strong>
-									   		</span>
-										@endif
-									</div>
-								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('chassis') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="chassis">{{ trans('app.Chassis') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-									<input type="text"  name="chassis" placeholder="{{ trans('app.Enter Chassis No.')}}" value="{{$cars->chassis}}" class="form-control" >
-									  @if ($errors->has('chassis'))
-									   <span class="help-block">
-										   <strong>{{ $errors->first('chassis') }}</strong>
-									   </span>
-									  @endif
-									</div>
-								</div>	
-							</div>
-
-							<div class="col-md-12 col-sm-6 col-xs-12">  
-								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text"  name="model" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}"  class="form-control">
-										@if ($errors->has('model'))
-											<span class="help-block">
-												<strong>{{ $errors->first('model') }}</strong>
-									   		</span>
-										@endif
-									</div>
-								</div>
-									
-							</div>
-                            @endforeach
+							
 							@endisset
 
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -232,6 +144,90 @@ input[type=number] {
 								</div>
 							</div>
 						</form>
+<hr>
+						<div class="x_panel bgr">
+							<table id="datatable" class="table datatable table-striped jambo_table" style="margin-top:20px; width:100%;">
+								<thead>
+									<tr>
+										<th>{{ trans('app.Enter Manufacturing Name') }}</th>
+										<th>{{ trans('app.Date Of Manufacturing:') }}</th>
+										<th>{{ trans('app.Registration No.') }}</th>
+										<th>{{ trans('app.Chassis') }}</th>
+										<th>{{ trans('app.Model No')}}</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+							@foreach($cars as $cars)
+								<tr>
+								    <td>
+									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('manufacturing') ? ' has-error' : ''}}">
+										<input type="text"  name="manufacturing"  value="{{$cars->manufacturing}}" class="form-control" >
+											@if ($errors->has('manufacturing'))
+												<span class="help-block">
+													<strong>{{ $errors->first('manufacturing') }}</strong>
+												</span>
+											@endif
+										</div>
+									</td>
+									<td>
+										<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('manufacturing_date') ? ' has-error' : ''}}">
+										<input type="text"   name="manufacturing_date" value="{{$cars->manufacturing_date}}" class="date form-control " onkeypress="return false;" >
+										@if ($errors->has('manufacturing_date'))
+										<span class="help-block">
+											<strong>{{ $errors->first('manufacturing_date') }}</strong>
+										</span>
+										@endif
+									</td>
+									</div>
+									<td>
+										<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
+											<input type="text" name="reg_chars" class="form-control" id="reg_chars" placeholder="a b c" value="{{$cars->reg_chars}}">
+											@if($errors->has('reg_chars'))
+                                                <span class="help-block">
+										               <strong>{{$errors->first('reg_chars')}}</strong>
+									            </span>
+                                            @endif
+										</div>
+									</td>
+									<td>
+										<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
+										<input type="text"  name="registration"  id="registration" placeholder="1 2 3" value="{{$cars->registration}}" class="form-control" >
+										@if ($errors->has('registration'))
+											<span class="help-block">
+												<strong>{{ $errors->first('registration') }}</strong>
+									   		</span>
+										@endif
+									</div>
+									</td>
+									<td>
+										<div class="col-md-8 col-sm-8 col-xs-12">
+										<input type="text"  name="chassis" placeholder="{{ trans('app.Enter Chassis No.')}}" value="{{$cars->chassis}}" class="form-control" >
+										@if ($errors->has('chassis'))
+										<span class="help-block">
+											<strong>{{ $errors->first('chassis') }}</strong>
+										</span>
+										@endif
+										</div>
+									</td>
+									<td>
+									<div class="col-md-8 col-sm-8 col-xs-12">
+										<input type="text"  name="model" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}"  class="form-control">
+										@if ($errors->has('model'))
+											<span class="help-block">
+												<strong>{{ $errors->first('model') }}</strong>
+									   		</span>
+										@endif
+									</div>
+									</td>
+									<td>
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
+										<a  url="{!! url('/customer/car/delete/'.$cars->id)!!}" class="deletecustomers"> <button type="button" class="btn btn-round btn-danger">{{ trans('app.Delete')}}</button></a>
+										<a  url="{!! url('/customer/car/update/'.$cars->id)!!}"> <button type="button" class="btn btn-round btn-danger">Update</button></a>
+									</div>
+									</td>
+								</tr>
+                            @endforeach
 					</div>
                 </div>
             </div>
