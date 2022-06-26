@@ -458,7 +458,7 @@ class Customercontroller extends Controller
 	 public function car_update($id,request $request)
 	 {
         Car::where('id','=',$id)->update($request->all());	  
-		return redirect()->back()->with('message','Successfully Deleted');
+		return redirect()->back()->with('message','Successfully update car');
 	 }
 
 	 
