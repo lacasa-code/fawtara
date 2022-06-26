@@ -492,7 +492,7 @@ class Customercontroller extends Controller
 		$customer->save();
 			
 		$car = Car::where('customer_id','=',$id)->get();
-		for($i = 0; $i <= count($car['id']); $i++) {
+		/*for($i = 0; $i <= count($car['id']); $i++) {
 
 			$input = [
 				'manufacturing' => $car[$i]['manufacturing'],
@@ -503,9 +503,9 @@ class Customercontroller extends Controller
 				'model' => $car[$i]['model'],
 			];
 	
-			DB::table('cars')->update($input);
+			DB::table('cars')->update($input);*/
 	
-		/*foreach($car as $key => $value)
+		foreach($car as $key => $value)
         {
 			$data = array(                 
 				'manufacturing'=>$request->manufacturing[$key],
@@ -526,9 +526,9 @@ class Customercontroller extends Controller
 		$car->chassis = $chassis;
 		$car->model = $model;
 		$car->save();
-		$car->model = $model;*/
-	    }
-		//$car->save();*?
+		$car->model = $model;
+	    }*/
+		//$car->save();
 		return redirect('/customer/list')->with('message','Successfully Updated');
 	}
 	
