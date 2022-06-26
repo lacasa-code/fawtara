@@ -525,11 +525,11 @@ class Customercontroller extends Controller
 
 			$data[] = array(                 
 				'manufacturing'=>$value->manufacturing,
-				/*'registration'=>$car[$key]['registration'],    
-				'reg_chars'=>$car[$key]['reg_chars'],
-				'manufacturing_date'=>$car[$key]['manufacturing_date'],
-				'chassis'=>$car[$key]['chassis'], 
-				'model'=>$car[$key]['model'],     */            
+				'registration'=>$value->registration,    
+				'reg_chars'=>$value->reg_chars,
+				'manufacturing_date'=>$value->manufacturing_date,
+				'chassis'=>$value->chassis, 
+				'model'=>$value->model,               
 
 			); 
 			
