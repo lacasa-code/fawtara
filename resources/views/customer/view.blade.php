@@ -220,15 +220,7 @@ border-radius: 6px;
 										</div>
 									</div>
 
-									<div class="table_row">
-										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											 <b>{{ trans('kilometers')}}</b>		</div>
-										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
-											<span class="txt_color">
-											    <span class="txt_color">{{ $cars -> kilometers }}</span>
-											</span>
-										</div>
-									</div>
+									
 								</fieldset>
 								<?php $i++; ?>
                                 <br>
