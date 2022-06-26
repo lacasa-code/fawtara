@@ -151,7 +151,7 @@ input[type=number] {
 										<input type="text"  name="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$cars->manufacturing}}" class="form-control" >
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
-												<strong>{{ $errors->first('manufacturing') }}</strong>
+												<strong>{{ $errors->first('manufacturing[]') }}</strong>
 									   		</span>
 										@endif
 									</div>

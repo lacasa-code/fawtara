@@ -17,7 +17,7 @@ use App\Electronicinvoice;
 use App\Http\Requests\CustomerAddEditFormRequest;
 use App\Http\Requests\CarAddEditFormRequest;
 use App\Http\Requests\CustomerEditFormRequest;
-
+use Illuminate\Support\Facades\Input;
 class Customercontroller extends Controller
 {
 	
@@ -491,33 +491,80 @@ class Customercontroller extends Controller
 		$customer->address = $address;			
 		$customer->save();
 			
-		$car = Car::where('customer_id','=',$id)->get();
-		/*for($i = 0; $i <= count($car['id']); $i++) {
+		$cars = Car::where('customer_id','=',$id)->get();
+		$count = Car::where('customer_id','=',$id)->count();
 
-			$input = [
+	   
+
+		/*foreach($cars as $key =>$item_id){
+            $data []= array(
+				$item_id->manufacturing =>$request->manufacturing,
+				$item_id->registration  =>$request->registration,
+				$item_id->reg_chars =>$request->reg_chars,
+				$item_id->manufacturing_date =>$request->manufacturing_date,
+				$item_id->chassis =>$request->chassis,
+				$item_id->model =>$request->model,
+
+
+
+                );
+				
+		}
+		dd($data);
+Car::insert($data);*/
+		$input = request()->all();
+		for($i = 0; $i <= $count; $i++) {
+			foreach($cars as $key => $values)
+			{
+					$values->manufacturing = $input['manufacturing'][$i];
+					$values->registration = $input['registration'][$i];
+					$values->reg_chars = $input['reg_chars'][$i];
+					$values->manufacturing_date = $input['manufacturing_date'][$i];
+					$values->chassis = $input['chassis'][$i];
+					$values->model = $input['model'][$i];
+					$values->save();
+			}
+		}
+
+			/*$input = [
 				'manufacturing' => $car[$i]['manufacturing'],
 				'registration' => $car[$i]['registration'],
 				'reg_chars' => $car[$i]['reg_chars'],
 				'manufacturing_date' => $car[$i]['manufacturing_date'],
 				'chassis' => $car[$i]['chassis'],
 				'model' => $car[$i]['model'],
-			];
-	
-			DB::table('cars')->update($input);*/
-	
-		foreach($car as $key => $value)
-        {
-			$data = array(                 
-				'manufacturing'=>$request->manufacturing[$key],
-				'registration'=>$request->registration[$key],    
-				'reg_chars'=>$request->reg_chars[$key],
-				'manufacturing_date'=>$request->manufacturing_date[$key],
-				'chassis'=>$request->chassis[$key], 
-				'model'=>$request->model[$key],                 
+			];*/
+		
 
-			); 
-			Car::where('id',$request->id[$key])
-			->update($data); 
+			//DB::table('cars')->update($input);
+			//$data = $request->all();
+		
+
+
+
+		/*foreach($car as $key => $value)
+        {
+
+
+			$car->manufacturing = $manufacturing;
+		   	$car->registration = $registration;
+			$car->reg_chars = $reg_chars;
+			$car->manufacturing_date = $manufacturing_date;
+			$car->chassis = $chassis;
+			$car->model = $model;
+			$car->save();
+
+			/*$data[] = array(                 
+				'manufacturing'=>$request->manufacturing[$key],
+                'registration'=>$request->registration[$key],    
+                'reg_chars'=>$request->reg_chars[$key],
+                'manufacturing_date'=>$request->manufacturing_date[$key],
+                'chassis'=>$request->chassis[$key], 
+                'model'=>$request->model[$key],             
+			); */
+			
+			
+			//Car::where('id',$value->id)->update($data);
 
 			/*$car->manufacturing = $manufacturing;
 		   $car->registration = $registration;
@@ -527,7 +574,11 @@ class Customercontroller extends Controller
 		$car->model = $model;
 		$car->save();
 		$car->model = $model;*/
-	    }
+		//}
+		//dd($data);
+		//Car::insert($data);
+		//Car::insert($data);
+		//Car::insert($data); 
 		//$car->save();
 		return redirect('/customer/list')->with('message','Successfully Updated');
 	}
