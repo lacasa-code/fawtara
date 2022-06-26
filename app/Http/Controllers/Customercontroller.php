@@ -497,7 +497,7 @@ class Customercontroller extends Controller
 
 
 		for($i = 0; $i <= $count; $i++) {
-			foreach($cars as $car)
+			foreach($cars as $car){ 
 				$car->manufacturing = $request->manufacturing;
 				$car->registration = $request->registration;
 				$car->reg_chars = $request->reg_chars;
@@ -505,6 +505,7 @@ class Customercontroller extends Controller
 				$car->chassis = $request->chassis;
 				$car->model = $request->model;
 				$car->save();
+			}
 		}
 
 			/*$input = [
