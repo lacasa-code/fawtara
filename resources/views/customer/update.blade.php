@@ -157,7 +157,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="registration">{{ trans('app.Registration No.') }} <label class="color-danger" >*</label></label>
 									
 									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
-											<input type="text" name="reg_chars" class="form-control" id="reg_chars" placeholder="a b c" value="{{old('reg_chars')}}">
+											<input type="text" name="reg_chars" class="form-control" id="reg_chars" placeholder="a b c" value="{{$cars->reg_chars}}">
 											@if($errors->has('reg_chars'))
                                                 <span class="help-block">
 										               <strong>{{$errors->first('reg_chars')}}</strong>
@@ -165,8 +165,8 @@ input[type=number] {
                                             @endif
 									</div>
 									
-									<div class="col-md-4 col-sm-8 col-xs-12">
-										<input type="text"  name="registration" placeholder="{{ trans('app.Enter Registration Number')}}" value="{{$cars->registration}}" class="form-control" >
+									<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
+										<input type="text"  name="registration"  id="registration" placeholder="1 2 3" value="{{$cars->registration}}" class="form-control" >
 										@if ($errors->has('registration'))
 											<span class="help-block">
 												<strong>{{ $errors->first('registration') }}</strong>
