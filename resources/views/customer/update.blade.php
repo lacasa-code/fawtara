@@ -135,7 +135,7 @@ input[type=number] {
 							@isset($cars)
 							@foreach($cars as $cars)
 							<div class="col-md-12 col-xs-12 col-sm-12 space">
-							<div class="col-md-4 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
+							<div class="col-md-2 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
 								<h4><b>{{ trans('Car Information')}}</b></h4>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback ">
