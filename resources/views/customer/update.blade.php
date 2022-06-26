@@ -149,7 +149,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 										<input type="text"  name="manufacturing[]" placeholder="{{ trans('app.Enter Manufacturing Name')}}" value="{{$cars->manufacturing}}" class="form-control" >
-										@if ($errors->has('manufacturing'))
+										@if ($errors->has('manufacturing[]'))
 											<span class="help-block">
 												<strong>{{ $errors->first('manufacturing') }}</strong>
 									   		</span>
@@ -163,7 +163,7 @@ input[type=number] {
 									
 
   
-									@if ($errors->has('manufacturing_date'))
+									@if ($errors->has('manufacturing_date[]'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('manufacturing_date') }}</strong>
 									   </span>
@@ -178,7 +178,7 @@ input[type=number] {
 									
 									<div class="col-md-4 col-sm-4 col-xs-12 {{$errors->has('reg_chars') ? ' has-error' : ''}}">
 											<input type="text" name="reg_chars[]" class="form-control" id="reg_chars" placeholder="a b c" value="{{$cars->reg_chars}}">
-											@if($errors->has('reg_chars'))
+											@if($errors->has('reg_chars[]'))
                                                 <span class="help-block">
 										               <strong>{{$errors->first('reg_chars')}}</strong>
 									            </span>
@@ -187,7 +187,7 @@ input[type=number] {
 									
 									<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registration') ? ' has-error' : ''}}">
 										<input type="text"  name="registration[]"  id="registration" placeholder="1 2 3" value="{{$cars->registration}}" class="form-control" >
-										@if ($errors->has('registration'))
+										@if ($errors->has('registration[]'))
 											<span class="help-block">
 												<strong>{{ $errors->first('registration') }}</strong>
 									   		</span>
@@ -198,7 +198,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="chassis">{{ trans('app.Chassis') }} <label class="color-danger">*</label> </label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 									<input type="text"  name="chassis[]" placeholder="{{ trans('app.Enter Chassis No.')}}" value="{{$cars->chassis}}" class="form-control" >
-									  @if ($errors->has('chassis'))
+									  @if ($errors->has('chassis[]'))
 									   <span class="help-block">
 										   <strong>{{ $errors->first('chassis') }}</strong>
 									   </span>
@@ -212,7 +212,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 										<input type="text"  name="model[]" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}"  class="form-control">
-										@if ($errors->has('model'))
+										@if ($errors->has('model[]'))
 											<span class="help-block">
 												<strong>{{ $errors->first('model') }}</strong>
 									   		</span>

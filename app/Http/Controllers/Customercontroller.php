@@ -513,7 +513,7 @@ class Customercontroller extends Controller
 	
 		foreach($car as $key => $value)
         {
-			$data[] = array(                 
+			$data = array(                 
 				'manufacturing'=>$request->manufacturing[$key],
 				'registration'=>$request->registration[$key],    
 				'reg_chars'=>$request->reg_chars[$key],
@@ -524,8 +524,7 @@ class Customercontroller extends Controller
 			); 
 			
 
-			Car::where('id',$request->id[$key])
-			->update($data); 
+			Car::where('id',$request->id[$key])->update($data); 
 
 			/*$car->manufacturing = $manufacturing;
 		   $car->registration = $registration;
