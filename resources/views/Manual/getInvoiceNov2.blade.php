@@ -1566,12 +1566,7 @@ $(document).ready(function()
     $(document).ready(function() {
     
         $('.select_customer').select2();
-
-                
-});
-
-
-$("#customer").change(function() {
+		$("#customer").change(function() {
   $.ajax({
     url: '/invoice/manual/invoice/customer/' + $(this).val(),
     type: 'get',
@@ -1589,6 +1584,11 @@ $("#customer").change(function() {
     error: function(jqXHR, textStatus, errorThrown) {}
   });
 });
+                
+});
+
+
+
 </script>
 
 @endsection
