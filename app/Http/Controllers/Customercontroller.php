@@ -87,7 +87,6 @@ class Customercontroller extends Controller
 		$manufacturing_date = $request->manufacturing_date;
 		$chassis = $request->chassis;
 		$model = $request->model;
-		$kilometers = $request->kilometers;
         $customer_id=$request->customer_id;
         $reg_chars=$request->reg_chars;
 		$car = new Car;
