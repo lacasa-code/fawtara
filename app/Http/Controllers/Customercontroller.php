@@ -509,19 +509,19 @@ class Customercontroller extends Controller
 
 			//DB::table('cars')->update($input);
 			//$data = $request->all();
-		$finalArray = array();
+		$datas = new Car();
 
-		foreach($car as $key => $value)
+		$carArray = explode(',', $car);
+
+		foreach($carArray as $car_Array){
+			$datas->manufacturing = $request->manufacturing;
+		}
+		$datas->save();
+
+
+
+		/*foreach($car as $key => $value)
         {
-			/*array_push($finalArray, array(
-                'manufacturing'=>$value['manufacturing'],
-                'registration'=>$value['registration'],
-                'reg_chars'=>$value['reg_chars'],
-                'manufacturing_date'=>$value['manufacturing_date'],
-                'chassis'=>$value['chassis'],
-				'model'=> $value['model'] 
-				)
-   			);*/
 
 			$data[] = array(                 
 				'manufacturing'=>$request->manufacturing[$key],
@@ -544,9 +544,9 @@ class Customercontroller extends Controller
 		$car->save();
 		$car->model = $model;*/
 		//}
-		}
-		dd($data);
-		Car::insert($data);
+		//}
+		//dd($data);
+		//Car::insert($data);
 		//Car::insert($data);
 		//Car::insert($data); 
 		//$car->save();
