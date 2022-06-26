@@ -546,7 +546,7 @@ class Customercontroller extends Controller
 		$car->model = $model;*/
 		//}
 		}
-		dd($$data);
+		dd($data);
 
 		Car::insert($data);
 		//Car::insert($data); 
