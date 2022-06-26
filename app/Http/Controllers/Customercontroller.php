@@ -489,7 +489,8 @@ class Customercontroller extends Controller
 		$customer->phone = $phone;
 		$customer->mail = $mail;
 		$customer->address = $address;			
-		$customer->save();	
+		$customer->save();
+			
 		$car = Car::where('customer_id','=',$id)->get();
 		foreach($car as $key => $value)
         {
