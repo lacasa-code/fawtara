@@ -30,7 +30,6 @@ class CarAddEditFormRequest extends FormRequest
             'manufacturing_date' => 'required',            
             'chassis' => 'required|min:17|max:17',            
             'model' => 'required',            
-            'kilometers' => 'required',
             'customer_id',    
             'reg_chars'=>'required|regex:/^[A-Za-z]+$/'        
 
@@ -47,7 +46,6 @@ class CarAddEditFormRequest extends FormRequest
             'manufacturing_date.required' => trans('app.manufacturing_date field is required.'),
             'chassis.required' => trans('app.chassis field is required.'),
             'model.required' => trans('app.model field is required.'),
-            'kilometers.required' => trans('app.kilometers field is required.'),
             'chassis.min' => trans('chassis number must be 17 digits.'),
             'chassis.max' => trans('chassis number must be 17 digits.'),
             'reg_chars.required' => trans('this field is required.'),
