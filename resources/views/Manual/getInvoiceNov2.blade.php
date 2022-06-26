@@ -43,7 +43,7 @@
 								<div class="col-md-4 col-sm-6 col-xs-12  ">
 								    <select class="form-control  select_customer" name="customer_id" id="customer" required >
 										<option value="0">{{ trans('Select customers')}}</option>
-											@foreach ($customers as $customer)
+											@foreach ($customers_list as $customer)
 											   <option value="{{ $customer->id }}">{{ $customer->name }}</option>
 											@endforeach
 									</select>
