@@ -495,7 +495,7 @@ class Customercontroller extends Controller
 		
 
 
-		for($i = 0; $i <= count($car['id']); $i++) {
+		for($i = 0; $i <= $car->count(); $i++) {
 
 			$input[] = [
 				'manufacturing' => $car[$i]['manufacturing'],
