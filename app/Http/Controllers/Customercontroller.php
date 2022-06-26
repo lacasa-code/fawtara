@@ -496,7 +496,7 @@ class Customercontroller extends Controller
 
 	   
 
-		foreach($cars as $key =>$item_id){
+		/*foreach($cars as $key =>$item_id){
             $data []= array(
 				$item_id->manufacturing =>$request->manufacturing,
 				$item_id->registration  =>$request->registration,
@@ -511,19 +511,18 @@ class Customercontroller extends Controller
 				
 		}
 		dd($data);
-Car::insert($data);
-
-		/*for($i = 0; $i <= $count; $i++) {
-			foreach($cars as $key => $car){ 
-				$car->manufacturing = $request->manufacturing[$i];
-				$car->registration = $request->registration[$i];
-				$car->reg_chars = $request->reg_chars[$i];
-				$car->manufacturing_date = $request->manufacturing_date[$i];
-				$car->chassis = $request->chassis[$i];
-				$car->model = $request->model[$i];
-				$car->save();
-			}
-		}*/
+Car::insert($data);*/
+		$input = Input::all();
+		for($i = 0; $i <= $count; $i++) {
+				$values = new Car;
+                $values->manufacturing = $input['manufacturing'][$i];
+                $values->registration = $input['registration'][$i];
+				$values->reg_chars = $input['reg_chars'][$i];
+				$values->manufacturing_date = $input['manufacturing_date'][$i];
+				$values->chassis = $input['chassis'][$i];
+				$values->model = $input['model'][$i];
+                $values->save();
+		}
 
 			/*$input = [
 				'manufacturing' => $car[$i]['manufacturing'],
