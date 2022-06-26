@@ -530,7 +530,6 @@ class Customercontroller extends Controller
 				'manufacturing_date'=>$value->manufacturing_date,
 				'chassis'=>$value->chassis, 
 				'model'=>$value->model,               
-
 			); 
 			
 
