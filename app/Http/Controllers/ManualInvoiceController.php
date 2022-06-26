@@ -48,7 +48,7 @@ class ManualInvoiceController extends Controller
 		$auth_branch             = Branch::findOrFail($auth_branch_id);
 		$auth_branch_vat_number  = $auth_branch->vat_number;
         $cars = Car::get();
-		$customers= Customer::get();
+		$customers_list= Customer::get();
 		$last_order  = Electronicinvoice::whereNull('deleted_at')->orderBy('id', 'desc')->first();
 	    // return $last_order;
 
@@ -74,7 +74,7 @@ class ManualInvoiceController extends Controller
 		$branches     = Branch::all();
 		//$service  = Service::findOrFail($id);
 		$customers = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
-		return view('Manual.getInvoiceNov2', compact('code', 'codepay', 'tbl_payments', 'branches', 'currentUser', 'branchDatas', 'customers', 'tax', 'auth_branch_vat_number', 'auth_branch','cars','customers'));
+		return view('Manual.getInvoiceNov2', compact('code', 'codepay', 'tbl_payments', 'branches', 'currentUser', 'branchDatas', 'customers', 'tax', 'auth_branch_vat_number', 'auth_branch','cars','customers_list'));
 	}
 
 	public function storeInvoice2(Request $request)
