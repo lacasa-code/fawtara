@@ -526,8 +526,8 @@ class Customercontroller extends Controller
 		$car->chassis = $chassis;
 		$car->model = $model;
 		$car->save();
-		$car->model = $model;
-	    }*/
+		$car->model = $model;*/
+	    }
 		//$car->save();
 		return redirect('/customer/list')->with('message','Successfully Updated');
 	}
