@@ -37,7 +37,18 @@
                		<div class="x_content">
                 		<form method="post" id="form_add" action="{{ url('/invoice/store/manual/invoice') }}" enctype="multipart/form-data"  name="Form" class="form-horizontal upperform saleAddForm" >
 							<div class="col-md-12 col-xs-12 col-sm-12">
-				  				<h4><b>{{ trans('app.Invoice Details')}}</b></h4><hr>
+							    <div class="col-md-2 col-sm-6 col-xs-12 f ">
+				  				    <h4><b>{{ trans('app.Invoice Details')}}</b></h4><hr>
+							    </div>
+								<div class="col-md-8 col-sm-6 col-xs-12 f ">
+								    <select class="form-control  select_customer" name="customer_id" id="customer" required >
+										<option value="">{{ trans('Select customers')}}</option>
+											@foreach ($customers as $customer)
+											<option value="{{ $customer->id }}">{{$customers->name }}</option>
+											@endforeach
+									</select>
+								</div>
+
 							</div>
 
             				<div id="form_fields">
@@ -1552,16 +1563,12 @@ $(document).ready(function()
 
 <!-- Form submit at a time only one -->
 <script type="text/javascript">
-    /*$(document).ready(function () {
-        $('.submitButton').removeAttr('disabled'); //re-enable on document ready
-    });
-    $('.saleAddForm').submit(function () {
-        $('.submitButton').attr('disabled', 'disabled'); //disable on any form submit
-    });
+    $(document).ready(function() {
+    
+        $('.select_customer').select2();
 
-    $('.saleAddForm').bind('invalid-form.validate', function () {
-      $('.submitButton').removeAttr('disabled'); //re-enable on form invalidation
-    });*/
+                
+});
 </script>
 
 @endsection
