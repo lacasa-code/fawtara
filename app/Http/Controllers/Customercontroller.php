@@ -513,17 +513,17 @@ class Customercontroller extends Controller
 
 		foreach($car as $key => $value)
         {
-			array_push($finalArray, array(
-                'manufacturing'=>$value['smanufacturing'],
-                'registration'=>$value['sregistration'],
-                'reg_chars'=>$value['sreg_chars'],
-                'manufacturing_date'=>$value['smanufacturing_date'],
-                'chassis'=>$value['schassis'],
-				'model'=> $value['smodel'] 
+			/*array_push($finalArray, array(
+                'manufacturing'=>$value['manufacturing'],
+                'registration'=>$value['registration'],
+                'reg_chars'=>$value['reg_chars'],
+                'manufacturing_date'=>$value['manufacturing_date'],
+                'chassis'=>$value['chassis'],
+				'model'=> $value['model'] 
 				)
-   			);
+   			);*/
 
-			/*$data = array(                 
+			$data[] = array(                 
 				'manufacturing'=>$request->manufacturing[$key],
 				'registration'=>$request->registration[$key],    
 				'reg_chars'=>$request->reg_chars[$key],
@@ -531,7 +531,7 @@ class Customercontroller extends Controller
 				'chassis'=>$request->chassis[$key], 
 				'model'=>$request->model[$key],                 
 
-			); */
+			); 
 			
 
 			//Car::where('id',$request->id[$key])->update($data); */
@@ -546,9 +546,9 @@ class Customercontroller extends Controller
 		$car->model = $model;*/
 		//}
 		}
-		dd($finalArray);
+		dd($$data);
 
-		Car::insert($finalArray);
+		Car::insert($data);
 		//Car::insert($data); 
 		//$car->save();
 		return redirect('/customer/list')->with('message','Successfully Updated');
