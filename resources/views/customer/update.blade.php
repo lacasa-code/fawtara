@@ -272,10 +272,10 @@ $('#mob').keyup( function(e){
 
 });  
 
-$('.date').datepicker({  
-	changeMonth: true,
-      changeYear: true
-     });  
+$('.date').datepicker({
+format: "yyyy", viewMode: "years",
+        minViewMode: "years",
+    autoclose:true}); 
 $(document).ready(function() {
     
     $( "#reg_chars" ).keypress(function(e) {
