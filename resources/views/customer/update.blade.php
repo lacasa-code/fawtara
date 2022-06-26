@@ -122,7 +122,7 @@ input[type=number] {
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('phone') ? ' has-error' : '' }}">
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="phone">{{ trans('app.Mobile No')}} <label class="color-danger lastname">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" id="mob" class="mob" name="phone" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{$customer->phone}}"class="form-control" maxlength="9" minlength="9">
+											<input type="text" id="mob" class="form-control" class="mob" name="phone" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{$customer->phone}}"class="form-control" maxlength="9" minlength="9">
 											@if ($errors->has('phone'))
 											<span class="help-block">
 												<strong>{{ $errors->first('phone') }}</strong>
@@ -139,13 +139,14 @@ input[type=number] {
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
 								<div class="col-md-12 col-sm-12 col-xs-12 text-center">
-									<a class="btn btn-primary" href="{{ URL::previous() }}">{{ trans('app.Cancel')}}</a>
+									<!--<a class="btn btn-primary" href="{{ URL::previous() }}">{{ trans('app.Cancel')}}</a>-->
 									<button type="submit" class="btn btn-success updateCustomerButton">{{ trans('app.Update') }}</button>
 								</div>
 							</div>
 						</form>
 <hr>
 						<div class="x_panel bgr">
+						<center><h4>Cars</h4></center>
 							<table  class="table datatable table-striped jambo_table" style="margin-top:20px; width:100%;">
 								<thead>
 									<tr>
