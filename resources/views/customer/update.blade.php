@@ -146,7 +146,10 @@ input[type=number] {
 						</form>
 <hr>
 						<div class="x_panel bgr">
-						<center><h4>Cars</h4></center>
+						<div class="col-md-12 col-xs-12 col-sm-12 space">
+								<h4><b>Cars Information</b></h4>
+								<p class="col-md-12 col-xs-12 col-sm-12 ln_solid"></p>
+							</div>
 							<table  class="table datatable table-striped jambo_table" style="margin-top:20px; width:100%;">
 								<thead>
 									<tr>
