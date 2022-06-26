@@ -100,7 +100,7 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Customer Address <br>{{ trans('عنوان العميل')}}<label class="color-danger">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="customer_address" class="form-control" value="{{old('customer_address')}}">
+											<input type="text" id="address" name="customer_address" class="form-control" value="{{old('customer_address')}}">
 											@if($errors->has('customer_address'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_address')}}</span>
                         @endif
@@ -126,10 +126,10 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Customer Phone <br>{{ trans('هاتف العميل')}} <label class="color-danger">*</label></label>
 										<div class="col-md-2 col-sm-8 col-xs-12">
-											<input type="text" name="phone_code" class="form-control" value="+966" readonly>
+											<input type="text"  name="phone_code" class="form-control" value="+966" readonly>
 										</div>
 										<div class="col-md-6 col-sm-8 col-xs-12">
-											<input type="text" name="customer_phone" class="form-control" value="{{old('customer_phone')}}">
+											<input type="text" id="phone" name="customer_phone" class="form-control" value="{{old('customer_phone')}}">
 											@if($errors->has('customer_phone'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_phone')}}</span>
                         @endif
@@ -1569,6 +1569,24 @@ $(document).ready(function()
 
                 
 });
+
+$('#customer').change(function() {
+         var id = $(this).val();
+         //var url = '{{ route("getDetails", ":id") }}';
+         //url = url.replace(':id', id);
+
+         $.ajax({
+             //url: url,
+             type: 'get',
+             dataType: 'json',
+             success: function(response) {
+                 if (response != null) {
+                     $('#address').val(response.address);
+                     $('#phone').val(response.phone);
+                 }
+             }
+         });
+     });
 </script>
 
 @endsection
