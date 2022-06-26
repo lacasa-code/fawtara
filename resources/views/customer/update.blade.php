@@ -250,11 +250,7 @@ input[type=number] {
 
 <!-- Scripts starting -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="{{ URL::asset('vendors/moment/min/moment.min.js') }}"></script>
-<script src="{{ URL::asset('vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ URL::asset('vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
-<script src="{{ URL::asset('vendors/jquery/dist/jquery.min.js') }}"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <!-- For form validation -->
