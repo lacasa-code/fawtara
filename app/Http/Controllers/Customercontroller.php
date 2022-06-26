@@ -508,9 +508,9 @@ class Customercontroller extends Controller
 		
 
 			//DB::table('cars')->update($input);
-			$data = $request->all();
+			//$data = $request->all();
 			$finalArray = array();
-			dd($data);
+			dd($car);
 			foreach($data as $key=>$value){
 				
 			   /*array_push($finalArray, array(
