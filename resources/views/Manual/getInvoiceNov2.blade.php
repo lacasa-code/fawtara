@@ -1573,8 +1573,8 @@ $(document).ready(function()
     data: {},
     success: function(data) {
       if (data.success == true) {
-        $("#address").value = data.address;
-		$("#phone").value = data.phone;
+        $("#address").val = data.address;
+		$("#phone").val = data.phone;
 
       } else {
         alert('Cannot find info');
