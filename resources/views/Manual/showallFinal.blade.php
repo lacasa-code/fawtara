@@ -145,5 +145,42 @@
           	</div>
         </div>
 <!-- /page content -->
+<script>
+	$(document).ready(function() 
+	{
+	    $('#datatable').DataTable( {
+			responsive: true,
+			buttons: [{
+               extend: 'excelHtml5',
+                title: 'Excel Export',
+                extension: '.xlsx',
+                text: 'Export to Excel',
+         exportOptions: {
+        format: {
+                        body: function ( data, column, row ) {                             
+                            //if it is html, return the text of the html instead of html
+                            if (/<\/?[^>]*>/.test(data)) {                                   
+                                return $(data).text();
+                            } else {
+                                return data;
+                            }                                                               
+                        }
+                    }
+        },
+        customize: function(xlsx) {
+            var sheet = xlsx.xl.worksheets['Sheet1.xml'];
+             $('row c[r*="3"]', sheet).attr( 's', '20' );
+            $('row c[r*="2"]', sheet).attr( 's', '25' );
+           }
+          },'pdf'],
+	        "language": {
+				 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/<?php echo getLanguageChange(); 
+				?>.json"
+	        }
+	    });
 
+
+		
+  	}); 
+</script>
 @endsection
