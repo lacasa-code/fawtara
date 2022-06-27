@@ -123,7 +123,7 @@ border-radius: 6px;
 							<section class="content invoice">
 								  <!-- title row -->
 								
-								<div class="col-md-6 col-sm-12 col-xs-12 right_side">
+								<div>
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
 											<i class="fa fa-user"></i> 
@@ -229,7 +229,7 @@ border-radius: 6px;
 								<?php $n=1;?>
 
 							<div class="x_panel bgr">
-								<table id="datatable" class="table datatable table-striped jambo_table" style="margin-top:20px; width:100%;">
+								<table class="table datatable table-striped jambo_table" style="margin-top:20px; width:100%;">
 									<thead>
 										<tr>
 											<th>#</th>
@@ -256,7 +256,7 @@ border-radius: 6px;
 										@endforeach
 										</tbody>
 									</table>
-									</div>
+									
 								</div>
 						</div>
 					</div>
