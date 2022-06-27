@@ -1600,7 +1600,36 @@ $(document).ready(function()
                 
 });
 
+ $(document).ready(function() {
+        $('#customerlist').on('change', function() {
+            var carID = $(this).val();
+            if(carID) {
+                $.ajax({
+                    url: '/invoice/manual/invoice/car/'+carID,
+                    type: "GET",
+                    data : {"_token":"{{ csrf_token() }}"},
+                    dataType: "json",
+                    success:function(data) {
+                        console.log(data);
+                      if(data){
+                        $('#carlist').empty();
+                        $('#carlist').focus;
+                        $('#carlist').append('<option value="">-- Select City --</option>'); 
+                        $.each(data, function(key, value){
+                        $('select[name="carlist"]').append('<option value="'+ key +'">' + value.manufacturing+ '</option>');
+						                        console.log(yse);
 
+                    });
+                  }else{
+                    $('#carlist').empty();
+                  }
+                  }
+                });
+            }else{
+              $('#carlist').empty();
+            }
+        });
+    });
 </script>
 
 @endsection
