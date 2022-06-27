@@ -162,7 +162,7 @@ border-radius: 6px;
 											</span>
 										</div>
 									</div>
-								<br>
+								<br><hr>
 								<?php $i=1;?>
 
 								@foreach($car as $cars)
@@ -225,25 +225,38 @@ border-radius: 6px;
 								<?php $i++; ?>
                                 <br>
 								@endforeach
-
+								<hr>
 								<?php $n=1;?>
 
-								@foreach($invoice as $invices)
-								    <div class="table_row">
-										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<b>{{ trans('Invoice')}} {{$n}} :</b>		</div>
-										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
-											<span class="txt_color">
-											
-											<a class="txt_color" href="{!! url('/invoice/show/electronic/'.$invices ->id)!!}">{{ $invices -> 	Invoice_Number }}</a>
-											</span>
-										</div>
+							<div class="x_panel bgr">
+								<table id="datatable" class="table datatable table-striped jambo_table" style="margin-top:20px; width:100%;">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Invoice</th>
+											<th>Date</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										@foreach($invoice as $invices)
+										<td>
+											{{$n}}
+										</td>
+										<td>
+											{{ $invices->Invoice_Number }}
+										</td>
+										<td>
+											{{ $invices->Date }}
+										</td>
+										<td>													
+											<a class="txt_color" href="{!! url('/invoice/show/electronic/'.$invices ->id)!!}">Preview</a>
+										</td>
+											<?php $n++; ?>
+										@endforeach
+										</tbody>
+									</table>
 									</div>
-									<?php $n++; ?>
-
-                                @endforeach
-
-									
 								</div>
 						</div>
 					</div>
