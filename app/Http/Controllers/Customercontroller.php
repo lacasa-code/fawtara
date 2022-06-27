@@ -116,9 +116,9 @@ class Customercontroller extends Controller
 	public function addCar()
 	{
 		$car= Car::get();
-		$last=Customer::orderby('id','desc')->first();
+		$last=Customer::where('branch_id', Auth::user()->branch_id)->orderby('id','desc')->first();
 
-		$customer=Customer::orderby('id','desc')->where('id','!=',$last->id)->get();
+		$customer=Customer::orderby('id','desc')->where('id','!=',$last->id)->where('branch_id', Auth::user()->branch_id)->get();
 		return view('customer.car',compact('car','customer','last'));
 
 	}

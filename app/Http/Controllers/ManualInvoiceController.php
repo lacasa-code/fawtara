@@ -48,7 +48,7 @@ class ManualInvoiceController extends Controller
 		$auth_branch             = Branch::findOrFail($auth_branch_id);
 		$auth_branch_vat_number  = $auth_branch->vat_number;
         $cars = Car::get();
-		$customers_list= Customer::get();
+		$customers_list= Customer::where('branch_id', Auth::user()->branch_id)->get();
 		$list= Customer::all();
 	
 		$last_order  = Electronicinvoice::whereNull('deleted_at')->orderBy('id', 'desc')->first();
