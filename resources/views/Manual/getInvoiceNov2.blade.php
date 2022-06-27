@@ -1577,73 +1577,57 @@ $(document).ready(function()
 		$('.select_car').select2();
 
 		$('#customerlist').change(function(){
-    var id = $(this).val();
-    var url = '{{ route("getData", ":id") }}';
-    url = url.replace(':id', id);
+            var id = $(this).val();
+            var url = '{{ route("getData", ":id") }}';
+            url = url.replace(':id', id);
 
-    $.ajax({
-        url: url,
-        type: 'get',
-        dataType: 'json',
-        success: function(response){
-					    console.log('no');
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
 
-            if(response != null){
-			    console.log('response.address');
-                $('#address').val(response.address);
-                $('#phone').val(response.phone);
-				$('#name').val(response.name);
+                if(response != null){
+                    $('#address').val(response.address);
+                    $('#phone').val(response.phone);
+				    $('#name').val(response.name);
 
-			}
-        }
-    });
+			    }
+            }
+        });
+
+		 $('#customerlist').on('change', function() {
+			   var id = $(this).val();
+               var url = '{{ route("getCar", ":id") }}';
+               url = url.replace(':id', id);
+               if(id) {
+                   $.ajax({
+                       url: url,
+                       type: "GET",
+                       data : {"_token":"{{ csrf_token() }}"},
+                       dataType: "json",
+                       success:function(data)
+                       {
+                         if(data){
+                            $('#carlist').empty();
+                            $('#carlist').append('<option hidden>Choose Car</option>'); 
+                            $.each(data, function(key, carlist){
+                                $('select[name="carlist"]').append('<option value="'+ key +'">' + course.manufacturing+ '</option>');
+                            });
+                        }else{
+                            $('#carlist').empty();
+                        }
+                     }
+                   });
+               }else{
+                 $('#carlist').empty();
+               }
+            });
 });
 
                 
-});
 
 
-$(document).ready(function(){
-
-// Department Change
-$('#customerlist').change(function(){
-
-   // Department id
-   var id = $(this).val();
-
-   // Empty the dropdown
-   $('#carlist').find('option').not(':first').remove();
-
-   // AJAX request 
-   $.ajax({
-	 url: 'invoice/manual/invoice/car/'+id,
-	 type: 'get',
-	 dataType: 'json',
-	 success: function(response){
-
-	   var len = 0;
-	   if(response['data'] != null){
-		 len = response['data'].length;
-	   }
-
-	   if(len > 0){
-		 // Read data and create <option >
-		 for(var i=0; i<len; i++){
-
-		   var id = response['data'][i].id;
-		   var manufacturing = response['data'][i].manufacturing;
-
-		   var option = "<option value='"+id+"'>"+manufacturing+"</option>"; 
-
-		   $("#carlist").append(option); 
-		 }
-	   }
-
-	 }
-  });
-});
-
-});
 </script>
 
 @endsection
