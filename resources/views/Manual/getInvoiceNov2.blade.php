@@ -1616,8 +1616,8 @@ $(document).ready(function()
                         $('#carlist').focus;
                         $('#carlist').append('<option value=""> Select Car </option>'); 
                         $.each(data, function(key, value){
-                        $('select[name="carlist"]').append('<option value="'+ key +'">' + value.manufacturing+ '</option>');
-console.log(key);
+                        $('select[name="carlist"]').append('<option value="'+ value.id +'">' + value.manufacturing+ '</option>');
+console.log(value.id);
                     });
                   }else{
                     $('#carlist').empty();
