@@ -72,7 +72,10 @@ input[type=number] {
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-4 col-sm-8 col-xs-12">
-										<input type="text"  name="manufacturing" autocomplete="off" id="manufacturing" value="{{old('manufacturing')}}" placeholder="{{ trans('app.Enter Manufacturing Name')}}"  class="form-control" >
+										<select class="form-control  " name="manufacturing" id="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" required >
+										<option value="default">{{ trans('app.Enter Manufacturing Name')}}</option>
+											<option value="Mercedes-Benz">Mercedes-Benz</option>
+										</select>
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
 												<strong>{{ $errors->first('manufacturing') }}</strong>
