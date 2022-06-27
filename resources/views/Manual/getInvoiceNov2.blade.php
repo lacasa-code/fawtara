@@ -1614,11 +1614,10 @@ $(document).ready(function()
                       if(data){
                         $('#carlist').empty();
                         $('#carlist').focus;
-                        $('#carlist').append('<option value="">-- Select City --</option>'); 
+                        $('#carlist').append('<option value=""> Select Car </option>'); 
                         $.each(data, function(key, value){
                         $('select[name="carlist"]').append('<option value="'+ key +'">' + value.manufacturing+ '</option>');
-						                        console.log(yse);
-
+console.log(key);
                     });
                   }else{
                     $('#carlist').empty();
