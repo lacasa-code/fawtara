@@ -62,7 +62,7 @@ input[type=number] {
 									  <select class="form-control  select_customer" name="customer_id" id="customer" required >
 										<option value="{{ $last->id }}">{{$last->name }}</option>
 											@foreach ($customer as $customers)
-											<option value="{{ $customers->id }}">{{$customers->name }}</option>
+											<option value="{{ $customers->id }}">{{$customers->name }} / {{$customers->phone }}</option>
 											@endforeach
 									  </select>
 									  	
