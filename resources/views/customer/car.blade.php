@@ -73,8 +73,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-4 col-sm-8 col-xs-12">
 										<select class="form-control  select_manufacturing" name="manufacturing" id="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" required >
-										<option value="default" disabled selected>{{ trans('app.Enter Manufacturing Name')}}</option>
-											<option value="Mercedes-Benz">Mercedes-Benz</option>
+											<option value="Mercedes-Benz" selected>Mercedes-Benz</option>
 										</select>
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
@@ -138,7 +137,46 @@ input[type=number] {
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('model') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="model">{{ trans('app.Model No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-4 col-sm-8 col-xs-12">
-										<input type="text"  name="model" autocomplete="off" id="car" value="{{old('model')}}" placeholder="{{ trans('app.Enter Model No')}}"  class="form-control">
+										<select class="form-control  select_model" name="model" id="car" placeholder="{{ trans('app.Enter Model No')}}" required >
+										<option value="A-Class"  selected>A-Class </option>
+											<option value="C-Class">C-Class</option>
+											<option value="CLA-Class">CLA-Class</option>
+											<option value="CLS-Class">CLS-Class</option>
+											<option value="E-Class">E-Class</option>
+											<option value="EQE">EQE</option>
+											<option value="S-Class">S-Class</option>
+											<option value="EQS">EQS</option>
+											<option value="GLB-Class">GLB-Class</option>
+											<option value="GLC-Class">GLC-Class</option>
+											<option value="GLE-Class">GLE-Class</option>
+											<option value="GLS-Class">GLS-Class</option>
+											<option value="G-Class">G-Class</option>
+											<option value="EQA">EQA</option>
+											<option value="EQB">EQB</option>
+											<option value="EQC">EQC</option>
+											<option value="AMG SL">AMG SL</option>
+											<option value="AMG GT">AMG GT</option>
+											<option value="AMG GT 4-Door Coupé">AMG GT 4-Door Coupé</option>
+											<option value="AMG One">AMG One</option>
+											<option value="B-Class">B-Class</option>
+											<option value="Citan Van">Citan Van</option>
+											<option value="Viano">Viano</option>
+											<option value="EQV">EQV</option>
+											<option value="Vito">Vito</option>
+											<option value="Citan">Citan</option>
+											<option value="Sprinter">Sprinter</option>
+											<option value="Metris">Metris</option>
+											<option value="Arocs">Arocs</option>
+											<option value="Atego">Atego</option>
+											<option value="Actros">Actros</option>
+											<option value="Econic">Econic</option>
+											<option value="Unimog">Unimog</option>
+											<option value="Zetros">Zetros</option>
+											<option value="Citaro">Citaro</option>
+											<option value="Tourismo">Tourismo</option>
+
+										</select>
+										
 										@if ($errors->has('model'))
 											<span class="help-block">
 												<strong>{{ $errors->first('model') }}</strong>
