@@ -142,29 +142,29 @@ class Customercontroller extends Controller
 			elseif (getUsersRole(Auth::user()->role_id) == 'Employee')
 			{
 				$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
-				$new_customer=Customer::orderBy('id', 'desc')
+				$new_customer=Customer::where('branch_id', Auth::user()->branch_id)->orderBy('id', 'desc')
 				->get();
 			}
 			elseif (getUsersRole(Auth::user()->role_id) == 'Support Staff' || getUsersRole(Auth::user()->role_id) == 'Accountant' || getUsersRole(Auth::user()->role_id) == 'Branch Admin') {
 				
 				$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
-				$new_customer=Customer::orderBy('id', 'desc')
+				$new_customer=Customer::where('branch_id', Auth::user()->branch_id)->orderBy('id', 'desc')
 				->get();
 			}
 			else
 			{
 				$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
-				$new_customer=Customer::orderBy('id', 'desc')
+				$new_customer=Customer::where('branch_id', Auth::user()->branch_id)->orderBy('id', 'desc')
 				->get();
 			}
 		}
 		else
 		{
 			$customer = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
-			$new_customer=Customer::orderBy('id', 'desc')
+			$new_customer=Customer::where('branch_id', Auth::user()->branch_id)->orderBy('id', 'desc')
 			->get();  
 		}
-		$new_customer=Customer::orderBy('id', 'desc')
+		$new_customer=Customer::where('branch_id', Auth::user()->branch_id)->orderBy('id', 'desc')
 		->get();
 
 		return view('customer.list',compact('customer','new_customer'));
