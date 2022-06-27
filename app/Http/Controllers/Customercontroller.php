@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Branch;
 use DB;
 use URL;
 use Auth;
@@ -35,8 +36,10 @@ class Customercontroller extends Controller
 		//$onlycustomer = DB::table('users')->where([['role','=','Customer'],['id','=',Auth::User()->id]])->first();
 
 		//$tbl_custom_fields = DB::table('tbl_custom_fields')->where([['form_name','=','customer'],['always_visable','=','yes'],['soft_delete','=',0]])->get()->toArray();
+	   $last = Branch::first();
+       $branch = Branch::where('id','!=',$last->id)->get();
 
-	   return view('customer.add');
+	   return view('customer.add',compact('branch'));
 	}
 	public function store(CustomerAddEditFormRequest $request)
 	{
@@ -45,6 +48,8 @@ class Customercontroller extends Controller
 		$address = $request->address;
 		$phone = $request->phone;
 		$mail = $request->mail;
+		$branch_id = $request->branch_id;
+
 		/*$manufacturing = $request->manufacturing;
 		$registration = $request->registration;
 		$manufacturing_date = $request->manufacturing_date;
@@ -66,7 +71,8 @@ class Customercontroller extends Controller
 		$customer->phone = $phone;
 		$customer->mail = $mail;
 		$customer->address = $address;
-        
+		$customer->branch_id = $branch_id;
+
 		$customer->save();
 
 		/*$car = new Car;

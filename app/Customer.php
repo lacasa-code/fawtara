@@ -14,6 +14,7 @@ class Customer extends Model
         'address',
         'phone',
         'mail',
+        'branch_id',
     ];
 
     public function car()
