@@ -41,7 +41,7 @@
 				  				    <h4><b>{{ trans('app.Invoice Details')}}</b></h4><hr>
 							    </div>
 								<div class="col-md-4 col-sm-6 col-xs-12  ">
-								    <select class="form-control  select_customer" name="customer_id" id="customer" required >
+								    <select class="form-control  select_customer" onchange="selectCustomer()" name="customer_id" id="customer" required >
 										<option value="0">{{ trans('Select customers')}}</option>
 											@foreach ($customers_list as $customer)
 											   <option value="{{ $customer->id }}">{{ $customer->name }} / {{$customer->phone }}</option>
@@ -100,7 +100,7 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Customer Address <br>{{ trans('عنوان العميل')}}<label class="color-danger">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" id="address" name="customer_address" class="form-control" value="{{old('customer_address')}}">
+											<input type="text" id="customer_address" name="customer_address" class="form-control" value="{{old('customer_address')}}">
 											@if($errors->has('customer_address'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_address')}}</span>
                         @endif
@@ -1566,29 +1566,26 @@ $(document).ready(function()
     $(document).ready(function() {
     
         $('.select_customer').select2();
-		$("#customer").change(function() {
-  $.ajax({
-    url: '/invoice/manual/invoice/customer/' + $(this).val(),
-    type: 'get',
-    data: {},
-    success: function(data) {
-      if (data.success == true) {
-        $("#address").val = data.address;
-		$("#phone").val = data.phone;
 
-      } else {
-        alert('Cannot find info');
-      }
-
-    },
-    error: function(jqXHR, textStatus, errorThrown) {}
-  });
-});
                 
 });
 
+$(function() {
+   $('#customer').on('change', function(){
+       var address = $(this).data('address');
+       $('#name').val(address);
+   });
+});
+function selectCustomer() {
+        let select = document.getElementById('customer_id');
+        let customer_address = document.getElementById('customer_address');
 
-
+        if(select.value === 'default') {
+            customer_address.value = '';
+        } else {
+            customer_address.value = JSON.parse(select.value).address;
+        }
+    }
 </script>
 
 @endsection
