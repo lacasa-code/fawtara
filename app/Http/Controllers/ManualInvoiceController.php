@@ -92,6 +92,13 @@ class ManualInvoiceController extends Controller
 
 	}
 
+	public function customer_car($id)
+	{
+           $data=Car::where('id',$id)->first();
+		   return response()->json($data);
+
+	}
+
 	public function storeInvoice2(Request $request)
 	{
 		//return strlen($request->registeration);

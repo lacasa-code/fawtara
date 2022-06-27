@@ -223,7 +223,7 @@
 			                        	<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 			                        	   Manufacturer :  <br>{{ trans('المصنع ')}} <label class="color-danger">*</label></label>			
 			                        	<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="fleet_number" class="form-control" value="{{old('fleet_number')}}">
+											<input type="text" name="fleet_number" id="manufacturing" class="form-control" value="{{old('fleet_number')}}" readonly>
 											@if($errors->has('fleet_number'))
                         <span class="help-block" style="color:red;">{{$errors->first('fleet_number')}}</span>
                         @endif
@@ -238,13 +238,13 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										REGISTRATION  <br>{{ trans('رقم التسجيل:')}} <label class="color-danger">*</label></label>
 										<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('reg_chars') ? 'error' : null}}">
-											<input type="text" name="reg_chars" class="form-control" placeholder="a b c" value="{{old('reg_chars')}}">
+											<input type="text" name="reg_chars" id="reg_chars" class="form-control" placeholder="a b c" value="{{old('reg_chars')}}" readonly>
 											@if($errors->has('reg_chars'))
                         <span class="help-block" style="color:red;">{{$errors->first('reg_chars')}}</span>
                         @endif
 										</div>
 										<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registeration') ? 'error' : null}}">
-										<input type="text" name="registeration" placeholder="1 2 3" class="form-control" value="{{old('registeration')}}">
+										<input type="text" name="registeration" id="registration" placeholder="1 2 3" class="form-control" value="{{old('registeration')}}" readonly>
 										@if($errors->has('registeration'))
                         <span class="help-block" style="color:red;">{{$errors->first('registeration')}}</span>
                         @endif
@@ -255,7 +255,7 @@
 			                        	<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 			                        	   Manufacturing Date:  <br>{{ trans('تاريخ التصنيع')}} <label class="color-danger">*</label></label>			
 			                        	<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="manufacturer" class="form-control" value="{{old('manufacturer')}}">
+											<input type="text" name="manufacturer" id="manufacturing_date" class="form-control" value="{{old('manufacturer')}}" readonly>
 											@if($errors->has('manufacturer'))
                         <span class="help-block" style="color:red;">{{$errors->first('manufacturer')}}</span>
                         @endif
@@ -270,7 +270,7 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Chassis No <br>{{ trans('رقم الهيكل')}}  <label class="color-danger">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="chassis_no" class="form-control" value="{{old('chassis_no')}}">
+											<input type="text" name="chassis_no" id="chassis" class="form-control" value="{{old('chassis_no')}}" readonly>
 											@if($errors->has('chassis_no'))
                         <span class="help-block" style="color:red;">{{$errors->first('chassis_no')}}</span>
                         @endif
@@ -281,7 +281,7 @@
 			                        	<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 			                        	   Model: <br>{{ trans('الطراز')}} <label class="color-danger">*</label></label>			
 			                        	<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="model_name" class="form-control" value="{{old('model_name')}}">
+											<input type="text" name="model_name" id="model" class="form-control" value="{{old('model_name')}}" readonly>
 											@if($errors->has('model_name'))
                         <span class="help-block" style="color:red;">{{$errors->first('model_name')}}</span>
                         @endif
@@ -1614,10 +1614,9 @@ $(document).ready(function()
                       if(data){
                         $('#carlist').empty();
                         $('#carlist').focus;
-                        $('#carlist').append('<option value=""> Select Car </option>'); 
+                        $('#carlist').append('<option value="" disabled selected> Select Car </option>'); 
                         $.each(data, function(key, value){
                         $('select[name="carlist"]').append('<option value="'+ value.id +'">' + value.manufacturing+ '</option>');
-console.log(value.id);
                     });
                   }else{
                     $('#carlist').empty();
@@ -1628,6 +1627,31 @@ console.log(value.id);
               $('#carlist').empty();
             }
         });
+
+		
+		$('#carlist').change(function(){
+            var id = $(this).val();
+            var url = '{{ route("getCarCustomer", ":id") }}';
+            url = url.replace(':id', id);
+
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'json',
+                success: function(response){
+
+                if(response != null){
+                    $('#manufacturing').val(response.manufacturing);
+                    $('#registration').val(response.registration);
+				    $('#manufacturing_date').val(response.manufacturing_date);
+				    $('#chassis').val(response.chassis);
+				    $('#model').val(response.model);
+				    $('#reg_chars').val(response.reg_chars);
+
+			    }
+            }
+        });
+});
     });
 </script>
 
