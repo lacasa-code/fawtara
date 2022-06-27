@@ -415,7 +415,7 @@
                                         </div>
                                     </div>
 
-
+<hr>
                                     <?php /* */ ?>
                                     <div class="col-md-12 col-sm-12 col-xs-12 form-group">
                                         <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group {{$errors->has('service_name.0') ? 'error' : null}}">
