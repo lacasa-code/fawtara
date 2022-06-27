@@ -231,6 +231,7 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
+        
     ],
 
 ];
