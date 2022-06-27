@@ -235,7 +235,8 @@ $(document).ready(function() {
         $('.select_customer').select2();
 		
 		$('.select_manufacturing').select2();
-  
+		$('.select_model').select2();
+
 });
 </script>
 						
