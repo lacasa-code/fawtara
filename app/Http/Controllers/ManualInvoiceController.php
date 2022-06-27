@@ -284,8 +284,10 @@ class ManualInvoiceController extends Controller
 		$branches     = Branch::all();
 		$customers = User::where([['role','=','Customer'],['soft_delete',0]])->orderBy('id','DESC')->get();
 		$services = Invoiceservice::where('invoice_id', $invoice->id)->get();
-
-		return view('Manual.ManualEdit', compact('invoice', 'tbl_payments', 'branches', 'currentUser', 'branchDatas', 'customers', 'tax', 'auth_branch_vat_number', 'auth_branch', 'services'));
+		$cars = Car::get();
+		$customers_list= Customer::where('branch_id', Auth::user()->branch_id)->get();
+		$list= Customer::all();
+		return view('Manual.ManualEdit', compact('invoice','customers_list','cars','list','tbl_payments', 'branches', 'currentUser', 'branchDatas', 'customers', 'tax', 'auth_branch_vat_number', 'auth_branch', 'services'));
 	}
 
 	// nw method for update
