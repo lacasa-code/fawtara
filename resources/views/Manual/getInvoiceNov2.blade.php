@@ -372,7 +372,7 @@
                 				</div>
 <?php /* */ ?>	
 
-								<div class="col-md-12 col-sm-12 col-xs-12 form-group">
+								<div class="col-md-12 col-sm-12 col-xs-12 form-group" hidden>
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group">
                     					<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Status') }}<br>الحالة<label class="color-danger">*</label></label>						
                     					<div class="col-md-8 col-sm-8 col-xs-12">
