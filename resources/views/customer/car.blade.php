@@ -73,7 +73,7 @@ input[type=number] {
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-4 col-sm-8 col-xs-12">
 										<select class="form-control  select_manufacturing" name="manufacturing" id="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" required >
-											<option value="mercedes" selected>Mercedes</option>
+											<option value="mercedes" selected>mercedes</option>
 										</select>
 										@if ($errors->has('manufacturing'))
 											<span class="help-block">
