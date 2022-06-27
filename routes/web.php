@@ -311,6 +311,7 @@ Route::group(['prefix'=>'invoice'],function()
 	Route::get('/manual/invoice','ManualInvoiceController@getInvoice2')->middleware('can:invoice_view');
 	Route::post('/store/manual/invoice','ManualInvoiceController@storeInvoice2')->middleware('can:invoice_add');
 	Route::get('/manual/invoice/customer/{id}','ManualInvoiceController@customer_invoice')->name('getData');;
+	Route::get('/manual/invoice/car/{id}','ManualInvoiceController@car_invoice')->name('getCar');;
 
 	Route::get('/edit/{id}','ManualInvoiceController@ManualEdit')->middleware('can:invoice_view')
 	    ->name('ManualEdit');

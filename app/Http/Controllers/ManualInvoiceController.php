@@ -85,6 +85,12 @@ class ManualInvoiceController extends Controller
 		   return response()->json($data);
 
 	}
+	public function car_invoice($id)
+	{
+           $data=Car::where('customer_id',$id)->get();
+		   return response()->json($data);
+
+	}
 
 	public function storeInvoice2(Request $request)
 	{

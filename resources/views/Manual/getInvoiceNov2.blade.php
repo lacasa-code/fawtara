@@ -48,6 +48,14 @@
 											@endforeach
 									</select>
 								</div>
+								<div class="col-md-4 col-sm-6 col-xs-12  ">
+								    <select class="form-control  select_car"  name="carlist" id="carlist" required >
+										<option value="" disabled selected>{{ trans('Select Car')}}</option>
+											<!--@foreach ($customers_list as $customer)
+											   <option value="{{ $customer->id }}">{{ $customer->name }} / {{$customer->phone }}</option>
+											@endforeach-->
+									</select>
+								</div>
 
 							</div>
 
@@ -1566,6 +1574,8 @@ $(document).ready(function()
     $(document).ready(function() {
     
         $('.select_customer').select2();
+		$('.select_car').select2();
+
 		$('#customerlist').change(function(){
     var id = $(this).val();
     var url = '{{ route("getData", ":id") }}';
@@ -1593,7 +1603,47 @@ $(document).ready(function()
 });
 
 
+$(document).ready(function(){
 
+// Department Change
+$('#customerlist').change(function(){
+
+   // Department id
+   var id = $(this).val();
+
+   // Empty the dropdown
+   $('#carlist').find('option').not(':first').remove();
+
+   // AJAX request 
+   $.ajax({
+	 url: 'invoice/manual/invoice/car/'+id,
+	 type: 'get',
+	 dataType: 'json',
+	 success: function(response){
+
+	   var len = 0;
+	   if(response['data'] != null){
+		 len = response['data'].length;
+	   }
+
+	   if(len > 0){
+		 // Read data and create <option >
+		 for(var i=0; i<len; i++){
+
+		   var id = response['data'][i].id;
+		   var manufacturing = response['data'][i].manufacturing;
+
+		   var option = "<option value='"+id+"'>"+manufacturing+"</option>"; 
+
+		   $("#carlist").append(option); 
+		 }
+	   }
+
+	 }
+  });
+});
+
+});
 </script>
 
 @endsection
