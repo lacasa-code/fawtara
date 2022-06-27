@@ -81,8 +81,8 @@ class ManualInvoiceController extends Controller
 
 	public function customer_invoice($id)
 	{
-           $customers_list=Customer::where('id',$id)->get();
-		   return response()->json(['success'=>true, 'info'=>$customers_list]);
+           $data=Customer::where('id',$id)->first();
+		   return response()->json($data);
 
 	}
 

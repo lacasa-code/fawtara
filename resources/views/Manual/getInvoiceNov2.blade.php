@@ -41,8 +41,8 @@
 				  				    <h4><b>{{ trans('app.Invoice Details')}}</b></h4><hr>
 							    </div>
 								<div class="col-md-4 col-sm-6 col-xs-12  ">
-								    <select class="form-control  select_customer" onchange="selectCustomer()" name="customer_id" id="customer" required >
-										<option value="0">{{ trans('Select customers')}}</option>
+								    <select class="form-control  select_customer"  name="customerlist" id="customerlist" required >
+										<option value="" disabled selected>{{ trans('Select customers')}}</option>
 											@foreach ($customers_list as $customer)
 											   <option value="{{ $customer->id }}">{{ $customer->name }} / {{$customer->phone }}</option>
 											@endforeach
@@ -100,7 +100,7 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Customer Address <br>{{ trans('عنوان العميل')}}<label class="color-danger">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" id="customer_address" name="customer_address" class="form-control" value="{{old('customer_address')}}">
+											<input type="text" id="customer_address"  name="customer_address" class="form-control" value="{{old('customer_address')}}" readonly>
 											@if($errors->has('customer_address'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_address')}}</span>
                         @endif
@@ -1570,22 +1570,24 @@ $(document).ready(function()
                 
 });
 
-$(function() {
-   $('#customer').on('change', function(){
-       var address = $(this).data('address');
-       $('#name').val(address);
-   });
-});
-function selectCustomer() {
-        let select = document.getElementById('customer_id');
-        let customer_address = document.getElementById('customer_address');
+$('#customerlist').change(function(){
+    var id = $(this).val();
+    var url = '{{ route("getData", ":id") }}';
+    url = url.replace(':id', id);
 
-        if(select.value === 'default') {
-            customer_address.value = '';
-        } else {
-            customer_address.value = JSON.parse(select.value).address;
+    $.ajax({
+        url: url,
+        type: 'get',
+        dataType: 'json',
+        success: function(response){
+            if(response != null){
+                $('#address').val(response.address);
+                $('#phone').val(response.phone);
+            }
         }
-    }
+    });
+});
+
 </script>
 
 @endsection
