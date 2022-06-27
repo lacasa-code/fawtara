@@ -108,7 +108,14 @@
 
 <!-- Scripts starting -->
 <script src="{{ URL::asset('vendors/jquery/dist/jquery.min.js') }}"></script>
-    
+    <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+
+    <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
 <script>
 	$(document).ready(function() 
 	{
