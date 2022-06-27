@@ -157,5 +157,48 @@
           	</div>
         </div>
 <!-- /page content -->
+<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+
+    <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+	<script>
+	$(document).ready(function() 
+	{
+	    $('#datatable').DataTable( {
+			responsive: true,
+			dom: 'Bfrtip',
+
+			buttons: [{
+               extend: 'excelHtml5',
+                title: 'Excel Export',
+                extension: '.xlsx',
+                text: 'Export to Excel',
+         exportOptions: {
+        format: {
+                        body: function ( data, column, row ) {                             
+                            //if it is html, return the text of the html instead of html
+                            if (/<\/?[^>]*>/.test(data)) {                                   
+                                return $(data).text();
+                            } else {
+                                return data;
+                            }                                                               
+                        }
+                    }
+        },
+        customize: function(xlsx) {
+            var sheet = xlsx.xl.worksheets['Sheet1.xml'];
+             $('row c[r*="3"]', sheet).attr( 's', '20' );
+            $('row c[r*="2"]', sheet).attr( 's', '25' );
+           }
+          },'pdf']
+	    });
+
+
+ 
+  	}); 
+</script>
 @endsection

@@ -145,11 +145,21 @@
           	</div>
         </div>
 <!-- /page content -->
-<script>
+<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+
+    <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+	<script>
 	$(document).ready(function() 
 	{
 	    $('#datatable').DataTable( {
 			responsive: true,
+			dom: 'Bfrtip',
+
 			buttons: [{
                extend: 'excelHtml5',
                 title: 'Excel Export',
@@ -172,15 +182,10 @@
              $('row c[r*="3"]', sheet).attr( 's', '20' );
             $('row c[r*="2"]', sheet).attr( 's', '25' );
            }
-          },'pdf'],
-	        "language": {
-				 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/<?php echo getLanguageChange(); 
-				?>.json"
-	        }
+          },'pdf']
 	    });
 
 
-		
   	}); 
 </script>
 @endsection
