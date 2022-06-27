@@ -39,7 +39,7 @@ class Customercontroller extends Controller
 	   $last = Branch::first();
        $branch = Branch::where('id','!=',$last->id)->get();
 
-	   return view('customer.add',compact('branch'));
+	   return view('customer.add',compact('branch','last'));
 	}
 	public function store(CustomerAddEditFormRequest $request)
 	{
