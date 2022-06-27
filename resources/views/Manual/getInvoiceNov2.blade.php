@@ -87,7 +87,7 @@
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group{{$errors->has('Customer') ? 'error' : null}}">
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Customer Name') }} <br>{{ trans('اسم الزبون')}} <label class="color-danger">*</label></label>						
 										<div class="col-md-8 col-sm-8 col-xs-12 ">
-											<input type="text" name="Customer" class="form-control" value="{{old('Customer')}}">
+											<input type="text" name="Customer" id="name" class="form-control" value="{{old('Customer')}}" readonly>
 											@if($errors->has('Customer'))
                         <span class="help-block" style="color:red;">{{$errors->first('Customer')}}</span>
                         @endif
@@ -100,7 +100,7 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Customer Address <br>{{ trans('عنوان العميل')}}<label class="color-danger">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" id="customer_address"  name="customer_address" class="form-control" value="{{old('customer_address')}}" readonly>
+											<input type="text" id="address"  name="customer_address" class="form-control" value="{{old('customer_address')}}" readonly>
 											@if($errors->has('customer_address'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_address')}}</span>
                         @endif
@@ -129,7 +129,7 @@
 											<input type="text"  name="phone_code" class="form-control" value="+966" readonly>
 										</div>
 										<div class="col-md-6 col-sm-8 col-xs-12">
-											<input type="text" id="phone" name="customer_phone" class="form-control" value="{{old('customer_phone')}}">
+											<input type="text" id="phone" name="customer_phone" class="form-control" value="{{old('customer_phone')}}" readonly>
 											@if($errors->has('customer_phone'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_phone')}}</span>
                         @endif
@@ -1582,7 +1582,9 @@ $(document).ready(function()
 			    console.log('response.address');
                 $('#address').val(response.address);
                 $('#phone').val(response.phone);
-            }
+				$('#name').val(response.name);
+
+			}
         }
     });
 });
