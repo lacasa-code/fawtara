@@ -1595,37 +1595,10 @@ $(document).ready(function()
 			    }
             }
         });
-
-		 $('#customerlist').on('change', function() {
-			   var id = $(this).val();
-               var url = '{{ route("getCar", ":id") }}';
-               url = url.replace(':id', id);
-               if(id) {
-                   $.ajax({
-                       url: url,
-                       type: "GET",
-                       data : {"_token":"{{ csrf_token() }}"},
-                       dataType: "json",
-                       success:function(data)
-                       {
-                         if(data){
-                            $('#carlist').empty();
-                            $('#carlist').append('<option hidden>Choose Car</option>'); 
-                            $.each(data, function(key, carlist){
-                                $('select[name="carlist"]').append('<option value="'+ key +'">' + course.manufacturing+ '</option>');
-                            });
-                        }else{
-                            $('#carlist').empty();
-                        }
-                     }
-                   });
-               }else{
-                 $('#carlist').empty();
-               }
-            });
 });
 
                 
+});
 
 
 </script>
