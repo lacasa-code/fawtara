@@ -37,9 +37,11 @@
                		<div class="x_content">
                 		<form method="post" id="form_add" action="{{ url('/invoice/edit/manual/invoice') }}" enctype="multipart/form-data"  name="Form" class="form-horizontal upperform saleAddForm" >
 							<div class="col-md-12 col-xs-12 col-sm-12">
-				  				<h4><b>{{ trans('app.Invoice Details')}}</b></h4><hr>
-							</div>
-							<div class="col-md-4 col-sm-6 col-xs-12  ">
+							<div class="col-md-2 col-sm-6 col-xs-12  ">
+                                <h4><b>{{ trans('app.Invoice Details')}}</b></h4>
+                                <hr>
+                            </div>
+															  <div class="col-md-4 col-sm-6 col-xs-12  ">
                                 <select class="form-control  select_customer" name="customerlist" id="customerlist" required>
                                     <option value="" disabled selected>{{ trans('Select customers')}}</option>
                                     @foreach ($customers_list as $customer)
@@ -55,6 +57,8 @@
 											@endforeach-->
                                 </select>
                             </div>
+							</div>
+							
 							<input type="hidden" name="current_invoice" value="{{$invoice->id}}">
 
 						<!--	<div class="row form-group">
@@ -91,6 +95,14 @@
 <?php /* */ ?>	
 
 								<div class="col-md-12 col-sm-12 col-xs-12 form-group">
+								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group" hidden>
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
+                                        Customer id <br>{{ trans('الرقم التعريفي للعميل')}} <label class="color-danger">*</label></label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input type="text" name="user_id" id="user_id" class="form-control" value="{{old('customer_id')}}">
+                                    </div>
+
+                                </div>
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group">
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Invoice Number') }} <br>{{ trans('رقم الفاتورة')}}  <label class="color-danger">*</label></label>
 										<div class="col-md-2 col-sm-2 col-xs-2">
@@ -104,7 +116,7 @@
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group {{$errors->has('Customer') ? 'error' : null}}">
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Customer Name') }}  <br>{{ trans('اسم الزبون')}}  <label class="color-danger">*</label></label>						
 										<div class="col-md-8 col-sm-8 col-xs-12 ">
-											<input type="text" name="Customer" id="name" value="{{ $invoice->Customer }}" class="form-control">
+											<input type="text" name="Customer" id="name" value="{{ $invoice->Customer }}" class="form-control" readonly>
 											@if($errors->has('Customer'))
                         <span class="help-block" style="color:red;">{{$errors->first('Customer')}}</span>
                         @endif
@@ -117,7 +129,7 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Customer Address <br>{{ trans('عنوان العميل')}} <label class="color-danger">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text"  name="customer_address" id="address" value="{{ $invoice->customer_address }}" class="form-control">
+											<input type="text"  name="customer_address" id="address" value="{{ $invoice->customer_address }}" class="form-control" readonly>
 											@if($errors->has('customer_address'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_address')}}</span>
                         @endif
@@ -147,7 +159,7 @@
 											<input type="text" name="phone_code" value="{{ $invoice->phone_code }}" class="form-control" readonly>
 										</div>
 										<div class="col-md-6 col-sm-8 col-xs-12">
-											<input type="text" id="phone" name="customer_phone" value="{{ $invoice->customer_phone }}" class="form-control">
+											<input type="text" id="phone" name="customer_phone" value="{{ $invoice->customer_phone }}" class="form-control" readonly>
 											@if($errors->has('customer_phone'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_phone')}}</span>
                         @endif
@@ -236,7 +248,7 @@
 			                        	<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 			                        	   Manufacturer :  <br>{{ trans('المصنع ')}} <label class="color-danger">*</label></label>			
 			                        	<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="fleet_number" id="manufacturing" value="{{ $invoice->fleet_number }}" class="form-control">
+											<input type="text" name="fleet_number" id="manufacturing" value="{{ $invoice->fleet_number }}" class="form-control" readonly>
 											@if($errors->has('fleet_number'))
                         <span class="help-block" style="color:red;">{{$errors->first('fleet_number')}}</span>
                         @endif
@@ -251,13 +263,13 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										REGISTRATION <br>{{ trans('رقم التسجيل:')}}  <label class="color-danger">*</label></label>
 										<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('reg_chars') ? 'error' : null}}">
-											<input type="text" name="reg_chars" id="reg_chars" value="{{ $invoice->reg_chars }}" class="form-control" placeholder="a b c">
+											<input type="text" name="reg_chars" id="reg_chars" value="{{ $invoice->reg_chars }}" class="form-control" placeholder="a b c" readonly>
 					@if($errors->has('reg_chars'))
                         <span class="help-block" style="color:red;">{{$errors->first('reg_chars')}}</span>
                     @endif
 										</div>
 										<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registeration') ? 'error' : null}}">
-											<input type="text" name="registeration" id="registration" value="{{ $invoice->registeration }}" placeholder="1 2 3" class="form-control">
+											<input type="text" name="registeration" id="registration" value="{{ $invoice->registeration }}" placeholder="1 2 3" class="form-control" readonly>
 											@if($errors->has('registeration'))
                         <span class="help-block" style="color:red;">{{$errors->first('registeration')}}</span>
                         @endif
@@ -268,7 +280,7 @@
 			                        	<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 			                        	   MANUFACTURER: <br>{{ trans('تاريخ التصنيع')}} <label class="color-danger">*</label></label>			
 			                        	<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="manufacturer" id="manufacturing_date" value="{{ $invoice->manufacturer }}" class="form-control">
+											<input type="text" name="manufacturer" id="manufacturing_date" value="{{ $invoice->manufacturer }}" class="form-control" readonly>
 											@if($errors->has('manufacturer'))
                         <span class="help-block" style="color:red;">{{$errors->first('manufacturer')}}</span>
                         @endif
@@ -283,7 +295,7 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Chassis No <br>{{ trans('رقم الهيكل')}} <label class="color-danger">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="chassis_no"  id="chassis" value="{{ $invoice->chassis_no }}" class="form-control">
+											<input type="text" name="chassis_no"  id="chassis" value="{{ $invoice->chassis_no }}" class="form-control" readonly>
 											@if($errors->has('chassis_no'))
                         <span class="help-block" style="color:red;">{{$errors->first('chassis_no')}}</span>
                         @endif
@@ -294,7 +306,7 @@
 			                        	<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 			                        	   Model: <br>{{ trans('الطراز')}} <label class="color-danger">*</label></label>			
 			                        	<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="model_name" id="model" value="{{ $invoice->model_name }}" class="form-control">
+											<input type="text" name="model_name" id="model" value="{{ $invoice->model_name }}" class="form-control" readonly>
 											@if($errors->has('model_name'))
                         <span class="help-block" style="color:red;">{{$errors->first('model_name')}}</span>
                         @endif
@@ -381,7 +393,7 @@
 <?php /* */ ?>	
 
 								<div class="col-md-12 col-sm-12 col-xs-12 form-group">
-									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group">
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group" hidden>
                     					<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Status') }} <br>الحالة<label class="color-danger">*</label></label>						
                     					<div class="col-md-8 col-sm-8 col-xs-12">
 											<select name="Status" class="form-control paymentStatusSelect" required>
