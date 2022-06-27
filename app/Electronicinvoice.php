@@ -51,6 +51,7 @@ class Electronicinvoice extends Model
             'final',
             'reg_chars',
             'final',
+            'customer_id'
     ];
 
      public function services()

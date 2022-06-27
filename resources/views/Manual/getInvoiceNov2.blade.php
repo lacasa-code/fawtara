@@ -143,6 +143,7 @@
                         @endif
 										</div>
 									</div>
+									<input type="text" name="user_id" id="user_id" class="form-control" value="{{old('customer_id')}}" hidden>
 
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group {{$errors->has('customer_po_number') ? 'error' : null}}">
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
@@ -1591,6 +1592,8 @@ $(document).ready(function()
                     $('#address').val(response.address);
                     $('#phone').val(response.phone);
 				    $('#name').val(response.name);
+					$('#user_id').val(response.id);
+
 
 			    }
             }

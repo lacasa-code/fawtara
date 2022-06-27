@@ -162,7 +162,7 @@ class ManualInvoiceController extends Controller
 		}
 
 		    $invoice = new Electronicinvoice;
-
+    
 		    $invoice->Invoice_type       = 'service';
             $invoice->Invoice_Number     = $request->Invoice_Number;
             $invoice->Customer           = $request->Customer;
@@ -182,7 +182,7 @@ class ManualInvoiceController extends Controller
             $invoice->manufacturer       = $request->manufacturer;
             $invoice->chassis_no         = $request->chassis_no;
             $invoice->model_name         = $request->model_name;
-           // $invoice->vehicle            = $request->vehicle;
+            $invoice->customer_id        = $request->user_id;
             $invoice->Date               = $request->Date;
             $invoice->Discount           = $request->Discount;
             $invoice->job_open_date      = $request->job_open_date;
