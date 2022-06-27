@@ -399,15 +399,7 @@
                   					</div>               									
                	 				</div>
 
-<div class="col-md-12 col-sm-12 col-xs-12 form-group " hidden>
-									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group">
-										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
-										Customer id <br>{{ trans('الرقم التعريفي للعميل')}} <label class="color-danger">*</label></label>
-										<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="text" name="user_id" id="user_id" class="form-control" value="{{old('customer_id')}}" >
-										</div>
-					
-									</div>
+
 <?php /* */ ?>
                 				<div class="col-md-12 col-sm-12 col-xs-12 form-group">
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group {{$errors->has('service_name.0') ? 'error' : null}}">
@@ -625,7 +617,15 @@
 								  	
 								</div>
 			                </div>
-
+                               <div class="col-md-12 col-sm-12 col-xs-12 form-group " hidden>
+									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group">
+										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
+										Customer id <br>{{ trans('الرقم التعريفي للعميل')}} <label class="color-danger">*</label></label>
+										<div class="col-md-8 col-sm-8 col-xs-12">
+										<input type="text" name="user_id" id="user_id" class="form-control" value="{{old('customer_id')}}" >
+										</div>
+					
+									</div>
 	                	<!-- Start Custom Field, (If register in Custom Field Module)  -->
 							@if(!empty($tbl_custom_fields))
 							<div class="col-md-12 col-xs-12 col-sm-12 space">
