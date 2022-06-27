@@ -96,7 +96,7 @@ input[type=number] {
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('phone') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="phone">{{ trans('app.Mobile No') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
-										<input type="number"  name="phone" id="mob" class="mob" autocomplete="false" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{old('phone')}}" class="form-control" minlength="9" maxlength="9" >
+										<input type="number"  name="phone" id="mob" class="form-control mob" autocomplete="false" placeholder="{{ trans('app.Enter Mobile No')}}" value="{{old('phone')}}" class="form-control" minlength="9" maxlength="9" >
 										@if ($errors->has('phone'))
 											<span class="help-block">
 												<strong>{{ $errors->first('phone') }}</strong>
@@ -106,26 +106,7 @@ input[type=number] {
 								</div>	
 							</div>
 
-							<div class="col-md-12 col-sm-6 col-xs-12">  
-							    <div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('branch_id') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="address">{{ trans('Branch') }} <label class="color-danger">*</label> </label>
-									<div class="col-md-8 col-sm-8 col-xs-12">
-									   <select class="form-control  select_branch" name="branch_id" id="branch" required >
-										<option value="{{ $last->id }}">{{$last->branch_name }}</option>
-											@foreach ($branch as $branches)
-											<option value="{{ $branches->id }}">{{$branches->branch_name }} </option>
-											@endforeach
-									  </select> 
-									   @if ($errors->has('branch_id'))
-									   <span class="help-block">
-										   <strong>{{ $errors->first('branch_id') }}</strong>
-									   </span>
-									 @endif
-									</div>
-								</div>
-
-								
-							</div>
+							
 							
 
 							<input type="hidden" name="_token" value="{{csrf_token()}}">

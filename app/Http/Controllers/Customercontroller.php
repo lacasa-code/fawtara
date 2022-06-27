@@ -48,7 +48,6 @@ class Customercontroller extends Controller
 		$address = $request->address;
 		$phone = $request->phone;
 		$mail = $request->mail;
-		$branch_id = $request->branch_id;
 
 		/*$manufacturing = $request->manufacturing;
 		$registration = $request->registration;
@@ -71,7 +70,8 @@ class Customercontroller extends Controller
 		$customer->phone = $phone;
 		$customer->mail = $mail;
 		$customer->address = $address;
-		$customer->branch_id = $branch_id;
+
+		$customer->branch_id = Auth::user()->branch_id;
 
 		$customer->save();
 
