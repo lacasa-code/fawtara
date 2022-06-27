@@ -1579,7 +1579,7 @@ $(document).ready(function()
 					    console.log('no');
 
             if(response != null){
-			    console.log('yes');
+			    console.log('response.address');
                 $('#address').val(response.address);
                 $('#phone').val(response.phone);
             }
@@ -1590,27 +1590,7 @@ $(document).ready(function()
                 
 });
 
-$('#customerlist').change(function(){
-    var id = $(this).val();
-    var url = '{{ route("getData", ":id") }}';
-    url = url.replace(':id', id);
 
-    $.ajax({
-        url: url,
-        type: 'get',
-        dataType: 'json',
-        success: function(response){
-							    console.log('no');
-
-            if(response != null){
-								    console.log('yes');
-
-                $('#address').val(response.address);
-                $('#phone').val(response.phone);
-            }
-        }
-    });
-});
 
 </script>
 
