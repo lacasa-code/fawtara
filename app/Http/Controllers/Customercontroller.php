@@ -15,6 +15,8 @@ use App\Car;
 use App\Customer;
 use App\Electronicinvoice;
 use App\Http\Requests\CustomerAddEditFormRequest;
+use App\Http\Requests\CustomerAdd;
+
 use App\Http\Requests\CarAddEditFormRequest;
 use App\Http\Requests\CustomerEditFormRequest;
 use Illuminate\Support\Facades\Input;
@@ -476,7 +478,7 @@ class Customercontroller extends Controller
 	 }	
 
 	// customer update
-    public function customerupdate($id , request $request)
+    public function customerupdate($id , CustomerAdd $request)
 	{
 
 
