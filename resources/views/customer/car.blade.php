@@ -72,7 +72,7 @@ input[type=number] {
 								<div class=" form-group my-form-group has-feedback {{ $errors->has('manufacturing') ? ' has-error' : '' }}">
 									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="manufacturing">{{ trans('app.Manufacturing Name') }} <label class="color-danger" >*</label></label>
 									<div class="col-md-4 col-sm-8 col-xs-12">
-										<select class="form-control  " name="manufacturing" id="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" required >
+										<select class="form-control  select_manufacturing" name="manufacturing" id="manufacturing" placeholder="{{ trans('app.Enter Manufacturing Name')}}" required >
 										<option value="default">{{ trans('app.Enter Manufacturing Name')}}</option>
 											<option value="Mercedes-Benz">Mercedes-Benz</option>
 										</select>
@@ -195,8 +195,9 @@ $(document).ready(function() {
                         });    
 
         $('.select_customer').select2();
-
-                
+		
+		$('.select_manufacturing').select2();
+  
 });
 </script>
 						
