@@ -39,7 +39,22 @@
 							<div class="col-md-12 col-xs-12 col-sm-12">
 				  				<h4><b>{{ trans('app.Invoice Details')}}</b></h4><hr>
 							</div>
-
+							<div class="col-md-4 col-sm-6 col-xs-12  ">
+                                <select class="form-control  select_customer" name="customerlist" id="customerlist" required>
+                                    <option value="" disabled selected>{{ trans('Select customers')}}</option>
+                                    @foreach ($customers_list as $customer)
+                                    <option value="{{ $customer->id }}">{{ $customer->name }} / {{$customer->phone }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12  ">
+                                <select class="form-control  select_car" name="carlist" id="carlist" required>
+                                    <option value="" disabled selected>{{ trans('Select Car')}}</option>
+                                    <!--@foreach ($customers_list as $customer)
+											   <option value="{{ $customer->id }}">{{ $customer->name }} / {{$customer->phone }}</option>
+											@endforeach-->
+                                </select>
+                            </div>
 							<input type="hidden" name="current_invoice" value="{{$invoice->id}}">
 
 						<!--	<div class="row form-group">
@@ -89,7 +104,7 @@
 									<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group {{$errors->has('Customer') ? 'error' : null}}">
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">{{ trans('app.Customer Name') }}  <br>{{ trans('اسم الزبون')}}  <label class="color-danger">*</label></label>						
 										<div class="col-md-8 col-sm-8 col-xs-12 ">
-											<input type="text" name="Customer" value="{{ $invoice->Customer }}" class="form-control">
+											<input type="text" name="Customer" id="name" value="{{ $invoice->Customer }}" class="form-control">
 											@if($errors->has('Customer'))
                         <span class="help-block" style="color:red;">{{$errors->first('Customer')}}</span>
                         @endif
@@ -102,7 +117,7 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Customer Address <br>{{ trans('عنوان العميل')}} <label class="color-danger">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="customer_address" value="{{ $invoice->customer_address }}" class="form-control">
+											<input type="text"  name="customer_address" id="address" value="{{ $invoice->customer_address }}" class="form-control">
 											@if($errors->has('customer_address'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_address')}}</span>
                         @endif
@@ -132,7 +147,7 @@
 											<input type="text" name="phone_code" value="{{ $invoice->phone_code }}" class="form-control" readonly>
 										</div>
 										<div class="col-md-6 col-sm-8 col-xs-12">
-											<input type="text" name="customer_phone" value="{{ $invoice->customer_phone }}" class="form-control">
+											<input type="text" id="phone" name="customer_phone" value="{{ $invoice->customer_phone }}" class="form-control">
 											@if($errors->has('customer_phone'))
                         <span class="help-block" style="color:red;">{{$errors->first('customer_phone')}}</span>
                         @endif
@@ -221,7 +236,7 @@
 			                        	<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 			                        	   Manufacturer :  <br>{{ trans('المصنع ')}} <label class="color-danger">*</label></label>			
 			                        	<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="fleet_number" value="{{ $invoice->fleet_number }}" class="form-control">
+											<input type="text" name="fleet_number" id="manufacturing" value="{{ $invoice->fleet_number }}" class="form-control">
 											@if($errors->has('fleet_number'))
                         <span class="help-block" style="color:red;">{{$errors->first('fleet_number')}}</span>
                         @endif
@@ -236,13 +251,13 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										REGISTRATION <br>{{ trans('رقم التسجيل:')}}  <label class="color-danger">*</label></label>
 										<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('reg_chars') ? 'error' : null}}">
-											<input type="text" name="reg_chars" value="{{ $invoice->reg_chars }}" class="form-control" placeholder="a b c">
+											<input type="text" name="reg_chars" id="reg_chars" value="{{ $invoice->reg_chars }}" class="form-control" placeholder="a b c">
 					@if($errors->has('reg_chars'))
                         <span class="help-block" style="color:red;">{{$errors->first('reg_chars')}}</span>
                     @endif
 										</div>
 										<div class="col-md-4 col-sm-8 col-xs-12 {{$errors->has('registeration') ? 'error' : null}}">
-											<input type="text" name="registeration" value="{{ $invoice->registeration }}" placeholder="1 2 3" class="form-control">
+											<input type="text" name="registeration" id="registration" value="{{ $invoice->registeration }}" placeholder="1 2 3" class="form-control">
 											@if($errors->has('registeration'))
                         <span class="help-block" style="color:red;">{{$errors->first('registeration')}}</span>
                         @endif
@@ -253,7 +268,7 @@
 			                        	<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 			                        	   MANUFACTURER: <br>{{ trans('تاريخ التصنيع')}} <label class="color-danger">*</label></label>			
 			                        	<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="manufacturer" value="{{ $invoice->manufacturer }}" class="form-control">
+											<input type="text" name="manufacturer" id="manufacturing_date" value="{{ $invoice->manufacturer }}" class="form-control">
 											@if($errors->has('manufacturer'))
                         <span class="help-block" style="color:red;">{{$errors->first('manufacturer')}}</span>
                         @endif
@@ -268,7 +283,7 @@
 										<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 										Chassis No <br>{{ trans('رقم الهيكل')}} <label class="color-danger">*</label></label>
 										<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="chassis_no" value="{{ $invoice->chassis_no }}" class="form-control">
+											<input type="text" name="chassis_no"  id="chassis" value="{{ $invoice->chassis_no }}" class="form-control">
 											@if($errors->has('chassis_no'))
                         <span class="help-block" style="color:red;">{{$errors->first('chassis_no')}}</span>
                         @endif
@@ -279,7 +294,7 @@
 			                        	<label class="control-label col-md-4 col-sm-4 col-xs-12" for="cus_name">
 			                        	   Model: <br>{{ trans('الطراز')}} <label class="color-danger">*</label></label>			
 			                        	<div class="col-md-8 col-sm-8 col-xs-12">
-											<input type="text" name="model_name" value="{{ $invoice->model_name }}" class="form-control">
+											<input type="text" name="model_name" id="model" value="{{ $invoice->model_name }}" class="form-control">
 											@if($errors->has('model_name'))
                         <span class="help-block" style="color:red;">{{$errors->first('model_name')}}</span>
                         @endif
@@ -1598,16 +1613,94 @@ $(document).ready(function()
 
 <!-- Form submit at a time only one -->
 <script type="text/javascript">
-    /*$(document).ready(function () {
-        $('.submitButton').removeAttr('disabled'); //re-enable on document ready
-    });
-    $('.saleAddForm').submit(function () {
-        $('.submitButton').attr('disabled', 'disabled'); //disable on any form submit
+    $(document).ready(function() {
+
+        $('.select_customer').select2();
+        $('.select_car').select2();
+
+        $('#customerlist').change(function() {
+            var id = $(this).val();
+            var url = '{{ route("getData", ":id") }}';
+            url = url.replace(':id', id);
+
+            $.ajax({
+                url: url
+                , type: 'get'
+                , dataType: 'json'
+                , success: function(response) {
+
+                    if (response != null) {
+                        $('#address').val(response.address);
+                        $('#phone').val(response.phone);
+                        $('#name').val(response.name);
+                        $('#user_id').val(response.id);
+
+
+                    }
+                }
+            });
+        });
+
+
     });
 
-    $('.saleAddForm').bind('invalid-form.validate', function () {
-      $('.submitButton').removeAttr('disabled'); //re-enable on form invalidation
-    });*/
+    $(document).ready(function() {
+        $('#customerlist').on('change', function() {
+            var carID = $(this).val();
+            if (carID) {
+                $.ajax({
+                    url: '/invoice/manual/invoice/car/' + carID
+                    , type: "GET"
+                    , data: {
+                        "_token": "{{ csrf_token() }}"
+                    }
+                    , dataType: "json"
+                    , success: function(data) {
+                        console.log(data);
+                        if (data) {
+                            $('#carlist').empty();
+                            $('#carlist').focus;
+                            $('#carlist').append('<option value="" disabled selected> Select Car </option>');
+                            $.each(data, function(key, value) {
+                                $('select[name="carlist"]').append('<option value="' + value.id + '">' +  value.model +  '</option>');
+
+                            });
+                        } else {
+                            $('#carlist').empty();
+                        }
+                    }
+                });
+            } else {
+                $('#carlist').empty();
+            }
+        });
+
+
+        $('#carlist').change(function() {
+            var id = $(this).val();
+            var url = '{{ route("getCarCustomer", ":id") }}';
+            url = url.replace(':id', id);
+
+            $.ajax({
+                url: url
+                , type: 'get'
+                , dataType: 'json'
+                , success: function(response) {
+
+                    if (response != null) {
+                        $('#manufacturing').val(response.manufacturing);
+                        $('#registration').val(response.registration);
+                        $('#manufacturing_date').val(response.manufacturing_date);
+                        $('#chassis').val(response.chassis);
+                        $('#model').val(response.model);
+                        $('#reg_chars').val(response.reg_chars);
+
+                    }
+                }
+            });
+        });
+    });
+
 </script>
 
 @endsection
