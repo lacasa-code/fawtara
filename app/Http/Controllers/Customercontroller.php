@@ -457,7 +457,7 @@ class Customercontroller extends Controller
 		return redirect()->back()->with('message','Successfully Deleted');
 	 }
 
-	 public function car_update($id,request $request)
+	 public function car_update($id,CustomerEditFormRequest $request)
 	 {
 		 //dd($request->all());
         Car::where('id',$id)->update($request->all());	  
