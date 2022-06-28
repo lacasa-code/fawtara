@@ -32,7 +32,7 @@ class EmployeeAddEditFormRequest extends FormRequest
             'email' => 'required|email|unique:users,email,'.$this->id,
             'password'=> ($this->id)?'nullable|min:6|max:12|regex:/^(?=.*[a-zA-Z\p{L}])(?=.*\d).+$/u':'required|min:6|max:12|regex:/^(?=.*[a-zA-Z\p{L}])(?=.*\d).+$/u',
             'password_confirmation' => ($this->id)?'same:password':'required|same:password',
-            'mobile' => 'required|min:6|max:16|regex:/^[- +()]*[0-9][- +()0-9]*$/',
+            'mobile' => 'required|min:9|max:9|regex:/^[- +()]*[0-9][- +()0-9]*$/',
             'landlineno' => 'nullable|min:6|max:16|regex:/^[- +()]*[0-9][- +()0-9]*$/',
             'join_date' => 'required',
             'designation' => 'required|regex:/^[(a-zA-Z\s)\p{L}]+$/u|max:50',
@@ -78,8 +78,8 @@ class EmployeeAddEditFormRequest extends FormRequest
 
             'mobile.required' => trans('app.Contact number is required.'),
             //'mobile.numeric'  => trans('app.Contact number only numbers are allowed.'),
-            'mobile.min' => trans('app.Contact number minimum 6 digits.'),
-            'mobile.max' => trans('app.Contact number maximum 16 digits.'),
+            'mobile.min' => trans('app.Contact number minimum 9 digits.'),
+            'mobile.max' => trans('app.Contact number maximum 9 digits.'),
             'mobile.regex' => trans('app.Contact number must be number, plus, minus and space only.'),
 
             'landlineno.numeric'  => trans('app.Landline number only numbers are allowed.'),

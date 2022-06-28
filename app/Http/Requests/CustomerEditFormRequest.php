@@ -20,7 +20,7 @@ class CustomerEditFormRequest extends FormRequest
             'manufacturing' => 'required|regex:/^[A-Za-z]+$/',            
             'registration' => 'required',            
             'manufacturing_date' => 'required',            
-            'chassis' => 'required|min:17|max:17|unique:cars,chassis',              
+            'chassis' => 'required|min:17|max:17|unique:cars,chassis,'.$this->id,              
             'model' => 'required',            
             'customer_id',    
             'reg_chars'=>'required|regex:/^[A-Za-z]+$/' ,
