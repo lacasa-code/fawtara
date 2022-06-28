@@ -750,10 +750,10 @@
 
         /*datetimepicker*/
         $('.datepicker').datetimepicker({
-            format: "<?php echo getDatepicker(); ?>"
-            , autoclose: 1
-            , minView: 2
-        , });
+       format: "<?php echo getDatepicker(); ?>",
+		autoclose: 1,
+		minView: 2,
+    });
 
 
         // Initialize select2
