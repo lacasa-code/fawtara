@@ -188,10 +188,10 @@
                                           <tr>
                                                 <td colspan="2" style="text-align: left;"> CUSTOMER VAT NO:</td>
                                                 <td style="text-align: center;"> {{ $invoice->customer_vat }} </td>
-                                                <td colspan="2" style="text-align: right;"> رقم العميل الضريبى </td>
+                                                <td colspan="2" style="text-align: right;">: رقم العميل الضريبى </td>
                                                 <td colspan="2" style="text-align: left;"> VAT NO.: </td>
                                                 <td style="text-align: center;"> {{ $invoice->branch->vat_number }}  </td>
-                                                <td colspan="2" style="text-align: right;"> الرقم الضريبى: </td>
+                                                <td colspan="2" style="text-align: right;">: الرقم الضريبى </td>
                                           </tr>  
 
                                     <tr> <!-- #1 -->
@@ -243,7 +243,7 @@
                                           <td colspan="2" style="text-align: right;">: رقم امر الشراء </td>
                                           <td colspan="2" style="text-align: left;"> MANUFACTURING DATE: </td>
                                           <td style="text-align: center;">{{ $invoice->manufacturer }}</td>
-                                          <td colspan="2" style="text-align: right;"> تاريخ التصنيع   </td>
+                                          <td colspan="2" style="text-align: right;">: تاريخ التصنيع   </td>
                                                 
                                           </tr>  
 
@@ -253,7 +253,7 @@
                                                 <td colspan="2" style="text-align: right;">: نقدا/ على الحساب </td>
                                                 <td colspan="2" style="text-align: left;"> CHASSIS NO: </td>
                                                 <td  style="text-align: center;">  {{ $invoice->chassis_no }}  </td>
-                                                <td colspan="2" style="text-align: right;"> رقم  الهيكل   </td>
+                                                <td colspan="2" style="text-align: right;">: رقم  الهيكل   </td>
                                           </tr>  
 
                                           <tr>  <!-- #7 --> 
