@@ -167,13 +167,15 @@ input[type=number] {
 
 								<tr>
 								    <td>
-									<div class="{{$errors->has('manufacturing') ? ' has-error' : ''}}">
-										<input type="text"  name="manufacturing"  value="{{$cars->manufacturing}}" class="form-control" >
-											@if ($errors->has('manufacturing'))
-												<span class="help-block">
-													<strong>{{ $errors->first('manufacturing') }}</strong>
-												</span>
-											@endif
+									    <div class="{{$errors->has('manufacturing') ? ' has-error' : ''}}">
+										<select class="form-control  select_manufacturing" name="manufacturing" id="manufacturing" value="$cars->manufacturing" required >
+											<option value="mercedes" selected>mercedes</option>
+										</select>
+										@if ($errors->has('manufacturing'))
+											<span class="help-block">
+												<strong>{{ $errors->first('manufacturing') }}</strong>
+									   		</span>
+										@endif
 										</div>
 									</td>
 									<td>
@@ -216,12 +218,53 @@ input[type=number] {
 									</td>
 									<td>
 										<div class="{{$errors->has('model') ? ' has-error' : ''}}">
-										<input type="text"  name="model" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}"  class="form-control">
+										<select class="form-control  select_model" name="model" id="car" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}" required >
+										<option value="A-Class"  selected>A-Class </option>
+											<option value="C-Class">C-Class</option>
+											<option value="CLA-Class">CLA-Class</option>
+											<option value="CLS-Class">CLS-Class</option>
+											<option value="E-Class">E-Class</option>
+											<option value="EQE">EQE</option>
+											<option value="S-Class">S-Class</option>
+											<option value="EQS">EQS</option>
+											<option value="GLB-Class">GLB-Class</option>
+											<option value="GLC-Class">GLC-Class</option>
+											<option value="GLE-Class">GLE-Class</option>
+											<option value="GLS-Class">GLS-Class</option>
+											<option value="G-Class">G-Class</option>
+											<option value="EQA">EQA</option>
+											<option value="EQB">EQB</option>
+											<option value="EQC">EQC</option>
+											<option value="AMG SL">AMG SL</option>
+											<option value="AMG GT">AMG GT</option>
+											<option value="AMG GT 4-Door Coupé">AMG GT 4-Door Coupé</option>
+											<option value="AMG One">AMG One</option>
+											<option value="B-Class">B-Class</option>
+											<option value="Citan Van">Citan Van</option>
+											<option value="Viano">Viano</option>
+											<option value="EQV">EQV</option>
+											<option value="Vito">Vito</option>
+											<option value="Citan">Citan</option>
+											<option value="Sprinter">Sprinter</option>
+											<option value="Metris">Metris</option>
+											<option value="Arocs">Arocs</option>
+											<option value="Atego">Atego</option>
+											<option value="Actros">Actros</option>
+											<option value="Econic">Econic</option>
+											<option value="Unimog">Unimog</option>
+											<option value="Zetros">Zetros</option>
+											<option value="Citaro">Citaro</option>
+											<option value="Tourismo">Tourismo</option>
+
+										</select>
+										
 										@if ($errors->has('model'))
 											<span class="help-block">
 												<strong>{{ $errors->first('model') }}</strong>
 									   		</span>
 										@endif
+						
+
 									</div>
 									</td>
 									<td>
@@ -271,7 +314,8 @@ format: "yyyy", viewMode: "years",
         minViewMode: "years",
     autoclose:true}); 
 $(document).ready(function() {
-    
+	$('.select_manufacturing').select2();
+		$('.select_model').select2();
     $( "#reg_chars" ).keypress(function(e) {
                             var key = e.keyCode;
                             if (key >= 48 && key <= 57) {
