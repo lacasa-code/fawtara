@@ -218,8 +218,8 @@ input[type=number] {
 									</td>
 									<td>
 										<div class="{{$errors->has('model') ? ' has-error' : ''}}">
-										<select class="form-control  select_model" name="model" id="car" placeholder="{{ trans('app.Enter Model No')}}" value="{{$cars->model}}" required >
-										<option value="A-Class"  selected>A-Class </option>
+										<select class="form-control  select_model" name="model" id="car"  value="{{$cars->model}}" required >
+										<option value="A-Class" >A-Class </option>
 											<option value="C-Class">C-Class</option>
 											<option value="CLA-Class">CLA-Class</option>
 											<option value="CLS-Class">CLS-Class</option>

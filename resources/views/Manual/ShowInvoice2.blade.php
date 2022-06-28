@@ -197,26 +197,26 @@
                                     <tr> <!-- #1 -->
                                           <td colspan="2" style="text-align: left;"> TELEPHONE ND: </td>
                                           <td style="text-align: center;"> {{ $invoice->phone_code }} {{ ' ' }}{{ $invoice->customer_phone }} </td>
-                                          <td colspan="2" style="text-align: right;"> رقم الهاتف : </td>
+                                          <td colspan="2" style="text-align: right;"> : رقم الهاتف </td>
                                           <td colspan="2" style="text-align: left;"> BRANCH NAME: </td>
                                           <td style="text-align: center;"> {{ $invoice->branch_name }}</td>
-                                          <td colspan="2" style="text-align: right;"> اسم الفرع: </td>
+                                          <td colspan="2" style="text-align: right;">: اسم الفرع </td>
                                     </tr>  
 
                                           <tr> <!-- #2 -->
                                           <td colspan="2" style="text-align: left;"> CUSTOMER NO: </td>
                                           <td style="text-align: center;"> {{ $invoice->customer_number }}</td>
-                                          <td colspan="2" style="text-align: right;"> رقم العميل: </td>
+                                          <td colspan="2" style="text-align: right;">: رقم العميل </td>
                                           <td colspan="2" style="text-align: left;"> METERS READING (HAS/KM): </td>
                                           <td style="text-align: center;"> {{ $invoice->meters_reading }}  </td>
-                                          <td colspan="2" style="text-align: right;"> قراءة العداد: </td>
+                                          <td colspan="2" style="text-align: right;">: قراءة العداد </td>
                                                 
                                           </tr>  
 
                                           <tr> <!-- #3 -->
                                                 <td colspan="2" style="text-align: left;"> MCO/JOB NO: </td>
                                                 <td style="text-align: center;"> {{ $invoice->Job_card }} </td>
-                                                <td colspan="2" style="text-align: right;"> رقم امر العمل: </td>
+                                                <td colspan="2" style="text-align: right;">: رقم امر العمل </td>
                                                 <td colspan="2" style="text-align: left;"> MANUFACTURER: </td>
                                           <td style="text-align: center;"> {{ $invoice->fleet_number }} </td>
                                           <td colspan="2" style="text-align: right;"> {{ trans('المصنع ')}} </td>
@@ -226,49 +226,49 @@
                                           <tr>  <!-- #4 -->
                                                 <td colspan="2" style="text-align: left;"> QUOTATION NO: </td>
                                           <td style="text-align: center;"> {{ $invoice->quotation_number }} </td>
-                                          <td colspan="2" style="text-align: right;"> رقم العرض:  </td>
+                                          <td colspan="2" style="text-align: right;">: رقم العرض  </td>
                                           <td colspan="2" style="text-align: left;"> REGISTRATION: </td>
 
                                           <?php $format = trim( chunk_split($invoice->reg_chars, 1, ' ') ); ?> 
                         
                                           <td style="text-align: center;">
                                                 {{ $invoice->registeration }} {{ ucwords($format) }}  </td>
-                                                <td colspan="2" style="text-align: right;"> رقم التسجيل: </td>
+                                                <td colspan="2" style="text-align: right;">: رقم التسجيل </td>
                                                 
                                           </tr>  
 
                                           <tr>  <!-- #5 -->
                                           <td colspan="2" style="text-align: left;"> CUSTOMER P.O NO: </td>
                                           <td style="text-align: center;">{{ $invoice->customer_po_number }}</td>
-                                          <td colspan="2" style="text-align: right;"> رقم امر الشراء: </td>
+                                          <td colspan="2" style="text-align: right;">: رقم امر الشراء </td>
                                           <td colspan="2" style="text-align: left;"> MANUFACTURING DATE: </td>
                                           <td style="text-align: center;">{{ $invoice->manufacturer }}</td>
-                                          <td colspan="2" style="text-align: right;"> اتاريخ التصنيع   </td>
+                                          <td colspan="2" style="text-align: right;"> تاريخ التصنيع   </td>
                                                 
                                           </tr>  
 
                                           <tr>  <!-- #6 -->
                                                 <td colspan="2" style="text-align: left;"> CREDIT / CASH: </td>
                                                 <td  style="text-align: center;"> {{ $paymentMethod->payment }}  </td>
-                                                <td colspan="2" style="text-align: right;"> نقدا/ على الحساب: </td>
+                                                <td colspan="2" style="text-align: right;">: نقدا/ على الحساب </td>
                                                 <td colspan="2" style="text-align: left;"> CHASSIS NO: </td>
                                                 <td  style="text-align: center;">  {{ $invoice->chassis_no }}  </td>
                                                 <td colspan="2" style="text-align: right;"> رقم  الهيكل   </td>
                                           </tr>  
 
                                           <tr>  <!-- #7 --> 
-                                                <td colspan="2" style="text-align: left;"> JOPE OPEN DATE: </td>
+                                                <td colspan="2" style="text-align: left;"> JOB OPEN DATE: </td>
                                                 <td  style="text-align: center;">  {{ $invoice->job_open_date }}  </td>
-                                                <td colspan="2" style="text-align: right;"> تاريخ بدء العمل: </td>
+                                                <td colspan="2" style="text-align: right;">: تاريخ بدء العمل </td>
                                                 <td colspan="2" style="text-align: left;"> MODEL: </td>
                                                 <td  style="text-align: center;"> {{ $invoice->model_name }}  </td>
-                                                <td colspan="2" style="text-align: right;"> الطراز: </td>
+                                                <td colspan="2" style="text-align: right;">: الطراز </td>
                                           </tr>  
 
                                           <tr> <!-- #8 -->
                                                 <td colspan="2" style="text-align: left;"> DELIVERY DATE: </td>
                                                 <td  style="text-align: center;"> {{ $invoice->delivery_date }}  </td>
-                                                <td colspan="2" style="text-align: right;"> تاريخ التسليم: </td>
+                                                <td colspan="2" style="text-align: right;">: تاريخ التسليم </td>
                                                 <td colspan="5" style="text-align: right;"> </td>
                                           </tr>   
 
@@ -302,7 +302,7 @@
                         @endforeach
                         <!-- {{ $invoice->services->sum('sub_total') }} --> 
 
-                        {{ $summation }}  ريال   
+                        ريال  {{ $summation }}     
 
                                                    </td>
                                           </tr>
