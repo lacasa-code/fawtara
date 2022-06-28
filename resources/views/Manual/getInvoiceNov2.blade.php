@@ -1234,7 +1234,35 @@
 
         });
 
-
+        $('body').on('change','.invoiceDate',function(){
+		var dateValue = $(this).val();
+		if (dateValue != null) {
+			$('#date_of_birth-error').css({"display":"none"});
+		}
+		if (dateValue != null) {
+			$(this).parent().parent().removeClass('has-error');
+		}
+	});
+	/*If select box have value then error msg and has error class remove*/
+	$('body').on('change','.job_open_date',function(){
+		var dateValue = $(this).val();
+		if (dateValue != null) {
+			$('#date_of_birth-error').css({"display":"none"});
+		}
+		if (dateValue != null) {
+			$(this).parent().parent().removeClass('has-error');
+		}
+	});
+	/*If select box have value then error msg and has error class remove*/
+	$('body').on('change','.delivery_date',function(){
+		var dateValue = $(this).val();
+		if (dateValue != null) {
+			$('#date_of_birth-error').css({"display":"none"});
+		}
+		if (dateValue != null) {
+			$(this).parent().parent().removeClass('has-error');
+		}
+	});
 
         /*If select box have value then error msg and has error class remove*/
         $('body').on('change', '.invoiceDate', function() {
