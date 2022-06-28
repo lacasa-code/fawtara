@@ -185,7 +185,7 @@ border-radius: 6px;
 											 <b>{{ trans('Registration')}}</b>		</div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
 											<span class="txt_color">
-											    <span class="txt_color">{{ $cars -> registration }}</span>
+											    <span class="txt_color">{{ $cars -> reg_chars }}{{ $cars -> registration }}</span>
 											</span>
 										</div>
 									</div>
