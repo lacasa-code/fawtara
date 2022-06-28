@@ -20,7 +20,7 @@ class CustomerEditFormRequest extends FormRequest
             'manufacturing' => 'required|regex:/^[A-Za-z]+$/',            
             'registration' => 'required',            
             'manufacturing_date' => 'required',            
-            'chassis' => 'required|min:17|max:17',            
+            'chassis' => 'required|min:17|max:17|unique:cars,chassis',              
             'model' => 'required',            
             'customer_id',    
             'reg_chars'=>'required|regex:/^[A-Za-z]+$/' ,
@@ -44,7 +44,8 @@ class CustomerEditFormRequest extends FormRequest
             'reg_chars.required' => trans('this field is required.'),
             'reg_chars.regex' => trans('this field must be only alphabets '),
             'manufacturing name.regex' => trans('manufacturing name must be only alphabets '),
-          
+            'chassis.unique' => trans('chassis number must be unique.'),
+
         ];
 
     }
