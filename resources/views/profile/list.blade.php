@@ -147,7 +147,7 @@
 								</div>
 							</div>
 						
-							<div class="form-group col-md-12 col-sm-12 col-xs-12 has-feedback {{ $errors->has('image') ? 'has-error' : '' }} my-form-group">
+							<!--<div class="form-group col-md-12 col-sm-12 col-xs-12 has-feedback {{ $errors->has('image') ? 'has-error' : '' }} my-form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">{{ trans('app.Image') }} 
 								</label>
 								<div class="col-md-5 col-sm-5 col-xs-12">
@@ -169,7 +169,7 @@
 								   </span>
 							   @endif
 								</div>
-							</div>
+							</div>-->
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 							<div class="form-group col-md-12 col-sm-12 col-xs-12">
 								<div class="col-md-9 col-sm-9 col-xs-12 text-center">
