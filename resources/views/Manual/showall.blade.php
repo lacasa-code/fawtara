@@ -86,7 +86,15 @@
 					<div class="col-md-12 col-sm-12 col-xs-12" >
             			<div class="x_content">
 							<ul class="nav nav-tabs bar_tabs" role="tablist">
-								
+							<tbody><tr>
+            <td>Minimum date:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>Maximum date:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody></table>
 							</ul>
 						</div>
 			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
@@ -166,9 +174,35 @@
 
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
 	<script>
+var minDate, maxDate;
+ 
+ // Custom filtering function which will search data in column four between two values
+ $.fn.dataTable.ext.search.push(
+	 function( settings, data, dataIndex ) {
+		 var min = minDate.val();
+		 var max = maxDate.val();
+		 var date = new Date( data[4] );
+  
+		 if (
+			 ( min === null && max === null ) ||
+			 ( min === null && date <= max ) ||
+			 ( min <= date   && max === null ) ||
+			 ( min <= date   && date <= max )
+		 ) {
+			 return true;
+		 }
+		 return false;
+	 }
+ );
 	$(document).ready(function() 
 	{
-	    $('#datatable').DataTable( {
+		minDate = new DateTime($('#min'), {
+        format: 'MMMM Do YYYY'
+    });
+    maxDate = new DateTime($('#max'), {
+        format: 'MMMM Do YYYY'
+    });
+	var table =   $('#datatable').DataTable( {
 			responsive: true,
 			dom: 'Bfrtip',
 
@@ -197,7 +231,9 @@
           },'pdf']
 	    });
 
-
+		$('#min, #max').on('change', function () {
+        table.draw();
+    });
  
   	}); 
 </script>
