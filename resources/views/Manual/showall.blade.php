@@ -104,7 +104,7 @@
 							</tbody>
 							</table>
 
-                  			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
+                  			<table id="datatablev" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
 										<th>#</th>
@@ -208,7 +208,7 @@ var minDate, maxDate;
 			format: 'DD-MM-YYYY'
 			});
 		// DataTables initialisation
-	    var tablev = $('#datatable').DataTable( {
+	    var table = $('#datatablev').DataTable( {
 			responsive: true,
 			dom: 'Bfrtip',
 
@@ -241,7 +241,7 @@ var minDate, maxDate;
     });
 
 	$('#min, #max').on('change', function () {
-        tablev.draw();
+        table.draw();
     });
 
 
