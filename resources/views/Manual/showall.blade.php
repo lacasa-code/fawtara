@@ -134,7 +134,7 @@
 									<td>{{ $invoices->chassis_no }} </td>
 									<td>{{ number_format($invoices->total_amount, 2) }}</td>
 									<td>{{ number_format($invoices->paid_amount, 2) }}</td>
-									<td>{{ date(getDateFormat(),strtotime($invoices->Date)) }}</td>
+									<td>{{ Carbon\Carbon::createFromFormat('d/m/Y', $invoices->Date)->format('Y-m-d') }}</td>
 									<td>
 									@if(getUserRoleFromUserTable(Auth::User()->id) == 'admin' || getUserRoleFromUserTable(Auth::User()->id) == 'supportstaff' || getUserRoleFromUserTable(Auth::User()->id) == 'accountant' || getUserRoleFromUserTable(Auth::User()->id) == 'employee' || getUserRoleFromUserTable(Auth::User()->id) == 'branch_admin')
 										@if($invoices->type != 2)
@@ -207,7 +207,11 @@ var minDate, maxDate;
     maxDate = new DateTime($('#max'), {
         format: 'MMMM Do YYYY'
     });
-	    var table = $('#datatable').DataTable( {
+	   
+	    // DataTables initialisation
+            var table = $('#datatable').DataTable();
+
+	   /* var table = $('#datatable').DataTable( {
 			responsive: true,
 			dom: 'Bfrtip',
 
@@ -234,7 +238,7 @@ var minDate, maxDate;
             $('row c[r*="2"]', sheet).attr( 's', '25' );
            }
           },'pdf']
-	    });
+	    });*/
 
 		
     });
