@@ -10,6 +10,33 @@
 
  <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
+
+
+
+	<!-- files needed for datatables installation -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="script.js"></script>
+ 
+<!-- additional files needed for datatables styling -->
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js" data-server="2.0.3" data-require="jquery"></script>
+    <script src="http://code.jquery.com/jquery-1.12.4.js" data-server="1.12.4" data-require="jquery"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables_themeroller.css" rel="stylesheet" data-server="1.9.4" data-require="datatables@*" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.css" rel="stylesheet" data-server="1.9.4" data-require="datatables@*" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_table_jui.css" rel="stylesheet" data-server="1.9.4" data-require="datatables@*" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_table.css" rel="stylesheet" data-server="1.9.4" data-require="datatables@*" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_page.css" rel="stylesheet" data-server="1.9.4" data-require="datatables@*" />
+    <link data-require="jqueryui@*" data-server="1.10.0" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+    <script data-require="jqueryui@*" data-server="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.js" data-server="1.9.4" data-require="datatables@*"></script>
+ 
+
+
+
 <!-- page content -->
         <div class="right_col" role="main">
 			<!--invoice modal-->
@@ -90,16 +117,24 @@
 							 
 							</ul>
 						</div>
+
+						<div class="input-daterange">
+    <input type="text" id="min" name="min" class="form-control">
+    <span class="input-group-addon">to</span>
+    <input type="text" id="max" name="max" class="form-control">
+</div>
+
+
 			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
 						 <table border="0" cellspacing="5" cellpadding="5">
         						<tbody>
 							 	<tr>
 									<td>Minimum date:</td>
-									<td><input type="text" id="min" name="min"></td>
+									<td><input type="text" ></td>
 								</tr>
 								<tr>
 									<td>Maximum date:</td>
-									<td><input type="text" id="max" name="max"></td>
+									<td><input type="text" ></td>
 								</tr>
 							</tbody>
 							</table>
@@ -221,10 +256,7 @@
 			format: 'DD-MM-YYYY'
 			});
 		// DataTables initialisation
-	    var table = $('#datatable').DataTable({
-			 paging: false,
-      ordering: false,
-      info: false,
+	    var table = $('#datatabless').DataTable({
             responsive: true,
             dom: 'Bfrtip',
 
@@ -261,6 +293,46 @@
     });
 
 
+
+// The plugin function for adding a new filtering routine
+            $.fn.dataTableExt.afnFiltering.push(
+            function(oSettings, aData, iDataIndex){
+                var dateStart = parseDateValue($("#min").val());
+                var dateEnd = parseDateValue($("#max").val());
+ 
+// aData represents the table structure as an array of columns, so the script accesses the date value
+// in the firth column of the table via aData[1]
+                var evalDate= parseDateValue(aData[4]);
+ 
+                if (evalDate >= dateStart && evalDate <= dateEnd) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
+ 
+            $(document).ready(function(){          
+                var oTable = $('#datatable').dataTable({
+ 
+                });
+ 
+                $('#min,#max').datepicker({
+                    dateFormat: "yy-mm-dd",
+                    showOn: "button",
+                    buttonImageOnly: "true",
+                    buttonImage: "datepicker.png",
+                    weekStart: 1,
+                    changeMonth: "true",
+                    changeYear: "true",
+                    daysOfWeekHighlighted: "0",
+                    autoclose: true,
+                    todayHighlight: true
+                });
+ 
+// Add event listeners to the two range filtering inputs
+                $('#min,#max').change(function(){ oTable.fnDraw(); });
+            });
 
 	</script>
 @endsection
