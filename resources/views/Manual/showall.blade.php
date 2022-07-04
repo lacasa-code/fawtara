@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<head>
-</head>
 <style>
 .table>thead>tr>th {
     padding: 12px 2px 12px 4px;
@@ -174,12 +172,6 @@
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
 	<script src="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"></script>
     <script src="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css"></script>
-	
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-	<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
-
 	
 	
 

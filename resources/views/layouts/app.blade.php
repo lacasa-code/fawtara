@@ -54,6 +54,11 @@
 	<link href="{{ URL::asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 	 <link href="{{ URL::asset('build/css/dataTables.responsive.css') }} " rel="stylesheet">
 	 <link href="{{ URL::asset('build/css/dataTables.tableTools.css') }} " rel="stylesheet">
+
+	<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
+
+
     <!-- <link href="{{ URL::asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet"> -->
 
     <link href="{{ URL::asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
@@ -420,6 +425,12 @@
 	<script type="text/javascript" src="{{ URL::asset('build/jquery-validate/1.19.2/jquery.validate.min.js') }}"></script>
 
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+
+	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('form').bind("keypress", function(e) {
