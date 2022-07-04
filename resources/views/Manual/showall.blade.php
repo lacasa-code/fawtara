@@ -88,11 +88,11 @@
 							<ul class="nav nav-tabs bar_tabs" role="tablist">
 							<tbody><tr>
             <td>Minimum date:</td>
-            <td><input type="text" id="min" name="min"></td>
+            <td><input type="text" id="datepicker_from" name="min"></td>
         </tr>
         <tr>
             <td>Maximum date:</td>
-            <td><input type="text" id="max" name="max"></td>
+            <td><input type="text" id="datepicker_to" name="max"></td>
         </tr>
     </tbody></table>
 							</ul>
@@ -177,30 +177,8 @@
 	
 
 	<script>
-var minDate, maxDate;
- 
- // Custom filtering function which will search data in column four between two values
- $.fn.dataTable.ext.search.push(
-	 function( settings, data, dataIndex ) {
-		 var min = minDate.val();
-		 var max = maxDate.val();
-		 var date = new Date( data[9] );
-  
-		 if (
-			 ( min === null && max === null ) ||
-			 ( min === null && date <= max ) ||
-			 ( min <= date   && max === null ) ||
-			 ( min <= date   && date <= max )
-		 ) {
-			 return true;
-		 }
-		 return false;
-	 }
- );
 	$(document).ready(function() 
 	{
-		minDate = new DateTime($('#min'));
-        maxDate = new DateTime($('#max'));
 	    var table =   $('#datatable').DataTable( {
 			responsive: true,
 			dom: 'Bfrtip',
@@ -232,8 +210,59 @@ var minDate, maxDate;
 
 		
     });
-	$('#min, #max').on('change', function () {
-        table.draw();
-  	}); 
+
+	$(document).ready(function() 
+	{
+  $("#datepicker_from").datepicker({
+    showOn: "button",
+    buttonImage: "images/calendar.gif",
+    buttonImageOnly: false,
+    "onSelect": function(date) {
+      minDateFilter = new Date(date).getTime();
+      oTable.fnDraw();
+    }
+  }).keyup(function() {
+    minDateFilter = new Date(this.value).getTime();
+    oTable.fnDraw();
+  });
+
+  $("#datepicker_to").datepicker({
+    showOn: "button",
+    buttonImage: "images/calendar.gif",
+    buttonImageOnly: false,
+    "onSelect": function(date) {
+      maxDateFilter = new Date(date).getTime();
+      table.fnDraw();
+    }
+  }).keyup(function() {
+    maxDateFilter = new Date(this.value).getTime();
+    table.fnDraw();
+  });
+
+	});
+	minDateFilter = "";
+maxDateFilter = "";
+
+$.fn.dataTableExt.afnFiltering.push(
+  function(oSettings, aData, iDataIndex) {
+    if (typeof aData._date == 'undefined') {
+      aData._date = new Date(aData[9]).getTime();
+    }
+
+    if (minDateFilter && !isNaN(minDateFilter)) {
+      if (aData._date < minDateFilter) {
+        return false;
+      }
+    }
+
+    if (maxDateFilter && !isNaN(maxDateFilter)) {
+      if (aData._date > maxDateFilter) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+);
 </script>
 @endsection
