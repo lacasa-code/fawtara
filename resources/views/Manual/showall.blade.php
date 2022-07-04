@@ -104,7 +104,7 @@
 							</tbody>
 							</table>
 
-                  			<table id="datatable"  style="margin-top:20px;">
+                  			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
 										<th>#</th>
@@ -193,6 +193,14 @@ var minDate, maxDate;
  // Custom filtering function which will search data in column four between two values
  	$.fn.dataTable.ext.search.push(
 		function( settings, data, dataIndex ) {
+
+			minDate = new DateTime($('#min'), {
+			format: 'MM-DD-YYYY'
+    	});
+			maxDate = new DateTime($('#max'), {
+				format: 'MM-DD-YYYY'
+			});
+
 			var min = minDate.val();
 			var max = maxDate.val();
 			var date = new Date(data[9]);
@@ -209,16 +217,8 @@ var minDate, maxDate;
 		}
  	);
 
-	$(document).ready(function() 
-	{
-		minDate = new DateTime($('#min'), {
-        format: 'MMMM Do YYYY'
-    });
-    maxDate = new DateTime($('#max'), {
-        format: 'MMMM Do YYYY'
-    });
-	   
-	    // DataTables initialisation
+	$(document).ready(function() {
+		// DataTables initialisation
 	    var table = $('#datatable').DataTable( {
 			responsive: true,
 			dom: 'Bfrtip',
