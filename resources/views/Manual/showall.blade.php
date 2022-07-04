@@ -167,11 +167,7 @@
 <!-- /page content -->
 
 	
-
-@endsection
-
-@section('javascripts')
-	<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
