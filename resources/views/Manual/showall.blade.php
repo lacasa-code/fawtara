@@ -5,21 +5,10 @@
     padding: 12px 2px 12px 4px;
 }
 
-
-#datatabletwo_filter {
-  float: right;
-}
-.total-filter {
-  text-align: center;
-  background: #e2e2e2;
-  padding: 12px;
-  margin-bottom: 10px;
-}
 </style>
-
- <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
- 
+
 <!-- page content -->
         <div class="right_col" role="main">
 			<!--invoice modal-->
@@ -102,15 +91,6 @@
 						</div>
 
 
-<div class="col-md-8">
-		<div class="input-group input-daterange">
-			<input type="text" class="form-control date-range-filter" placeholder="Date Start" data-date-format="mm-dd-yyyy" id="min" />
-			<span class="input-group-addon">to</span>
-			<input type="text" class="form-control date-range-filter" placeholder="Date End" data-date-format="mm-dd-yyyy" id="max"/>
-		</div>
-	</div>
-
-
 			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
 						 <table border="0" cellspacing="5" cellpadding="5">
         						<tbody>
@@ -127,7 +107,7 @@
 
 							
 
-                  			<table id="data-table" class="table table-striped jambo_table" style="margin-top:20px;">
+                  			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
 										<th>#</th>
@@ -194,8 +174,7 @@
           	</div>
         </div>
 <!-- /page content -->
-
-<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+ <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
