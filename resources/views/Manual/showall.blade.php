@@ -117,7 +117,6 @@
 										<th>{{ trans('app.Total Amount')}} ({{getCurrencySymbols()}})</th>
 										<th>{{ trans('app.Paid Amount')}} ({{getCurrencySymbols()}})</th> 
 				                        <th>{{ trans('app.Date')}}</th>
-										<th>{{ trans('app.Date')}}</th>
 				                        <th>{{ trans('app.Action')}}</th>
                         			</tr>
                       			</thead>
@@ -140,7 +139,6 @@
 									<td>{{ $invoices->chassis_no }} </td>
 									<td>{{ number_format($invoices->total_amount, 2) }}</td>
 									<td>{{ number_format($invoices->paid_amount, 2) }}</td>
-									<td>2022-07-25</td>
 									<td>{{ date(getDateFormat(),strtotime($invoices->Date)) }}</td>
 									<td>
 									@if(getUserRoleFromUserTable(Auth::User()->id) == 'admin' || getUserRoleFromUserTable(Auth::User()->id) == 'supportstaff' || getUserRoleFromUserTable(Auth::User()->id) == 'accountant' || getUserRoleFromUserTable(Auth::User()->id) == 'employee' || getUserRoleFromUserTable(Auth::User()->id) == 'branch_admin')
@@ -193,14 +191,6 @@ var minDate, maxDate;
  // Custom filtering function which will search data in column four between two values
  	$.fn.dataTable.ext.search.push(
 		function( settings, data, dataIndex ) {
-
-			minDate = new DateTime($('#min'), {
-			format: 'MM-DD-YYYY'
-    	});
-			maxDate = new DateTime($('#max'), {
-				format: 'MM-DD-YYYY'
-			});
-
 			var min = minDate.val();
 			var max = maxDate.val();
 			var date = new Date(data[9]);
@@ -218,6 +208,12 @@ var minDate, maxDate;
  	);
 
 	$(document).ready(function() {
+		minDate = new DateTime($('#min'), {
+			format: 'MM-DD-YYYY'
+    	});
+			maxDate = new DateTime($('#max'), {
+				format: 'MM-DD-YYYY'
+			});
 		// DataTables initialisation
 	    var table = $('#datatable').DataTable( {
 			responsive: true,
