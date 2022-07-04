@@ -224,7 +224,7 @@
 	    var table = $('#datatable').DataTable({
 			 paging: false,
       ordering: false,
-      info: false
+      info: false,
             responsive: true,
             dom: 'Bfrtip',
 
