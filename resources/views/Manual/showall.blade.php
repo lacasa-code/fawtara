@@ -11,19 +11,12 @@
     <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-
-    <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="application/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="application/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 
 <!-- page content -->
@@ -119,6 +112,14 @@
 								</tr>
 							</tbody>
 							</table>
+
+							 <label>Start date:</label>
+    <input id="startdate" class="datepicker"></input>
+    <label>End date:</label>
+    <input id="enddate" class="datepicker"></input>
+    <table id="staff"></table>
+
+
                   			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
@@ -192,6 +193,19 @@
 
 	 
 
+    <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+
+    <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
 
 <script type="text/javascript">
 
@@ -262,6 +276,57 @@
 
 
 
+
+
+
+
+//Global variable for future use
+var datepickers = [{
+    id: 'startdate',
+    coid: 'enddate',
+    value: null,
+    limiter: 'minDate'
+  }, {
+    id: 'enddate',
+    coid: 'startdate',
+    value: null,
+    limiter: 'maxDate'
+  }
+];
+//Translate 'yy/mm/dd' string to UTC date
+const yymmddUTC = str => new Date(...str.split('/').map((value,index) => index == 1 ? value-- : value));
+//DataTables object definition
+var myDataTable = $('#datatable').DataTable({
+    sDom: 't',
+    data: myTableData,
+    
+  });
+//Limit datepicker options to those valid for current dataset
+var dates = myDataTable.column(9).data().unique().sort();
+var minDate = dates[0];
+var maxDate = dates[dates.length-1];
+//datepicker objects definition
+$('.datepicker').datepicker({
+  dateFormat: 'DD-MM-YYYY',
+  changeMonth: true,
+  defaultDate: minDate,
+  changeYear: true,
+  yearRange: minDate.substr(0,4)+':'+maxDate.substr(0,4),
+  onSelect: function (selectedDate) {
+    let datepicker = datepickers.find(entry => entry.id == $(this).attr('id'));
+    $(`#${datepicker.coid}`).datepicker('option', datepicker.limiter, selectedDate);
+    datepicker.value = yymmddUTC(selectedDate);
+    myDataTable.draw();
+  }
+}).on('change', function(){
+  datepickers[datepickers.findIndex(item => item.id == $(this).attr('id'))].value = yymmddUTC($(this).val());
+  myDataTable.draw();
+});
+//External search function
+$.fn.DataTable.ext.search.push((settings, row) => {
+  let rowDate = yymmddUTC(row[9]);
+  return (rowDate >= datepickers[0].value || datepickers[0].value == null) && (rowDate <= datepickers[1].value || datepickers[1].value == null);
+});
 
 
 
