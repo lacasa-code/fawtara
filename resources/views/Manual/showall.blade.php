@@ -87,7 +87,11 @@
 					<div class="col-md-12 col-sm-12 col-xs-12" >
             			<div class="x_content">
 							<ul class="nav nav-tabs bar_tabs" role="tablist">
-							 <table border="0" cellspacing="5" cellpadding="5">
+							 
+							</ul>
+						</div>
+			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
+						 <table border="0" cellspacing="5" cellpadding="5">
         						<tbody>
 							 	<tr>
 									<td>Minimum date:</td>
@@ -99,9 +103,7 @@
 								</tr>
 							</tbody>
 							</table>
-							</ul>
-						</div>
-			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
+
                   			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
@@ -205,10 +207,10 @@ var minDate, maxDate;
 	$(document).ready(function() 
 	{
 		minDate = new DateTime($('#min'), {
-        format: 'MMMM Do YYYY'
+        format: 'yyyy-mm-dd'
     });
     maxDate = new DateTime($('#max'), {
-        format: 'MMMM Do YYYY'
+        format: 'yyyy-mm-dd'
     });
 	   
 	    // DataTables initialisation
