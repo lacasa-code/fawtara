@@ -224,7 +224,34 @@
 			format: 'DD-MM-YYYY'
 			});
 		// DataTables initialisation
-	    var table = $('#datatable').DataTable();
+	    var table = $('#datatable').DataTable({
+            responsive: true,
+            dom: 'Bfrtip',
+
+            buttons: [{
+               extend: 'excelHtml5',
+                title: 'Excel Export',
+                extension: '.xlsx',
+                text: 'Export to Excel',
+         exportOptions: {
+        format: {
+                        body: function ( data, column, row ) {                             
+                            //if it is html, return the text of the html instead of html
+                            if (/<\/?[^>]*>/.test(data)) {                                   
+                                return $(data).text();
+                            } else {
+                                return data;
+                            }                                                               
+                        }
+                    }
+        },
+        customize: function(xlsx) {
+            var sheet = xlsx.xl.worksheets['Sheet1.xml'];
+             $('row c[r*="3"]', sheet).attr( 's', '20' );
+            $('row c[r*="2"]', sheet).attr( 's', '25' );
+           }
+          },'pdf']
+        });
 
 		
     });
@@ -236,73 +263,6 @@
 
 
 
-
-$(function() {
-  var oTable = $('#datatable').DataTable({
-    "oLanguage": {
-      "sSearch": "Filter Data"
-    },
-    "iDisplayLength": -1,
-    "sPaginationType": "full_numbers",
-
-  });
-
-
-
-
-  $("#datepicker_from").datepicker({
-    showOn: "button",
-    buttonImage: "images/calendar.gif",
-    buttonImageOnly: false,
-    "onSelect": function(date) {
-      minDateFilter = new Date(date).getTime();
-      oTable.fnDraw();
-    }
-  }).keyup(function() {
-    minDateFilter = new Date(this.value).getTime();
-    oTable.fnDraw();
-  });
-
-  $("#datepicker_to").datepicker({
-    showOn: "button",
-    buttonImage: "images/calendar.gif",
-    buttonImageOnly: false,
-    "onSelect": function(date) {
-      maxDateFilter = new Date(date).getTime();
-      oTable.fnDraw();
-    }
-  }).keyup(function() {
-    maxDateFilter = new Date(this.value).getTime();
-    oTable.fnDraw();
-  });
-
-});
-
-// Date range filter
-minDateFilter = "";
-maxDateFilter = "";
-
-$.fn.dataTableExt.afnFiltering.push(
-  function(oSettings, aData, iDataIndex) {
-    if (typeof aData._date == 'undefined') {
-      aData._date = new Date(aData[0]).getTime();
-    }
-
-    if (minDateFilter && !isNaN(minDateFilter)) {
-      if (aData._date < minDateFilter) {
-        return false;
-      }
-    }
-
-    if (maxDateFilter && !isNaN(maxDateFilter)) {
-      if (aData._date > maxDateFilter) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-);
 
 
 	</script>
