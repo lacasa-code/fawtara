@@ -1,16 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <head>
-
-<script src="http://code.jquery.com/jquery-2.0.3.min.js" data-semver="2.0.3" data-require="jquery"></script>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables_themeroller.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_table_jui.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_table.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_page.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
-    <link data-require="jqueryui@*" data-semver="1.10.0" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
-    <script data-require="jqueryui@*" data-semver="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.js" data-semver="1.9.4" data-require="datatables@*"></script>
 </head>
 <style>
 .table>thead>tr>th {
@@ -99,11 +89,11 @@
 							<ul class="nav nav-tabs bar_tabs" role="tablist">
 							<tbody><tr>
             <td>Minimum date:</td>
-            <td><input type="text" id="datepicker_from" name="min"></td>
+            <td><input type="text" id="min" name="min"></td>
         </tr>
         <tr>
             <td>Maximum date:</td>
-            <td><input type="text" id="datepicker_to" name="max"></td>
+            <td><input type="text" id="max" name="max"></td>
         </tr>
     </tbody></table>
 							</ul>
@@ -176,21 +166,54 @@
           	</div>
         </div>
 <!-- /page content -->
-<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-1.12.3.js"></script>-->
+  <!--  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
 	<script src="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"></script>
     <script src="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+	<script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
 
+	
 	
 
 	<script>
+
+var minDate, maxDate;
+ 
+ // Custom filtering function which will search data in column four between two values
+ $.fn.dataTable.ext.search.push(
+	 function( settings, data, dataIndex ) {
+		 var min = minDate.val();
+		 var max = maxDate.val();
+		 var date = new Date( data[9] );
+  
+		 if (
+			 ( min === null && max === null ) ||
+			 ( min === null && date <= max ) ||
+			 ( min <= date   && max === null ) ||
+			 ( min <= date   && date <= max )
+		 ) {
+			 return true;
+		 }
+		 return false;
+	 }
+ );
 	$(document).ready(function() 
 	{
-	    var table =   $('#datatable').DataTable( {
+		minDate = new DateTime($('#min'), {
+        format: 'MMMM Do YYYY'
+    });
+    maxDate = new DateTime($('#max'), {
+        format: 'MMMM Do YYYY'
+    });
+	    var table = $('#datatable').DataTable( {
 			responsive: true,
 			dom: 'Bfrtip',
 
@@ -222,58 +245,10 @@
 		
     });
 
-	$(document).ready(function() 
-	{
-  $("#datepicker_from").datepicker({
-    showOn: "button",
-    buttonImage: "images/calendar.gif",
-    buttonImageOnly: false,
-    "onSelect": function(date) {
-      minDateFilter = new Date(date).getTime();
-      oTable.fnDraw();
-    }
-  }).keyup(function() {
-    minDateFilter = new Date(this.value).getTime();
-    oTable.fnDraw();
-  });
+	$('#min, #max').on('change', function () {
+        table.draw();
+    });
 
-  $("#datepicker_to").datepicker({
-    showOn: "button",
-    buttonImage: "images/calendar.gif",
-    buttonImageOnly: false,
-    "onSelect": function(date) {
-      maxDateFilter = new Date(date).getTime();
-      table.fnDraw();
-    }
-  }).keyup(function() {
-    maxDateFilter = new Date(this.value).getTime();
-    table.fnDraw();
-  });
 
-	});
-	minDateFilter = "";
-maxDateFilter = "";
-
-$.fn.dataTableExt.afnFiltering.push(
-  function(oSettings, aData, iDataIndex) {
-    if (typeof aData._date == 'undefined') {
-      aData._date = new Date(aData[9]).getTime();
-    }
-
-    if (minDateFilter && !isNaN(minDateFilter)) {
-      if (aData._date < minDateFilter) {
-        return false;
-      }
-    }
-
-    if (maxDateFilter && !isNaN(maxDateFilter)) {
-      if (aData._date > maxDateFilter) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-);
 </script>
 @endsection
