@@ -19,6 +19,11 @@
 
  <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
+ 
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet">
+ <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
+
 
 <!-- page content -->
         <div class="right_col" role="main">
@@ -101,6 +106,16 @@
 							</ul>
 						</div>
 
+
+<div class="col-md-8">
+		<div class="input-group input-daterange">
+			<input type="text" class="form-control date-range-filter" placeholder="Date Start" data-date-format="mm-dd-yyyy" id="min" />
+			<span class="input-group-addon">to</span>
+			<input type="text" class="form-control date-range-filter" placeholder="Date End" data-date-format="mm-dd-yyyy" id="max"/>
+		</div>
+	</div>
+
+
 			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
 						 <table border="0" cellspacing="5" cellpadding="5">
         						<tbody>
@@ -117,7 +132,7 @@
 
 							
 
-                  			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
+                  			<table id="data-table" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
 										<th>#</th>
@@ -186,11 +201,16 @@
 <!-- /page content -->
 
 
+ <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+ <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 
+	
 
-	 
-
- <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+ <!--<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
@@ -201,9 +221,43 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
-    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>--->
 
 <script type="text/javascript">
+
+
+$(document).ready(function() {
+	// Bootstrap datepicker
+	$('.input-daterange input').each(function() {
+	  $(this).datepicker('clearDates');
+	});
+
+	// Extend dataTables search
+	$.fn.dataTable.ext.search.push(
+	  function(settings, data, dataIndex) {
+		var min = $('#min').val();
+		var max = $('#max').val();
+		var createdAt = data[9] || 9; // Our date column in the table
+
+		if (
+		  (min == "" || max == "") ||
+		  (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
+		) {
+		  return true;
+		}
+		return false;
+	  }
+	);
+
+	// Re-draw the table when the a date range filter changes
+	$('.date-range-filter').change(function() {
+		var table = $('#data-table').DataTable();
+	  table.draw();
+	});
+
+
+	$('.date-range-filter').datepicker();
+});
 
 
 
