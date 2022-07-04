@@ -7,6 +7,8 @@
 
 
 </style>
+	<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
 
 <!-- page content -->
         <div class="right_col" role="main">
@@ -164,16 +166,14 @@
           	</div>
         </div>
 <!-- /page content -->
-<!--<script src="https://code.jquery.com/jquery-1.12.3.js"></script>-->
-  <!--  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>-->
+	<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
-	<script src="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"></script>
-    <script src="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css"></script>
-	
-	
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
 
 	<script>
 
