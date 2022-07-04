@@ -6,13 +6,24 @@
 }
 
 
+#datatabletwo_filter {
+  float: right;
+}
+.total-filter {
+  text-align: center;
+  background: #e2e2e2;
+  padding: 12px;
+  margin-bottom: 10px;
+}
 </style>
 
  <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
 
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" >
 
 <!-- page content -->
         <div class="right_col" role="main">
@@ -95,6 +106,20 @@
 							</ul>
 						</div>
 
+<div class="container pt-5">
+    <div class="total-filter">
+        <div class="search-heading">Show Results</div>
+      <p id="date_filter">
+         
+ <span id="date-label-from" class="date-label">From: 
+</span><input class="date_range_filter date" type="text" 
+id="datepicker_from" />
+          <span id="date-label-to" 
+class="date-label">To:</span><input class="date_range_filter
+ date" type="text" id="datepicker_to" />
+            <button class="btn btn-default clear-date-filter">Clear Filter</button>
+      </p>
+    </div>
 
 			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
 						 <table border="0" cellspacing="5" cellpadding="5">
@@ -198,12 +223,56 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
     <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
 
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+
 <script type="text/javascript">
+
+
+
+ $(document).ready(function() {
+     $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $('#datepicker_from').datepicker('getDate');
+            var max = $('#datepicker_to').datepicker('getDate');
+
+            var startDate = new Date($.trim(data[9])); //here change column value if you have different table structure
+            if (min == null && max == null) return true;
+            if (min == null && startDate <= max) return true;
+            if (max == null && startDate >= min) return true; 
+            if (startDate <= max && startDate >= min) return true;
+            return false;
+        }
+    );
+
+    $('#datepicker_from').datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
+    $('#datepicker_to').datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
+    var table = $('#dataTable').DataTable();
+
+    // Event listener to the two range filtering inputs to redraw on input
+    $('#datepicker_from,#datepicker_to').change(function () {
+        table.draw();
+
+    });
+
+    $(".clear-date-filter").on("click", function() {
+     $('#datepicker_from').val("").datepicker("update");
+     $('#datepicker_to').val("").datepicker("update");
+    });
+
+} );
+
+
 
 		var minDate, maxDate;
  
  // Custom filtering function which will search data in column four between two values
- 	$.fn.dataTable.ext.search.push(
+ 	/*$.fn.dataTable.ext.search.push(
 		function( settings, data, dataIndex ) {
 			var min = minDate.val();
 			var max = maxDate.val();
@@ -259,7 +328,7 @@
         });
 
 		
-    });
+    });*/
 
 	$('#min, #max').on('change', function () {
         table.fnDraw();
