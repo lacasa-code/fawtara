@@ -209,10 +209,10 @@ var minDate, maxDate;
 
 	$(document).ready(function() {
 		minDate = new DateTime($('#min'), {
-			format: 'MM-DD-YYYY'
+			format: 'DD-MM-YYYY'
     	});
 			maxDate = new DateTime($('#max'), {
-				format: 'MM-DD-YYYY'
+			format: 'DD-MM-YYYY'
 			});
 		// DataTables initialisation
 	    var table = $('#datatable').DataTable( {
