@@ -7,8 +7,16 @@
 
 
 </style>
-	<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
+	<!--<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">-->
+
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables_themeroller.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_table_jui.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_table.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/demo_page.css" rel="stylesheet" data-semver="1.9.4" data-require="datatables@*" />
+    <link data-require="jqueryui@*" data-semver="1.10.0" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
 
 <!-- page content -->
         <div class="right_col" role="main">
@@ -103,7 +111,10 @@
 								</tr>
 							</tbody>
 							</table>
-
+<p id="date_filter">
+    <span id="date-label-from" class="date-label">From: </span><input class="date_range_filter date" type="text" id="datepicker_from" />
+    <span id="date-label-to" class="date-label">To:<input class="date_range_filter date" type="text" id="datepicker_to" />
+</p>
                   			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
@@ -190,6 +201,13 @@
     <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
 
 
+
+
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js" data-semver="2.0.3" data-require="jquery"></script>
+    <script data-require="jqueryui@*" data-semver="1.10.0" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.js" data-semver="1.9.4" data-require="datatables@*"></script>
+
+
 <script type="text/javascript">
 
 		var minDate, maxDate;
@@ -229,6 +247,77 @@
 	$('#min, #max').on('change', function () {
         table.draw();
     });
+
+
+
+
+
+$(function() {
+  var oTable = $('#datatable').DataTable({
+    "oLanguage": {
+      "sSearch": "Filter Data"
+    },
+    "iDisplayLength": -1,
+    "sPaginationType": "full_numbers",
+
+  });
+
+
+
+
+  $("#datepicker_from").datepicker({
+    showOn: "button",
+    buttonImage: "images/calendar.gif",
+    buttonImageOnly: false,
+    "onSelect": function(date) {
+      minDateFilter = new Date(date).getTime();
+      oTable.fnDraw();
+    }
+  }).keyup(function() {
+    minDateFilter = new Date(this.value).getTime();
+    oTable.fnDraw();
+  });
+
+  $("#datepicker_to").datepicker({
+    showOn: "button",
+    buttonImage: "images/calendar.gif",
+    buttonImageOnly: false,
+    "onSelect": function(date) {
+      maxDateFilter = new Date(date).getTime();
+      oTable.fnDraw();
+    }
+  }).keyup(function() {
+    maxDateFilter = new Date(this.value).getTime();
+    oTable.fnDraw();
+  });
+
+});
+
+// Date range filter
+minDateFilter = "";
+maxDateFilter = "";
+
+$.fn.dataTableExt.afnFiltering.push(
+  function(oSettings, aData, iDataIndex) {
+    if (typeof aData._date == 'undefined') {
+      aData._date = new Date(aData[0]).getTime();
+    }
+
+    if (minDateFilter && !isNaN(minDateFilter)) {
+      if (aData._date < minDateFilter) {
+        return false;
+      }
+    }
+
+    if (maxDateFilter && !isNaN(maxDateFilter)) {
+      if (aData._date > maxDateFilter) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+);
 
 
 	</script>
