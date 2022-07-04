@@ -199,13 +199,9 @@ var minDate, maxDate;
  );
 	$(document).ready(function() 
 	{
-		minDate = new DateTime($('#min'), {
-        format: 'MMMM Do YYYY'
-    });
-    maxDate = new DateTime($('#max'), {
-        format: 'MMMM Do YYYY'
-    });
-	var table =   $('#datatable').DataTable( {
+		minDate = new DateTime($('#min'));
+        maxDate = new DateTime($('#max'));
+	    var table =   $('#datatable').DataTable( {
 			responsive: true,
 			dom: 'Bfrtip',
 
