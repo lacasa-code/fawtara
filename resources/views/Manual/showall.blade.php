@@ -1,4 +1,3 @@
-@extends('layouts.app')
 @section('content')
 <style>
 .table>thead>tr>th {
@@ -104,7 +103,7 @@
 							</tbody>
 							</table>
 
-                  			<table id="datatablev" class="table table-striped jambo_table" style="margin-top:20px;">
+                  			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
 										<th>#</th>
@@ -161,6 +160,7 @@
 						 		<?php $i++; ?>   
 								@endforeach
                       			</tbody>
+
                     		</table>
 
                     <?php //	{!! $invoice->links() !!} ?>
@@ -177,9 +177,9 @@
     <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
 
 
-<script>
+<script type="text/javascript">
 
-var minDate, maxDate;
+		var minDate, maxDate;
  
  // Custom filtering function which will search data in column four between two values
  	$.fn.dataTable.ext.search.push(
@@ -208,34 +208,7 @@ var minDate, maxDate;
 			format: 'DD-MM-YYYY'
 			});
 		// DataTables initialisation
-	    var table = $('#datatablev').DataTable( {
-			responsive: true,
-			dom: 'Bfrtip',
-
-			buttons: [{
-               extend: 'excelHtml5',
-                title: 'Excel Export',
-                extension: '.xlsx',
-                text: 'Export to Excel',
-         exportOptions: {
-        format: {
-                        body: function ( data, column, row ) {                             
-                            //if it is html, return the text of the html instead of html
-                            if (/<\/?[^>]*>/.test(data)) {                                   
-                                return $(data).text();
-                            } else {
-                                return data;
-                            }                                                               
-                        }
-                    }
-        },
-        customize: function(xlsx) {
-            var sheet = xlsx.xl.worksheets['Sheet1.xml'];
-             $('row c[r*="3"]', sheet).attr( 's', '20' );
-            $('row c[r*="2"]', sheet).attr( 's', '25' );
-           }
-          },'pdf']
-	    });
+	    var table = $('#datatable').DataTable();
 
 		
     });
@@ -245,5 +218,5 @@ var minDate, maxDate;
     });
 
 
-</script>
+	</script>
 @endsection
