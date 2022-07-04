@@ -234,10 +234,10 @@ var minDate, maxDate;
           },'pdf']
 	    });
 
-		$('#min, #max').on('change', function () {
-        table.draw();
+		
     });
- 
+	$('#min, #max').on('change', function () {
+        table.draw();
   	}); 
 </script>
 @endsection
