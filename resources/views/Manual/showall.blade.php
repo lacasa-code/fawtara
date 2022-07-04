@@ -208,7 +208,7 @@ var minDate, maxDate;
 			format: 'DD-MM-YYYY'
 			});
 		// DataTables initialisation
-	    var table = $('#datatable').DataTable( {
+	    var tablev = $('#datatable').DataTable( {
 			responsive: true,
 			dom: 'Bfrtip',
 
@@ -241,7 +241,7 @@ var minDate, maxDate;
     });
 
 	$('#min, #max').on('change', function () {
-        table.draw();
+        tablev.draw();
     });
 
 
