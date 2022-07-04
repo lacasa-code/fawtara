@@ -1,4 +1,3 @@
-@extends('layout.app')
 @section('content')
 <style>
 .table>thead>tr>th {
