@@ -191,7 +191,7 @@ var minDate, maxDate;
 			var min = minDate.val();
 			var max = maxDate.val();
 			var date = new Date(data[9]);
-	
+
 			if (
 				( min === null && max === null ) ||
 				( min === null && date <= max ) ||
@@ -207,10 +207,10 @@ var minDate, maxDate;
 	$(document).ready(function() 
 	{
 		minDate = new DateTime($('#min'), {
-        format: 'yyyy-mm-dd'
+        format: 'MMMM Do YYYY'
     });
     maxDate = new DateTime($('#max'), {
-        format: 'yyyy-mm-dd'
+        format: 'MMMM Do YYYY'
     });
 	   
 	    // DataTables initialisation
