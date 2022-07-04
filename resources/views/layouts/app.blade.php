@@ -383,18 +383,8 @@
     <!-- Custom Theme Scripts -->
     <script src="{{ URL::asset('build/js/custom.min.js') }}" defer="defer"></script>
 	<script src="{{ URL::asset('vendors/sweetalert/sweetalert.min.js')}}" defer="defer"></script>
-	<script src="{{ URL::asset('vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-buttons/js/buttons.flash.min.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-buttons/js/buttons.html5.min.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-buttons/js/buttons.print.min.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}" defer="defer"></script>
-    <script src="{{ URL::asset('vendors/datatables.net-scroller/js/dataTables.scroller.min.js') }}" defer="defer"></script>
+	
+    
 
 	<!-- dropify scripts-->
 	<script src="{{ URL::asset('vendors/dropify/dist/js/dropify.min.js')}}" defer="defer"></script>
