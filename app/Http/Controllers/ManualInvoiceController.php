@@ -491,6 +491,7 @@ class ManualInvoiceController extends Controller
 		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
 		  
 		return view('Manual.showallFinal',compact('invoice','filter'));*/
+		return view('Manual.showallFinal');
 	}
 
 	function daterange(Request $request)
