@@ -2,37 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use DB;
 use URL;
 use Auth;
 use Mail;
-use App\Http\Requests;
-use Illuminate\Mail\Mailer;
-use Illuminate\Support\Facades\Gate;
-use App\User;
-use App\Role;
-use App\Role_user;
-use Illuminate\Support\Facades\Input;
-use App\JobcardDetail;
-use App\Gatepass;
-use App\Sale;
-use App\CheckoutCategory;
-use App\Service;
-use App\Vehicle;
-use App\Setting;
-use App\Product;
-use App\Invoice;
-use App\Washbay;
-use App\Branch;
-use App\BranchSetting;
 use App\Car;
+use App\Role;
+use App\Sale;
+use App\User;
+use App\Branch;
+use App\Invoice;
+use App\Product;
+use App\Service;
+use App\Setting;
+use App\Vehicle;
+use App\Washbay;
 use App\Customer;
+use App\Gatepass;
+use App\Role_user;
+use App\BranchSetting;
+use App\Http\Requests;
+use App\JobcardDetail;
 use App\PaymentMethod;
+use App\Invoiceservice;
+use App\CheckoutCategory;
+use App\Electronicinvoice;
+use Illuminate\Mail\Mailer;
+use Illuminate\Http\Request;
 // use PDF;
 use Barryvdh\DomPDF\Facade as PDF;
-use App\Electronicinvoice;
-use App\Invoiceservice;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Carbon;
 
 class ManualInvoiceController extends Controller
 {
@@ -454,7 +456,7 @@ class ManualInvoiceController extends Controller
 	}
 
 	//invoice list
-	public function showall()
+	public function showall(Request $request)
 	{	
 		$currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
 		                   ->orderBy('id','DESC')->first();
@@ -463,7 +465,15 @@ class ManualInvoiceController extends Controller
 		                          ->where('final', 0)
 				                  ->orderBy('id','DESC')->get();
 
-		return view('Manual.showall',compact('invoice'));
+		$start_date = Carbon::parse($request->start_date)
+								  ->toDateTimeString();
+	 
+		$end_date = Carbon::parse($request->end_date)
+								  ->toDateTimeString();
+		$invoice_filter = Electronicinvoice::where('final',0)->whereBetween('created_at', [$start_date, $end_date])->get();
+
+
+		return view('Manual.showall',compact('invoice','invoice_filter'));
 	}
 
 	//invoice list
