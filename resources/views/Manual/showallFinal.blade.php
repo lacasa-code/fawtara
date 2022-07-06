@@ -129,7 +129,6 @@
 									<td>{{ $invoices->Customer }}</td>
 									<td>{{ $invoices->Invoice_type }}</td>
 									<td>
-										<?php $format = trim( chunk_split($invoices->reg_chars, 1, ' ') ); ?> 
 									{{ $invoices->registeration }} {{ ucwords($format) }}  </td>
 									
 									<td>{{ $invoices->Status }} </td>
