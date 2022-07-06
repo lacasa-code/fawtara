@@ -493,6 +493,29 @@ class ManualInvoiceController extends Controller
 		return view('Manual.showallFinal',compact('invoice','filter'));
 	}
 
+	function daterange(Request $request)
+    {
+     if(request()->ajax())
+     {
+      if(!empty($request->fromdate))
+      {
+       $data = Electronicinvoice::where('final',1)
+	        ->whereBetween('created_at', array($request->fromdate, $request->todate))
+            ->get();
+      }
+      else
+      {
+        $currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
+		                   ->orderBy('id','DESC')->first();
+
+		$data = Electronicinvoice::where('branch_id', $currentUser->branch_id)->whereNull('deleted_at')
+		                          ->where('final', 1)
+				                  ->orderBy('id','DESC')->get();
+      }
+	  return view('Manual.showallFinal',compact('data'));
+	}
+     return view('Manual.showallFinal');
+    }
 
 	public function showInvoice2($id)
 	{

@@ -86,19 +86,22 @@
 							</ul>
 						</div>
 			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
-						 <div class="form-group row">
-                                    <label for='date' class="col-form-label col-sm-2">From</label>
-									<div class="col-sm-3">
-									    <input type="date" class="form-control input-sm" id="fromdate" name="fromdate" required>
-									</div>
-								</div>
-								<div class="form-group row">
-								    <label for='date' class="col-form-label col-sm-2">To</label>
-									<div class="col-sm-3">
-									    <input type="date" class="form-control input-sm" id="todate" name="todate" required>
-									</div>
+						    <div class="row input-daterange">
+                                <div class="col-md-4">
+                                    <input type="date" name="fromdate" id="fromdate" class="form-control " placeholder="From Date" required />
+                                </div>
+                
+								<div class="col-md-4">
+					     			<input type="date" name="todate" id="todate" class="form-control" placeholder="To Date" required />
+                                </div>
 
-								</div>
+                
+								<div class="col-md-4">
+								    <button type="button" name="filter" id="filter" class="btn btn-primary">Filter</button>
+								    <button type="button" name="refresh" id="refresh" class="btn btn-default">Refresh</button>
+                                </div>
+                            </div>      
+		
 
 								<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
@@ -202,4 +205,4 @@
 
   	}); 
 </script>
-@endsection
+@endsection 
