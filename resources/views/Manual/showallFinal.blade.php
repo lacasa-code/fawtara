@@ -99,7 +99,62 @@
 									</div>
 
 								</div>
-                  			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
+@if (isset($filter))
+<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
+                      			<thead>
+                        			<tr>
+										<th>#</th>
+										<th>{{ trans('app.Invoice Number')}}</th>
+										<th>{{ trans('app.Customer Name')}}</th>
+										<th>{{ trans('app.Invoice For')}}</th>
+				                        <th>{{ trans('app.Number Plate')}}</th>
+				                        <th>{{ trans('app.Status')}}</th>
+										<th>{{ trans('app.Chasis No')}}</th>
+
+										<th>{{ trans('app.Total Amount')}} ({{getCurrencySymbols()}})</th>
+										<th>{{ trans('app.Paid Amount')}} ({{getCurrencySymbols()}})</th> 
+				                        <th>{{ trans('app.Date')}}</th>
+				                        <th>{{ trans('app.Action')}}</th>
+                        			</tr>
+                      			</thead>
+                      			<tbody>
+								<?php $i = 1; ?>   
+					  			@foreach($filter as $filters)
+								<tr class="texr-left">
+									<td>{{ $i }}</td>
+									<td>{{ '#'.Auth::user()->branch_id.'-'.$filters->Invoice_Number }}</td>
+									<td>{{ $filters->Customer }}</td>
+									<td>{{ $filters->Invoice_type }}</td>
+									<td>
+										<?php $format = trim( chunk_split($filters->reg_chars, 1, ' ') ); ?> 
+									{{ $filters->registeration }} {{ ucwords($format) }}  </td>
+									
+									<td>{{ $filters->Status }} </td>
+									<td>{{ $filters->chassis_no }} </td>
+									<td>{{ number_format($filters->total_amount, 2) }}</td>
+									<td>{{ number_format($filters->paid_amount, 2) }}</td>
+									<td>{{ date(getDateFormat(),strtotime($filters->Date)) }}</td>
+									<td>
+									@if(getUserRoleFromUserTable(Auth::User()->id) == 'admin' || getUserRoleFromUserTable(Auth::User()->id) == 'supportstaff' || getUserRoleFromUserTable(Auth::User()->id) == 'accountant' || getUserRoleFromUserTable(Auth::User()->id) == 'employee' || getUserRoleFromUserTable(Auth::User()->id) == 'branch_admin')
+										@if($filters->type != 2)
+											
+
+											<a href="{{ route('showInvoiceManual', ['id' => $filters->id]) }}" type="button" class="btn btn-primary btn-round"> Show </a>	
+
+											<a href="{{ route('preview', ['id' => $filters->id]) }}" type="button" class="btn btn-warning btn-round"> preview </a>	
+	
+											
+										@endif
+									@endif
+
+									</td>	
+								</tr>
+						 		<?php $i++; ?>   
+								@endforeach
+                      			</tbody>
+                    		</table>	
+@else
+								<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
 										<th>#</th>
@@ -152,6 +207,7 @@
 								@endforeach
                       			</tbody>
                     		</table>
+							@endif
                   		</div>
                 	</div>
             	</div>
