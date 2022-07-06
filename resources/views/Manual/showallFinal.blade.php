@@ -103,7 +103,7 @@
                             </div>      
 		
 
-								<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
+							<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
 										<th>#</th>
@@ -120,7 +120,7 @@
 				                        <th>{{ trans('app.Action')}}</th>
                         			</tr>
                       			</thead>
-                      			<tbody>
+                      		    <!--	<tbody>
 								<?php $i = 1; ?>   
 					  			@foreach($invoice as $invoices)
 								<tr class="texr-left">
@@ -154,7 +154,7 @@
 								</tr>
 						 		<?php $i++; ?>   
 								@endforeach
-                      			</tbody>
+                      			</tbody>-->
                     		</table>
                   		</div>
                 	</div>
@@ -204,5 +204,83 @@
 
 
   	}); 
+</script>
+<script>
+$(document).ready(function(){
+
+	load_data();
+
+    function load_data(fromdate = '', todate = '')
+    {
+        $('#datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                    url:'/invoice/final/daterange/',
+                    data:{fromdate:fromdate, todate:todate}
+                },
+    columns: [
+   {
+	data:'Invoice_Number',
+	name:'Invoice_Number'
+   },
+   {
+	data:'Customer',
+	name:'Customer'
+   },
+   {
+	data:'Invoice_type',
+	name:'Invoice_type'
+   },
+   {
+	data:'registeration',
+	name:'registeration'
+   },
+   {
+	data:'Status',
+	name:'Status'
+   },
+   {
+	data:'chassis_no',
+	name:'chassis_no'
+   },
+   {
+	data:'total_amount',
+	name:'total_amount'
+   },
+   {
+	data:'paid_amount',
+	name:'paid_amount'
+   },
+   {
+	data:'Date',
+	name:'Date'
+   },
+  ]
+ });
+}
+
+$('#filter').click(function(){
+  var from_date = $('#fromdate').val();
+  var to_date = $('#todate').val();
+  if(from_date != '' &&  to_date != '')
+  {
+   $('#datatable').DataTable().destroy();
+   load_data(from_date, to_date);
+  }
+  else
+  {
+   alert('Both Date is required');
+  }
+ });
+
+ $('#refresh').click(function(){
+  $('#fromdate').val('');
+  $('#todate').val('');
+  $('#datatable').DataTable().destroy();
+  load_data();
+ });
+
+});
 </script>
 @endsection 
