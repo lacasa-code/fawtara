@@ -86,24 +86,21 @@
 							</ul>
 						</div>
 			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
-						    <div class="row input-daterange">
-                                <div class="col-md-4">
-                                    <input type="date" name="fromdate" id="fromdate" class="form-control " placeholder="From Date" required />
-                                </div>
-                
-								<div class="col-md-4">
-					     			<input type="date" name="todate" id="todate" class="form-control" placeholder="To Date" required />
-                                </div>
+						 <div class="form-group row">
+                                    <label for='date' class="col-form-label col-sm-2">From</label>
+									<div class="col-sm-3">
+									    <input type="date" class="form-control input-sm" id="fromdate" name="fromdate" required>
+									</div>
+								</div>
+								<div class="form-group row">
+								    <label for='date' class="col-form-label col-sm-2">To</label>
+									<div class="col-sm-3">
+									    <input type="date" class="form-control input-sm" id="todate" name="todate" required>
+									</div>
 
-                
-								<div class="col-md-4">
-								    <button type="button" name="filter" id="filter" class="btn btn-primary">Filter</button>
-								    <button type="button" name="refresh" id="refresh" class="btn btn-default">Refresh</button>
-                                </div>
-                            </div>      
-		
+								</div>
 
-							<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
+								<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
 										<th>#</th>
@@ -120,31 +117,31 @@
 				                        <th>{{ trans('app.Action')}}</th>
                         			</tr>
                       			</thead>
-								  <tbody>
+                      			<tbody>
 								<?php $i = 1; ?>   
-					  			@foreach($data as $data)
+					  			@foreach($invoice as $invoices)
 								<tr class="texr-left">
 									<td>{{ $i }}</td>
-									<td>{{ '#'.Auth::user()->branch_id.'-'.$data->Invoice_Number }}</td>
-									<td>{{ $data->Customer }}</td>
-									<td>{{ $data->Invoice_type }}</td>
+									<td>{{ '#'.Auth::user()->branch_id.'-'.$invoices->Invoice_Number }}</td>
+									<td>{{ $invoices->Customer }}</td>
+									<td>{{ $invoices->Invoice_type }}</td>
 									<td>
-										<?php $format = trim( chunk_split($data->reg_chars, 1, ' ') ); ?> 
-									{{ $data->registeration }} {{ ucwords($format) }}  </td>
+										<?php $format = trim( chunk_split($invoices->reg_chars, 1, ' ') ); ?> 
+									{{ $invoices->registeration }} {{ ucwords($format) }}  </td>
 									
-									<td>{{ $data->Status }} </td>
-									<td>{{ $data->chassis_no }} </td>
-									<td>{{ number_format($data->total_amount, 2) }}</td>
-									<td>{{ number_format($data->paid_amount, 2) }}</td>
-									<td>{{ date(getDateFormat(),strtotime($data->Date)) }}</td>
+									<td>{{ $invoices->Status }} </td>
+									<td>{{ $invoices->chassis_no }} </td>
+									<td>{{ number_format($invoices->total_amount, 2) }}</td>
+									<td>{{ number_format($invoices->paid_amount, 2) }}</td>
+									<td>{{ date(getDateFormat(),strtotime($invoices->Date)) }}</td>
 									<td>
 									@if(getUserRoleFromUserTable(Auth::User()->id) == 'admin' || getUserRoleFromUserTable(Auth::User()->id) == 'supportstaff' || getUserRoleFromUserTable(Auth::User()->id) == 'accountant' || getUserRoleFromUserTable(Auth::User()->id) == 'employee' || getUserRoleFromUserTable(Auth::User()->id) == 'branch_admin')
-										@if($data->type != 2)
+										@if($invoices->type != 2)
 											
 
-											<a href="{{ route('showInvoiceManual', ['id' => $data->id]) }}" type="button" class="btn btn-primary btn-round"> Show </a>	
+											<a href="{{ route('showInvoiceManual', ['id' => $invoices->id]) }}" type="button" class="btn btn-primary btn-round"> Show </a>	
 
-											<a href="{{ route('preview', ['id' => $data->id]) }}" type="button" class="btn btn-warning btn-round"> preview </a>	
+											<a href="{{ route('preview', ['id' => $invoices->id]) }}" type="button" class="btn btn-warning btn-round"> preview </a>	
 	
 											
 										@endif
@@ -156,8 +153,6 @@
 								@endforeach
                       			</tbody>
                     		</table>
-							{{ csrf_field() }}
-
                   		</div>
                 	</div>
             	</div>
@@ -172,26 +167,11 @@
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
-
-<script>
-$(document).ready(function(){
-	var date = new Date();
-	var _token = $('input[name="_token"]').val();
-
-	load_data();
-
-    function load_data(fromdate = '', todate = '')
-    {
-		$.ajax({
-			    url:'/invoice/final/daterange/',
-                method:"GET",
-                data:{fromdate:fromdate, todate:todate, _token:_token},
-                dataType:"json",
-				success:function(data)
-                {
-                     var output = '';
-                    $('#datatable').DataTable( {
-                    responsive: true,
+	<script>
+	$(document).ready(function() 
+	{
+	    $('#datatable').DataTable( {
+			responsive: true,
 			dom: 'Bfrtip',
 
 			buttons: [{
@@ -216,74 +196,10 @@ $(document).ready(function(){
              $('row c[r*="3"]', sheet).attr( 's', '20' );
             $('row c[r*="2"]', sheet).attr( 's', '25' );
            }
-          },'pdf'],
-		  columns: [
-   {
-	data:'Invoice_Number',
-	name:'Invoice_Number'
-   },
-   {
-	data:'Customer',
-	name:'Customer'
-   },
-   {
-	data:'Invoice_type',
-	name:'Invoice_type'
-   },
-   {
-	data:'registeration',
-	name:'registeration'
-   },
-   {
-	data:'Status',
-	name:'Status'
-   },
-   {
-	data:'chassis_no',
-	name:'chassis_no'
-   },
-   {
-	data:'total_amount',
-	name:'total_amount'
-   },
-   {
-	data:'paid_amount',
-	name:'paid_amount'
-   },
-   {
-	data:'Date',
-	name:'Date'
-   },
-  ]})
-                    
-		  
-   }
-  })
-			
-			
-    }
+          },'pdf']
+	    });
 
-$('#filter').click(function(){
-  var from_date = $('#fromdate').val();
-  var to_date = $('#todate').val();
-  if(from_date != '' &&  to_date != '')
-  {
-   $('#datatable').DataTable().destroy();
-   load_data(from_date, to_date);
-  }
-  else
-  {
-   alert('Both Date is required');
-  }
- });
 
- $('#refresh').click(function(){
-  $('#fromdate').val('');
-  $('#todate').val('');
-  $('#datatable').DataTable().destroy();
-  load_data();
- });
-
-});
+  	}); 
 </script>
 @endsection 
