@@ -182,17 +182,47 @@ $(document).ready(function(){
              $('row c[r*="3"]', sheet).attr( 's', '20' );
             $('row c[r*="2"]', sheet).attr( 's', '25' );
            }
-          },'pdf'],})
+          },'pdf'],
+		  columns: [
+   {
+	data:'Invoice_Number',
+	name:'Invoice_Number'
+   },
+   {
+	data:'Customer',
+	name:'Customer'
+   },
+   {
+	data:'Invoice_type',
+	name:'Invoice_type'
+   },
+   {
+	data:'registeration',
+	name:'registeration'
+   },
+   {
+	data:'Status',
+	name:'Status'
+   },
+   {
+	data:'chassis_no',
+	name:'chassis_no'
+   },
+   {
+	data:'total_amount',
+	name:'total_amount'
+   },
+   {
+	data:'paid_amount',
+	name:'paid_amount'
+   },
+   {
+	data:'Date',
+	name:'Date'
+   },
+  ]})
                     
-		  for(var count = 0; count < data.length; count++)
-                    
-		  {
-                output += '<tr>';
-                    output += '<td>' + data[count].Invoice_Number + '</td>';
-                    output += '<td>' + data[count].Customer + '</td>';
-                    output += '<td>' + data[count].Invoice_type + '</td></tr>';
-    }
-    $('tbody').html(output);
+		  
    }
   })
 			
