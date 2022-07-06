@@ -492,6 +492,10 @@ class ManualInvoiceController extends Controller
 		  
 		return view('Manual.showallFinal',compact('invoice','filter'));*/
 		return view('Manual.showallFinal');
+<<<<<<< HEAD
+=======
+
+>>>>>>> test
 	}
 
 	function daterange(Request $request)
