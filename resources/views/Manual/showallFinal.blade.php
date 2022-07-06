@@ -120,40 +120,7 @@
 				                        <th>{{ trans('app.Action')}}</th>
                         			</tr>
                       			</thead>
-                      		    <!--	<tbody>
-								<?php $i = 1; ?>   
-					  			@foreach($invoice as $invoices)
-								<tr class="texr-left">
-									<td>{{ $i }}</td>
-									<td>{{ '#'.Auth::user()->branch_id.'-'.$invoices->Invoice_Number }}</td>
-									<td>{{ $invoices->Customer }}</td>
-									<td>{{ $invoices->Invoice_type }}</td>
-									<td>
-									{{ $invoices->registeration }} {{ ucwords($format) }}  </td>
-									
-									<td>{{ $invoices->Status }} </td>
-									<td>{{ $invoices->chassis_no }} </td>
-									<td>{{ number_format($invoices->total_amount, 2) }}</td>
-									<td>{{ number_format($invoices->paid_amount, 2) }}</td>
-									<td>{{ date(getDateFormat(),strtotime($invoices->Date)) }}</td>
-									<td>
-									@if(getUserRoleFromUserTable(Auth::User()->id) == 'admin' || getUserRoleFromUserTable(Auth::User()->id) == 'supportstaff' || getUserRoleFromUserTable(Auth::User()->id) == 'accountant' || getUserRoleFromUserTable(Auth::User()->id) == 'employee' || getUserRoleFromUserTable(Auth::User()->id) == 'branch_admin')
-										@if($invoices->type != 2)
-											
-
-											<a href="{{ route('showInvoiceManual', ['id' => $invoices->id]) }}" type="button" class="btn btn-primary btn-round"> Show </a>	
-
-											<a href="{{ route('preview', ['id' => $invoices->id]) }}" type="button" class="btn btn-warning btn-round"> preview </a>	
-	
-											
-										@endif
-									@endif
-
-									</td>	
-								</tr>
-						 		<?php $i++; ?>   
-								@endforeach
-                      			</tbody>-->
+                      		 
                     		</table>
                   		</div>
                 	</div>
