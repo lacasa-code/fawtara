@@ -82,7 +82,11 @@
 					<div class="col-md-12 col-sm-12 col-xs-12" >
             			<div class="x_content">
 							<ul class="nav nav-tabs bar_tabs" role="tablist">
-								<div class="form-group row">
+								
+							</ul>
+						</div>
+			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
+						 <div class="form-group row">
                                     <label for='date' class="col-form-label col-sm-2">From</label>
 									<div class="col-sm-3">
 									    <input type="date" class="form-control input-sm" id="fromdate" name="date" readonly>
@@ -95,9 +99,6 @@
 									</div>
 
 								</div>
-							</ul>
-						</div>
-			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
                   			<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
