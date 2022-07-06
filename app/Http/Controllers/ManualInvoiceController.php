@@ -514,7 +514,9 @@ class ManualInvoiceController extends Controller
 		                          ->where('final', 1)
 				                  ->orderBy('id','DESC')->get();
       }
-	  return view('Manual.showallFinal',compact('data'));
+	  //return view('Manual.showallFinal',compact('data'));
+	  return response()->json($data);
+
 	}
      return view('Manual.showallFinal');
     }
