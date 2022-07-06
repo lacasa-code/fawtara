@@ -120,6 +120,41 @@
 				                        <th>{{ trans('app.Action')}}</th>
                         			</tr>
                       			</thead>
+								  <tbody>
+								<?php $i = 1; ?>   
+					  			@foreach($data as $data)
+								<tr class="texr-left">
+									<td>{{ $i }}</td>
+									<td>{{ '#'.Auth::user()->branch_id.'-'.$data->Invoice_Number }}</td>
+									<td>{{ $data->Customer }}</td>
+									<td>{{ $data->Invoice_type }}</td>
+									<td>
+										<?php $format = trim( chunk_split($data->reg_chars, 1, ' ') ); ?> 
+									{{ $data->registeration }} {{ ucwords($format) }}  </td>
+									
+									<td>{{ $data->Status }} </td>
+									<td>{{ $data->chassis_no }} </td>
+									<td>{{ number_format($data->total_amount, 2) }}</td>
+									<td>{{ number_format($data->paid_amount, 2) }}</td>
+									<td>{{ date(getDateFormat(),strtotime($data->Date)) }}</td>
+									<td>
+									@if(getUserRoleFromUserTable(Auth::User()->id) == 'admin' || getUserRoleFromUserTable(Auth::User()->id) == 'supportstaff' || getUserRoleFromUserTable(Auth::User()->id) == 'accountant' || getUserRoleFromUserTable(Auth::User()->id) == 'employee' || getUserRoleFromUserTable(Auth::User()->id) == 'branch_admin')
+										@if($data->type != 2)
+											
+
+											<a href="{{ route('showInvoiceManual', ['id' => $data->id]) }}" type="button" class="btn btn-primary btn-round"> Show </a>	
+
+											<a href="{{ route('preview', ['id' => $data->id]) }}" type="button" class="btn btn-warning btn-round"> preview </a>	
+	
+											
+										@endif
+									@endif
+
+									</td>	
+								</tr>
+						 		<?php $i++; ?>   
+								@endforeach
+                      			</tbody>
                     		</table>
 							{{ csrf_field() }}
 
@@ -181,9 +216,47 @@ $(document).ready(function(){
              $('row c[r*="3"]', sheet).attr( 's', '20' );
             $('row c[r*="2"]', sheet).attr( 's', '25' );
            }
-          },'pdf'],})
+          },'pdf'],
+		  columns: [
+   {
+	data:'Invoice_Number',
+	name:'Invoice_Number'
+   },
+   {
+	data:'Customer',
+	name:'Customer'
+   },
+   {
+	data:'Invoice_type',
+	name:'Invoice_type'
+   },
+   {
+	data:'registeration',
+	name:'registeration'
+   },
+   {
+	data:'Status',
+	name:'Status'
+   },
+   {
+	data:'chassis_no',
+	name:'chassis_no'
+   },
+   {
+	data:'total_amount',
+	name:'total_amount'
+   },
+   {
+	data:'paid_amount',
+	name:'paid_amount'
+   },
+   {
+	data:'Date',
+	name:'Date'
+   },
+  ]})
                     
-		
+		  
    }
   })
 			
