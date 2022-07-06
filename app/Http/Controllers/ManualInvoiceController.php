@@ -477,9 +477,9 @@ class ManualInvoiceController extends Controller
 	}
 
 	//invoice list
-	/*public function showallFinal(Request $request)
+	public function showallFinal(Request $request)
 	{	
-		$currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
+		/*$currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
 		                   ->orderBy('id','DESC')->first();
 
 		$invoice = Electronicinvoice::where('branch_id', $currentUser->branch_id)->whereNull('deleted_at')
@@ -490,8 +490,8 @@ class ManualInvoiceController extends Controller
 		$todate = $request->todate;						  
 		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
 		  
-		return view('Manual.showallFinal',compact('invoice','filter'));
-	}*/
+		return view('Manual.showallFinal',compact('invoice','filter'));*/
+	}
 
 	function daterange(Request $request)
     {
@@ -499,7 +499,9 @@ class ManualInvoiceController extends Controller
      {
       if(!empty($request->fromdate))
       {
-       $data = Electronicinvoice::where('final',1)
+		$currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
+		                   ->orderBy('id','DESC')->first();
+       $data = Electronicinvoice::where('branch_id', $currentUser->branch_id)->whereNull('deleted_at')->where('final',1)
 	        ->whereBetween('created_at', array($request->fromdate, $request->todate))
             ->get();
       }
