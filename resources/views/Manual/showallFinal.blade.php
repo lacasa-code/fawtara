@@ -170,11 +170,17 @@
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
-	<script>
-	$(document).ready(function() 
-	{
-	    $('#datatable').DataTable( {
-			responsive: true,
+
+<script>
+$(document).ready(function(){
+
+	load_data();
+
+    function load_data(fromdate = '', todate = '')
+    {
+		$('#datatable').DataTable( {
+
+        responsive: true,
 			dom: 'Bfrtip',
 
 			buttons: [{
@@ -199,22 +205,7 @@
              $('row c[r*="3"]', sheet).attr( 's', '20' );
             $('row c[r*="2"]', sheet).attr( 's', '25' );
            }
-          },'pdf']
-	    });
-
-
-  	}); 
-</script>
-<script>
-$(document).ready(function(){
-
-	load_data();
-
-    function load_data(fromdate = '', todate = '')
-    {
-        $('#datatable').DataTable({
-            processing: true,
-            serverSide: true,
+          },'pdf'],
             ajax: {
                     url:'/invoice/final/daterange/',
                     data:{fromdate:fromdate, todate:todate}
