@@ -477,7 +477,7 @@ class ManualInvoiceController extends Controller
 	}
 
 	//invoice list
-	public function showallFinal()
+	public function showallFinal(Request $request)
 	{	
 		$currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
 		                   ->orderBy('id','DESC')->first();
@@ -486,7 +486,11 @@ class ManualInvoiceController extends Controller
 		                          ->where('final', 1)
 				                  ->orderBy('id','DESC')->get();
 
-		return view('Manual.showallFinal',compact('invoice'));
+		$fromdate = $request->fromdate;		
+		$todate = $request->todate;						  
+		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+		  
+		return view('Manual.showallFinal',compact('invoice','filter'));
 	}
 
 
