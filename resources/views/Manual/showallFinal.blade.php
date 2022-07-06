@@ -83,12 +83,17 @@
             			<div class="x_content">
 							<ul class="nav nav-tabs bar_tabs" role="tablist">
 								<div class="form-group row">
-                                     <label for='date' class="col-form-label col-sm-2">From</label>
-									 <input type="date" class="form-control input-sm" id="fromdate" name="date" readonly>
+                                    <label for='date' class="col-form-label col-sm-2">From</label>
+									<div class="col-sm-3">
+									    <input type="date" class="form-control input-sm" id="fromdate" name="date" readonly>
+									</div>
 								</div>
 								<div class="form-group row">
 								    <label for='date' class="col-form-label col-sm-2">To</label>
-									<input type="date" class="form-control input-sm" id="todate" name="date" readonly>
+									<div class="col-sm-3">
+									    <input type="date" class="form-control input-sm" id="todate" name="date" readonly>
+									</div>
+
 								</div>
 							</ul>
 						</div>
