@@ -108,9 +108,7 @@
 
 								</div>-->
 
-								 <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600 dark:bg-dark-1 dark:border-dark-4" style="padding: 1px 11px;">
-                                	<i data-feather="calendar" class="w-4 h-4"></i>
-                         		</div>
+								 Date Rang :
                     			<input type="text" name="datefilter" id="datefilter" data-target="#output" autocomplete="off" value="{{ $date }}" class="w-full input pr-12 pl-12 border" style="min-width: 300px;"/>
 
 
