@@ -6,8 +6,15 @@
 }
 
 </style>
-<link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css" rel="stylesheet">
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 
 <!-- page content -->
         <div class="right_col" role="main">
@@ -92,7 +99,7 @@
 
 
 			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
-						 <table border="0" cellspacing="5" cellpadding="5">
+						 <!--<table border="0" cellspacing="5" cellpadding="5">
         						<tbody>
 							 	<tr>
 									<td>Minimum date:</td>
@@ -103,7 +110,11 @@
 									<td><input type="text" id="max" name="max"></td>
 								</tr>
 							</tbody>
-							</table>
+							</table>-->
+
+							 Date Rang :
+                    			<input type="text" name="datefilter" id="datefilter" data-target="#output" autocomplete="off" value="{{ $date }}" class="w-full input pr-12 pl-12 border" style="min-width: 300px;"/>
+
 
 							
 
@@ -186,6 +197,32 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
     <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+
+ <script type="text/javascript">
+        $(function() {
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    applyLabel: "موافق",
+                    cancelLabel: 'مسح',
+                }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD-MMMM-YYYY') + ' - ' + picker.endDate.format('DD-MMMM-YYYY'));
+                var SITEURL = "{{url('/invoice/listall')}}/" + picker.startDate.format('DD-MMMM-YYYY') + "/" +picker.endDate.format('DD-MMMM-YYYY') ;
+                window.location.href = SITEURL;
+            });
+
+            $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+                var SITEURL = "{{url('/invoice/listall')}}";
+                window.location.href = SITEURL;
+            });
+
+        });
+    </script>
+
 
 <script type="text/javascript">
 

@@ -571,6 +571,31 @@ class ManualInvoiceController extends Controller
 	    // return view('Manual.scanInvoicepdf',compact('invoice', 'branch', 'paymentMethod', 'services'));
 	}	
 
+	
+
+	public function PendingDaterange(request $request,$from,$to)
+    {
+        $F =  Carbon::parse($from)->startOfDay()->format('d-m-Y');
+        $T = Carbon::parse($to)->endOfDay()->format('d-m-Y');
+
+
+		$invoice = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
+		->where('final', 0)
+		->whereBetween('Date', [$F,$T])
+		->orderBy('id','DESC')->get();
+
+		$date = $F . ' | ' . $T;
+
+
+		$start_date = Carbon::parse($request->start_date)->toDateTimeString();
+	 
+		$end_date = Carbon::parse($request->end_date)->toDateTimeString();
+		$invoice_filter = Electronicinvoice::where('final',0)->whereBetween('created_at', [$start_date, $end_date])->get();
+
+		return view('Manual.showall',compact('invoice','invoice_filter','date'));
+
+	}
+	
 
 	public function Dateranges(request $request,$from,$to)
     {
