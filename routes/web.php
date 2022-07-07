@@ -333,7 +333,7 @@ Route::group(['prefix'=>'invoice'],function()
     Route::get('/listall','ManualInvoiceController@showall')->middleware('can:invoice_view');
     Route::get('/listall/final','ManualInvoiceController@showallFinal')->middleware('can:invoice_view');
 
-	Route::get('/listall/final/{from}/{to}', 'ManualInvoiceController@Daterange')->middleware('can:invoice_view');
+	Route::get('/listall/final/{from}/{to}', 'ManualInvoiceController@Dateranges')->middleware('can:invoice_view');
 
 	Route::get('/show/electronic/{id}','ManualInvoiceController@showInvoice2')->name('showInvoiceManual');
 	//Route::get('/scan/{id}','ManualInvoiceController@scanInvoice')->name('showInvoice3');

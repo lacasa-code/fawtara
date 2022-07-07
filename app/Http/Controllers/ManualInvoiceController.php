@@ -570,4 +570,27 @@ class ManualInvoiceController extends Controller
 	    return $pdf->stream('INVOICE.pdf');
 	    // return view('Manual.scanInvoicepdf',compact('invoice', 'branch', 'paymentMethod', 'services'));
 	}	
+
+
+	public function Dateranges($from,$to)
+    {
+        $F =  Carbon::parse($from)->startOfDay()->format('d-m-Y');
+        $T = Carbon::parse($to)->endOfDay()->format('d-m-Y');
+
+
+		$invoice = Electronicinvoice::where('branch_id', $currentUser->branch_id)->whereNull('deleted_at')
+		->where('final', 1)
+		->whereBetween('Date', [$F,$T])
+		->orderBy('id','DESC')->get();
+
+		$fromdate = $request->fromdate;		
+		$todate = $request->todate;						  
+		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+		  
+		return view('Manual.showallFinal',compact('invoice','filter'));
+       
+
+
+      
+    }
 }
