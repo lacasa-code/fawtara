@@ -572,7 +572,7 @@ class ManualInvoiceController extends Controller
 	}	
 
 
-	public function Dateranges($from,$to)
+	public function Dateranges(request $request,$from,$to)
     {
         $F =  Carbon::parse($from)->startOfDay()->format('d-m-Y');
         $T = Carbon::parse($to)->endOfDay()->format('d-m-Y');
@@ -587,10 +587,14 @@ class ManualInvoiceController extends Controller
 		$todate = $request->todate;						  
 		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
 		  
-		return view('Manual.showallFinal',compact('invoice','filter'));
-       
 
-
-      
+		return response([
+            'status'=>true,
+            'fo' => $F ,
+            'to' => $T,
+            'invoice' => $invoice,
+            'filter' => $filter,
+            'date' => $F . ' | ' . $T,
+		],200);
     }
 }
