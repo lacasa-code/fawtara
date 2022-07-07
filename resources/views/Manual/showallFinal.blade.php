@@ -8,6 +8,14 @@
 
 
 </style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 
 <!-- page content -->
         <div class="right_col" role="main">
@@ -86,7 +94,7 @@
 							</ul>
 						</div>
 			 			<div class="x_panel setMarginForXpanelDivOnSmallDevice">
-						 <div class="form-group row">
+								<!-- <div class="form-group row">
                                     <label for='date' class="col-form-label col-sm-2">From</label>
 									<div class="col-sm-3">
 									    <input type="date" class="form-control input-sm" id="fromdate" name="fromdate" required>
@@ -98,7 +106,14 @@
 									    <input type="date" class="form-control input-sm" id="todate" name="todate" required>
 									</div>
 
-								</div>
+								</div>-->
+
+								 <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600 dark:bg-dark-1 dark:border-dark-4" style="padding: 1px 11px;">
+                                	<i data-feather="calendar" class="w-4 h-4"></i>
+                         		</div>
+                    			<input type="text" name="datefilter" id="datefilter" data-target="#output" autocomplete="off" value="" class="w-full input pr-12 pl-12 border" style="min-width: 300px;"/>
+
+
 
 								<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
@@ -167,6 +182,36 @@
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+	
+	
+	
+
+	 <script type="text/javascript">
+        $(function() {
+            $('input[name="datefilter"]').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    applyLabel: "موافق",
+                    cancelLabel: 'مسح',
+                }
+            });
+
+            $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD-MMMM-YYYY') + ' - ' + picker.endDate.format('DD-MMMM-YYYY'));
+                var SITEURL = "{{url('/listall/final')}}/" + picker.startDate.format('DD-MMMM-YYYY') + "/" +picker.endDate.format('DD-MMMM-YYYY') ;
+                window.location.href = SITEURL;
+            });
+
+            $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+                var SITEURL = "{{url('/listall/final')}}";
+                window.location.href = SITEURL;
+            });
+
+        });
+    </script>
+
+
 	<script>
 	$(document).ready(function() 
 	{
