@@ -471,9 +471,9 @@ class ManualInvoiceController extends Controller
 		$end_date = Carbon::parse($request->end_date)
 								  ->toDateTimeString();
 		$invoice_filter = Electronicinvoice::where('final',0)->whereBetween('created_at', [$start_date, $end_date])->get();
+		$date = '';
 
-
-		return view('Manual.showall',compact('invoice','invoice_filter'));
+		return view('Manual.showall',compact('invoice','invoice_filter','date'));
 	}
 
 	//invoice list
@@ -489,8 +489,8 @@ class ManualInvoiceController extends Controller
 		$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
 		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
-		  
-		return view('Manual.showallFinal',compact('invoice','filter'));
+		$date = '';
+		return view('Manual.showallFinal',compact('invoice','filter','date'));
 	}
 
 	function daterange(Request $request)
@@ -583,18 +583,14 @@ class ManualInvoiceController extends Controller
 		->whereBetween('Date', [$F,$T])
 		->orderBy('id','DESC')->get();
 
+		$date = $F . ' | ' . $T;
+
 		$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
 		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
 		  
 
-		return response([
-            'status'=>true,
-            'fo' => $F ,
-            'to' => $T,
-            'invoice' => $invoice,
-            'filter' => $filter,
-            'date' => $F . ' | ' . $T,
-		],200);
+		return view('Manual.showallFinal',compact('invoice','filter','date'));
+
     }
 }
