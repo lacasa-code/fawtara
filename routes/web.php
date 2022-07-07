@@ -332,6 +332,7 @@ Route::group(['prefix'=>'invoice'],function()
 
     Route::get('/listall','ManualInvoiceController@showall')->middleware('can:invoice_view');
     Route::get('/listall/final','ManualInvoiceController@showallFinal')->middleware('can:invoice_view');
+	Route::get('/listall/final/{from}/{to}', 'ManualInvoiceController@PendingDaterange')->name('PendingDaterange');
 
 	Route::get('/listall/final/{from}/{to}', 'ManualInvoiceController@Dateranges')->name('Dateranges');
 
