@@ -245,13 +245,13 @@ border-radius: 6px;
 											{{$n}}
 										</td>
 										<td>
-											{{ $invices->Invoice_Number }}
+											{{$auth_branch_id}}{{ $invices->Invoice_Number }}
 										</td>
 										<td>
 											{{ $invices->Date }}
 										</td>
 										<td>													
-											<a class="txt_color" href="{!! url('/invoice/show/electronic/'.$invices ->id)!!}">Preview</a>
+											<a class="txt_color" href="{!! url('/invoice/show/electronic/'.$invices ->id)!!}">Show</a>
 										</td>
 											<?php $n++; ?>
 										</tr>

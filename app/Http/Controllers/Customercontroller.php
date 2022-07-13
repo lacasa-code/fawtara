@@ -180,6 +180,8 @@ class Customercontroller extends Controller
 				
         $car = Car::where('customer_id','=',$id)->get();
 		$invoice=Electronicinvoice::where('customer_id','=',$id)->get();
+		$auth_user               = Auth::user();
+		$auth_branch_id          = Auth::user()->branch_id;
 		/*if (!isAdmin(Auth::User()->role_id))
 		{
 			if (getUsersRole(Auth::user()->role_id) == 'Customer')
@@ -289,7 +291,7 @@ class Customercontroller extends Controller
 		}*/
 
 		
-		return view('customer.view',compact('car','new_customer','viewid','invoice'));
+		return view('customer.view',compact('car','new_customer','viewid','invoice','auth_branch_id '));
 	}
 	
 	// free service modal
