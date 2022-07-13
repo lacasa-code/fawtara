@@ -232,7 +232,7 @@
                                           <?php $format = trim( chunk_split($invoice->reg_chars, 1, ' ') ); ?> 
                         
                                           <td style="text-align: center;">
-                                                {{ $invoices->registeration }}{{ $invoices->reg_chars }}  </td>
+                                                {{ $invoice->registeration }}{{ $invoice->reg_chars }}  </td>
                                                 <td colspan="2" style="text-align: right;">: رقم التسجيل </td>
                                                 
                                           </tr>  
