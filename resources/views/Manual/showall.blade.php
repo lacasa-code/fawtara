@@ -148,7 +148,7 @@
 									{{ 'Invoice' }}
 								    @endif</td>
 								    <?php $format = trim( chunk_split($invoices->reg_chars, 1, ' ') ); ?> 
-									<td>{{ $invoices->registeration }} {{ ucwords($format) }}  </td>
+									<td>{{ $invoices->registeration }}{{ $invoices->reg_chars }} </td>
 									<td>{{ $invoices->Status }} </td>
 									<td>{{ $invoices->chassis_no }} </td>
 									<td>{{ number_format($invoices->total_amount, 2) }}</td>
