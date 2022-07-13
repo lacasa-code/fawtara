@@ -245,7 +245,7 @@ border-radius: 6px;
 											{{$n}}
 										</td>
 										<td>
-											{{$auth_branch_id}}{{ $invices->Invoice_Number }}
+											#{{$auth_branch_id}}-{{ $invices->Invoice_Number }}
 										</td>
 										<td>
 											{{ $invices->Date }}
