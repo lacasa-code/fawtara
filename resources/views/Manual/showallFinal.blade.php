@@ -140,7 +140,7 @@
 									<td>{{ $invoices->Invoice_type }}</td>
 									<td>
 										<?php $format = trim( chunk_split($invoices->reg_chars, 1, ' ') ); ?> 
-									{{ $invoices->registeration }} {{ $invoices->reg_chars }}  </td>
+									{{ $invoices->registeration }}{{ $invoices->reg_chars }}  </td>
 									
 									<td>{{ $invoices->Status }} </td>
 									<td>{{ $invoices->chassis_no }} </td>
