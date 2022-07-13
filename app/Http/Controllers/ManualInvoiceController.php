@@ -618,4 +618,12 @@ class ManualInvoiceController extends Controller
 		return view('Manual.showallFinal',compact('invoice','filter','date'));
 
     }
+
+	public function reports()
+	{
+		
+		$report = Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL])->count();
+		return view('Manual.report',compact('report'));
+
+	}
 }

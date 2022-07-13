@@ -261,6 +261,11 @@
 			                  		<li><a href="{!! url('/invoice/listall/final') !!}" ><i class="fa fa-file-text-o"></i>
 			                  		 Final Invoices </a></li>
 								@endcan
+
+								@can('invoice_view')
+			                  		<li><a href="{!! url('/invoice/reports') !!}" ><i class="fa fa-file-text-o"></i>
+			                  		Reports </a></li>
+								@endcan
                                     
 
 								@canany(['jobcard_view','gatepass_view'])
