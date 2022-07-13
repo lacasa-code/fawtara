@@ -240,6 +240,7 @@ border-radius: 6px;
 									</thead>
 									<tbody>
 										@foreach($invoice as $invices)
+										<tr>
 										<td>
 											{{$n}}
 										</td>
@@ -253,6 +254,7 @@ border-radius: 6px;
 											<a class="txt_color" href="{!! url('/invoice/show/electronic/'.$invices ->id)!!}">Preview</a>
 										</td>
 											<?php $n++; ?>
+										</tr>
 										@endforeach
 										</tbody>
 									</table>
