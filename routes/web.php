@@ -273,6 +273,7 @@ Route::group(['prefix'=>'quotation'],function()
 Route::group(['prefix'=>'invoice'],function()
 {
 	Route::get('/final/daterange','ManualInvoiceController@daterange')->name('daterange');
+	Route::get('/reports','ManualInvoiceController@reports')->name('reports');
 
 	
 	Route::get('/list','InvoiceController@showall')->middleware('can:invoice_view');
