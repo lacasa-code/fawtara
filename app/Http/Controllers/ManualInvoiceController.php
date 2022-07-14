@@ -629,7 +629,7 @@ class ManualInvoiceController extends Controller
 
 	public function filter_date($date)
 	{
-		$date =  Carbon::parse($date)->startOfDay()->format('Y/m/d');
+		$date =  Carbon::parse($date)->startOfDay()->format('Y-m-d');
 
 		$data =Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL ])->whereDate('created_at', '=', $date)->count();
 		return response()->json($data);
