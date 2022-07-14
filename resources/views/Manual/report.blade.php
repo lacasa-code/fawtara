@@ -77,16 +77,20 @@
 			</div>
 		@endif
         
-        <div class="input-group input-daterange">
-            <div>
-                <input type="date" name="from_date" id="from_date" readonly class="form-control">
-            </div>
-            <div>
-            <input type="date"  name="to_date" id="to_date" readonly class="form-control">
+    
+        <div class="form-group row">
+            <label for='date' class="col-form-label col-sm-2">From</label>
+					<div class="col-sm-3">
+						<input type="date" class="form-control input-sm" id="from_date" name="from_date" required>
+					</div>
+		</div>
+		<div class="form-group row">
+			<label for='date' class="col-form-label col-sm-2">To</label>
+					<div class="col-sm-3">
+						<input type="date" class="form-control input-sm" id="to_date" name="to_date" required>
+					</div>
 
-            </div>
-        </div>
-            	
+		</div>
         <div class="row" >
 			<div class="col-md-12 col-sm-12 col-xs-12" >
             	<div class="x_content">
