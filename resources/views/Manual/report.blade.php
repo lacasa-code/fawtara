@@ -92,8 +92,7 @@
 			</div>
                 <div class="col-sm-3">
                 <button id="filter">Filter</button>
-            </div>
-			<div class="col-sm-3">
+            
                 <button id="refresh">refresh</button>
             </div>
 
