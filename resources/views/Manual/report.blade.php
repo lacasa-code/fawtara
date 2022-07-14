@@ -93,7 +93,7 @@
                 <div class="col-sm-3">
                 <button id="filter">Filter</button>
             
-                <button id="refresh">refresh</button>
+                <button id="refresh">Refresh</button>
             </div>
 
 		</div>
@@ -113,7 +113,7 @@
                     </ul>
                     
                     <div class="col-lg-2 col-md-2 col-xs-6 col-sm-3">
-				        <a href="customer/list" target="blank">
+				        <a>
 					        <div class="panel info-box panel-white">
 						        <div class="panel-body staff-member">
 						            <img src="{{ URL::asset('public/img/dashboard/client.png')}}" class="dashboard_background" alt="">
