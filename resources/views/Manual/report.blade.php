@@ -77,14 +77,11 @@
 			</div>
 		@endif
         
-        <div class="form-group row">
-			<!--<div class="col-sm-3">
-			    <input type="date" class="form-control input-sm" id="filter" name="filter" required>
-		    </div>-->
-            
-			Date Rang :
-                <input type="text" name="datefilter" id="datefilter" data-target="#output" autocomplete="off" value="{{ $date }}" class="w-full input pr-12 pl-12 border" style="min-width: 300px;"/>
-		</div>
+        <div class="input-group input-daterange">
+            <input type="text" name="from_date" id="from_date" readonly class="form-control">
+            <div class="input-group-addon to-text"> to </div>
+            <input type="text"  name="to_date" id="to_date" readonly class="form-control">
+        </div>
             	
         <div class="row" >
 			<div class="col-md-12 col-sm-12 col-xs-12" >
@@ -149,29 +146,59 @@
     });
 </script>
 
-<script type="text/javascript">
-    $(function() 
-    {
-            $('input[name="datefilter"]').daterangepicker({
-                autoUpdateInput: false,
-                locale: {
-                    applyLabel: "موافق",
-                    cancelLabel: 'مسح',
+<script>
+    $(document).ready(function() {
+
+
+var date = new Date();
+
+$('.input-daterange').datepicker( {
+    todayBtn: 'linked',
+    format: 'yyyy-mm-dd',
+    autoclose: true
+});
+
+//var _token = $('input[name="_token"]').val();
+
+fetch_data();
+
+function fetch_data(from_date = '', to_date = '') {
+    $.ajax({
+        url:"{{ route('CountFinal')}}",
+        method:"POST",
+        data:{
+            from_date:from_date, to_date:to_date
+        },
+        dataType:"json",
+        success: function(response) 
+                {
+
+                    if (response != null) 
+                    {
+                        $('#final').text(response);
+                        console.log(response);
+                    }
                 }
-            });
+    })
+}
 
-            $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('DD-MMMM-YYYY') + ' - ' + picker.endDate.format('DD-MMMM-YYYY'));
-                var SITEURL = "{{url('/invoice/reports')}}/" + picker.startDate.format('DD-MMMM-YYYY') + "/" +picker.endDate.format('DD-MMMM-YYYY') ;
-                window.location.href = SITEURL;
-            });
+$('#filter').click(function() {
+    var from_date = $('#from_date').val();
+    var to_date = $('#to_date').val();
+    if(from_date != '' && to_date != '') {
+        fetch_data(from_date, to_date);
+    }
+    else {
+        alert('Both Date is required');
+    }
+});
 
-            $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-                $(this).val('');
-                var SITEURL = "{{url('/invoice/reports')}}";
-                window.location.href = SITEURL;
-            });
+$('#refresh').click(function() {
+    $('#from_date').val('');
+    $('#to_date').val('');
+    fetch_data();
+});
 
-    });
+});
 </script>
 @endsection

@@ -274,7 +274,7 @@ Route::group(['prefix'=>'invoice'],function()
 {
 	Route::get('/final/daterange','ManualInvoiceController@daterange')->name('daterange');
 	Route::get('/reports','ManualInvoiceController@reports')->name('reports');
-	Route::get('/reports/final/{date}','ManualInvoiceController@filter_date')->name('CountFinal');
+	Route::post('/reports/final','ManualInvoiceController@filter_dateRange')->name('CountFinal');
 
 	
 	Route::get('/list','InvoiceController@showall')->middleware('can:invoice_view');

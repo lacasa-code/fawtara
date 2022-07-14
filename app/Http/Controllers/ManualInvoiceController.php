@@ -635,4 +635,22 @@ class ManualInvoiceController extends Controller
 		return response()->json($data);
 
 	}
+
+	public function filter_dateRange(Request $request)
+	{
+		if($request->ajax()) {
+            if($request->from_date != '' && $request->to_date != '') {
+				$data =Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL ])
+					->whereBetween('created_at', array($request->from_date, $request->to_date))
+					->count();
+            }
+            else {
+				$data = Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL])->count();
+
+            }
+			return response()->json($data);
+
+        }
+		
+	}
 }
