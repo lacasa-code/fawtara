@@ -251,7 +251,7 @@ border-radius: 6px;
 											{{ $invices->Date }}
 										</td>
 										<td>													
-											<a class="txt_color" href="{!! url('/invoice/show/electronic/'.$invices ->id)!!}">Show</a>
+											<a class="txt_color" href="{!! url('/invoice/preview/'.$invices ->id)!!}">Preview</a>
 										</td>
 											<?php $n++; ?>
 										</tr>
