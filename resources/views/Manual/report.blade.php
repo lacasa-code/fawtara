@@ -73,6 +73,12 @@
 					</div>
 				</div>
 				@endif
+                <div class="form-group row">
+					<div class="col-sm-3">
+							<input type="date" class="form-control input-sm" id="filter" name="filter" required>
+					</div>
+
+				</div>
             	<div class="row" >
 					<div class="col-md-12 col-sm-12 col-xs-12" >
             			<div class="x_content">
@@ -93,13 +99,7 @@
 					</a>
 			    </div>
 
-                <div class="form-group row">
-					<label for='date' class="col-form-label col-sm-2">Filter by date</label>
-					<div class="col-sm-3">
-							<input type="date" class="form-control input-sm" id="filter" name="filter" required>
-					</div>
-
-				</div>
+                
 
                         </div>
                 	</div>
