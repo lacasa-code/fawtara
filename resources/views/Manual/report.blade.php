@@ -163,7 +163,8 @@ function fetch_data(from_date = '', to_date = '') {
         url:"{{ route('CountFinal')}}",
         method:"POST",
         data:{
-            from_date:from_date, to_date:to_date
+            from_date:from_date, to_date:to_date , "_token": "{{ csrf_token() }}",
+
         },
         dataType:"json",
         success: function(response) 
