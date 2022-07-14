@@ -79,29 +79,59 @@
 							<ul class="nav nav-tabs bar_tabs" role="tablist">
 							 
 							</ul>
-                            <div class="col-lg-2 col-md-2 col-xs-6 col-sm-3">
-				<a href="customer/list" target="blank">
-					<div class="panel info-box panel-white">
+                <div class="col-lg-2 col-md-2 col-xs-6 col-sm-3">
+				    <a href="customer/list" target="blank">
+					    <div class="panel info-box panel-white">
 						<div class="panel-body staff-member">
-						<img src="{{ URL::asset('public/img/dashboard/client.png')}}" class="dashboard_background" alt="">
+						    <img src="{{ URL::asset('public/img/dashboard/client.png')}}" class="dashboard_background" alt="">
 							<div class="info-box-stats">
-								<p class="counter">
-
-
-									    {{ $report }} 
-														  </p>
-									<span class="info-box-title"> Invoices </span>
+								<p class="counter" id="final">{{ $report }} </p>
+								<span class="info-box-title"> Invoices </span>
 							</div>
-
-
 						</div>
-					</div>
+					    </div>
 					</a>
-			</div>
+			    </div>
+
+                <div class="form-group row">
+					<label for='date' class="col-form-label col-sm-2">Filter by date</label>
+					<div class="col-sm-3">
+							<input type="date" class="form-control input-sm" id="filter" name="filter" required>
+					</div>
+
+				</div>
+
                         </div>
                 	</div>
             	</div>
           	</div>
         </div>
+<script type="text/javascript">
+ $(document).ready(function() {
 
+
+
+$('#filter').change(function() {
+    var date = $(this).val();
+    var url = '{{ route("CountFinal", ":date") }}';
+    url = url.replace(':date', date);
+
+    $.ajax({
+        url: url
+        , type: 'get'
+        , dataType: 'json'
+        , success: function(response) {
+            console.log(response);
+
+            if (response != null) {
+                $('#final').val(response);
+                console.log(response);
+            }
+        }
+    });
+});
+
+
+});
+</script>
 @endsection

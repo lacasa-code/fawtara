@@ -626,4 +626,11 @@ class ManualInvoiceController extends Controller
 		return view('Manual.report',compact('report'));
 
 	}
+
+	public function filter_date($date)
+	{
+		$data =Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL ,'created_at'=>$date ])->count();
+		return response()->json($data);
+
+	}
 }
