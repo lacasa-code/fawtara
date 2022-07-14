@@ -96,7 +96,7 @@
                 <div class="form-group row">
 					<label for='date' class="col-form-label col-sm-2">Filter by date</label>
 					<div class="col-sm-3">
-							<input type="date" class="form-control input-sm" id="filter" name="filter" required>
+							<input type="text" class="form-control input-sm" id="filter" name="filter" required>
 					</div>
 
 				</div>
