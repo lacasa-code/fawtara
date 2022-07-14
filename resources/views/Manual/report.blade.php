@@ -152,11 +152,7 @@
 
 var date = new Date();
 
-$('.input-daterange').datepicker( {
-    todayBtn: 'linked',
-    format: 'yyyy-mm-dd',
-    autoclose: true
-});
+
 
 //var _token = $('input[name="_token"]').val();
 
