@@ -85,7 +85,7 @@
 						<div class="panel-body staff-member">
 						    <img src="{{ URL::asset('public/img/dashboard/client.png')}}" class="dashboard_background" alt="">
 							<div class="info-box-stats">
-								<p class="counter" id="final">{{ $report }} </p>
+								<input class="counter" id="final">{{ $report }} </input>
 								<span class="info-box-title"> Invoices </span>
 							</div>
 						</div>
@@ -128,10 +128,9 @@ $('#filter').change(function() {
         , type: 'get'
         , dataType: 'json'
         , success: function(response) {
-            console.log(response);
 
             if (response != null) {
-                $('#final').val(response);
+                $('#final').text(response);
                 console.log(response);
             }
         }
