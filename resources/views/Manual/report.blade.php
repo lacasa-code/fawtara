@@ -78,9 +78,9 @@
 		@endif
         
         <div class="input-group input-daterange">
-            <input type="text" name="from_date" id="from_date" readonly class="form-control">
+            <input type="date" name="from_date" id="from_date" readonly class="form-control">
             <div class="input-group-addon to-text"> to </div>
-            <input type="text"  name="to_date" id="to_date" readonly class="form-control">
+            <input type="date"  name="to_date" id="to_date" readonly class="form-control">
         </div>
             	
         <div class="row" >
