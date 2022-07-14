@@ -89,9 +89,13 @@
 			<label for='date' class="col-form-label col-sm-2">To</label>
 			<div class="col-sm-3">
 				<input type="date" class="form-control input-sm" id="to_date" name="to_date" required>
+			<div class="col-sm-3">
                 <button id="filter">Filter</button>
+            </div>
+			<div class="col-sm-3">
                 <button id="refresh">refresh</button>
             </div>
+
 		</div>
         
         <div class="form-group row">
