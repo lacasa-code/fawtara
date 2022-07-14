@@ -85,7 +85,7 @@
 						<div class="panel-body staff-member">
 						    <img src="{{ URL::asset('public/img/dashboard/client.png')}}" class="dashboard_background" alt="">
 							<div class="info-box-stats">
-								<input class="counter" id="final">{{ $report }} </input>
+								<p class="counter" id="final">{{ $report }} </p>
 								<span class="info-box-title"> Invoices </span>
 							</div>
 						</div>
