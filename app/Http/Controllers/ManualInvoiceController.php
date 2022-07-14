@@ -641,8 +641,8 @@ class ManualInvoiceController extends Controller
 		if($request->ajax()) {
             if($request->from_date != '' && $request->to_date != '') {
 				$data =Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL ])
-					->where('created_at','>=',$request->from_date)
-					->where('created_at','<=',$request->to_date)
+					->whereDate('created_at','>=',$request->from_date)
+					->whereDate('created_at','<=',$request->to_date)
 					->count();
             }
             else {
