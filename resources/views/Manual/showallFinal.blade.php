@@ -111,7 +111,6 @@
 								 Date Rang :
                     			<input type="text" name="datefilter" id="datefilter" data-target="#output" autocomplete="off" value="{{ $date }}" class="w-full input pr-12 pl-12 border" style="min-width: 300px;"/>
 
-                                <p id="row_number"></p>
 
 								<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
@@ -248,15 +247,5 @@
   	}); 
 </script>
 
-<script type="text/javascript">
-    
-    $(document).ready(function() 
-    {
-		var table = $('#datatable').DataTable( {
 
-		});
-		$('#row_number').text(table.rows().count());
-
-    });
-</script>
 @endsection 
