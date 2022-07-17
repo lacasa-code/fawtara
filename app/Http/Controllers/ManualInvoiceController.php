@@ -470,7 +470,7 @@ class ManualInvoiceController extends Controller
 	 
 		$end_date = Carbon::parse($request->end_date)
 								  ->toDateTimeString();
-		$invoice_filter = Electronicinvoice::where('final',0)->whereBetween('created_at', [$start_date, $end_date])->get();
+		$invoice_filter = Electronicinvoice::where('final',0)->whereBetween('Date', [$start_date, $end_date])->get();
 		$date = '';
 
 		return view('Manual.showall',compact('invoice','invoice_filter','date'));
@@ -488,7 +488,7 @@ class ManualInvoiceController extends Controller
 
 		$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
-		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+		$filter = Electronicinvoice::where('final',1)->whereBetween('Date', [$fromdate, $todate])->get();
 		$date = '';
 		return view('Manual.showallFinal',compact('invoice','filter','date'));
 	}
@@ -502,7 +502,7 @@ class ManualInvoiceController extends Controller
 		$currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
 		                   ->orderBy('id','DESC')->first();
        $data = Electronicinvoice::where('branch_id', $currentUser->branch_id)->whereNull('deleted_at')->where('final',1)
-	        ->whereBetween('created_at', array($request->fromdate, $request->todate))
+	        ->whereBetween('Date', array($request->fromdate, $request->todate))
             ->get();
       }
       else
@@ -590,7 +590,7 @@ class ManualInvoiceController extends Controller
 		$start_date = Carbon::parse($request->start_date)->toDateTimeString();
 	 
 		$end_date = Carbon::parse($request->end_date)->toDateTimeString();
-		$invoice_filter = Electronicinvoice::where('final',0)->whereBetween('created_at', [$start_date, $end_date])->get();
+		$invoice_filter = Electronicinvoice::where('final',0)->whereBetween('Date', [$start_date, $end_date])->get();
 
 		return view('Manual.showall',compact('invoice','invoice_filter','date'));
 
@@ -612,7 +612,7 @@ class ManualInvoiceController extends Controller
 
 		$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
-		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+		$filter = Electronicinvoice::where('final',1)->whereBetween('Date', [$fromdate, $todate])->get();
 		  
 
 		return view('Manual.showallFinal',compact('invoice','filter','date'));
@@ -631,7 +631,7 @@ class ManualInvoiceController extends Controller
 
 		$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
-		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+		$filter = Electronicinvoice::where('final',1)->whereBetween('Date', [$fromdate, $todate])->get();
 		$date = '';
 		return view('Manual.report',compact('invoice','filter','date'));
 
@@ -641,7 +641,7 @@ class ManualInvoiceController extends Controller
 	{
 		$date =  Carbon::parse($date)->startOfDay()->format('Y-m-d');
 
-		$data =Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL ])->whereDate('created_at', '=', $date)->count();
+		$data =Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL ])->whereDate('Date', '=', $date)->count();
 		return response()->json($data);
 
 	}
@@ -661,7 +661,7 @@ class ManualInvoiceController extends Controller
 
 		$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
-		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+		$filter = Electronicinvoice::where('final',1)->whereBetween('Date', [$fromdate, $todate])->get();
 		  
 
 		return view('Manual.report',compact('invoice','filter','date'));
