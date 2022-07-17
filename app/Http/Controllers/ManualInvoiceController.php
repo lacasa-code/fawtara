@@ -575,8 +575,8 @@ class ManualInvoiceController extends Controller
 
 	public function PendingDaterange(request $request,$from,$to)
     {
-        $F =  Carbon::parse($from)->startOfDay()->format('d-m-Y');
-        $T = Carbon::parse($to)->endOfDay()->format('d-m-Y');
+        $F =  Carbon::parse($from)->startOfDay()->format('Y-m-d');
+        $T = Carbon::parse($to)->endOfDay()->format('Y-m-d');
 
 
 		$invoice = Electronicinvoice::where(['branch_id' => Auth::User()->branch_id,'final' => 0,'deleted_at' => NULL])
