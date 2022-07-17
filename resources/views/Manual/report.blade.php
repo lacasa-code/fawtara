@@ -249,15 +249,5 @@
   	}); 
 </script>
 
-<script>
-		$(document).ready(function() 
-	{
-	    
 
-			
-		$('#row_number').text(table.rows().count());
-
-
-  	}); 
-</script>
 @endsection 
