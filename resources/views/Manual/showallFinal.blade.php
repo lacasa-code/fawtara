@@ -165,7 +165,12 @@
 						 		<?php $i++; ?>   
 								@endforeach
                       			</tbody>
+
                     		</table>
+							<div class="info-box-stats">
+								        <p class="counter" id="final">{{ $i }} </p>
+								        <span class="info-box-title"> Invoices </span>
+							</div>
                   		</div>
                 	</div>
             	</div>
