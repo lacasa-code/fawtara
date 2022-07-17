@@ -646,21 +646,25 @@ class ManualInvoiceController extends Controller
 
 	}
 
-	public function filter_dateRange(Request $request)
+	public function filter_dateRange(request $request,$from,$to)
 	{
-		
-		$currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
-		                   ->orderBy('id','DESC')->first();
+        $F =  Carbon::parse($from)->startOfDay()->format('d-m-Y');
+        $T = Carbon::parse($to)->endOfDay()->format('d-m-Y');
 
-		$invoice = Electronicinvoice::where('branch_id', $currentUser->branch_id)->whereNull('deleted_at')
-		                          ->where('final', 1)
-				                  ->orderBy('id','DESC')->get();
+
+		$invoice = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
+		->where('final', 1)
+		->whereBetween('Date', [$F,$T])
+		->orderBy('id','DESC')->get();
+
+		$date = $F . ' | ' . $T;
 
 		$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
 		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
-		$date = '';
+		  
+
 		return view('Manual.report',compact('invoice','filter','date'));
-		
-	}
+
+    }
 }
