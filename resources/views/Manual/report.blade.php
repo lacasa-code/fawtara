@@ -111,8 +111,10 @@
 								 Date Rang :
                     			<input type="text" name="datefilter" id="datefilter" data-target="#output" autocomplete="off" value="{{ $date }}" class="w-full input pr-12 pl-12 border" style="min-width: 300px;"/>
 
-                                <p id="row_number"></p>
-
+								<div class="info-box-stats">
+								        <p class="counter" id="row_number"> </p>
+								        <span class="info-box-title"> Invoices </span>
+							    </div>
 								<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
