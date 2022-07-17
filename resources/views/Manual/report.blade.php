@@ -198,13 +198,13 @@
 
             $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
                 $(this).val(picker.startDate.format('DD-MMMM-YYYY') + ' - ' + picker.endDate.format('DD-MMMM-YYYY'));
-                var SITEURL = "{{url('/invoice/listall/final')}}/" + picker.startDate.format('DD-MMMM-YYYY') + "/" +picker.endDate.format('DD-MMMM-YYYY') ;
+                var SITEURL = "{{url('/invoice/reports')}}/" + picker.startDate.format('DD-MMMM-YYYY') + "/" +picker.endDate.format('DD-MMMM-YYYY') ;
                 window.location.href = SITEURL;
             });
 
             $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
                 $(this).val('');
-                var SITEURL = "{{url('/invoice/listall/final')}}";
+                var SITEURL = "{{url('/invoice/reports')}}";
                 window.location.href = SITEURL;
             });
 
