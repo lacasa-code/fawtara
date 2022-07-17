@@ -601,7 +601,7 @@ class ManualInvoiceController extends Controller
 		$F =  Carbon::parse($from)->format('Y-m-d');
         $T = Carbon::parse($to)->format('Y-m-d');
 
-
+		dd($from . '<>' .$to . '<>' .$F . '<>' . $T);
 		$invoice = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
 		->where('final', 1)
 		->whereBetween('Date', [$F,$T])
