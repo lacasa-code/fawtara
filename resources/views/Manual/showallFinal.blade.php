@@ -255,7 +255,7 @@
 		var table = $('#datatable').DataTable( {
 
 		});
-		$('#row_number').text(table.data().count());
+		$('#row_number').text(table.rows().count());
 
     });
 </script>
