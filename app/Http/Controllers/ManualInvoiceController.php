@@ -602,16 +602,16 @@ class ManualInvoiceController extends Controller
         $T = Carbon::parse($to)->format('d-m-Y');
 
 		dd($from . '<>' .$to . '<>' .$F . '<>' . $T);
-		$invoice = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
-		->where('final', 1)
+		$invoice = Electronicinvoice::
+		where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL])
 		->whereBetween('Date', [$F,$T])
 		->orderBy('id','DESC')->get();
 
 		$date = $F . ' | ' . $T;
 
-		$fromdate = $request->fromdate;		
+		/*$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
-		/*$filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->where('final',1)->whereNull('deleted_at')
+		$filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->where('final',1)->whereNull('deleted_at')
 		->where('final', 1)
 		->whereBetween('Date', [$F,$T])
 		->orderBy('id','DESC')->get();*/
