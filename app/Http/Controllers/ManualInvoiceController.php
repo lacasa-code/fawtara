@@ -619,11 +619,21 @@ class ManualInvoiceController extends Controller
 
     }
 
-	public function reports()
+	public function reports(Request $request)
 	{
 		
-		$report = Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL])->count();
-		return view('Manual.report',compact('report'));
+		$currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
+		                   ->orderBy('id','DESC')->first();
+
+		$invoice = Electronicinvoice::where('branch_id', $currentUser->branch_id)->whereNull('deleted_at')
+		                          ->where('final', 1)
+				                  ->orderBy('id','DESC')->get();
+
+		$fromdate = $request->fromdate;		
+		$todate = $request->todate;						  
+		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+		$date = '';
+		return view('Manual.report',compact('invoice','filter','date'));
 
 	}
 
