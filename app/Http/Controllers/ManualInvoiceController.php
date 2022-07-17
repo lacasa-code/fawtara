@@ -587,11 +587,10 @@ class ManualInvoiceController extends Controller
 		$date = $F . ' | ' . $T;
 
 
-		$start_date = Carbon::parse($request->start_date)->toDateTimeString();
-	 
-		$end_date = Carbon::parse($request->end_date)->toDateTimeString();
-		$invoice_filter = Electronicinvoice::where('final',0)->whereBetween('created_at', [$start_date, $end_date])->get();
-
+		$invoice_filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
+		->where('final', 0)
+		->whereBetween('Date', [$F,$T])
+		->orderBy('id','DESC')->get();
 		return view('Manual.showall',compact('invoice','invoice_filter','date'));
 
 	}
@@ -612,7 +611,10 @@ class ManualInvoiceController extends Controller
 
 		$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
-		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+		$filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->where('final',1)->whereNull('deleted_at')
+		->where('final', 1)
+		->whereBetween('Date', [$F,$T])
+		->orderBy('id','DESC')->get();
 		  
 
 		return view('Manual.showallFinal',compact('invoice','filter','date'));
@@ -631,7 +633,9 @@ class ManualInvoiceController extends Controller
 
 		$fromdate = $request->fromdate;		
 		$todate = $request->todate;						  
-		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+		$filter = Electronicinvoice::where('branch_id', $currentUser->branch_id)->whereNull('deleted_at')
+		->where('final', 1)
+		->orderBy('id','DESC')->get();
 		$date = '';
 		return view('Manual.report',compact('invoice','filter','date'));
 
@@ -659,9 +663,11 @@ class ManualInvoiceController extends Controller
 
 		$date = $F . ' | ' . $T;
 
-		$fromdate = $request->fromdate;		
-		$todate = $request->todate;						  
-		$filter = Electronicinvoice::where('final',1)->whereBetween('created_at', [$fromdate, $todate])->get();
+						  
+		$filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
+		->where('final', 1)
+		->whereBetween('Date', [$F,$T])
+		->orderBy('id','DESC')->get();
 		  
 
 		return view('Manual.report',compact('invoice','filter','date'));
