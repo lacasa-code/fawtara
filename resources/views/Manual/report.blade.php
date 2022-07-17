@@ -192,7 +192,7 @@ function fetch_data(from_date = '', to_date = '') {
 
                     if (response != null) 
                     {
-                        $('#final').text(response);
+                        $('#final').text(response.length);
                         console.log(response);
                     }
                 }

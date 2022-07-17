@@ -643,7 +643,7 @@ class ManualInvoiceController extends Controller
 				$data =Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL ])
 					->whereDate('created_at','>=',$request->from_date)
 					->whereDate('created_at','<=',$request->to_date)
-					->count();
+					->get();
             }
             else {
 				$data = Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL])->count();
