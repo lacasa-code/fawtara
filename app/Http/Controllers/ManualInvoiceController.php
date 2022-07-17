@@ -591,7 +591,7 @@ class ManualInvoiceController extends Controller
 		->where('final', 0)
 		->whereBetween('Date', [$F,$T])
 		->orderBy('id','DESC')->get();*/
-		return view('Manual.showall',compact('invoice','invoice_filter','date'));
+		return view('Manual.showall',compact('invoice','date'));
 
 	}
 	
