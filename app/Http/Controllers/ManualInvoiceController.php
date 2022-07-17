@@ -579,18 +579,18 @@ class ManualInvoiceController extends Controller
         $T = Carbon::parse($to)->endOfDay()->format('d-m-Y');
 
 
-		$invoice = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
-		->where('final', 0)
+		$invoice = Electronicinvoice::where(['branch_id' => Auth::User()->branch_id,'final' => 0,'deleted_at' => NULL])
 		->whereBetween('Date', [$F,$T])
 		->orderBy('id','DESC')->get();
 
+		var_dump($invoice);
 		$date = $F . ' | ' . $T;
 
 
-		$invoice_filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
+		/*$invoice_filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
 		->where('final', 0)
 		->whereBetween('Date', [$F,$T])
-		->orderBy('id','DESC')->get();
+		->orderBy('id','DESC')->get();*/
 		return view('Manual.showall',compact('invoice','invoice_filter','date'));
 
 	}
