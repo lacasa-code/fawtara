@@ -583,7 +583,7 @@ class ManualInvoiceController extends Controller
 		->whereBetween('Date', [$F,$T])
 		->orderBy('id','DESC')->get();
 
-		var_dump($invoice);
+		//var_dump($invoice);
 		$date = $F . ' | ' . $T;
 
 
