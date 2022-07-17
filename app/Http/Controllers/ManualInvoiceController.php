@@ -638,22 +638,7 @@ class ManualInvoiceController extends Controller
 
 	public function filter_dateRange(Request $request)
 	{
-		/*if($request->ajax()) {
-            if($request->from_date != '' && $request->to_date != '') {
-				$data =Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL ])
-					->whereDate('created_at','>=',$request->from_date)
-					->whereDate('created_at','<=',$request->to_date)
-					->get();
-            }
-            else {
-				$data = Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL])->count();
-
-            }
-			return response()->json($data);
-
-        }
-		*/
-
+		
 		$currentUser = User::where([['soft_delete',0],['id','=',Auth::User()->id]])
 		                   ->orderBy('id','DESC')->first();
 
