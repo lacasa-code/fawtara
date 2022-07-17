@@ -115,7 +115,7 @@
 										</div>
 										<div class="col-6">
 										    Number of invoices :
-											<p  id="row_number"> </p>
+											<span  id="row_number"> </span>
 										</div>
                                 </div>
 								 
