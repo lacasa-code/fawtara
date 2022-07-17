@@ -575,22 +575,17 @@ class ManualInvoiceController extends Controller
 
 	public function PendingDaterange(request $request,$from,$to)
     {
-        $F =  Carbon::parse($from)->startOfDay()->format('Y-m-d');
-        $T = Carbon::parse($to)->endOfDay()->format('Y-m-d');
+       
+		$F =  Carbon::parse($from)->startOfDay()->format('Y-m-d H:i:s');
+        $T = Carbon::parse($to)->endOfDay()->format('Y-m-d H:i:s');
 
 
 		$invoice = Electronicinvoice::where(['branch_id' => Auth::User()->branch_id,'final' => 0,'deleted_at' => NULL])
-		->whereBetween('Date', [$F,$T])
+		->whereBetween('created_at', [$F,$T])
 		->orderBy('id','DESC')->get();
 
-		//var_dump($invoice);
-		$date = $F . ' | ' . $T;
+		$date = Carbon::parse($from)->startOfDay()->format('Y-m-d') . ' | ' . Carbon::parse($to)->endOfDay()->format('Y-m-d');
 
-
-		/*$invoice_filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
-		->where('final', 0)
-		->whereBetween('Date', [$F,$T])
-		->orderBy('id','DESC')->get();*/
 		return view('Manual.showall',compact('invoice','date'));
 
 	}
@@ -598,29 +593,15 @@ class ManualInvoiceController extends Controller
 
 	public function Dateranges(request $request,$from,$to)
     {
-		/*$F =  Carbon::parse($from)->format('d-m-Y');
-		$T = Carbon::parse($to)->format('d-m-Y');*/
-		
 		$F =  Carbon::parse($from)->startOfDay()->format('Y-m-d H:i:s');
         $T = Carbon::parse($to)->endOfDay()->format('Y-m-d H:i:s');
 
 		
-		
-		//dd($from . '<>' .$to . '<>' .$F . '<>' . $T);
-		$invoice = Electronicinvoice::
-		where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL])
+		$invoice = Electronicinvoice::where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL])
 		->whereBetween('created_at', [$F,$T])
 		->orderBy('id','DESC')->get();
 
-		$date = $F . ' | ' . $T;
-
-		/*$fromdate = $request->fromdate;		
-		$todate = $request->todate;						  
-		$filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->where('final',1)->whereNull('deleted_at')
-		->where('final', 1)
-		->whereBetween('Date', [$F,$T])
-		->orderBy('id','DESC')->get();*/
-		  
+		$date = Carbon::parse($from)->startOfDay()->format('Y-m-d') . ' | ' . Carbon::parse($to)->endOfDay()->format('Y-m-d');
 
 		return view('Manual.showallFinal',compact('invoice','date'));
 
@@ -657,7 +638,7 @@ class ManualInvoiceController extends Controller
 
 	public function filter_dateRange(request $request,$from,$to)
 	{
-		$F =  Carbon::parse($from)->startOfDay()->format('Y-m-d');
+		/*$F =  Carbon::parse($from)->startOfDay()->format('Y-m-d');
         $T = Carbon::parse($to)->endOfDay()->format('Y-m-d');
 
 
@@ -672,10 +653,21 @@ class ManualInvoiceController extends Controller
 		$filter = Electronicinvoice::where('branch_id', Auth::User()->branch_id)->whereNull('deleted_at')
 		->where('final', 1)
 		->whereBetween('Date', [$F,$T])
+		->orderBy('id','DESC')->get();*/
+
+		$F =  Carbon::parse($from)->startOfDay()->format('Y-m-d H:i:s');
+        $T = Carbon::parse($to)->endOfDay()->format('Y-m-d H:i:s');
+
+
+		$invoice = Electronicinvoice::where(['branch_id' => Auth::User()->branch_id,'final' => 1,'deleted_at' => NULL])
+		->whereBetween('created_at', [$F,$T])
 		->orderBy('id','DESC')->get();
+
+		$date = Carbon::parse($from)->startOfDay()->format('Y-m-d') . ' | ' . Carbon::parse($to)->endOfDay()->format('Y-m-d');
+
 		  
 
-		return view('Manual.report',compact('invoice','filter','date'));
+		return view('Manual.report',compact('invoice','date'));
 
     }
 }
