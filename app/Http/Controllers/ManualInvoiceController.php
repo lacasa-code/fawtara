@@ -598,13 +598,18 @@ class ManualInvoiceController extends Controller
 
 	public function Dateranges(request $request,$from,$to)
     {
-		$F =  Carbon::parse($from)->format('d-m-Y');
-        $T = Carbon::parse($to)->format('d-m-Y');
+		/*$F =  Carbon::parse($from)->format('d-m-Y');
+		$T = Carbon::parse($to)->format('d-m-Y');*/
+		
+		$F =  Carbon::parse($from)->startOfDay()->format('Y-m-d H:i:s');
+        $T = Carbon::parse($to)->endOfDay()->format('Y-m-d H:i:s');
 
+		
+		
 		//dd($from . '<>' .$to . '<>' .$F . '<>' . $T);
 		$invoice = Electronicinvoice::
 		where(['branch_id' => auth()->user()->branch_id,'final' => 1,'deleted_at' => NULL])
-		->whereBetween('Date', [$F,$T])
+		->whereBetween('created_at', [$F,$T])
 		->orderBy('id','DESC')->get();
 
 		$date = $F . ' | ' . $T;
