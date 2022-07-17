@@ -107,11 +107,18 @@
 									</div>
 
 								</div>-->
+                                <div class="row">
+                                        <div class="col-6">
+										    Date Rang :
+                    			            <input type="text" name="datefilter" id="datefilter" data-target="#output" autocomplete="off" value="{{ $date }}" class="w-full input pr-12 pl-12 border" style="min-width: 300px;"/>
 
-								 Date Rang :
-                    			<input type="text" name="datefilter" id="datefilter" data-target="#output" autocomplete="off" value="{{ $date }}" class="w-full input pr-12 pl-12 border" style="min-width: 300px;"/>
-
-								<p class="counter" id="row_number"> </p>Invoices
+										</div>
+										<div class="col-6">
+										    Number of invoices :
+											<p  id="row_number"> </p>
+										</div>
+                                </div>
+								 
 								<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
                       			<thead>
                         			<tr>
