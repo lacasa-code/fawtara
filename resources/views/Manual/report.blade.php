@@ -152,7 +152,7 @@
 									<td>{{ $invoices->chassis_no }} </td>
 									<td>{{ number_format($invoices->total_amount, 2) }}</td>
 									<td>{{ number_format($invoices->paid_amount, 2) }}</td>
-									<td>{{ date(getDateFormat(),strtotime($invoices->Date)) }}</td>
+									<td>{{ date(getDateFormat(),strtotime($invoices->created_at)) }}</td>
 									<td>
 									@if(getUserRoleFromUserTable(Auth::User()->id) == 'admin' || getUserRoleFromUserTable(Auth::User()->id) == 'supportstaff' || getUserRoleFromUserTable(Auth::User()->id) == 'accountant' || getUserRoleFromUserTable(Auth::User()->id) == 'employee' || getUserRoleFromUserTable(Auth::User()->id) == 'branch_admin')
 										@if($invoices->type != 2)
