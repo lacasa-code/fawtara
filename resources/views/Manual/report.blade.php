@@ -120,7 +120,7 @@
 
 										<div class="col-6">
 										    Total paid amounts :
-											<span   style="font-size: 20px;">{{$total_amounts->total_paid_amount}} </span>
+											<span  id="amounts" style="font-size: 20px;"> </span>
 										</div>
                                 </div>
 								 
@@ -142,7 +142,9 @@
                         			</tr>
                       			</thead>
                       			<tbody>
-								<?php $i = 1; ?>   
+								<?php $i = 1; ?>
+								<?php $amount = 0; ?>   
+   
 					  			@foreach($invoice as $invoices)
 								<tr class="texr-left">
 									<td>{{ $i }}</td>
@@ -157,6 +159,8 @@
 									<td>{{ $invoices->chassis_no }} </td>
 									<td>{{ number_format($invoices->total_amount, 2) }}</td>
 									<td>{{ number_format($invoices->paid_amount, 2) }}</td>
+									<?php $amount += $invoices->paid_amount; ?>   
+
 									<td>{{ date(getDateFormat(),strtotime($invoices->created_at)) }}</td>
 									<td>
 									@if(getUserRoleFromUserTable(Auth::User()->id) == 'admin' || getUserRoleFromUserTable(Auth::User()->id) == 'supportstaff' || getUserRoleFromUserTable(Auth::User()->id) == 'accountant' || getUserRoleFromUserTable(Auth::User()->id) == 'employee' || getUserRoleFromUserTable(Auth::User()->id) == 'branch_admin')
@@ -255,6 +259,7 @@
           },'pdf']
 	    });
 		$('#row_number').text(table.rows().count());
+		$('#amounts').text($amount);
 
 
   	}); 
