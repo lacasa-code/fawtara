@@ -106,16 +106,18 @@
                                     <thead>
                                     </thead>
                                     <tbody>
-                                          <tr>
-                                          <td style="text-align: left;">  
+                                    <tr>
+                              <td style="text-align: left;">  
                                                       <img style="height: 70px; width: 200px;" src="{{ URL::asset('public/img/branch/marcedess-logo.svg') }}" class="cimg"> &nbsp; &nbsp; &nbsp; 
                               </td>
                               <td style="text-align: center;">  
                                     <div  >Mercedes -Benz- Almeshri Authorized Dealer </div>&nbsp; &nbsp; &nbsp; 
                               </td>
-                              <td style="text-align: right;>  
+                              <td style="text-align: right;">  
                                                       <img style="height: 70px; width: 200px;" src="{{ URL::asset('public/img/branch/'.$branch->branch_image) }}" class="cimg"> &nbsp; &nbsp; &nbsp; 
-                              </td> 
+                              </td>
+                              
+                                          </tr> 
                                           <br>
                                                              
                                                          
