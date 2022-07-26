@@ -623,7 +623,10 @@ class ManualInvoiceController extends Controller
 		->where('final', 1)
 		->orderBy('id','DESC')->get();
 		$date = '';
-		return view('Manual.report',compact('invoice','filter','date'));
+
+        $total_amounts =Electronicinvoice::select(DB::raw('SUM(paid_amount) as total_paid_amount'))->where('branch_id',auth()->user()->branch_id)->where('final',1)->whereNull('deleted_at')->whereBetween('created_at', [$start, $end])->get();   
+
+		return view('Manual.report',compact('invoice','filter','date','total_amounts'));
 
 	}
 

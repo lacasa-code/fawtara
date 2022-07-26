@@ -117,6 +117,11 @@
 										    Number of invoices :
 											<span  id="row_number" style="font-size: 20px;"> </span>
 										</div>
+
+										<div class="col-6">
+										    Total paid amounts :
+											<span   style="font-size: 20px;">$total_amounts </span>
+										</div>
                                 </div>
 								 
 								<table id="datatable" class="table table-striped jambo_table" style="margin-top:20px;">
