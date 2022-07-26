@@ -113,13 +113,12 @@
                               <td style="text-align: center;">  
                                     <div  >Mercedes -Benz- Almeshri Authorized Dealer </div>&nbsp; &nbsp; &nbsp; 
                               </td>
-                              <td style="text-align: right; padding:0%">  
+                              <td style="text-align: right;>  
                                                       <img style="height: 70px; width: 200px;" src="{{ URL::asset('public/img/branch/'.$branch->branch_image) }}" class="cimg"> &nbsp; &nbsp; &nbsp; 
                               </td> 
                                           <br>
                                                              
                                                          
-                                                <td style="text-align: center;" width="20%"> 
                                                       <?php 
                                    $path_one = strstr(URL::current(), 'invoice',true); 
                                    $path_two = $path_one.'invoice/scan/'; 
