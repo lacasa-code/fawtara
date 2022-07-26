@@ -259,7 +259,7 @@
           },'pdf']
 	    });
 		$('#row_number').text(table.rows().count());
-		$('#amounts').text($amount);
+		$('#amounts').text(table.column( 8 ).data().sum());
 
 
   	}); 
