@@ -118,11 +118,7 @@
                               </td> 
                                           <br>
                                                              
-                                                         {{ $branch->name_en }}&nbsp; &nbsp; {{ $branch->branch_name }}
-                                                          <br>
-                                                         {{ $branch->division_en }} &nbsp; &nbsp; {{ $branch->division }}
-                                                      </u>
-                                                   </span> </td>
+                                                         
                                                 <td style="text-align: center;" width="20%"> 
                                                       <?php 
                                    $path_one = strstr(URL::current(), 'invoice',true); 
