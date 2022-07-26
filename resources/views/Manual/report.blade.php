@@ -197,7 +197,8 @@
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 
     <script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
-	
+	<script src="https://cdn.datatables.net/plug-ins/1.12.1/api/sum().js"></script>
+
 	
 	
 
@@ -259,7 +260,7 @@
           },'pdf']
 	    });
 		$('#row_number').text(table.rows().count());
-		$('#amounts').text(table.column( 8 ).data().sum());
+		$('#amounts').text(table.column(8).data().sum());
 
 
   	}); 
