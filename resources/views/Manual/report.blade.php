@@ -261,6 +261,7 @@
 	    });
 		$('#row_number').text(table.rows().count());
 		$('#amounts').text(table.column(8).data().sum());
+		console.log(table.column(8).data().sum())
 
 
   	}); 
