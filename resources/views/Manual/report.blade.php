@@ -120,7 +120,7 @@
 
 										<div class="col-6">
 										    Total paid amounts :
-											<span  id="amounts" style="font-size: 20px;"> {{$total_amounts->total_paid_amount}}</span>
+											<span  id="amounts" style="font-size: 20px;"> {{$total_amounts->first()}}</span>
 										</div>
                                 </div>
 								 
