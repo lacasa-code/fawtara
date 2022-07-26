@@ -260,8 +260,7 @@
           },'pdf']
 	    });
 		$('#row_number').text(table.rows().count());
-		$('#amounts').text(table.api().column(8).data().sum());
-		console.log(table.api().column(8).data().sum())
+	
 
 
   	}); 
