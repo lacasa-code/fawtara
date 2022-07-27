@@ -135,15 +135,7 @@ border-radius: 6px;
 											</span>
 										</div>
 									</div>
-									<div class="table_row">
-										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
-											<i class="fa fa-envelope"></i> 
-											<b>{{ trans('app.Email')}}</b> 	
-										</div>
-										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
-											<span class="txt_color">{{ $new_customer -> mail }}</span>
-										</div>
-									</div>
+									
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td"><i class="fa fa-phone"></i> <b>{{ trans('app.Mobile No')}}</b> </div>
 										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
@@ -160,6 +152,16 @@ border-radius: 6px;
 											<span class="txt_color">
 											<span class="txt_color">{{ $new_customer -> address }}</span>
 											</span>
+										</div>
+									</div>
+
+									<div class="table_row">
+										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
+											<i class="fa fa-envelope"></i> 
+											<b>{{ trans('app.Email')}}</b> 	
+										</div>
+										<div class="col-md-7 col-sm-12 col-xs-12 table_td">
+											<span class="txt_color">{{ $new_customer -> mail }}</span>
 										</div>
 									</div>
 								<br><hr>
