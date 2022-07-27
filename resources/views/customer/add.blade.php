@@ -67,7 +67,7 @@ input[type=number] {
 								</div>
 
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group my-form-group has-feedback {{ $errors->has('mail') ? ' has-error' : '' }}">
-									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="email">{{ trans('app.Email') }} <label class="color-danger">*</label></label>
+									<label class="control-label col-md-4 col-sm-4 col-xs-12" for="email">{{ trans('app.Email') }}</label>
 									<div class="col-md-8 col-sm-8 col-xs-12">
 										<input type="text" id="mail" autocomplete="false" name="mail" value="{{old('mail')}}" placeholder="{{ trans('app.Enter Email')}}"  maxlength="50"
 										class="form-control mail">
