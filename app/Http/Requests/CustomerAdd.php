@@ -19,7 +19,7 @@ class CustomerAdd extends FormRequest
               
             
             'name' => 'required|regex:/^[(a-zA-Z\s)\p{L}]+$/u|max:50',
-            'mail' => 'required|email|unique:customers,mail,'.$this->id,
+            'mail' => 'nullable|email|unique:customers,mail,'.$this->id,
             'phone' => 'required|min:9|max:9|digits:9|regex:/^[- +()]*[0-9][- +()0-9]*$/|unique:customers,phone,'.$this->id,
             'address' => 'required',        
 
@@ -35,7 +35,7 @@ class CustomerAdd extends FormRequest
             'name.max' => trans('app.customer name should not more than 50 character.'),
 
     
-            'mail.required' => trans('app.Email is required.'),
+           // 'mail.required' => trans('app.Email is required.'),
             'mail.email'  => trans('app.Please enter a valid email address. Like : sales@dasinfomedia.com'),
             'mail.unique' => trans('app.Email you entered is already registered.'),
 

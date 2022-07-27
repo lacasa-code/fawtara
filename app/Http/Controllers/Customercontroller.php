@@ -502,7 +502,12 @@ class Customercontroller extends Controller
 		$chassis = $request->chassis;
 		$model = $request->model;*/
 
-		  
+		if(!empty($mail))
+		{
+			$mail = $mail;
+		}else{
+			$mail = null;
+		}  
 		$customer = Customer::find($id);
 		$customer->name = $name;
 		$customer->phone = $phone;
