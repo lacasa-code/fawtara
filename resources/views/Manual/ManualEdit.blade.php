@@ -1674,7 +1674,7 @@ $(document).ready(function()
                             $('#carlist').focus;
                             $('#carlist').append('<option value="" disabled selected> Select Car </option>');
                             $.each(data, function(key, value) {
-                                $('select[name="carlist"]').append('<option value="' + value.id + '">' +  value.model +  '</option>');
+                                $('select[name="carlist"]').append('<option value="' + value.id + '">' +  value.model + '/' + value.chassis + '</option>');
 
                             });
                         } else {
