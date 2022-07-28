@@ -154,7 +154,8 @@ border-radius: 6px;
 											</span>
 										</div>
 									</div>
-
+									@if($new_customer -> mail == null)
+									@elseif ($new_customer -> mail != null)
 									<div class="table_row">
 										<div class="col-md-5 col-sm-12 col-xs-12 table_td">
 											<i class="fa fa-envelope"></i> 
@@ -164,6 +165,7 @@ border-radius: 6px;
 											<span class="txt_color">{{ $new_customer -> mail }}</span>
 										</div>
 									</div>
+									@endif
 								<br><hr>
 								<?php $i=1;?>
 
