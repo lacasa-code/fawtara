@@ -35,7 +35,9 @@ class InvoiceAddEditFormRequest extends FormRequest
             'Status' => 'required',
             'Payment_type' => 'required',
             'grandtotal' => 'required',
-            'paidamount' => 'required',                      
+            'paidamount' => 'required',  
+            'customerlist' => 'required',
+			'carlist' => 'required',                    
         ];
     } 
 
@@ -52,6 +54,8 @@ class InvoiceAddEditFormRequest extends FormRequest
             'Total_Amount.required' => trans('app.Total amount is required.'),
             'Status.required' => trans('app.Status is required.'),
             'Payment_type.required' => trans('app.Payment type is required.'),
+            'customerlist.required' => "Customer List is required",
+            'carlist.required' => "Car List is required",
             'grandtotal.required'  => trans('app.Grand total is required.'),
             'paidamount.required'  => trans('app.Paid amount is required.'),
         ];
