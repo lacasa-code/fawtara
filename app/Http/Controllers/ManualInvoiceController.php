@@ -134,6 +134,8 @@ class ManualInvoiceController extends Controller
 			'service_value.4'   => 'nullable|numeric',
 			'job_open_date' => 'required',
 			'delivery_date' => 'required',
+			'customerlist' => 'required',
+			'carlist' => 'required',
 		]);
 
 		// return $request->vat_number;
@@ -325,6 +327,8 @@ class ManualInvoiceController extends Controller
 			'service_value.4'  => 'nullable|numeric',
 			'job_open_date'    => 'required',
 			'delivery_date'    => 'required',
+			'customerlist' => 'required',
+			'carlist' => 'required',
 		]);
 		// end validation
 		
