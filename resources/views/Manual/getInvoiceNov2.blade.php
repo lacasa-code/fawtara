@@ -43,21 +43,27 @@
                                 <h4><b>{{ trans('app.Invoice Details')}}</b></h4>
                                 <hr>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12  ">
+                            <div class="col-md-4 col-sm-6 col-xs-12  form-group my-form-group{{$errors->has('customerlist') ? 'error' : null}}">
                                 <select class="form-control  select_customer" name="customerlist" id="customerlist" required>
                                     <option value="" disabled selected>{{ trans('Select customers')}}</option>
                                     @foreach ($customers_list as $customer)
                                     <option value="{{ $customer->id }}">{{ $customer->name }} / {{$customer->phone }}</option>
                                     @endforeach
                                 </select>
+								@if($errors->has('customerlist'))
+									<span class="help-block" style="color:red;">{{$errors->first('customerlist')}}</span>
+								@endif
                             </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12  ">
+                            <div class="col-md-4 col-sm-6 col-xs-12  form-group my-form-group{{$errors->has('carlist') ? 'error' : null}}">
                                 <select class="form-control  select_car" name="carlist" id="carlist" required>
                                     <option value="" disabled selected>{{ trans('Select Car')}}</option>
                                     <!--@foreach ($customers_list as $customer)
 											   <option value="{{ $customer->id }}">{{ $customer->name }} / {{$customer->phone }}</option>
 											@endforeach-->
                                 </select>
+								@if($errors->has('carlist'))
+									<span class="help-block" style="color:red;">{{$errors->first('carlist')}}</span>
+								@endif
                             </div>
 
                         </div>
